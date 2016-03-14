@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Titre:</strong>
+  <%= @legume.titre %>
+</p>
+
+<p>
+  <strong>Variete:</strong>
+  <%= @legume.variete %>
+</p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @legume.type %>
+</p>
+
+<p>
+  <strong>Date plantation:</strong>
+  <%= @legume.date_plantation %>
+</p>
+
+<%= link_to 'Edit', edit_legume_path(@legume) %> |
+<%= link_to 'Back', legumes_path %>

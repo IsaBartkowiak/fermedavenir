@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Legumes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Titre</th>
+      <th>Variete</th>
+      <th>Type</th>
+      <th>Date plantation</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @legumes.each do |legume| %>
+      <tr>
+        <td><%= legume.titre %></td>
+        <td><%= legume.variete %></td>
+        <td><%= legume.type %></td>
+        <td><%= legume.date_plantation %></td>
+        <td><%= link_to 'Show', legume %></td>
+        <td><%= link_to 'Edit', edit_legume_path(legume) %></td>
+        <td><%= link_to 'Destroy', legume, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Legume', new_legume_path %>

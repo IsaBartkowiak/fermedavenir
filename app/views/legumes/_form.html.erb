@@ -1,0 +1,33 @@
+<%= form_for(@legume) do |f| %>
+  <% if @legume.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@legume.errors.count, "error") %> prohibited this legume from being saved:</h2>
+
+      <ul>
+      <% @legume.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :titre %><br>
+    <%= f.text_field :titre %>
+  </div>
+  <div class="field">
+    <%= f.label :variete %><br>
+    <%= f.text_field :variete %>
+  </div>
+  <div class="field">
+    <%= f.label :type %><br>
+    <%= f.text_field :type %>
+  </div>
+  <div class="field">
+    <%= f.label :date_plantation %><br>
+    <%= f.date_select :date_plantation %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

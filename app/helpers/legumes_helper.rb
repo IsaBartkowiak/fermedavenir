@@ -1,0 +1,2 @@
+module LegumesHelper
+end

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  titre: MyString
+  variete: MyString
+  type: 
+  date_plantation: 2016-03-14
+
+two:
+  titre: MyString
+  variete: MyString
+  type: 
+  date_plantation: 2016-03-14
