@@ -7,6 +7,10 @@ class LegumesController < ApplicationController
     @legumes = Legume.all
   end
 
+  def search
+    Legume.where("titre LIKE ?", "%#{params[:search]}%").all
+  end
+
   # GET /legumes/1
   # GET /legumes/1.json
   def show
