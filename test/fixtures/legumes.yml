@@ -4,10 +4,16 @@ one:
   titre: MyString
   variete: MyString
   type: 
-  date_plantation: 2016-03-14
+  semi_deb: 1
+  semi_fin: 1
+  temps_pousse_min: 1
+  temps_pousse_max: 1
 
 two:
   titre: MyString
   variete: MyString
   type: 
-  date_plantation: 2016-03-14
+  semi_deb: 1
+  semi_fin: 1
+  temps_pousse_min: 1
+  temps_pousse_max: 1

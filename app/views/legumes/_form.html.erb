@@ -1,33 +1,62 @@
-<%= form_for(@legume) do |f| %>
+<%= form_for(@legume, html: { class: "form-horizontal", role: "form" }) do |f| %>
   <% if @legume.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@legume.errors.count, "error") %> prohibited this legume from being saved:</h2>
+    <div class="alert alert-danger alert-dismissable" role="alert">
+      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+      <h4><%= pluralize(@legume.errors.count, "error") %> prohibited this legume from being saved:</h4>
 
       <ul>
-      <% @legume.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+      <% @legume.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
       <% end %>
       </ul>
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :titre %><br>
-    <%= f.text_field :titre %>
+  <div class="form-group">
+    <%= f.label :titre, class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :titre, class: "form-control" %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :variete %><br>
-    <%= f.text_field :variete %>
+  <div class="form-group">
+    <%= f.label :variete, class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :variete, class: "form-control" %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :type %><br>
-    <%= f.text_field :type %>
+  <div class="form-group">
+    <%= f.label :type, class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.text_field :type, class: "form-control" %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :date_plantation %><br>
-    <%= f.date_select :date_plantation %>
+  <div class="form-group">
+    <%= f.label :semi_deb, class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.number_field :semi_deb, class: "form-control" %>
+    </div>
   </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="form-group">
+    <%= f.label :semi_fin, class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.number_field :semi_fin, class: "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :temps_pousse_min, class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.number_field :temps_pousse_min, class: "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :temps_pousse_max, class: "col-sm-2 control-label" %>
+    <div class="col-sm-10">
+      <%= f.number_field :temps_pousse_max, class: "form-control" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <%= f.submit class: "btn btn-primary" %>
+    </div>
   </div>
 <% end %>

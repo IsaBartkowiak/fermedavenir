@@ -1,6 +1,13 @@
-<h1>Editing Legume</h1>
+<div class="page-header">
+  <%= link_to legumes_path, class: 'btn btn-default' do %>
+    <span class="glyphicon glyphicon-list-alt"></span>
+    Back
+  <% end %>
+  <%= link_to @legume, class: 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-info-sign"></span>
+    Show
+  <% end %>
+  <h1>Editing legume</h1>
+</div>
 
 <%= render 'form' %>
-
-<%= link_to 'Show', @legume %> |
-<%= link_to 'Back', legumes_path %>

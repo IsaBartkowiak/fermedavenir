@@ -69,6 +69,6 @@ class LegumesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def legume_params
-      params.require(:legume).permit(:titre, :variete, :type, :date_plantation)
+      params.require(:legume).permit(:titre, :variete, :type, :semi_deb, :semi_fin, :temps_pousse_min, :temps_pousse_max)
     end
 end

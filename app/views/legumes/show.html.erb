@@ -1,24 +1,35 @@
-<p id="notice"><%= notice %></p>
+<div class="page-header">
+  <%= link_to legumes_path, class: 'btn btn-default' do %>
+    <span class="glyphicon glyphicon-list-alt"></span>
+    Back
+  <% end %>
+  <%= link_to edit_legume_path(@legume), class: 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-pencil"></span>
+    Edit
+  <% end %>
+  <h1>Show legume</h1>
+</div>
 
-<p>
-  <strong>Titre:</strong>
-  <%= @legume.titre %>
-</p>
+<dl class="dl-horizontal">
+  <dt>Titre:</dt>
+  <dd><%= @legume.titre %></dd>
 
-<p>
-  <strong>Variete:</strong>
-  <%= @legume.variete %>
-</p>
+  <dt>Variete:</dt>
+  <dd><%= @legume.variete %></dd>
 
-<p>
-  <strong>Type:</strong>
-  <%= @legume.type %>
-</p>
+  <dt>Type:</dt>
+  <dd><%= @legume.type %></dd>
 
-<p>
-  <strong>Date plantation:</strong>
-  <%= @legume.date_plantation %>
-</p>
+  <dt>Semi deb:</dt>
+  <dd><%= @legume.semi_deb %></dd>
 
-<%= link_to 'Edit', edit_legume_path(@legume) %> |
-<%= link_to 'Back', legumes_path %>
+  <dt>Semi fin:</dt>
+  <dd><%= @legume.semi_fin %></dd>
+
+  <dt>Temps pousse min:</dt>
+  <dd><%= @legume.temps_pousse_min %></dd>
+
+  <dt>Temps pousse max:</dt>
+  <dd><%= @legume.temps_pousse_max %></dd>
+
+</dl>

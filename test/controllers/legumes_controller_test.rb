@@ -18,7 +18,7 @@ class LegumesControllerTest < ActionController::TestCase
 
   test "should create legume" do
     assert_difference('Legume.count') do
-      post :create, legume: { date_plantation: @legume.date_plantation, titre: @legume.titre, type: @legume.type, variete: @legume.variete }
+      post :create, legume: { semi_deb: @legume.semi_deb, semi_fin: @legume.semi_fin, temps_pousse_max: @legume.temps_pousse_max, temps_pousse_min: @legume.temps_pousse_min, titre: @legume.titre, type: @legume.type, variete: @legume.variete }
     end
 
     assert_redirected_to legume_path(assigns(:legume))
@@ -35,7 +35,7 @@ class LegumesControllerTest < ActionController::TestCase
   end
 
   test "should update legume" do
-    patch :update, id: @legume, legume: { date_plantation: @legume.date_plantation, titre: @legume.titre, type: @legume.type, variete: @legume.variete }
+    patch :update, id: @legume, legume: { semi_deb: @legume.semi_deb, semi_fin: @legume.semi_fin, temps_pousse_max: @legume.temps_pousse_max, temps_pousse_min: @legume.temps_pousse_min, titre: @legume.titre, type: @legume.type, variete: @legume.variete }
     assert_redirected_to legume_path(assigns(:legume))
   end
 

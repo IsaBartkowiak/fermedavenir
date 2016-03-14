@@ -1,5 +1,9 @@
-<h1>New Legume</h1>
+<div class="page-header">
+  <%= link_to legumes_path, class: 'btn btn-default' do %>
+    <span class="glyphicon glyphicon-list-alt"></span>
+    Back
+  <% end %>
+  <h1>New legume</h1>
+</div>
 
 <%= render 'form' %>
-
-<%= link_to 'Back', legumes_path %>
