@@ -1,16 +1,15 @@
 <div class="page-header">
-  <%= link_to new_portion_path, class: 'btn btn-primary' do %>
+  <%= link_to new_panier_portion_path, class: 'btn btn-primary' do %>
     <span class="glyphicon glyphicon-plus"></span>
-    New Portion
+    Ajouter un légume
   <% end %>
-  <h1>Listing portions</h1>
+  <h1>Légumes du panier de la semaine <%= @panier.semaine %></h1>
 </div>
 
 <div class="table-responsive">
   <table class="table table-striped table-bordered table-hover">
     <thead>
       <tr>
-            <th>Panier</th>
             <th>Legume</th>
             <th>Generation</th>
             <th>Quantity</th>
@@ -22,13 +21,12 @@
 
     <tbody>
       <%= content_tag_for(:tr, @portions) do |portion| %>
-            <td><%= portion.panier_id %></td>
-            <td><%= portion.legume %></td>
-            <td><%= portion.generation %></td>
+            <td><%= portion.legume.titre %></td>
+            <td>Conservable jusqu'à la semaine <%= portion.generation.conservation_to unless portion.generation.nil? %></td>
             <td><%= portion.quantity %></td>
-            <td><%= link_to 'Show', portion %></td>
-        <td><%= link_to 'Edit', edit_portion_path(portion) %></td>
-        <td><%= link_to 'Destroy', portion, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <td><%= link_to 'Show', panier_portion_path(@panier,portion) %></td>
+        <td><%= link_to 'Edit', edit_panier_portion_path(@panier,portion) %></td>
+        <td><%= link_to 'Destroy', panier_portion_path(@panier,portion), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       <% end %>
     </tbody>
   </table>

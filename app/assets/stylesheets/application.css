@@ -55,3 +55,6 @@ input[type="radio"], input[type="checkbox"] {
   display: block;
   margin: 10px auto 15px;
 }
+#global-container {
+  padding-top: 170px
+}

@@ -3,8 +3,8 @@
 # Table name: generations
 #
 #  id              :integer          not null, primary key
-#  semi_from       :integer
-#  semi_to         :integer
+#  semi_from       :integer          default(0)
+#  semi_to         :integer          default(0)
 #  plantation      :integer
 #  recolte         :integer
 #  conservation_to :integer
