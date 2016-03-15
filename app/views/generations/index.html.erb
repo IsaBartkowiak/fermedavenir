@@ -1,0 +1,41 @@
+<div class="page-header">
+  <%= link_to new_generation_path, class: 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-plus"></span>
+    New Generation
+  <% end %>
+  <h1>Listing generations</h1>
+</div>
+
+<div class="table-responsive">
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr>
+            <th>Légume</th>
+            <th>Semi from</th>
+            <th>Semi to</th>
+            <th>Plantation</th>
+            <th>Recolte</th>
+            <th>Conservation from</th>
+            <th>Conservation to</th>
+            <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <%= content_tag_for(:tr, @generations) do |generation| %>
+            <td><%= generation.legume.titre %></td>
+            <td><%= generation.semi_from %></td>
+            <td><%= generation.semi_to %></td>
+            <td><%= generation.plantation %></td>
+            <td><%= generation.recolte %></td>
+            <td><%= generation.conservation_from %></td>
+            <td><%= generation.conservation_to %></td>
+            <td><%= link_to 'Show', generation %></td>
+        <td><%= link_to 'Edit', edit_generation_path(generation) %></td>
+        <td><%= link_to 'Destroy', generation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <% end %>
+    </tbody>
+  </table>
+</div>

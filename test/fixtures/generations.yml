@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  semi_from: 1
+  semi_to: 1
+  plantation: 1
+  recolte: 1
+  conservation_from: 1
+  conservation_to: 1
+
+two:
+  semi_from: 1
+  semi_to: 1
+  plantation: 1
+  recolte: 1
+  conservation_from: 1
+  conservation_to: 1
