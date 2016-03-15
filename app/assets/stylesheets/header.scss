@@ -1,0 +1,26 @@
+//////////////////////////////
+// Header
+.header {
+	position: relative;
+	padding: 1em 0;
+	text-align: center;
+	background-color: #fff;
+}
+
+.header-logo {
+	display: inline-block;
+
+	svg {
+		display: block;
+		width: 10em;
+		height: 5em;
+	}
+}
+
+.header-links {
+	position: absolute;
+	top: 50%;
+	right: 0;
+	display: inline-block;
+	transform: translateY(-50%);
+}
