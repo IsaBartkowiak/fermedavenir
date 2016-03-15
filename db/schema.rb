@@ -11,19 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160315145120) do
+ActiveRecord::Schema.define(version: 20160315150702) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "generations", force: :cascade do |t|
-    t.integer  "semi_from"
-    t.integer  "semi_to"
+    t.integer  "semi_from",       default: 0
+    t.integer  "semi_to",         default: 0
     t.integer  "plantation"
     t.integer  "recolte"
     t.integer  "conservation_to"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
     t.integer  "legume_id"
   end
 

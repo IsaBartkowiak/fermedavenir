@@ -15,7 +15,6 @@
             <th>Semi to</th>
             <th>Plantation</th>
             <th>Recolte</th>
-            <th>Conservation from</th>
             <th>Conservation to</th>
             <th></th>
         <th></th>
@@ -25,12 +24,11 @@
 
     <tbody>
       <%= content_tag_for(:tr, @generations) do |generation| %>
-            <td><%= generation.legume.titre %></td>
+      <td><%= generation.legume.titre unless generation.legume.nil? %></td>
             <td><%= generation.semi_from %></td>
             <td><%= generation.semi_to %></td>
             <td><%= generation.plantation %></td>
             <td><%= generation.recolte %></td>
-            <td><%= generation.conservation_from %></td>
             <td><%= generation.conservation_to %></td>
             <td><%= link_to 'Show', generation %></td>
         <td><%= link_to 'Edit', edit_generation_path(generation) %></td>
