@@ -1,0 +1,26 @@
+<div class="page-header">
+  <%= link_to portions_path, class: 'btn btn-default' do %>
+    <span class="glyphicon glyphicon-list-alt"></span>
+    Back
+  <% end %>
+  <%= link_to edit_portion_path(@portion), class: 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-pencil"></span>
+    Edit
+  <% end %>
+  <h1>Show portion</h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt>Panier:</dt>
+  <dd><%= @portion.panier_id %></dd>
+
+  <dt>Legume:</dt>
+  <dd><%= @portion.legume %></dd>
+
+  <dt>Generation:</dt>
+  <dd><%= @portion.generation %></dd>
+
+  <dt>Quantity:</dt>
+  <dd><%= @portion.quantity %></dd>
+
+</dl>
