@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  panier_id: 1
+  legume_id: 
+  generation_id: 
+  quantity: 1.5
+
+two:
+  panier_id: 1
+  legume_id: 
+  generation_id: 
+  quantity: 1.5
