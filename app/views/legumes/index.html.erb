@@ -13,10 +13,6 @@
             <th>Titre</th>
             <th>Variete</th>
             <th>Type</th>
-            <th>Semi deb</th>
-            <th>Semi fin</th>
-            <th>Temps pousse min</th>
-            <th>Temps pousse max</th>
             <th></th>
         <th></th>
         <th></th>
@@ -28,10 +24,6 @@
             <td><%= legume.titre %></td>
             <td><%= legume.variete %></td>
             <td><%= legume.caracteristique %></td>
-            <td><%= legume.semi_deb %></td>
-            <td><%= legume.semi_fin %></td>
-            <td><%= legume.temps_pousse_min %></td>
-            <td><%= legume.temps_pousse_max %></td>
             <td><%= link_to 'Show', legume %></td>
         <td><%= link_to 'Edit', edit_legume_path(legume) %></td>
         <td><%= link_to 'Destroy', legume, method: :delete, data: { confirm: 'Are you sure?' } %></td>
