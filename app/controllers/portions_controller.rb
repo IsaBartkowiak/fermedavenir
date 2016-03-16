@@ -19,6 +19,8 @@ class PortionsController < ApplicationController
   # GET /portions.json
   def index
     @portions = Portion.all
+    @generations = Generation.available_for(@panier.semaine).all
+    @portion = Portion.new
   end
 
   # GET /portions/1
@@ -42,10 +44,11 @@ class PortionsController < ApplicationController
 
     respond_to do |format|
       if @portion.save
-        format.html { redirect_to panier_portions_url(@panier), notice: 'Portion was successfully created.' }
+        format.html { redirect_to panier_portions_url(@panier), notice: "#{@portion.quantity} #{@portion.legume.titre} ajoutés au panier" }
         format.json { render :show, status: :created, location: @panier }
+        format.js {}
       else
-        format.html { redirect_to panier_portions_url(@panier), notice: "Pas de portions de #{@portion.legume.titre} disponible." }
+        format.html { redirect_to new_panier_portion_path(@panier), notice: "Pas de portions de #{@portion.legume.titre} disponible à cette date." }
         format.json { render json: @portion.errors, status: :unprocessable_entity }
       end
     end
@@ -56,10 +59,10 @@ class PortionsController < ApplicationController
   def update
     respond_to do |format|
       if @portion.update(portion_params)
-        format.html { redirect_to panier_portions_url(@panier), notice: 'Portion was successfully updated.' }
+        format.html { redirect_to panier_portions_url(@panier), notice: 'Cette portion a été mise à jour.' }
         format.json { render :show, status: :ok, location: @portion }
       else
-        format.html { redirect_to panier_portions_url(@panier), notice: "Pas de portions de #{@portion.legume.titre} disponible." }
+        format.html { redirect_to edit_panier_portion_path(@panier), notice: "Pas de portions de #{@portion.legume.titre} disponible à cette date." }
         format.json { render json: @portion.errors, status: :unprocessable_entity }
       end
     end

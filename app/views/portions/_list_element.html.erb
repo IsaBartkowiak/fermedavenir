@@ -1,0 +1,12 @@
+<tr>
+  <td><%= @portion.legume.titre %></td>
+  <td>Conservable jusqu'à la semaine <%= @portion.generation.conservation_to unless @portion.generation.nil? %></td>
+  <td><%= @portion.quantity %></td>
+  <td><%= link_to 'Modifier', edit_panier_portion_path(@panier,@portion) %></td>
+  <td>
+  <%= link_to panier_portion_path(@panier,@portion), method: :delete, data: { confirm: 'Êtes vous sur ?' } do %>
+  <span class="glyphicon glyphicon-trash"></span>
+  Supprimer le légume du panier
+  <% end %>
+  </td>
+</tr>
