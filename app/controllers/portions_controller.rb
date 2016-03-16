@@ -14,6 +14,7 @@
 class PortionsController < ApplicationController
   before_action :set_portion, only: [:show, :edit, :update, :destroy]
   before_action :set_panier
+  before_action :check_user
 
   # GET /portions
   # GET /portions.json
@@ -79,6 +80,11 @@ class PortionsController < ApplicationController
   end
 
   private
+
+    def check_user
+      redirect_to root_path, notice: 'Vous devez être connecté' if current_user.nil?
+    end
+    
     def set_panier
       @panier = Panier.find(params[:panier_id]) if params[:panier_id]
     end
