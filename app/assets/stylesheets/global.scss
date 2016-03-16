@@ -15,8 +15,6 @@
 }
 
 
-
-
 // Global settings
 *,
 *:after,
@@ -35,19 +33,19 @@ html {
 	}
 
 	// Media queries
-	@media (min-width: 980px) {
+	@media (min-width: $md-medium) {
 		font-size: $font-size + 1;
 	}
 
-	@media (min-width: 1200px) {
+	@media (min-width: $md-large) {
 		font-size: $font-size + 2;
 	}
 
-	@media (min-width: 1440px) {
+	@media (min-width: $md-larger) {
 		font-size: $font-size + 3;
 	}
 
-	@media (min-width: 1920px) {
+	@media (min-width: $md-largest) {
 		font-size: $font-size + 4;
 	}
 }
@@ -60,14 +58,14 @@ body {
 
 // Sections
 .section {
-	padding: 4em 0;
+	padding: 6em 0;
 
 	&.section_grey {
 		color: $black;
 		background-color: $grey-light;		
 	}
 
-	&.white {
+	&.section_white {
 		color: $main-color;
 		background-color: #fff;
 
@@ -78,6 +76,10 @@ body {
 			}
 		}
 	}
+
+	@media (max-width: $md-medium) {
+		padding: 4em 0;
+	}
 }
 
 .section-title {
@@ -86,6 +88,7 @@ body {
 	padding-bottom: .5em;
 	font-size: 2em;
 	font-weight: 700;
+	line-height: 1.2;
 
 	&:after {
 		content: "";
@@ -96,5 +99,17 @@ body {
 		width: 1em;
 		height: .1em;
 		background-color: $black;
+	}
+
+	@media (max-width: $md-small) {
+		font-size: 1.5em;
+	}
+}
+
+.section-text {
+	line-height: 1.4;
+
+	p {
+		margin: .5em 0;
 	}
 }

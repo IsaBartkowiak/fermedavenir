@@ -6,6 +6,16 @@ $grey-light : #eee;
 $black			: #222;
 $main-color	: #319966;
 
+// Media queries
+$md-largest : 1920px;
+$md-larger  : 1440px;
+$md-large   : 1280px;
+$md-normal  : 1024px;
+$md-medium  : 992px;
+$md-small   : 768px;
+$md-smaller : 480px;
+$md-retina  : "only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min--moz-device-pixel-ratio: 1.5), only screen and (min-resolution: 240dppx)";
+
 // Typographie
 $font-name       : "Ma-webfont";
 $font-family     : $font-name, "Helvetica Neue", Arial, sans-serif;
