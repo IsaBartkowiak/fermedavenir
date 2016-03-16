@@ -10,6 +10,9 @@
 
 class Panier < ActiveRecord::Base
 	has_many :portions
+	scope :par_semaines, -> {
+		order(semaine: :asc).all
+	}
 
 	def self.generate_sample
 		for i in 1..52
