@@ -1,0 +1,67 @@
+// fonts
+@font-face {
+  font-family: "Oswald";
+  src: font-url("oswald/Oswald-Bold.eot");
+  src: font-url("oswald/Oswald-Bold.eot#iefix") format("embedded-opentype"), font-url("oswald/Oswald-Bold.woff") format("woff"), font-url("oswald/Oswald-Bold.ttf") format("truetype"), font-url("oswald/Oswald-Bold.svg") format("svg");
+  font-style: normal;
+  font-weight: 700;
+}
+
+
+@font-face {
+  font-family: "Oswald";
+  src: font-url("oswald/Oswald-Light.eot");
+  src: font-url("oswald/Oswald-Light.eot#iefix") format("embedded-opentype"), font-url("oswald/Oswald-Light.woff") format("woff"), font-url("oswald/Oswald-Light.ttf") format("truetype"), font-url("oswald/Oswald-Light.svg") format("svg");
+  font-style: normal;
+  font-weight: 300;
+}
+
+
+@font-face {
+  font-family: "Oswald";
+  src: font-url("oswald/Oswald-Regular.eot");
+  src: font-url("oswald/Oswald-Regular.eot#iefix") format("embedded-opentype"), font-url("oswald/Oswald-Regular.woff") format("woff"), font-url("oswald/Oswald-Regular.ttf") format("truetype"), font-url("oswald/Oswald-Regular.svg") format("svg");
+  font-style: normal;
+  font-weight: normal;
+}
+
+
+@font-face {
+  font-family: "Roboto";
+  src: font-url("roboto/Roboto-Regular.eot");
+  src: font-url("roboto/Roboto-Regular.eot#iefix") format("embedded-opentype"), font-url("roboto/Roboto-Regular.woff") format("woff"), font-url("roboto/Roboto-Regular.ttf") format("truetype"), font-url("roboto/Roboto-Regular.svg") format("svg");
+  font-style: normal;
+  font-weight: normal;
+}
+
+
+@font-face {
+  font-family: "Roboto";
+  src: font-url("roboto/Roboto-Light.eot");
+  src: font-url("roboto/Roboto-Light.eot#iefix") format("embedded-opentype"), font-url("roboto/Roboto-Light.woff") format("woff"), font-url("roboto/Roboto-Light.ttf") format("truetype"), font-url("roboto/Roboto-Light.svg") format("svg");
+  font-style: normal;
+  font-weight: 300;
+}
+
+
+@font-face {
+  font-family: "Roboto";
+  src: font-url("roboto/Roboto-Bold.eot");
+  src: font-url("roboto/Roboto-Bold.eot#iefix") format("embedded-opentype"), font-url("roboto/Roboto-Bold.woff") format("woff"), font-url("roboto/Roboto-Bold.ttf") format("truetype"), font-url("roboto/Roboto-Bold.svg") format("svg");
+  font-style: normal;
+  font-weight: 700;
+}
+
+
+@font-face {
+  font-family: "Roboto";
+  src: font-url("roboto/Roboto-MediumItalic.eot");
+  src: font-url("roboto/Roboto-MediumItalic.eot#iefix") format("embedded-opentype"), font-url("roboto/Roboto-MediumItalic.woff") format("woff"), font-url("roboto/Roboto-MediumItalic.ttf") format("truetype"), font-url("roboto/Roboto-MediumItalic.svg") format("svg");
+  font-style: italic;
+  font-weight: normal;
+}
+
+
+// fonts variables
+$oswald: Oswald, helevetica neue, helevetica, serif;
+$roboto: Roboto, helevetica neue, helevetica, arial, sans-serif;

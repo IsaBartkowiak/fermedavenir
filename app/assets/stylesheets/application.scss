@@ -1,4 +1,6 @@
+@import 'fonts';
 @import 'vars';
+
 
 @import 'bootstrap-generators';
 @import 'reset';
@@ -6,3 +8,6 @@
 @import 'global';
 @import 'header';
 @import 'footer';
+@import 'devise/login.scss';
+@import 'devise/signup.scss';
+

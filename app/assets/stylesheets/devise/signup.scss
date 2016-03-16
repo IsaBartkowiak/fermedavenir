@@ -1,0 +1,33 @@
+.signup{
+		text-align: center;
+		background-color: #f2f2f2;
+		width: 400px;
+		padding: 50px;
+		margin: auto;
+
+	&-label{ 
+		margin: 10px 0px;
+	}
+	h2{
+		font-size: 1.2em;
+		text-transform: uppercase;
+	}
+	&-sumbit{
+		width: 250px;
+		height: 40px;
+		border: none;
+		background-color: #88cb40;
+	}
+	.actions{
+		margin-top:20px; 
+		display: inline-block;
+	}
+	&-input{
+		width: 250px;
+		border: 1px solid #bdbdbd;
+		height: 25px;
+		padding: 10px 0px 10px 5px;
+		font-size: 0.8em;
+
+	}
+}
