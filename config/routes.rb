@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get 'static/index'
 
   get 'page/index'
+  get '/generate_paniers' => 'paniers#generate'
 
   resources :paniers do 
   	resources :portions

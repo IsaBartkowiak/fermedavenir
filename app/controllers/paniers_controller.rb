@@ -15,7 +15,7 @@ class PaniersController < ApplicationController
   # GET /paniers
   # GET /paniers.json
   def index
-    @paniers = Panier.all
+    @paniers = Panier.par_semaines
   end
 
   # GET /paniers/1
