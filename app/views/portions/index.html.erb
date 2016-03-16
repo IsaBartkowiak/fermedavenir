@@ -10,6 +10,16 @@
       Ajouter un légume
     <% end %>
 
+  <button class="btn btn-default" id="total-price">
+    <% 
+    price = 0
+    @panier.portions.each do |p|
+      price += p.price
+    end 
+    %>
+    <%= price %> €
+  </button>
+
   </div>
 
   <h1>Légumes du panier de la semaine <%= @panier.semaine %></h1><br>
@@ -20,6 +30,7 @@
           <th>Légume</th>
           <th>Génération</th>
           <th>Quantité (kg)</th>
+          <th>Prix</th>
           <th></th>
           <th></th>
         </tr>
@@ -30,6 +41,7 @@
               <td><%= portion.legume.titre %></td>
               <td>Conservable jusqu'à la semaine <%= portion.generation.conservation_to unless portion.generation.nil? %></td>
               <td><%= portion.quantity %></td>
+              <td class="price" data-price="<%= portion.price %>"><%= portion.price %> €</td>
           <td><%= link_to 'Modifier', edit_panier_portion_path(@panier,portion) %></td>
           <td>
           <%= link_to panier_portion_path(@panier,portion), method: :delete, data: { confirm: 'Êtes vous sur ?' } do %>
@@ -40,8 +52,10 @@
         <% end %>
       </tbody>
     </table>
+
   </div>
 </div>
+
 
 <div class="container">
   <div class="col-xs-12">
