@@ -59,3 +59,19 @@ $out-back     : cubic-bezier(0.175, 00.885, 0.320, 1.275);
 $in-out-back  : cubic-bezier(0.680, -0.550, 0.265, 1.550);
 
 $out-back-t   : cubic-bezier(0.535, 1.650, 0.635, 1.005);
+
+
+$font-path : "../fonts/";
+@mixin fontface($font-path, $font-name){
+	@font-face {
+		font-family: $font-name;
+		src: url('#{$font-path}/#{$font-name}.eot');
+		src: url('#{$font-path}/#{$font-name}.eot?#iefix') format('embedded-opentype'),
+			 url('#{$font-path}/#{$font-name}.woff') format('woff'),
+			 url('#{$font-path}/#{$font-name}.ttf') format('truetype'),
+			 url('#{$font-path}/#{$font-name}.svg##{$font-name}') format('svg');
+		font-weight: normal;
+		font-style: normal;
+	}
+}
+@include fontface("../fonts/oswald", "Oswald-Bold.ttf");
