@@ -10,4 +10,10 @@
 
 class Panier < ActiveRecord::Base
 	has_many :portions
+
+	def self.generate_sample
+		for i in 1..52
+	      new(semaine: i).save unless find_by_id i 
+	    end
+	end
 end

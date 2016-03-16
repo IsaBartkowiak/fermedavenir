@@ -22,4 +22,9 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+   before_save :generate_paniers
+
+   def generate_paniers
+   		Panier.generate_sample
+   end
 end
