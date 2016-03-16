@@ -17,6 +17,6 @@ class Generation < ActiveRecord::Base
 	belongs_to :legume
 
 	def self.available_for(a_week)
-		where("recolte <= ?", a_week).where("conservation_to <= ?", a_week)
+		where("recolte <= ?", a_week).where("conservation_to >= ?", a_week)
 	end
 end

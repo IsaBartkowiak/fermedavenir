@@ -36,12 +36,3 @@
     </tbody>
   </table>
 </div>
-
-<h2>Légumes dispo pour la semaine 2</h2>
-
-<%= content_tag_for(:p, @generations) do |generation| %>
-   <% if generation.recolte >= 2  && generation.conservation_to <= 2%>
-        <p><%= generation.legume.titre unless generation.legume.nil? %></p>
-   <% end %>
-<% end %>
-</div>
