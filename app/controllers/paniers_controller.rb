@@ -16,7 +16,7 @@ class PaniersController < ApplicationController
   # GET /paniers
   # GET /paniers.json
   def index
-    @paniers = Panier.par_semaines
+    @paniers = current_user.paniers.par_semaines
   end
 
   # GET /paniers/1
@@ -79,7 +79,7 @@ class PaniersController < ApplicationController
     end
     # Use callbacks to share common setup or constraints between actions.
     def set_panier
-      @panier = Panier.find(params[:id])
+      @panier = current_user.paniers.find(params[:id])
       @portions = @panier.portions.all
     end
 
