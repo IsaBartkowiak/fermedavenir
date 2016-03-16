@@ -4,9 +4,12 @@
       <div class="col-xs-12 col-sm-6">
         <h2 class="section-title">Le tableau de bord, <br>qu'est-ce que c'est ?</h2>
         <div class="section-text">
-          <p>Un outil qui vous accompagne dans la gestion de votre exploitation.</p>
+          <p class="highlight">Un outil qui vous accompagne dans la gestion de votre exploitation.</p>
           <p>« Tableau de Bord » est un outil développé en collaboration avec l’association <a href="http://www.fermesdavenir.org/" target="_blank">Fermes d’Avenir</a>. Cette association vise à répandre une nouvelle méthode d’agriculture comme la permaculture, basé sur le développement de petites exploitations. Néophytes dans l’univers du maraichage ou agriculteurs aguerris, cet outil vous permettra de composer vos paniers personnalisés aves des produits de saison. Il vous guidera tout au long du processus de croissance de vos plantes  grâce au planning détaillé de semis, plantation et récolte.</p>
         </div>
+      </div>
+      <div class="col-xs-12 col-sm-6">
+        <%= image_tag('home1.png') %>
       </div>
     </div>
   </div>
@@ -14,12 +17,15 @@
 <section class="section section_white">
   <div class="container">
     <div class="row">
-      <div class="col-xs-12 col-sm-6"></div>
+      <div class="col-xs-12 col-sm-6">
+        <%= image_tag('home2.png') %>
+      </div>
       <div class="col-xs-12 col-sm-6">
         <h2 class="section-title">Pour qui ?</h2>
-        <div class="section-text">Phasellus volutpat commodo dapibus. Curabitur lacinia, urna vitae efficitur suscipit, dui ipsum aliquam erat, sit amet pharetra urna arcu vel est. Aenean tempus est id feugiat lacinia. Sed finibus lacus sed condimentum interdum. Praesent pellentesque aliquet ante, ac mattis sem facilisis a. Quisque venenatis ut massa a volutpat. Proin tempus odio elementum felis consequat ornare. Maecenas lacinia at ligula vel feugiat. Maecenas porttitor nibh sit amet sapien tincidunt, et facilisis diam volutpat. Aliquam luctus diam ut nibh volutpat rhoncus. Nulla viverra scelerisque leo, fringilla aliquet magna vestibulum nec. Suspendisse porttitor et dolor a feugiat.</div>
+        <div class="section-text highlight">Phasellus volutpat commodo dapibus. Curabitur lacinia, urna vitae efficitur suscipit, dui ipsum aliquam erat, sit amet pharetra urna arcu vel est. Aenean tempus est id feugiat lacinia. Sed finibus lacus sed condimentum interdum. Praesent pellentesque aliquet ante, ac mattis sem facilisis a. Quisque venenatis ut massa a volutpat. Proin tempus odio elementum felis consequat ornare. Maecenas lacinia at ligula vel feugiat. Maecenas porttitor nibh sit amet sapien tincidunt, et facilisis diam volutpat. Aliquam luctus diam ut nibh volutpat rhoncus. Nulla viverra scelerisque leo, fringilla aliquet magna vestibulum nec. Suspendisse porttitor et dolor a feugiat.</div>
       </div>
     </div>
   </div>
 </section>
-<a href="" class="btn btn_green btn_create-panier">Créer mon panier</a>
+
+<%= link_to 'Créer mon panier', new_user_session_path, class:"btn btn_green btn_create-panier" %>
