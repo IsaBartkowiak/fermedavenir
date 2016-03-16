@@ -1,0 +1,17 @@
+@mixin fontface($font-name){
+	@font-face {
+		font-family: $font-name;
+		src: url(font-path($font-name +'.eot'));
+		src: url(font-path($font-name +'.eot?#iefix')) format('embedded-opentype'),
+		url(font-path($font-name +'.woff')) format('woff'),
+		url(font-path($font-name +'.ttf')) format('truetype'),
+		url(font-path($font-name +'.svg#' + $font-name)) format('svg');
+		font-weight: normal;
+		font-style: normal;
+	}
+}
+// @include fontface ("roboto-black-webfont");
+
+// body{
+// 	font-family: "roboto-black-webfont"!important;
+// }
