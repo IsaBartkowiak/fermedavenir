@@ -19,6 +19,15 @@
 		transition: max-width .4s ease-in;
 	}
 
+	&:focus {
+    outline: none;
+  }
+
+	&:active {
+    outline: none;
+    box-shadow: none;
+  }
+
 	&:hover {
 
 		&:after {

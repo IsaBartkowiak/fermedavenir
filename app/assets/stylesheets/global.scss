@@ -152,6 +152,11 @@ body {
 		background-color: darken($main-color, 10%);
 	}
 
+	&.btn-stroke {
+		color: $main-color;
+		border-color: $main-color;
+	}
+
 	&:hover {
 		color: #fff;
 		background-color: $main-color;
@@ -160,7 +165,18 @@ body {
 			transform: scaleX(1) skew(0deg);
 			transition: transform .4s ease-out;
 		}
+
+		&.btn-stroke {
+			color: #fff;
+		}
 	}
+}
+
+.btn-stroke {
+	background: #fff;
+  border-width: 1px;
+  border-style: solid;
+  transition: color .3s ease-in-out;
 }
 
 .btn_create-panier {
