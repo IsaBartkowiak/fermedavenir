@@ -1,33 +1,34 @@
-<div class="page-header">
-  <%= link_to new_legume_path, class: 'btn btn-primary' do %>
-    <span class="glyphicon glyphicon-plus"></span>
-    New Legume
-  <% end %>
-  <h1>Listing legumes</h1>
-</div>
+<div class="container">
+  <div class="page-header">
+    <%= link_to new_legume_path, class: 'btn btn-primary' do %>
+      <span class="glyphicon glyphicon-plus"></span>
+      Nouveau légume
+    <% end %>
+  </div>
 
-<div class="table-responsive">
-  <table class="table table-striped table-bordered table-hover">
-    <thead>
-      <tr>
-            <th>Titre</th>
-            <th>Variete</th>
-            <th>Type</th>
-            <th></th>
-        <th></th>
-        <th></th>
-      </tr>
-    </thead>
+  <div class="table-responsive">
+    <table class="table table-striped table-bordered table-hover">
+      <thead>
+        <tr>
+              <th>Titre</th>
+              <th>Variete</th>
+              <th>Type</th>
+              <th></th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
 
-    <tbody>
-      <%= content_tag_for(:tr, @legumes) do |legume| %>
-            <td><%= legume.titre %></td>
-            <td><%= legume.variete %></td>
-            <td><%= legume.caracteristique %></td>
-            <td><%= link_to 'Show', legume %></td>
-        <td><%= link_to 'Edit', edit_legume_path(legume) %></td>
-        <td><%= link_to 'Destroy', legume, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      <% end %>
-    </tbody>
-  </table>
+      <tbody>
+        <%= content_tag_for(:tr, @legumes) do |legume| %>
+              <td><%= legume.titre %></td>
+              <td><%= legume.variete %></td>
+              <td><%= legume.caracteristique %></td>
+              <td><%= link_to 'Voir', legume %></td>
+          <td><%= link_to 'Modifier', edit_legume_path(legume) %></td>
+          <td><%= link_to 'Supprimer', legume, method: :delete, data: { confirm: 'Êtes-vous sur ?' } %></td>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 </div>
