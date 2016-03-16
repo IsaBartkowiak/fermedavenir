@@ -1,11 +1,10 @@
 <div class="page-header">
   <%= link_to new_generation_path, class: 'btn btn-primary' do %>
     <span class="glyphicon glyphicon-plus"></span>
-    New Generation
+    Rajouter une génération
   <% end %>
-  <h1>Listing generations</h1>
 </div>
-
+  
 <div class="table-responsive">
   <table class="table table-striped table-bordered table-hover">
     <thead>
@@ -45,3 +44,4 @@
         <p><%= generation.legume.titre unless generation.legume.nil? %></p>
    <% end %>
 <% end %>
+</div>
