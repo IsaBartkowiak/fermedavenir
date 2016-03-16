@@ -28,6 +28,7 @@
             <%= link_to "Se connecter", new_user_session_path, class: 'btn btn-default' %>
             <%= link_to "S'enregistrer", new_user_registration_path, class: 'btn btn-default' %>
         <% else %>
+            <%= link_to "Légumes", legumes_path, class: 'btn btn-default' %>
             <%= link_to "Paniers", paniers_path, class: 'btn btn-default' %>
             <%= link_to "Générations", generations_path, class: 'btn btn-default' %>
         <% end %>
