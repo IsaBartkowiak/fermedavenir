@@ -1,33 +1,66 @@
+$vert-clair: #7DC89C;
 .signup{
-		text-align: center;
-		background-color: #f2f2f2;
+		text-align: left;
+		background-color: #fff;
+		margin: 40px auto;
 		width: 400px;
 		padding: 50px;
-		margin: auto;
+		border: 1px solid #e7e7e7;
+		@media (max-width: 500px) {
+   		 	max-width: 280px;
+		}
 
 	&-label{ 
-		margin: 10px 0px;
+		margin: 15px 0px;
+		font-size: 0.8em;
+	}
+	&-field{
+		em{
+			font-size: 0.8em;
+		}
 	}
 	h2{
+		color: #3caf76;
 		font-size: 1.2em;
+		text-align: center;
 		text-transform: uppercase;
+		margin-bottom: 30px;
+		font-weight: 500;
 	}
-	&-sumbit{
-		width: 250px;
+	&-submit{
+		width: 100%;
 		height: 40px;
 		border: none;
-		background-color: #88cb40;
+		background-color: $vert-clair;
+		color: #fff;
+		font-size: 0.9em;
+		&:hover{
+		background-color:#73b990;
+		}
 	}
 	.actions{
 		margin-top:20px; 
-		display: inline-block;
+		width: 100%;
 	}
 	&-input{
-		width: 250px;
-		border: 1px solid #bdbdbd;
+		background-color: #f7f8f7;
+		width: 100%;
 		height: 25px;
-		padding: 10px 0px 10px 5px;
-		font-size: 0.8em;
-
+		padding: 15px 0px 15px 8px;
+		font-size: 0.7em;
+		box-shadow: none;
+		border: 1px solid #dddddd;
+		transition: all 0.2s;
 	}
+	&-input:hover{
+		background-color: #efefef;
+		border-left: 3px solid $vert-clair;
+	}
+	&-input:focus{
+		border-left: 3px solid $vert-clair;
+	}
+}
+.signup-background{
+	background-color: #f7f8f7;
+	padding: 30px;
 }

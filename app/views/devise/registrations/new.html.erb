@@ -1,31 +1,30 @@
+<div class="signup-background">
 <div class="signup">
-<h2>Sign up</h2>
+<h2>Inscription</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
 
   <div class="field signup-field">
-    <%= f.label :email ,"",class:"signup-label"%><br />
-    <%= f.email_field :email, autofocus: true ,class:"signup-input",:placeholder => "Votre Email" %>
+    <%= f.label :email,"Adresse mail",class:"signup-label"%><br />
+    <%= f.email_field :email, autofocus: true ,class:"signup-input",:placeholder => "votremail@mail.com" %>
   </div>
 
   <div class="field  signup-field">
-    <%= f.label :password ,class:"signup-label" %>
+    <%= f.label :password,"Mot de passe",class:"signup-label" %>
     <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <em>(<%= @minimum_password_length %> caractères minimum)</em>
     <% end %><br />
     <%= f.password_field :password, autocomplete: "off" ,class:"signup-input",:placeholder => "Votre mot de passe" %>
   </div>
 
   <div class="field  signup-field">
-    <%= f.label :password_confirmation ,class:"signup-label" %><br />
+    <%= f.label :password_confirmation ,"Confirmation mot de passe",class:"signup-label" %><br />
     <%= f.password_field :password_confirmation, autocomplete: "off" ,class:"signup-input",:placeholder => "Confirmer votre mot de passe"  %>
   </div>
 
   <div class="actions">
-    <%= f.submit "Sign up" ,class:"signup-sumbit"%>
+    <%= f.submit "Valider" ,class:"signup-submit"%>
   </div>
 <% end %>
-
-<%= render "devise/shared/links"%>
-</div>	
+</div>
