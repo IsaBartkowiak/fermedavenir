@@ -19,9 +19,9 @@ class Portion < ActiveRecord::Base
   before_save :assign_generation
 
   def price
-  	legume.price*quantity
+	legume.price*quantity unless legume.price.nil?
   end
-  
+
   private 
 
   def assign_generation
