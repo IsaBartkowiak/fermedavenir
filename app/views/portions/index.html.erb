@@ -11,13 +11,7 @@
     <% end %>
 
   <button class="btn btn-default" id="total-price">
-    <% 
-    price = 0
-    @panier.portions.each do |p|
-      price += p.price
-    end 
-    %>
-    <%= price %> €
+    <%= get_cart_total(@panier.portions) %> €
   </button>
 
   </div>

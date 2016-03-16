@@ -33,14 +33,7 @@
                 Voir le panier
               <% end %>
               </td>
-              <td>
-                <% 
-                price = 0
-                panier.portions.each do |p|
-                  price += p.price
-                end 
-                %>
-                <%= price %></td>
+              <td><%= get_cart_total(panier.portions) %></td>
               <td><%= link_to 'Supprimer ce panier', panier, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <% end %>
       </tbody>
