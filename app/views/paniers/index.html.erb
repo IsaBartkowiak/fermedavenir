@@ -1,29 +1,40 @@
-<div class="page-header">
-  <%= link_to new_panier_path, class: 'btn btn-primary' do %>
-    <span class="glyphicon glyphicon-plus"></span>
-    New Panier
-  <% end %>
-  <h1>Listing paniers</h1>
-</div>
+<div class="container">
+  <div class="page-header">
+    <%= link_to new_panier_path, class: 'btn btn-primary' do %>
+      <span class="glyphicon glyphicon-plus"></span>
+      Nouveau panier
+    <% end %>
+  </div>
+  <div class="table-responsive">
+    <table class="table table-striped table-bordered table-hover">
+      <thead>
+        <tr>
+          <th>Semaine</th>
+          <th></th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
 
-<div class="table-responsive">
-  <table class="table table-striped table-bordered table-hover">
-    <thead>
-      <tr>
-            <th>Semaine</th>
-            <th></th>
-        <th></th>
-        <th></th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <%= content_tag_for(:tr, @paniers) do |panier| %>
-            <td><%= panier.semaine %></td>
-            <td><%= link_to 'Show', panier %></td>
-        <td><%= link_to 'Edit', edit_panier_path(panier) %></td>
-        <td><%= link_to 'Destroy', panier, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      <% end %>
-    </tbody>
-  </table>
+      <tbody>
+        <%= content_tag_for(:tr, @paniers) do |panier| %>
+              <td><%= panier.semaine %></td>
+              <td>
+              <select class="form-control">
+                <% panier.portions.each do |portion| %> 
+                <option><%= portion.quantity %>KG de <%= portion.legume.titre %></option>
+                <% end %>
+              </select>
+                </td>
+              <td>
+              <%= link_to panier_portions_path(panier) do %>
+                <span class="glyphicon glyphicon-plus"></span>
+                Voir le panier
+              <% end %>
+              </td>
+              <td><%= link_to 'Supprimer ce panier', panier, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 </div>

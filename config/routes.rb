@@ -1,8 +1,16 @@
 Rails.application.routes.draw do
-  resources :paniers
-  resources :portions
+
+  get 'statics/index'
+
+  get 'static/index'
+
+  get 'page/index'
+
+  resources :paniers do 
+  	resources :portions
+  end
   resources :generations
   resources :legumes
   devise_for :users
-  root 'generations#index'
+  root 'statics#index'
 end

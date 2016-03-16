@@ -1,10 +1,26 @@
+# == Schema Information
+#
+# Table name: portions
+#
+#  id            :integer          not null, primary key
+#  panier_id     :integer
+#  legume_id     :integer
+#  generation_id :integer
+#  quantity      :float
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#
+
 class PortionsController < ApplicationController
   before_action :set_portion, only: [:show, :edit, :update, :destroy]
+  before_action :set_panier
 
   # GET /portions
   # GET /portions.json
   def index
     @portions = Portion.all
+    @generations = Generation.available_for(@panier.semaine).all
+    @portion = Portion.new
   end
 
   # GET /portions/1
@@ -24,14 +40,15 @@ class PortionsController < ApplicationController
   # POST /portions
   # POST /portions.json
   def create
-    @portion = Portion.new(portion_params)
+    @portion = @panier.portions.new(portion_params)
 
     respond_to do |format|
       if @portion.save
-        format.html { redirect_to @portion, notice: 'Portion was successfully created.' }
-        format.json { render :show, status: :created, location: @portion }
+        format.html { redirect_to panier_portions_url(@panier), notice: "#{@portion.quantity} #{@portion.legume.titre} ajoutés au panier" }
+        format.json { render :show, status: :created, location: @panier }
+        format.js {}
       else
-        format.html { render :new }
+        format.html { redirect_to new_panier_portion_path(@panier), notice: "Pas de portions de #{@portion.legume.titre} disponible à cette date." }
         format.json { render json: @portion.errors, status: :unprocessable_entity }
       end
     end
@@ -42,10 +59,10 @@ class PortionsController < ApplicationController
   def update
     respond_to do |format|
       if @portion.update(portion_params)
-        format.html { redirect_to @portion, notice: 'Portion was successfully updated.' }
+        format.html { redirect_to panier_portions_url(@panier), notice: 'Cette portion a été mise à jour.' }
         format.json { render :show, status: :ok, location: @portion }
       else
-        format.html { render :edit }
+        format.html { redirect_to edit_panier_portion_path(@panier), notice: "Pas de portions de #{@portion.legume.titre} disponible à cette date." }
         format.json { render json: @portion.errors, status: :unprocessable_entity }
       end
     end
@@ -56,12 +73,15 @@ class PortionsController < ApplicationController
   def destroy
     @portion.destroy
     respond_to do |format|
-      format.html { redirect_to portions_url, notice: 'Portion was successfully destroyed.' }
+      format.html { redirect_to panier_portions_url(@panier), notice: 'Portion was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   private
+    def set_panier
+      @panier = Panier.find(params[:panier_id]) if params[:panier_id]
+    end
     # Use callbacks to share common setup or constraints between actions.
     def set_portion
       @portion = Portion.find(params[:id])
@@ -69,6 +89,6 @@ class PortionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def portion_params
-      params.require(:portion).permit(:panier_id, :legume_id, :generation_id, :quantity)
+      params.require(:portion).permit(:panier_id, :legume_id, :quantity)
     end
 end

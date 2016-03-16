@@ -1,5 +1,16 @@
+# == Schema Information
+#
+# Table name: paniers
+#
+#  id         :integer          not null, primary key
+#  semaine    :integer
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
 class PaniersController < ApplicationController
   before_action :set_panier, only: [:show, :edit, :update, :destroy]
+  before_action :set_generations, only: [:edit, :update, :new]
 
   # GET /paniers
   # GET /paniers.json
@@ -65,8 +76,12 @@ class PaniersController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_panier
       @panier = Panier.find(params[:id])
+      @portions = @panier.portions.all
     end
 
+    def set_generations
+      @generations = Generation.all
+    end
     # Never trust parameters from the scary internet, only allow the white list through.
     def panier_params
       params.require(:panier).permit(:semaine)
