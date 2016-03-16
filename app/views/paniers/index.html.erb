@@ -10,7 +10,8 @@
       <thead>
         <tr>
           <th>Semaine</th>
-          <th></th>
+          <th>Produits</th>
+          <th>Prix</th>
           <th></th>
           <th></th>
         </tr>
@@ -32,6 +33,14 @@
                 Voir le panier
               <% end %>
               </td>
+              <td>
+                <% 
+                price = 0
+                panier.portions.each do |p|
+                  price += p.price
+                end 
+                %>
+                <%= price %></td>
               <td><%= link_to 'Supprimer ce panier', panier, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <% end %>
       </tbody>

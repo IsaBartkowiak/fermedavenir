@@ -13,6 +13,7 @@
               <th>Titre</th>
               <th>Variete</th>
               <th>Type</th>
+              <th>Prix/kilo</th>
               <th></th>
           <th></th>
           <th></th>
@@ -24,6 +25,7 @@
               <td><%= legume.titre %></td>
               <td><%= legume.variete %></td>
               <td><%= legume.caracteristique %></td>
+              <td><%= legume.price %></td>
               <td><%= link_to 'Voir', legume %></td>
           <td><%= link_to 'Modifier', edit_legume_path(legume) %></td>
           <td><%= link_to 'Supprimer', legume, method: :delete, data: { confirm: 'Êtes-vous sur ?' } %></td>

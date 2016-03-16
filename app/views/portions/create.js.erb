@@ -1,1 +1,8 @@
 $('#portions-list').append('<%= escape_javascript(render('list_element')) %>');
+<% 
+price = 0
+@panier.portions.each do |p|
+  price += p.price
+end 
+%>
+$('#total-price').html(<%= price %> + ' €')

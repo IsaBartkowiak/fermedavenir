@@ -18,10 +18,15 @@ class Portion < ActiveRecord::Base
 
   before_save :assign_generation
 
+  def price
+  	legume.price*quantity
+  end
+  
   private 
 
   def assign_generation
   	self.generation = Generation.where(legume: legume).available_for(panier.semaine).first
   	return false if generation.nil?
   end
+
 end
