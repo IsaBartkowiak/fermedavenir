@@ -18,7 +18,7 @@ $md-smaller : 480px;
 $md-retina  : "only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min--moz-device-pixel-ratio: 1.5), only screen and (min-resolution: 240dppx)";
 
 // Typographie
-$font-name       : "Ma-webfont";
+$font-name       : $roboto;
 $font-family     : $font-name, "Helvetica Neue", Arial, sans-serif;
 $font-size       : 14px;
 $font-color      : $black;
