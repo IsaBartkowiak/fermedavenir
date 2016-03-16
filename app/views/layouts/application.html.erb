@@ -28,6 +28,7 @@
             <%= link_to "Se connecter", new_user_session_path, class: 'btn btn_green btn_stroke' %>
             <%= link_to "S'enregistrer", new_user_registration_path, class: 'btn btn_green' %>
         <% else %>
+            <%= link_to "Légumes", legumes_path, class: 'btn btn-default' %>
             <%= link_to "Paniers", paniers_path, class: 'btn btn-default' %>
             <%= link_to "Générations", generations_path, class: 'btn btn-default' %>
         <% end %>
@@ -46,7 +47,7 @@
   <button class="btn btn_back-top">Retourner en haut</button>
   <footer class="footer">
     <div class="container">
-      
+      <p class="text-muted"><%= link_to image_tag('logo-fermesdavenir-white.png', height: 90), "#", class: "footer-logo" %></p>
     </div>
   </footer>
 </body>
