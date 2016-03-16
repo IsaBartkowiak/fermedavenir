@@ -10,6 +10,7 @@
 
 class Panier < ActiveRecord::Base
 	has_many :portions
+	belongs_to :user
 	scope :par_semaines, -> {
 		order(semaine: :asc).all
 	}

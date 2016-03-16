@@ -11,11 +11,12 @@
 class PaniersController < ApplicationController
   before_action :set_panier, only: [:show, :edit, :update, :destroy]
   before_action :set_generations, only: [:edit, :update, :new]
+  before_action :check_user
 
   # GET /paniers
   # GET /paniers.json
   def index
-    @paniers = Panier.par_semaines
+    @paniers = current_user.paniers.par_semaines
   end
 
   # GET /paniers/1
@@ -73,9 +74,12 @@ class PaniersController < ApplicationController
   end
 
   private
+    def check_user
+      redirect_to root_path, notice: 'Vous devez être connecté' if current_user.nil?
+    end
     # Use callbacks to share common setup or constraints between actions.
     def set_panier
-      @panier = Panier.find(params[:id])
+      @panier = current_user.paniers.find(params[:id])
       @portions = @panier.portions.all
     end
 

@@ -54,15 +54,34 @@ body {
 	font-family: $font-family;
 	font-size: 1em;
 	color: $font-color;
+	min-height: 100vh;
+	padding-bottom: 195px;
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+}
+
+a{
+	color: $main-color;
+	text-decoration: none;
+	&:hover{
+		color: $main-color-darker;
+	}
 }
 
 // Sections
 .section {
 	padding: 6em 0;
 
+	.section-title{
+		font-weight: 300;
+	}
+
 	&.section_grey {
 		color: $black;
-		background-color: $grey-light;		
+		background-color: $grey-light;
 	}
 
 	&.section_white {
@@ -70,7 +89,6 @@ body {
 		background-color: #fff;
 
 		.section-title {
-
 			&:after {
 				background-color: $main-color;
 			}
@@ -140,8 +158,14 @@ body {
 			height: 100%;
 			transform: scaleX(0) skew(-30deg);
 			transform-origin: 0 0;
-			transition: transform .4s ease-in;
+			transition: transform .2s ease-in;
 		}
+}
+
+.btn-primary {
+		color: #2e6da4;
+		border-color: #2e6da4;
+
 }
 
 .btn_green {
@@ -160,7 +184,7 @@ body {
 	&:hover {
 		color: #fff;
 		background-color: $main-color;
-		
+
 		&:before {
 			transform: scaleX(1) skew(0deg);
 			transition: transform .4s ease-out;
@@ -183,4 +207,8 @@ body {
 	display: block;
 	max-width: 14em;
 	margin: 2em auto;
+}
+
+.highlight{
+	color: $main-color;
 }

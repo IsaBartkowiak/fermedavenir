@@ -6,6 +6,9 @@ $vert-clair: #7DC89C;
 		width: 400px;
 		padding: 50px;
 		border: 1px solid #e7e7e7;
+		@media (max-width: 500px) {
+   		 	max-width: 280px;
+		}
 
 	&-label{ 
 		margin: 15px 0px;
@@ -25,7 +28,7 @@ $vert-clair: #7DC89C;
 		font-weight: 500;
 	}
 	&-submit{
-		width: 300px;
+		width: 100%;
 		height: 40px;
 		border: none;
 		background-color: $vert-clair;
@@ -37,11 +40,11 @@ $vert-clair: #7DC89C;
 	}
 	.actions{
 		margin-top:20px; 
-		display: inline-block;
+		width: 100%;
 	}
 	&-input{
 		background-color: #f7f8f7;
-		width: 300px;
+		width: 100%;
 		height: 25px;
 		padding: 15px 0px 15px 8px;
 		font-size: 0.7em;

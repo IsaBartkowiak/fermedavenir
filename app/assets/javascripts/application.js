@@ -15,3 +15,16 @@
 //= require turbolinks
 //= require bootstrap
 //= require_tree .
+var Animation = {
+	init: function() {
+		$('.btn_back-top').click(this.scrollTop);
+	},
+
+	scrollTop: function() {
+		$("html, body").animate({ scrollTop: 0 }, "slow");
+	}
+}
+
+$(document).ready(function() {
+	Animation.init();
+})

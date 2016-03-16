@@ -16,15 +16,17 @@
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #
-
 class User < ActiveRecord::Base
+	before_save :generate_paniers
+	has_many :paniers
+
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-   before_save :generate_paniers
 
    def generate_paniers
-   		Panier.generate_sample
+   		paniers.generate_sample
    end
 end
