@@ -25,8 +25,8 @@
       </a>
       <div class="header-links">
         <% if !current_user %>
-            <%= link_to "Se connecter", new_user_session_path, class: 'btn btn-default' %>
-            <%= link_to "S'enregistrer", new_user_registration_path, class: 'btn btn-default' %>
+            <%= link_to "Se connecter", new_user_session_path, class: 'btn btn_green btn_stroke' %>
+            <%= link_to "S'enregistrer", new_user_registration_path, class: 'btn btn_green' %>
         <% else %>
             <%= link_to "Paniers", paniers_path, class: 'btn btn-default' %>
             <%= link_to "Générations", generations_path, class: 'btn btn-default' %>
@@ -43,6 +43,7 @@
     <% end %>
 
     <%= yield %>
+  <button class="btn btn_back-top">Retourner en haut</button>
   <footer class="footer">
     <div class="container">
       

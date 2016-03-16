@@ -1,6 +1,33 @@
 //////////////////////////////
 // Footer
 
+.btn_back-top {	
+	display: block;
+	margin: 1em auto 2em;
+	color: $black;
+	text-transform: none;
+
+	&:after {
+		content:"Retourner en haut";
+		position: absolute;
+		top: .9em;
+		left: 1.4em;		
+		max-width: 0;
+		color: $grey;
+		background-color: #fff;
+		overflow: hidden;
+		transition: max-width .4s ease-in;
+	}
+
+	&:hover {
+
+		&:after {
+			max-width: 100%;
+			transition: max-width .4s ease-out;
+		}
+	}
+}
+
 .footer {
 	padding: 2em 0;
 	color: #fff;

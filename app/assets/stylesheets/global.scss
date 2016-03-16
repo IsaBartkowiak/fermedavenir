@@ -113,3 +113,58 @@ body {
 		margin: .5em 0;
 	}
 }
+
+// Btn
+.btn {
+		z-index: 1;
+    display: inline-block;
+    padding: .9em 1.4em 1em;
+    font-size: 14px;
+    line-height: 1.2;
+    font-weight: 900;
+    text-align: center;
+    text-transform: uppercase;
+    background: 0 0;
+    border-radius: 0;
+    cursor: pointer;
+    overflow: hidden;
+
+		&:before {
+			content:"";
+			z-index: -1;
+			position: absolute;
+			top: 0;
+			left: 0;
+			display: block;
+			width: 100%;
+			height: 100%;
+			transform: scaleX(0) skew(-30deg);
+			transform-origin: 0 0;
+			transition: transform .4s ease-in;
+		}
+}
+
+.btn_green {
+	color: #fff;
+	background-color: $main-color;
+
+	&:before {
+		background-color: darken($main-color, 10%);
+	}
+
+	&:hover {
+		color: #fff;
+		background-color: $main-color;
+		
+		&:before {
+			transform: scaleX(1) skew(0deg);
+			transition: transform .4s ease-out;
+		}
+	}
+}
+
+.btn_create-panier {
+	display: block;
+	max-width: 14em;
+	margin: 2em auto;
+}
