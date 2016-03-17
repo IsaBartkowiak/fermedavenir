@@ -41,7 +41,7 @@
                   <td style="background-color:green">REC</td>
                   <% 
                     plantation = false
-                    recolte = true
+                    recolte = true unless generation.conservation_to == genration.recolte 
                   %>
                 <% elsif generation.conservation_to == i %>
                   <td style="background-color:green">FIN</td>
@@ -51,9 +51,9 @@
                 <% elsif semi %>
                   <td style="background-color:blue"></td>
                 <% elsif plantation %>
-                  <td style="background-color:green"></td>
-                <% elsif recolte %>
                   <td style="background-color:yellow"></td>
+                <% elsif recolte %>
+                  <td style="background-color:green"></td>
                 <% else %>
                   <td></td>
                 <% end %>
