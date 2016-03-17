@@ -1,3 +1,65 @@
 .panier-edit{
-	
+	.panier-item{
+		padding: 20px 0;
+		border-top: 1px solid lighten($grey, 15%);
+		border-bottom: 1px solid lighten($grey, 15%);
+		div[class^="col-md"]{
+			height: 60px;
+			line-height: 60px;
+			display:inline-block;
+			p, div{
+				line-height: normal;
+				vertical-align: middle;
+				display: inline-block;
+				
+			}
+		}
+		&--legend{
+			font-family: $roboto-b;
+			color: darken($grey,30%);
+			text-transform: uppercase;
+		}
+		&--img{
+			display: inline-block;
+			width: 15%;
+			vertical-align: middle;
+		}
+		&--description{
+			display:inline-block;
+			width: 79%;
+			padding-left: 15px;
+			vertical-align: middle;
+		}
+		&--date{
+			color: darken($grey,30%);
+			margin: 0;
+		}
+		&--title{
+			font-size:20px;
+			text-transform: uppercase;
+			display:inline-block;
+			font-family: $roboto-m;
+			width: 100%;
+			margin: 0;
+			color: darken($grey,30%);
+		}
+		&--variete{
+			display: inline-block;
+			margin: 0;
+			color: darken($grey,30%);
+		}
+		&--quantity{
+			input{
+				border: 1px solid lighten($grey, 15%);
+				max-width: 80px;
+				padding: 10px;
+				color: darken($grey,30%);
+
+			}
+		}
+		&--price{
+			padding-top:15px;
+			color: darken($grey,30%);
+		}
+	}
 }
