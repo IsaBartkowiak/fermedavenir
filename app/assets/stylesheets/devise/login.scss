@@ -13,6 +13,7 @@
 	&-label{ 
 		margin: 1.5em 0 .75em;
 		font-size: .8em;
+		font-weight: 300;
 	}
 
 	&-field{
@@ -22,21 +23,33 @@
 	}
 
 	h2{
-		color: #3caf76;
+		color: $main-color-darker;
 		font-size: 1.2em;
 		text-align: center;
 		text-transform: uppercase;
 		margin-bottom: 30px;
 		font-weight: 500;
+		// &:before{
+		// 	content: "";
+		//     position: absolute;
+		//     top: 35px;
+		//     left: 50%;
+		//     transform: translateX(-50%);
+		//     display: block;
+		//     width: 2.4em;
+		//     height: .1em;
+		//     background-color: $main-color-darker;
+		// }
 	}
 
 	.btn_submit {
 		display: block;
 		width: 100%;
 		transition: background .3s ease-in-out;
-
+		outline: none;
 		&:hover {
-			background-color: $main-color-lighter;
+			background-color: $main-color-darker;
+			outline: none;
 		}
 	}
 

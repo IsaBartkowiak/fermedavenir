@@ -5,9 +5,9 @@
 $black			  : #222;
 $grey		      : #bbbbbb;
 $grey-light       : #eee;
-$main-color       : #81c69e;
-$main-color-darker: #319966;
-$main-color-lighter: #7DC89C;
+$main-color       : #7FC79D;
+$main-color-darker: darken($main-color,10%);
+$main-color-lighter: lighten($main-color,10%);
 
 $light-green : #D1E6C4;
 $mint-green  : #7FC79D;
