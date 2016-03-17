@@ -10,7 +10,8 @@
   </thead>
 
   <tbody>
-    <%= content_tag_for(:tr, @paniers) do |panier| %>
+    <% @paniers.each do |panier| %>
+        <tr <% unless panier.planted? %>class="alert-plant"<% end %>>
           <td><%= panier.semaine %></td>
           <td>
           <select class="form-control">
@@ -32,6 +33,7 @@
             Supprimer ce panier
           <% end %>
           </td>
+        </tr>
     <% end %>
   </tbody>
 </table>

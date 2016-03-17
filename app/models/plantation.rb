@@ -14,8 +14,4 @@
 class Plantation < ActiveRecord::Base
   belongs_to :farm
   belongs_to :generation
-
-  def is_planted 
-  	
-  end
 end

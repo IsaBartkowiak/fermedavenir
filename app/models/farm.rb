@@ -17,6 +17,15 @@ class Farm < ActiveRecord::Base
 	has_many :paniers
 	has_many :plantations
 
+	def get_generations_to_plant
+		generations = []
+		paniers.each do |panier|
+      panier.portions.each do |portion|
+        generations << portion.generation
+      end
+    end
+    generations.sort_by{|g| g[:plantation]}
+	end
 
 	private
 
