@@ -15,18 +15,14 @@
 #  last_sign_in_ip        :inet
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
+#  farm_id                :integer
 #
+
 class User < ActiveRecord::Base
-	before_save :generate_paniers
-	has_many :paniers
-
-
+	belongs_to :farm
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-   def generate_paniers
-   		paniers.generate_sample
-   end
 end

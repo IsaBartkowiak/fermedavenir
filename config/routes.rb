@@ -5,10 +5,11 @@ Rails.application.routes.draw do
   get 'static/index'
 
   get 'page/index'
-  get '/generate_paniers' => 'paniers#generate'
 
-  resources :paniers do 
-  	resources :portions
+  resources :farms, param: :slug do 
+    resources :paniers do 
+      resources :portions
+    end
   end
   resources :generations
   resources :legumes

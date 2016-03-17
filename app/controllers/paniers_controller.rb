@@ -6,17 +6,20 @@
 #  semaine    :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  user_id    :integer
+#  farm_id    :integer
 #
 
 class PaniersController < ApplicationController
+  before_action :check_user
+  before_action :set_farm
   before_action :set_panier, only: [:show, :edit, :update, :destroy]
   before_action :set_generations, only: [:edit, :update, :new]
-  before_action :check_user
 
   # GET /paniers
   # GET /paniers.json
   def index
-    @paniers = current_user.paniers.par_semaines
+    @paniers = @farm.paniers.par_semaines
   end
 
   # GET /paniers/1
@@ -36,11 +39,11 @@ class PaniersController < ApplicationController
   # POST /paniers
   # POST /paniers.json
   def create
-    @panier = Panier.new(panier_params)
+    @panier = @farm.paniers.new(panier_params)
 
     respond_to do |format|
       if @panier.save
-        format.html { redirect_to @panier, notice: 'Panier was successfully created.' }
+        format.html { redirect_to farm_panier_path(@farm,@panier), notice: 'Panier was successfully created.' }
         format.json { render :show, status: :created, location: @panier }
       else
         format.html { render :new }
@@ -77,9 +80,13 @@ class PaniersController < ApplicationController
     def check_user
       redirect_to root_path, notice: 'Vous devez être connecté' if current_user.nil?
     end
+
+    def set_farm
+      @farm = current_user.farm || Farm.find_by_slug(params[:farm_slug])
+    end
     # Use callbacks to share common setup or constraints between actions.
     def set_panier
-      @panier = current_user.paniers.find(params[:id])
+      @panier = @farm.paniers.find(params[:id])
       @portions = @panier.portions.all
     end
 

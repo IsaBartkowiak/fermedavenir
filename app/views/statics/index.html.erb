@@ -28,4 +28,8 @@
   </div>
 </section>
 
-<%= link_to 'Créer mon panier', new_user_registration_path, class:"btn btn_green btn_create-panier" %>
+<% if current_user %>
+  <%= link_to 'Créer ma ferme', new_farm_path, class:"btn btn_green btn_create-panier" if current_user.farm.nil? %>
+<% else %>
+  <%= link_to 'Créer ma ferme', new_user_registration_path, class:"btn btn_green btn_create-panier" %>
+<% end %>
