@@ -1,7 +1,13 @@
   <article class="home">
   <section class="section section_grey">
     <div class="container">
-      <div class="row">
+
+
+      <% if current_user %>
+          <%= render partial: 'farms/form', class:"hidden" %>
+      <% end %>
+
+      <div class="row table">
         <div class="col-xs-12 col-sm-6">
           <h2 class="section-title">Le tableau de bord, <br>qu'est-ce que c'est ?</h2>
           <div class="section-text">

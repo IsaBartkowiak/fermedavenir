@@ -2,6 +2,7 @@
   <thead>
     <tr>
       <th>Semaine</th>
+      <th>Qté</th>
       <th>Produits</th>
       <th>Prix</th>
       <th></th>
@@ -13,6 +14,7 @@
     <% @paniers.each do |panier| %>
         <tr <% unless panier.planted? %>class="alert-plant"<% end %>>
           <td><%= panier.semaine %></td>
+          <td><%= number_field_tag "quantity", panier.quantity, class: "paniers-qty", :data => { url: farm_panier_path(@farm.slug, panier)} %></td>
           <td>
           <select class="form-control">
             <% panier.portions.each do |portion| %> 

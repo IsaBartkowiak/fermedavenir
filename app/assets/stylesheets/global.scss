@@ -1,6 +1,8 @@
 //////////////////////////////
 // Global
-
+.center {
+	left: calc(50% - 5em);
+}
 // Selection
 ::-moz-selection {
 	text-shadow: none;
@@ -194,6 +196,17 @@ a{
 	color: #2e6da4;
 	border-color: #2e6da4;
 }
+.hidden {
+	display:none;
+}
+
+.btn_farm {
+	//margin-top: 1em;
+    margin-bottom: 3em;
+		@media (max-width: $md-small) {
+			margin-top: 1em;
+		}
+}
 
 .btn_green {
 	color: #fff;
@@ -253,7 +266,7 @@ a{
   margin: auto;
   padding: .7em 1.2em .7em 1.2em;
   font-size: 14px;
-  color: #fff;  
+  color: #fff;
   border: none;
   border-radius: 0;
 
