@@ -15,6 +15,7 @@ class Farm < ActiveRecord::Base
 	before_save :generate_paniers
 	before_save :create_slug
 	has_many :paniers
+	has_many :plantations
 
 
 	private

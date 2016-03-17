@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160317101205) do
+ActiveRecord::Schema.define(version: 20160317113242) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,6 +54,18 @@ ActiveRecord::Schema.define(version: 20160317101205) do
   add_index "paniers", ["farm_id"], name: "index_paniers_on_farm_id", using: :btree
   add_index "paniers", ["user_id"], name: "index_paniers_on_user_id", using: :btree
 
+  create_table "plantations", force: :cascade do |t|
+    t.integer  "farm_id"
+    t.integer  "generation_id"
+    t.float    "quantity"
+    t.integer  "year"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "plantations", ["farm_id"], name: "index_plantations_on_farm_id", using: :btree
+  add_index "plantations", ["generation_id"], name: "index_plantations_on_generation_id", using: :btree
+
   create_table "portions", force: :cascade do |t|
     t.integer  "panier_id"
     t.integer  "legume_id"
@@ -88,6 +100,8 @@ ActiveRecord::Schema.define(version: 20160317101205) do
 
   add_foreign_key "paniers", "farms"
   add_foreign_key "paniers", "users"
+  add_foreign_key "plantations", "farms"
+  add_foreign_key "plantations", "generations"
   add_foreign_key "portions", "generations"
   add_foreign_key "portions", "legumes"
   add_foreign_key "users", "farms"
