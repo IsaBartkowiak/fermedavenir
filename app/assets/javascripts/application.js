@@ -27,7 +27,7 @@ var Animation = {
 
 var changeView = {
 	init: function(){
-		$('.change-view').click(this.animate);
+		$(document).on('click', ".change-view", this.animate);
 	},
 	animate: function(){
 		$('.list-paniers').toggleClass('overview');
