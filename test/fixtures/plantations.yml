@@ -1,0 +1,26 @@
+# == Schema Information
+#
+# Table name: plantations
+#
+#  id            :integer          not null, primary key
+#  farm_id       :integer
+#  generation_id :integer
+#  quantity      :float
+#  year          :integer
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  farm_id: 
+  generation_id: 
+  quantity: 1.5
+  year: 1
+
+two:
+  farm_id: 
+  generation_id: 
+  quantity: 1.5
+  year: 1
