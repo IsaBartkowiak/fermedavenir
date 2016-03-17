@@ -1,62 +1,32 @@
 .home{
+	
 	.table{
 		display: table;
 		table-layout: fixed;
 		width: 100%;
 		margin: 0;
+
 		@media (max-width: $md-small) {
 			display: block;
 			text-align: center;
 		}
+
 		> div{
 			display: table-cell;
 			vertical-align: middle;
 			float: none;
+
 			@media (max-width: $md-small) {
 				display: block;
+
 				img{
 					float: none;
 				}
 			}
+
 			img {
 					margin: 20px;
 			}
-		}
-	}
-
-	.section-title {
-		position: relative;
-		margin: 0 0 1em;
-		padding-bottom: .5em;
-		font-size: 2em;
-		font-weight: 700;
-		line-height: 1.2;
-
-		&.center {
-			width: 100%;
-			text-align: center;
-
-			&:after {
-				left: calc(50% - .5em);				
-			}
-		}
-
-		&:after {
-			content: "";
-			position: absolute;
-			bottom: 0;
-			left: 0;
-			display: block;
-			width: 1em;
-			height: .1em;
-			background-color: $black;
-			@media (max-width: $md-small) {
-				left: calc(50% - .5em);
-			}
-		}
-
-		@media (max-width: $md-small) {
-			font-size: 1.5em;
 		}
 	}
 
@@ -76,27 +46,32 @@
 
 	.right {
 		float:right;
+
 		@media (max-width: $md-small) {
 			float: none;
 		}
 	}
+
 	.left {
 		float:left;
+
 		@media (max-width: $md-small) {
 			float: none;
 		}
 	}
+
 	.mobile-img-absolute{
 		@media (max-width: $md-small){
-		padding-bottom: 125px;
-	}
+			padding-bottom: 125px;
+		}
+
 		.mobile-absolute{
 			@media (max-width: $md-small){
-			position: absolute;
-			bottom: 0;
-			left: 50%;
-			@include transform(translateX(-50%));
-		}
+				position: absolute;
+				bottom: 0;
+				left: 50%;
+				@include transform(translateX(-50%));
+			}
 		}
 	}
 }
