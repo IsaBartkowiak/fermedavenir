@@ -27,14 +27,19 @@
                 <% end %>
               </select>
                 </td>
+              <td><%= get_cart_total(panier.portions) %> €</td>
               <td>
               <%= link_to panier_portions_path(panier) do %>
                 <span class="glyphicon glyphicon-plus"></span>
                 Voir le panier
               <% end %>
               </td>
-              <td><%= get_cart_total(panier.portions) %></td>
-              <td><%= link_to 'Supprimer ce panier', panier, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              <td>
+              <%= link_to panier, method: :delete, data: { confirm: 'Êtes-vous sur de vouloir le supprimer ?' } do %>
+                <span class="glyphicon glyphicon-trash"></span>
+                Supprimer ce panier
+              <% end %>
+              </td>
         <% end %>
       </tbody>
     </table>
