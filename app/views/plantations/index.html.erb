@@ -17,14 +17,15 @@
       <tbody>
         <% @generations.each do |generation| %>
           <% plant = @plantations.where(generation: generation).first %>
-        <tr <% unless plant %>class="not-planted"<% end %>>
+          <% qtetoplant = @farm.get_quantity_to_plant(generation) %>
+        <tr class="<% if !plant %>not-planted<% elsif qtetoplant > plant.quantity %>alert-plant<% end %>">
          <%= form_for([@farm, @plantation]) do |f| %>
          <td>
            <%= f.hidden_field :id, value: plant.id if plant %>
            <%= f.hidden_field :generation_id, value: generation.id %>
            <% 
             quantity = if plant.nil? 
-                0 
+                qtetoplant 
             else 
                plant.quantity 
             end
