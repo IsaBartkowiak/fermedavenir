@@ -37,7 +37,7 @@
 			text-align: center;
 
 			&:after {
-				left: calc(50% - .5em);				
+				left: calc(50% - .5em);
 			}
 		}
 
@@ -93,9 +93,9 @@
 		.mobile-absolute{
 			@media (max-width: $md-small){
 			position: absolute;
-			bottom: 0;
+			top: 100%;
 			left: 50%;
-			@include transform(translateX(-50%));
+			@include transform(translateX(-50%) translateY(-100%));
 		}
 		}
 	}
