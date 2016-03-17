@@ -23,17 +23,23 @@
       <a href="/" class="header-logo">
         <%= render('layouts/logo') %>
       </a>
+      <% if current_user %>
+        <nav class="header-nav">
+          <ul>
+            <li class="nav-item"><%= link_to "Légumes", legumes_path, class: 'btn' %></li>
+            <li class="nav-item"><%= link_to "Paniers", farm_paniers_path(current_user.farm.slug), class: 'btn' unless current_user.farm.nil? %></li>
+            <li class="nav-item"><%= link_to "Générations", generations_path, class: 'btn' %></li>
+            <li class="nav-item"><a href="" class="btn">Plantation</a></li>
+          </ul>
+        </nav>
+      <% end %>
       <div class="header-links">
         <% if !current_user %>
             <%= link_to "Se connecter", new_user_session_path, class: 'btn btn_green btn_stroke' %>
             <%= link_to "S'enregistrer", new_user_registration_path, class: 'btn btn_green' %>
         <% else %>
-            <%= link_to "Légumes", legumes_path, class: 'btn btn-default' %>
-            <%= link_to "Paniers", farm_paniers_path(current_user.farm.slug), class: 'btn btn-default' unless current_user.farm.nil? %>
-            <%= link_to "Générations", generations_path, class: 'btn btn-default' %>
             <%= link_to "Déconnexion", destroy_user_session_path, method: :delete, class: 'btn btn_green' %>
         <% end %>
-
       </div>
     </header>
   </div>
