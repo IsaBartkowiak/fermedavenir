@@ -8,6 +8,7 @@
 #  updated_at :datetime         not null
 #  user_id    :integer
 #  farm_id    :integer
+#  quantity   :integer          default(20)
 #
 
 class PaniersController < ApplicationController
@@ -57,8 +58,9 @@ class PaniersController < ApplicationController
   def update
     respond_to do |format|
       if @panier.update(panier_params)
-        format.html { redirect_to panier_path(@farm.slug), notice: 'Panier was successfully updated.' }
+        format.html { redirect_to farm_panier_path(@farm.slug, @panier), notice: 'Panier was successfully updated.' }
         format.json { render :show, status: :ok, location: @panier }
+        format.js {}
       else
         format.html { render :edit }
         format.json { render json: @panier.errors, status: :unprocessable_entity }
@@ -95,6 +97,6 @@ class PaniersController < ApplicationController
     end
     # Never trust parameters from the scary internet, only allow the white list through.
     def panier_params
-      params.require(:panier).permit(:semaine)
+      params.require(:panier).permit(:semaine, :quantity)
     end
 end

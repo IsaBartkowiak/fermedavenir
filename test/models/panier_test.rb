@@ -8,6 +8,7 @@
 #  updated_at :datetime         not null
 #  user_id    :integer
 #  farm_id    :integer
+#  quantity   :integer          default(20)
 #
 
 require 'test_helper'

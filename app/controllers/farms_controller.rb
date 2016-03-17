@@ -12,6 +12,7 @@
 class FarmsController < ApplicationController
   before_action :set_farm, only: [:show, :edit, :update, :destroy]
   before_action :check_user, except: [:index, :show]
+  before_action :bloc, only: [:edit, :update, :destroy]
 
   # GET /farms
   # GET /farms.json
@@ -81,6 +82,10 @@ class FarmsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_farm
       @farm = Farm.find_by_slug(params[:slug])
+    end
+
+    def bloc
+      redirect_to root_path, notice: "Vous ne pouvez pas modifier les fermes des autres voyons !" if current_user.farm != @farm
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
