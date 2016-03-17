@@ -92,6 +92,11 @@ a{
 	&:hover{
 		color: $main-color-darker;
 	}
+	&.virgin{
+		&:hover, &:active, &:focus, &:visited{
+			text-decoration: none;
+		}
+	}
 }
 .container {
 	@media (min-width: $md-large) {
@@ -134,87 +139,6 @@ a{
 	@media (max-width: $md-medium) {
 		padding: 4em 0;
 	}
-}
-
-.table{
-	display: table;
-	table-layout: fixed;
-	width: 100%;
-	margin: 0;
-	@media (max-width: $md-small) {
-		display: block;
-		text-align: center;
-	}
-	> div{
-		display: table-cell;
-		vertical-align: middle;
-		float: none;
-		@media (max-width: $md-small) {
-			display: block;
-			img{
-				float: none;
-			}
-		}
-		img {
-				margin: 20px;
-		}
-	}
-}
-
-.section-title {
-	position: relative;
-	margin: 0 0 1em;
-	padding-bottom: .5em;
-	font-size: 2em;
-	font-weight: 700;
-	line-height: 1.2;
-
-	&.center {
-		width: 100%;
-		text-align: center;
-
-		&:after {
-			right: 0;
-			margin: auto;
-			@media (max-width: $md-small) {
-				right: initial;
-				left: 50%;
-			}
-		}
-	}
-
-	&:after {
-		content: "";
-		position: absolute;
-		bottom: 0;
-		left: 0;
-		display: block;
-		width: 1em;
-		height: .1em;
-		background-color: $black;
-		@media (max-width: $md-small) {
-			left: 50%;
-			margin-left: -0.5em;
-		}
-	}
-
-	@media (max-width: $md-small) {
-		font-size: 1.5em;
-	}
-}
-
-.section-text {
-	line-height: 1.4;
-
-	p {
-		margin: .5em 0;
-		@include letter-spacing(60, 14);
-	}
-}
-
-h3 {
-	font-weight : bold;
-	@include letter-spacing(60, 14);
 }
 
 // Btn
@@ -297,18 +221,7 @@ h3 {
 	max-width: 14em;
 	margin: 2em auto;
 }
-.right {
-	float:right;
-	@media (max-width: $md-small) {
-		float: none;
-	}
-}
-.left {
-	float:left;
-	@media (max-width: $md-small) {
-		float: none;
-	}
-}
+
 .highlight{
 	color: $main-color;
 }
