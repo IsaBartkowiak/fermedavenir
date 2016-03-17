@@ -77,16 +77,6 @@ img {
 	}
 }
 
-.mobile-img-absolute{
-	padding-bottom: 125px;
-	.mobile-absolute{
-		position: absolute;
-		bottom: 0;
-		left: 50%;
-		@include transform(translateX(-50%));
-	}
-}
-
 a{
 	color: $main-color;
 	text-decoration: none;
