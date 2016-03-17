@@ -36,7 +36,7 @@
          </td>
          <td>
             <%= f.submit "Planter", class: "btn btn-primary" unless plant %>
-            <%= link_to "Déplanter", farm_plantation_path(@farm, plant), method: :delete, class: "btn btn-primary" if plant %>
+            <%= link_to "Retirer", farm_plantation_path(@farm, plant), method: :delete, class: "btn btn-primary" if plant %>
           </td>
         <% end %>
         <td><%= generation.legume.titre unless generation.legume.nil? %></td>
