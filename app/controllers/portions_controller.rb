@@ -74,7 +74,7 @@ class PortionsController < ApplicationController
   def destroy
     @portion.destroy
     respond_to do |format|
-      format.html { redirect_to panier_portions_url(@panier), notice: 'Portion was successfully destroyed.' }
+      format.html { redirect_to farm_panier_portions_url(@panier.farm, @panier), notice: 'Portion was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

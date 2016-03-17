@@ -19,12 +19,7 @@ class PlantationsController < ApplicationController
   # GET /plantations.json
   def index
     @plantations = @farm.plantations.all
-    @generations = [] 
-    @farm.paniers.each do |panier|
-      panier.portions.each do |portion|
-        @generations << portion.generation
-      end
-    end
+    @generations = @farm.get_generations_to_plant
 
     redirect_to farm_paniers_path(@farm), notice: "Vous avez été redirigé vers vos paniers car vous n'en avez pas encore rempli. Remplissez les afin de pouvoir planter les légumes choisis :-)." if @generations.count == 0
 
@@ -52,7 +47,7 @@ class PlantationsController < ApplicationController
 
     respond_to do |format|
       if @plantation.save
-        format.html { redirect_to farm_plantations_path(@farm), notice: 'Plantation was successfully created.' }
+        format.html { redirect_to farm_plantations_path(@farm), notice: 'Vous avez bien planté ce légume.' }
         format.json { render :show, status: :created, location: @plantation }
         format.js {}
       else
@@ -81,7 +76,7 @@ class PlantationsController < ApplicationController
   def destroy
     @plantation.destroy
     respond_to do |format|
-      format.html { redirect_to farm_plantations_url(@farm), notice: 'Plantation was successfully destroyed.' }
+      format.html { redirect_to farm_plantations_url(@farm), notice: 'Plantation enlevée.' }
       format.json { head :no_content }
     end
   end

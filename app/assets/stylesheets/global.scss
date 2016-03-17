@@ -1,6 +1,8 @@
 //////////////////////////////
 // Global
-
+.center {
+	left: calc(50% - 5em);
+}
 // Selection
 ::-moz-selection {
 	text-shadow: none;
@@ -64,19 +66,18 @@ body {
 	}
 }
 
+<<<<<<< HEAD
 
+=======
+.container {
+	width: 100%;
+	max-width: 1180px;
+}
+>>>>>>> d3e9b9cebf7a791560cc6239e763fe82de100620
 
 img {
 	max-width: 100%;
 	height: auto;
-}
-
-.img_petit {
-	max-width: 25%;
-
-	&_right {
-		float: right;
-	}
 }
 
 a{
@@ -101,13 +102,7 @@ a{
 }
 // Sections
 .section {
-	padding: 2em 0;
-	@media (max-width: $md-small) {
-		padding: 2em 0;
-	}
-	@media (max-width: $md-medium) {
-		padding: 1.5em 0;
-	}
+	padding: 4em 0;
 
 	&-title{
 		font-weight: 300;
@@ -123,6 +118,7 @@ a{
 		background-color: #fff;
 
 		.section-title {
+			
 			&:after {
 				background-color: $main-color;
 			}
@@ -130,7 +126,44 @@ a{
 	}
 
 	@media (max-width: $md-medium) {
-		padding: 4em 0;
+		padding: 1.5em 0;
+	}
+}
+
+.section-title {
+	position: relative;
+	margin: 0 0 1em;
+	padding-bottom: .5em;
+	font-size: 2em;
+	font-weight: 700;
+	line-height: 1.2;
+
+	&.center {
+		width: 100%;
+		text-align: center;
+
+		&:after {
+			left: calc(50% - .5em);				
+		}
+	}
+
+	&:after {
+		content: "";
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		display: block;
+		width: 1em;
+		height: .1em;
+		background-color: $black;
+
+		@media (max-width: $md-small) {
+			left: calc(50% - .5em);
+		}
+	}
+
+	@media (max-width: $md-small) {
+		font-size: 1.5em;
 	}
 }
 
@@ -171,6 +204,17 @@ a{
 .btn-primary {
 	color: #2e6da4;
 	border-color: #2e6da4;
+}
+.hidden {
+	display:none;
+}
+
+.btn_farm {
+	//margin-top: 1em;
+	margin-bottom: 3em;
+	@media (max-width: $md-small) {
+		margin-top: 1em;
+	}
 }
 
 .btn_green {
@@ -222,9 +266,25 @@ a{
 	color: $main-color;
 }
 
-.alert-success {
+.alert {
+	z-index: 100;
+	position: absolute;
+	top: 10em;
+	right: 1em;
 	max-width: 400px;
 	margin: auto;
+	padding: .7em 1.2em .7em 1.2em;
+	font-size: 14px;
+	color: #fff;
+	border: none;
+	border-radius: 0;
+	&-success {
+		background-color: $main-color;
+	}
+	.close {
+		right: -.3em;
+		top: -1px;
+	}
 }
 
 

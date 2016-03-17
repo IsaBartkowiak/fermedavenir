@@ -1,7 +1,7 @@
 <ul class="col-xs-12 col-md-9">
 	<%= content_tag_for(:tr, @paniers) do |panier| %>
-	  <%= link_to farm_panier_portions_path(panier.farm, panier), class:"virgin", remote: true do %>
-		  <li class="case">
+	  <%= link_to farm_panier_portions_path(panier.farm.slug, panier), class:"virgin", remote: true do %>
+		  <li class="case <% unless panier.planted? %>alert-plant<% end %>">
 		  	<%= panier.semaine %>
 		  </li>
 		<% end %>	  

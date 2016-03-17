@@ -12,7 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
 //= require bootstrap
 //= require_tree .
 var Animation = {
@@ -25,7 +24,7 @@ var Animation = {
 	}
 }
 
-var changeView = {
+var ChangeView = {
 	init: function(){
 		$(document).on('click', ".change-view", this.animate);
 	},
@@ -34,7 +33,33 @@ var changeView = {
 	}
 }
 
+var Panier = {
+	qte: 0,
+	url: '',
+
+	init: function() {
+		$(document).on('change','.paniers-qty', this.updateQty);
+	},
+
+	updateQty: function() {
+		Panier.qte = $(this).val();
+		Panier.url = $(this).data('url');
+
+		Panier.update();
+	},
+
+	update: function() {
+		$.ajax({
+		  url: this.url,
+		  method: "PATCH",
+		  data: { panier: {quantity : this.qte} },
+		  dataType: "script"
+		});
+	}
+}
+
 $(document).ready(function() {
 	Animation.init();
-	changeView.init();
+	ChangeView.init();
+	Panier.init();
 })
