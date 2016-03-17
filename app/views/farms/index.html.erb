@@ -1,0 +1,31 @@
+<div class="page-header">
+  <%= link_to new_farm_path, class: 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-plus"></span>
+    New Farm
+  <% end %>
+  <h1>Listing farms</h1>
+</div>
+
+<div class="table-responsive">
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr>
+            <th>Name</th>
+            <th>Slug</th>
+            <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <%= content_tag_for(:tr, @farms) do |farm| %>
+            <td><%= farm.name %></td>
+            <td><%= farm.slug %></td>
+            <td><%= link_to 'Show', farm_path(farm.slug) %></td>
+        <td><%= link_to 'Edit', edit_farm_path(farm.slug) %></td>
+        <td><%= link_to 'Destroy', farm_path(farm.slug), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <% end %>
+    </tbody>
+  </table>
+</div>

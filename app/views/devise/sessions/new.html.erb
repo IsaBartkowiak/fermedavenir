@@ -4,28 +4,28 @@
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field login-field">
-    <%= f.label :email, class:"login-label" %><br />
-    <%= f.email_field :email, autofocus: true, class:"login-input" %>
+    <%= f.label :Email, class:"login-label" %><br />
+    <%= f.email_field :email, autofocus: true, class:"login-input",:placeholder => "exemple@gmail.com" %>
   </div>
 
   <div class="field login-field">
-    <%= f.label :password, class:"login-label" %><br />
+    <%= f.label :Mot_de_passe, class:"login-label" %><br />
     <%= f.password_field :password, autocomplete: "off", class:"login-input" %>
   </div>
 
   <% if devise_mapping.rememberable? -%>
     <div class="field login-field">
-      <%= f.check_box :remember_me,class:"login-check"%>
-      <%= f.label :remember_me, class:"login-label" %>
+      <%= f.check_box :remember_me, class:"login-check"%>
+      <%= f.label :remember_me,"Se souvenir de moi", class:"login-label" %>
+      <%- if devise_mapping.recoverable? %>
+      <%= link_to "Mot de passe oublié ?", new_password_path(resource_name), class: 'login-forgot' %>
+      <% end -%>
     </div>
   <% end -%>
 
   <div class="actions">
-    <%= f.submit "Log in", class:"login-submit"%>
+    <%= f.submit "Valider", class:"btn btn_green btn_submit"%>
   </div>
 <% end %>
-<div class="center">
-<%= render "devise/shared/links" %>
-</div>
 </div>
 </div>

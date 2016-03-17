@@ -1,0 +1,60 @@
+.list-paniers{
+	position: relative;
+	.change-view{
+		float: right;
+		.glyphicon-th{
+			display: block;
+		}
+		.glyphicon-list{
+			display: none;
+		}
+	}
+	.overview-display{
+		display: none;
+	}
+
+	&.overview{
+		// change button
+		.change-view .glyphicon-th{
+			display: none;
+		}
+		.change-view .glyphicon-list{
+			display: block;
+		}
+
+		// hide table and show overview
+		.table{
+			display: none;
+		}
+		.overview-display{
+			display: block;
+		}
+	}
+
+	.overview-display{
+		position: relative;
+		ul{
+			padding: 0;
+			margin: 0;
+			li{
+				display: inline-block;
+				vertical-align: top;
+				text-align: center;
+				border: 2px solid $light-grey;
+				width: 60px;
+				height: 60px;
+				line-height: 60px;
+				font-weight: bold;
+				margin: 2%;
+				padding: 10px;
+				&.full{
+					border: 2px solid $dark-grey;
+				}
+				&:hover, &.active{
+					border: 2px solid $main-color;
+				}
+			}
+		}
+	}
+
+}

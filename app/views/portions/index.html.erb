@@ -1,11 +1,11 @@
 <div class="container">
   <div class="page-header">
-    <%= link_to paniers_path, class: 'btn btn-default' do %>
+    <%= link_to farm_paniers_path(@panier.farm.slug), class: 'btn btn-default' do %>
       <span class="glyphicon glyphicon-list"></span>
       Retourner à la liste des paniers
     <% end %>
 
-    <%= link_to new_panier_portion_path, class: 'btn btn-primary' do %>
+    <%= link_to new_farm_panier_portion_path, class: 'btn btn-primary' do %>
       <span class="glyphicon glyphicon-plus"></span>
       Ajouter un légume
     <% end %>
@@ -36,9 +36,9 @@
               <td>Conservable jusqu'à la semaine <%= portion.generation.conservation_to unless portion.generation.nil? %></td>
               <td><%= portion.quantity %></td>
               <td class="price" data-price="<%= portion.price %>"><%= portion.price %> €</td>
-          <td><%= link_to 'Modifier', edit_panier_portion_path(@panier,portion) %></td>
+          <td><%= link_to 'Modifier', edit_farm_panier_portion_path(@panier.farm.slug, @panier,portion) %></td>
           <td>
-          <%= link_to panier_portion_path(@panier,portion), method: :delete, data: { confirm: 'Êtes vous sur ?' } do %>
+          <%= link_to farm_panier_portion_path(@panier.farm.slug, @panier,portion), method: :delete, data: { confirm: 'Êtes vous sur ?' } do %>
             <span class="glyphicon glyphicon-trash"></span>
               Supprimer le légume du panier
           <% end %>
@@ -56,7 +56,7 @@
     <% @generations.each do |generation| %>
     <div class="col-xs-3">
       <div class="well">
-      <%= form_for([@panier, @portion], remote: true, html: { class: "form-horizontal", role: "form" }) do |f| %>
+      <%= form_for([@panier.farm, @panier, @portion], remote: true, html: { class: "form-horizontal", role: "form" }) do |f| %>
       <% if @portion.errors.any? %>
         <div class="alert alert-danger alert-dismissable" role="alert">
           <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>

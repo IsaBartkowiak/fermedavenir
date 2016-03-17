@@ -1,13 +1,14 @@
+@import 'reset';
 @import 'fonts';
 @import 'vars';
+@import 'mixins';
 
 
 @import 'bootstrap-generators';
-@import 'reset';
 // @import 'grid';
 @import 'global';
 @import 'header';
 @import 'footer';
 @import 'devise/login';
-@import 'devise/signup';
-@import 'fonts'
+@import 'paniers/list.scss';
+@import 'generations';
