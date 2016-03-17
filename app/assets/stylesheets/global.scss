@@ -220,7 +220,25 @@ a{
 	color: $main-color;
 }
 
-.alert-success {
+.alert {
+  z-index: 100;
+  position: absolute;
+  top: 10em;
+  right: 1em;
 	max-width: 400px;
-    margin: auto;
+  margin: auto;
+  padding: .7em 1.2em .7em 1.2em;
+  font-size: 14px;
+  color: #fff;  
+  border: none;
+  border-radius: 0;
+
+  &-success {
+		background-color: $main-color;
+  }
+
+  .close {
+  	right: -.3em;
+    top: -1px;
+  }
 }
