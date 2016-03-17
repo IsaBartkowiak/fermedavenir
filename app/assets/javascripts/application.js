@@ -25,6 +25,16 @@ var Animation = {
 	}
 }
 
+var changeView = {
+	init: function(){
+		$('.change-view').click(this.animate);
+	},
+	animate: function(){
+		$('.list-paniers').toggleClass('overview');
+	}
+}
+
 $(document).ready(function() {
 	Animation.init();
+	changeView.init();
 })

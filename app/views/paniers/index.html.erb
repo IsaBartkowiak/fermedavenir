@@ -1,9 +1,14 @@
-<div class="container">
+<div class="container list-paniers overview">
   <div class="page-header">
     <%= link_to new_farm_panier_path(@farm.slug), class: 'btn btn-primary' do %>
       <span class="glyphicon glyphicon-plus"></span>
       Nouveau panier
     <% end %>
+
+    <a class="btn btn-default change-view">
+      <span class="glyphicon glyphicon glyphicon-th"></span>
+      <span class="glyphicon glyphicon glyphicon glyphicon-list"></span>
+    </a>
   </div>
   <div class="table-responsive">
     <table class="table table-striped table-bordered table-hover">
@@ -44,4 +49,13 @@
       </tbody>
     </table>
   </div>
+
+  <div class="overview-display">
+  <ul>
+    <%= content_tag_for(:tr, @paniers) do |panier| %>
+      <li class="case"><%= panier.semaine %></li>
+    <% end %>
+  </ul>
+  </div>
+
 </div>

@@ -1,0 +1,37 @@
+@mixin transitions($type, $seconds, $ease) {
+  -webkit-transition: $type $seconds $ease;
+  -moz-transition: $type $seconds $ease;
+  -o-transition: $type $seconds $ease;
+  transition: $type $seconds $ease;
+}
+
+@mixin transition-delay($seconds) {
+  -webkit-transition-delay: $seconds;
+  -moz-transition-delay: $seconds;
+  -o-transition-delay: $seconds;
+  transition-delay: $seconds;
+}
+
+@mixin transform($transformation) {
+  -webkit-transform: $transformation;
+  -moz-transform: $transformation;
+  -o-transform: $transformation;
+  -ms-transform: $transformation;
+  transform: $transformation;
+}
+
+@mixin radius($radius) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  border-radius: $radius;
+}
+
+@mixin box-sizing($value) {
+  -webkit-box-sizing: $value;
+  -moz-box-sizing: $value;
+  box-sizing: $value;
+}
+
+@mixin letter-spacing($spacingInPhotoshop, $fontsizeinpx) {
+  letter-spacing: unquote($spacingInPhotoshop * $fontsizeinpx / 1000 + "px");
+}
