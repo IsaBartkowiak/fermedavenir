@@ -70,7 +70,14 @@ a{
 		color: $main-color-darker;
 	}
 }
-
+.container {
+	@media (min-width: $md-large) {
+		width: $md-large;	
+	}
+	@media (min-width: $md-larger) {
+		width: 1350px;
+	}
+}
 // Sections
 .section {
 	padding: 6em 0;
