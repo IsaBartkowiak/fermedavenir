@@ -26,6 +26,7 @@
 
 html {
 	font-size: $font-size;
+	overflow-x: hidden;
 
 	// Better font rendering for mac
 	&.mac {
@@ -55,6 +56,7 @@ body {
 	font-size: 1em;
 	color: $font-color;
 	min-height: 100%;
+	overflow-x: hidden;
 }
 
 img {
@@ -70,11 +72,26 @@ img {
 	}
 }
 
+.mobile-img-absolute{
+	padding-bottom: 125px;
+	.mobile-absolute{
+		position: absolute;
+		bottom: 0;
+		left: 50%;
+		@include transform(translateX(-50%));
+	}
+}
+
 a{
 	color: $main-color;
 	text-decoration: none;
 	&:hover{
 		color: $main-color-darker;
+	}
+	&.virgin{
+		&:hover, &:active, &:focus, &:visited{
+			text-decoration: none;
+		}
 	}
 }
 .container {
@@ -87,7 +104,13 @@ a{
 }
 // Sections
 .section {
-	padding: 6em 0;
+	padding: 2em 0;
+	@media (max-width: $md-small) {
+		padding: 2em 0;
+	}
+	@media (max-width: $md-medium) {
+		padding: 1.5em 0;
+	}
 
 	&-title{
 		font-weight: 300;
@@ -112,52 +135,6 @@ a{
 	@media (max-width: $md-medium) {
 		padding: 4em 0;
 	}
-}
-
-.section-title {
-	position: relative;
-	margin: 0 0 1em;
-	padding-bottom: .5em;
-	font-size: 2em;
-	font-weight: 700;
-	line-height: 1.2;
-
-	&.center {
-		width: 100%;
-		text-align: center;
-
-		&:after {
-			right: 0;
-			margin: auto;
-		}
-	}
-
-	&:after {
-		content: "";
-		position: absolute;
-		bottom: 0;
-		left: 0;
-		display: block;
-		width: 1em;
-		height: .1em;
-		background-color: $black;
-	}
-
-	@media (max-width: $md-small) {
-		font-size: 1.5em;
-	}
-}
-
-.section-text {
-	line-height: 1.4;
-
-	p {
-		margin: .5em 0;
-	}
-}
-
-h3 {
-	font-weight : bold;
 }
 
 // Btn

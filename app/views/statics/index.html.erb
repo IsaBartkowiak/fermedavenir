@@ -1,89 +1,98 @@
-<section class="section section_grey">
-  <div class="container">
-    <div class="row">
-      <div class="col-xs-12 col-sm-6">
-        <h2 class="section-title">Le tableau de bord, <br>qu'est-ce que c'est ?</h2>
-        <div class="section-text">
-          <p class="highlight">Un outil qui vous accompagne dans la gestion de votre exploitation.</p>
-          <p>« Tableau de Bord » est un outil développé en collaboration avec l’association <a href="http://www.fermesdavenir.org/" target="_blank">Fermes d’Avenir</a>. Cette association vise à répandre une nouvelle méthode d’agriculture comme la permaculture, basé sur le développement de petites exploitations. Néophytes dans l’univers du maraichage ou agriculteurs aguerris, cet outil vous permettra de composer vos paniers personnalisés aves des produits de saison. Il vous guidera tout au long du processus de croissance de vos plantes  grâce au planning détaillé de semis, plantation et récolte.</p>
-        </div>
-      </div>
-      <div class="col-xs-12 col-sm-6">
-        <%= image_tag('home1.png') %>
-      </div>
-    </div>
-  </div>
-</section>
-<section class="section section_white">
-  <div class="container">
-    <div class="row">
-      <div class="col-xs-12 col-sm-6">
-        <%= image_tag('home2.png') %>
-      </div>
-      <div class="col-xs-12 col-sm-6">
-        <h2 class="section-title">Pour qui ?</h2>
-        <div class="section-text highlight">Cet outil s’adresse aussi bien aux candidats à l’installation d’une microferme (agriculteurs en devenir) ou des propriétaires disposés à en accueillir une (collectivités locales, entreprises, particuliers…).</div>
-      </div>
-    </div>
-  </div>
-</section>
-<section class="section section_grey">
-  <div class="container">
-    <h2 class="section-title center">Comment ça marche ?</h2>
-    <div class="row">
-      <div class="col-xs-12 col-sm-1">
-      </div>
-      <div class="col-xs-12 col-sm-5">
-        <h3>Gestion des paniers</h3>
-        <div class="section-text">
-          <p>Composez un panier de fruits et légumes personnalisé pour chaque semaine de l’année en fonction des recommandations de notre outil (compatibilité variété/période)</p>
-        </div>
-      </div>
-      <div class="col-xs-12 col-sm-6">
-        <%= image_tag('reglages.png', class: "img_petit") %>
-      </div>
-    </div>
-  </div>
-</section>
-<section class="section section_grey">
-      <div class="container">
-      <div class="row">
+  <article class="home">
+  <section class="section section_grey">
+    <div class="container">
+      <div class="row table">
         <div class="col-xs-12 col-sm-6">
-          <%= image_tag('calendar.svg', class: "img_petit img_petit_right") %>
-        </div>
-        <div class="col-xs-12 col-sm-5">
-          <h3>Organisation simplifiée</h3>
+          <h2 class="section-title">Le tableau de bord, <br>qu'est-ce que c'est ?</h2>
           <div class="section-text">
-            <p>Un planning détaillé des semis, plantations et récoltes est proposé pour chaque légume en fonction des quantités désirées.</p>
+            <p class="highlight">Un outil qui vous accompagne dans la gestion de votre exploitation.</p>
+            <p>« Tableau de Bord » est un outil développé en collaboration avec l’association <a href="http://www.fermesdavenir.org/" target="_blank">Fermes d’Avenir</a>. Cette association vise à répandre une nouvelle méthode d’agriculture comme la permaculture, basé sur le développement de petites exploitations. Néophytes dans l’univers du maraichage ou agriculteurs aguerris, cet outil vous permettra de composer vos paniers personnalisés aves des produits de saison. Il vous guidera tout au long du processus de croissance de vos plantes  grâce au planning détaillé de semis, plantation et récolte.</p>
           </div>
         </div>
-        <div class="col-xs-12 col-sm-1">
+        <div class="col-xs-12 col-sm-6">
+          <%= image_tag('home1.png') %>
+        </div>
+      </div>
+      <div class="row table">
+      <div class="col-xs-12 col-sm-6">
+        <% if current_user %>
+          <%= link_to 'Créer ma ferme', new_farm_path, class:"btn btn_green btn_create-panier right" if current_user.farm.nil? %>
+        <% else %>
+          <%= link_to 'Créer ma ferme', new_user_registration_path, class:"btn btn_green btn_create-panier right" %>
+        <% end %>
+      </div>
+      <div class="col-xs-12 col-sm-6">
+        <%= link_to 'Créer mon panier', new_user_registration_path, class:"btn btn_green btn_create-panier left" %>
+      </div>
+    </div>
+    </div>
+  </section>
+  <section class="section section_white">
+    <div class="container">
+      <div class="row table">
+        <div class="col-xs-12 col-sm-6">
+          <%= image_tag('home2.png') %>
+        </div>
+        <div class="col-xs-12 col-sm-6">
+          <h2 class="section-title">Pour qui ?</h2>
+          <div class="section-text highlight">Cet outil s’adresse aussi bien aux candidats à l’installation d’une microferme (agriculteurs en devenir) ou des propriétaires disposés à en accueillir une (collectivités locales, entreprises, particuliers…).</div>
         </div>
       </div>
     </div>
   </section>
   <section class="section section_grey">
-      <div class="container">
-        <div class="row">
-          <div class="col-xs-12 col-sm-1">
+    <div class="container">
+      <h2 class="section-title center">Comment ça marche ?</h2>
+      <div class="row table">
+        <div class="col-xs-12 col-sm-1">
+        </div>
+        <div class="col-xs-12 col-sm-5">
+          <h3>Gestion des paniers</h3>
+          <div class="section-text">
+            <p>Composez un panier de fruits et légumes personnalisé pour chaque semaine de l’année en fonction des recommandations de notre outil (compatibilité variété/période)</p>
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-6">
+          <%= image_tag('reglages.png', class: "img_petit") %>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="section section_grey">
+        <div class="container">
+        <div class="row table mobile-img-absolute">
+          <div class="col-xs-12 col-sm-6 mobile-absolute">
+            <%= image_tag('calendar.png', class: "img_petit img_petit_right") %>
           </div>
           <div class="col-xs-12 col-sm-5">
-            <h3>Optimisation des récoltes</h3>
+            <h3>Organisation simplifiée</h3>
             <div class="section-text">
-              <p>Nos recommandations s'appuient sur les données issues des recherches menées par l’association “Fermes d’avenir”.</p>
+              <p>Un planning détaillé des semis, plantations et récoltes est proposé pour chaque légume en fonction des quantités désirées.</p>
             </div>
           </div>
-          <div class="col-xs-12 col-sm-6">
-            <%= image_tag('plante.svg', class: "img_petit") %>
+          <div class="col-xs-12 col-sm-1">
           </div>
+        </div>
+      </div>
+    </section>
+    <section class="section section_grey">
+        <div class="container">
+          <div class="row table">
+            <div class="col-xs-12 col-sm-1">
+            </div>
+            <div class="col-xs-12 col-sm-5">
+              <h3>Optimisation des récoltes</h3>
+              <div class="section-text">
+                <p>Nos recommandations s'appuient sur les données issues des recherches menées par l’association “Fermes d’avenir”.</p>
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-6">
+              <%= image_tag('plante.svg', class: "img_petit") %>
+            </div>
+      </div>
     </div>
-  </div>
-  </div>
-</section>
+    </div>
+  </section>
 
-<button class="btn btn_back-top">Retourner en haut</button>
-<% if current_user %>
-  <%= link_to 'Créer ma ferme', new_farm_path, class:"btn btn_green btn_create-panier" if current_user.farm.nil? %>
-<% else %>
-  <%= link_to 'Créer ma ferme', new_user_registration_path, class:"btn btn_green btn_create-panier" %>
-<% end %>
+  <button class="btn btn_back-top">Retourner en haut</button>
+</article>
