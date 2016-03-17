@@ -5,7 +5,7 @@
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field login-field">
     <%= f.label :Email, class:"login-label" %><br />
-    <%= f.email_field :email, autofocus: true, class:"login-input" %>
+    <%= f.email_field :email, autofocus: true, class:"login-input",:placeholder => "exemple@gmail.com" %>
   </div>
 
   <div class="field login-field">
@@ -16,16 +16,16 @@
   <% if devise_mapping.rememberable? -%>
     <div class="field login-field">
       <%= f.check_box :remember_me, class:"login-check"%>
-      <%= f.label :remember_me, class:"login-label" %>
+      <%= f.label :remember_me,"Se souvenir de moi", class:"login-label" %>
+      <%- if devise_mapping.recoverable? %>
+      <%= link_to "Mot de passe oublié ?", new_password_path(resource_name), class: 'login-forgot' %>
+      <% end -%>
     </div>
   <% end -%>
 
   <div class="actions">
-    <%= f.submit "Créer", class:"btn btn_green btn_submit"%>
+    <%= f.submit "Valider", class:"btn btn_green btn_submit"%>
   </div>
 <% end %>
-<div class="center">
-<%= render "devise/shared/links" %>
-</div>
 </div>
 </div>
