@@ -43,8 +43,8 @@ class PaniersController < ApplicationController
 
     respond_to do |format|
       if @panier.save
-        format.html { redirect_to farm_panier_path(@farm,@panier), notice: 'Panier was successfully created.' }
-        format.json { render :show, status: :created, location: @panier }
+        format.html { redirect_to farm_panier_path(@farm.slug,@panier), notice: 'Panier was successfully created.' }
+        format.json { render :show, status: :created, location: @farm.slug }
       else
         format.html { render :new }
         format.json { render json: @panier.errors, status: :unprocessable_entity }
@@ -57,7 +57,7 @@ class PaniersController < ApplicationController
   def update
     respond_to do |format|
       if @panier.update(panier_params)
-        format.html { redirect_to @panier, notice: 'Panier was successfully updated.' }
+        format.html { redirect_to panier_path(@farm.slug), notice: 'Panier was successfully updated.' }
         format.json { render :show, status: :ok, location: @panier }
       else
         format.html { render :edit }
@@ -71,7 +71,7 @@ class PaniersController < ApplicationController
   def destroy
     @panier.destroy
     respond_to do |format|
-      format.html { redirect_to paniers_url, notice: 'Panier was successfully destroyed.' }
+      format.html { redirect_to farm_paniers_url(@farm.slug), notice: 'Panier was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

@@ -1,9 +1,9 @@
 <div class="page-header">
-  <%= link_to panier_portions_path(@panier), class: 'btn btn-default' do %>
+  <%= link_to farm_panier_portions_path(@panier.farm.slug, @panier), class: 'btn btn-default' do %>
     <span class="glyphicon glyphicon-list-alt"></span>
     Back
   <% end %>
-  <%= link_to panier_portion_path(@panier, @portion), class: 'btn btn-primary' do %>
+  <%= link_to farm_panier_portion_path(@panier.farm.slug, @panier, @portion), class: 'btn btn-primary' do %>
     <span class="glyphicon glyphicon-info-sign"></span>
     Show
   <% end %>

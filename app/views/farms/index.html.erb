@@ -22,9 +22,9 @@
       <%= content_tag_for(:tr, @farms) do |farm| %>
             <td><%= farm.name %></td>
             <td><%= farm.slug %></td>
-            <td><%= link_to 'Show', farm %></td>
-        <td><%= link_to 'Edit', edit_farm_path(farm) %></td>
-        <td><%= link_to 'Destroy', farm, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <td><%= link_to 'Show', farm_path(farm.slug) %></td>
+        <td><%= link_to 'Edit', edit_farm_path(farm.slug) %></td>
+        <td><%= link_to 'Destroy', farm_path(farm.slug), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       <% end %>
     </tbody>
   </table>
