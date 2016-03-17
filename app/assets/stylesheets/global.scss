@@ -26,6 +26,7 @@
 
 html {
 	font-size: $font-size;
+	overflow-x: hidden;
 
 	// Better font rendering for mac
 	&.mac {
@@ -55,6 +56,7 @@ body {
 	font-size: 1em;
 	color: $font-color;
 	min-height: 100%;
+	overflow-x: hidden;
 }
 
 img {
@@ -67,6 +69,16 @@ img {
 
 	&_right {
 		float: right;
+	}
+}
+
+.mobile-img-absolute{
+	padding-bottom: 125px;
+	.mobile-absolute{
+		position: absolute;
+		bottom: 0;
+		left: 50%;
+		@include transform(translateX(-50%));
 	}
 }
 
@@ -87,7 +99,13 @@ a{
 }
 // Sections
 .section {
-	padding: 6em 0;
+	padding: 2em 0;
+	@media (max-width: $md-small) {
+		padding: 2em 0;
+	}
+	@media (max-width: $md-medium) {
+		padding: 1.5em 0;
+	}
 
 	&-title{
 		font-weight: 300;
@@ -114,6 +132,31 @@ a{
 	}
 }
 
+.table{
+	display: table;
+	table-layout: fixed;
+	width: 100%;
+	margin: 0;
+	@media (max-width: $md-small) {
+		display: block;
+		text-align: center;
+	}
+	> div{
+		display: table-cell;
+		vertical-align: middle;
+		float: none;
+		@media (max-width: $md-small) {
+			display: block;
+			img{
+				float: none;
+			}
+		}
+		img {
+				margin: 20px;
+		}
+	}
+}
+
 .section-title {
 	position: relative;
 	margin: 0 0 1em;
@@ -129,6 +172,10 @@ a{
 		&:after {
 			right: 0;
 			margin: auto;
+			@media (max-width: $md-small) {
+				right: initial;
+				left: 50%;
+			}
 		}
 	}
 
@@ -141,6 +188,10 @@ a{
 		width: 1em;
 		height: .1em;
 		background-color: $black;
+		@media (max-width: $md-small) {
+			left: 50%;
+			margin-left: -0.5em;
+		}
 	}
 
 	@media (max-width: $md-small) {
@@ -153,11 +204,13 @@ a{
 
 	p {
 		margin: .5em 0;
+		@include letter-spacing(60, 14);
 	}
 }
 
 h3 {
 	font-weight : bold;
+	@include letter-spacing(60, 14);
 }
 
 // Btn
@@ -240,7 +293,18 @@ h3 {
 	max-width: 14em;
 	margin: 2em auto;
 }
-
+.right {
+	float:right;
+	@media (max-width: $md-small) {
+		float: none;
+	}
+}
+.left {
+	float:left;
+	@media (max-width: $md-small) {
+		float: none;
+	}
+}
 .highlight{
 	color: $main-color;
 }
