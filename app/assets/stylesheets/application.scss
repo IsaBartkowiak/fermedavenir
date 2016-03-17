@@ -1,12 +1,13 @@
+@import 'reset';
 @import 'fonts';
 @import 'vars';
 
 
 @import 'bootstrap-generators';
-@import 'reset';
 // @import 'grid';
 @import 'global';
 @import 'header';
 @import 'footer';
 @import 'devise/login';
 @import 'fonts'
+@import 'generations';

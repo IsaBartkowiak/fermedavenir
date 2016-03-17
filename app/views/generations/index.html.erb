@@ -23,21 +23,40 @@
       <tbody>
         <%= content_tag_for(:tr, @generations) do |generation| %>
         <td><%= generation.legume.titre unless generation.legume.nil? %></td>
+              <% semi = false 
+                 plantation = false
+                 recolte = false 
+                 %>
               <% for i in 1..52 %>
                 <% if generation.semi_from == i %>
-                  <td>SF</td>
-                <% elsif generation.semi_to == i %>
-                  <td>ST</td>
+                  <% semi = true %>
+                  <td class="light-green"></td>
                 <% elsif generation.plantation == i %>
-                  <td>PL</td>
+                  <td class="mint-green"></td>
+                  <% 
+                    semi = false 
+                    plantation = true
+                  %>
                 <% elsif generation.recolte == i %>
-                  <td>REC</td>
+                  <td class="dark-green"></td>
+                  <% 
+                    plantation = false
+                    recolte = true unless generation.conservation_to == generation.recolte 
+                  %>
                 <% elsif generation.conservation_to == i %>
-                  <td>FIN</td>
+                  <td class="dark-green"></td>
+                  <% 
+                    recolte = false 
+                  %>
+                <% elsif semi %>
+                  <td class="light-green"></td>
+                <% elsif plantation %>
+                  <td class="mint-green"></td>
+                <% elsif recolte %>
+                  <td class="dark-green"></td>
                 <% else %>
                   <td></td>
                 <% end %>
-
               <% end %> 
           <td><%= link_to 'Show', generation %></td>
           <td><%= link_to 'Edit', edit_generation_path(generation) %></td>
