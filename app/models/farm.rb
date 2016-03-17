@@ -10,6 +10,7 @@
 #
 
 class Farm < ActiveRecord::Base
+	validates :name, uniqueness: true
 	has_many :users
 	before_save :generate_paniers
 	before_save :create_slug
@@ -19,7 +20,9 @@ class Farm < ActiveRecord::Base
 	private
 
   def generate_paniers
- 		paniers.generate_sample
+  	for i in 1..52
+			paniers.build(semaine: i)
+	  end
   end
 
   def create_slug
