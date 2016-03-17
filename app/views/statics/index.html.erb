@@ -1,6 +1,6 @@
 <section class="section section_grey">
   <div class="container">
-    <div class="row">
+    <div class="row table">
       <div class="col-xs-12 col-sm-6">
         <h2 class="section-title">Le tableau de bord, <br>qu'est-ce que c'est ?</h2>
         <div class="section-text">
@@ -12,11 +12,23 @@
         <%= image_tag('home1.png') %>
       </div>
     </div>
+    <div class="row table">
+    <div class="col-xs-12 col-sm-6">
+      <% if current_user %>
+        <%= link_to 'Créer ma ferme', new_farm_path, class:"btn btn_green btn_create-panier right" if current_user.farm.nil? %>
+      <% else %>
+        <%= link_to 'Créer ma ferme', new_user_registration_path, class:"btn btn_green btn_create-panier right" %>
+      <% end %>
+    </div>
+    <div class="col-xs-12 col-sm-6">
+      <%= link_to 'Créer mon panier', new_user_registration_path, class:"btn btn_green btn_create-panier left" %>
+    </div>
+  </div>
   </div>
 </section>
 <section class="section section_white">
   <div class="container">
-    <div class="row">
+    <div class="row table">
       <div class="col-xs-12 col-sm-6">
         <%= image_tag('home2.png') %>
       </div>
@@ -30,7 +42,7 @@
 <section class="section section_grey">
   <div class="container">
     <h2 class="section-title center">Comment ça marche ?</h2>
-    <div class="row">
+    <div class="row table">
       <div class="col-xs-12 col-sm-1">
       </div>
       <div class="col-xs-12 col-sm-5">
@@ -47,9 +59,9 @@
 </section>
 <section class="section section_grey">
       <div class="container">
-      <div class="row">
-        <div class="col-xs-12 col-sm-6">
-          <%= image_tag('calendar.svg', class: "img_petit img_petit_right") %>
+      <div class="row table mobile-img-absolute">
+        <div class="col-xs-12 col-sm-6 mobile-absolute">
+          <%= image_tag('calendar.png', class: "img_petit img_petit_right") %>
         </div>
         <div class="col-xs-12 col-sm-5">
           <h3>Organisation simplifiée</h3>
@@ -64,7 +76,7 @@
   </section>
   <section class="section section_grey">
       <div class="container">
-        <div class="row">
+        <div class="row table">
           <div class="col-xs-12 col-sm-1">
           </div>
           <div class="col-xs-12 col-sm-5">
@@ -82,8 +94,3 @@
 </section>
 
 <button class="btn btn_back-top">Retourner en haut</button>
-<% if current_user %>
-  <%= link_to 'Créer ma ferme', new_farm_path, class:"btn btn_green btn_create-panier" if current_user.farm.nil? %>
-<% else %>
-  <%= link_to 'Créer ma ferme', new_user_registration_path, class:"btn btn_green btn_create-panier" %>
-<% end %>
