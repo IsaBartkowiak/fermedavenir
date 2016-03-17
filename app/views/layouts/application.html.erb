@@ -29,7 +29,7 @@
             <li class="nav-item"><%= link_to "Légumes", legumes_path, class: 'btn' %></li>
             <li class="nav-item"><%= link_to "Paniers", farm_paniers_path(current_user.farm.slug), class: 'btn' unless current_user.farm.nil? %></li>
             <li class="nav-item"><%= link_to "Générations", generations_path, class: 'btn' %></li>
-            <li class="nav-item"><%= link_to "Plantations", farm_plantations_path(current_user.farm.slug), class: 'btn' %></li>
+            <li class="nav-item"><%= link_to "Plantations", farm_plantations_path(current_user.farm.slug), class: 'btn' unless current_user.farm.nil? %></li>
           </ul>
         </nav>
       <% end %>
@@ -58,7 +58,7 @@
         <div class="col-xs-12 col-sm-4">
           <%= link_to image_tag('logo-fermesdavenir-white.png', height: 90), "http://www.fermesdavenir.org", class: "footer-logo" %>
         </div>
-        <div class="col-xs-12 col-sm-4"></div>      
+        <div class="col-xs-12 col-sm-4"></div>
       </div>
     </div>
   </footer>
