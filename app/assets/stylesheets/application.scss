@@ -1,6 +1,7 @@
 @import 'reset';
 @import 'fonts';
 @import 'vars';
+@import 'mixins';
 
 
 @import 'bootstrap-generators';
@@ -9,6 +10,5 @@
 @import 'header';
 @import 'footer';
 @import 'devise/login';
-@import 'devise/signup';
 @import 'paniers/list.scss';
 @import 'generations';
