@@ -29,7 +29,7 @@
             <%= link_to "S'enregistrer", new_user_registration_path, class: 'btn btn_green' %>
         <% else %>
             <%= link_to "Légumes", legumes_path, class: 'btn btn-default' %>
-            <%= link_to "Paniers", paniers_path, class: 'btn btn-default' %>
+            <%= link_to "Paniers", farm_paniers_path(current_user.farm.slug), class: 'btn btn-default' unless current_user.farm.nil? %>
             <%= link_to "Générations", generations_path, class: 'btn btn-default' %>
             <%= link_to "Déconnexion", destroy_user_session_path, method: :delete, class: 'btn btn_green' %>
         <% end %>
@@ -45,7 +45,6 @@
     <% end %>
 
     <%= yield %>
-  <button class="btn btn_back-top">Retourner en haut</button>
   <footer class="footer">
     <div class="container">
       <div class="row">

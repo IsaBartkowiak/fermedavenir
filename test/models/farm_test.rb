@@ -1,18 +1,17 @@
 # == Schema Information
 #
-# Table name: paniers
+# Table name: farms
 #
 #  id         :integer          not null, primary key
-#  semaine    :integer
+#  name       :string
+#  slug       :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  user_id    :integer
-#  farm_id    :integer
 #
 
 require 'test_helper'
 
-class PanierTest < ActiveSupport::TestCase
+class FarmTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

@@ -1,11 +1,10 @@
 <div class="container">
-	
-<div class="page-header">
-  <%= link_to paniers_path, class: 'btn btn-default' do %>
-    <span class="glyphicon glyphicon-list-alt"></span>
-    Retourner à la liste des paniers
-  <% end %>
-</div>
+	<div class="page-header">
+	  <%= link_to farm_paniers_path(@farm), class: 'btn btn-default' do %>
+	    <span class="glyphicon glyphicon-list-alt"></span>
+	    Retourner à la liste des paniers
+	  <% end %>
+	</div>
 
-<%= render 'form' %>
+	<%= render 'form' %>
 </div>

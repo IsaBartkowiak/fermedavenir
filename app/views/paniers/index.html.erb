@@ -1,6 +1,6 @@
 <div class="container list-paniers overview">
   <div class="page-header">
-    <%= link_to new_panier_path, class: 'btn btn-primary' do %>
+    <%= link_to new_farm_panier_path(@farm.slug), class: 'btn btn-primary' do %>
       <span class="glyphicon glyphicon-plus"></span>
       Nouveau panier
     <% end %>
@@ -34,13 +34,13 @@
                 </td>
               <td><%= get_cart_total(panier.portions) %> €</td>
               <td>
-              <%= link_to panier_portions_path(panier) do %>
+              <%= link_to farm_panier_portions_path(@farm.slug, panier) do %>
                 <span class="glyphicon glyphicon-plus"></span>
                 Voir le panier
               <% end %>
               </td>
               <td>
-              <%= link_to panier, method: :delete, data: { confirm: 'Êtes-vous sur de vouloir le supprimer ?' } do %>
+              <%= link_to farm_panier_path(@farm.slug, panier), method: :delete, data: { confirm: 'Êtes-vous sur de vouloir le supprimer ?' } do %>
                 <span class="glyphicon glyphicon-trash"></span>
                 Supprimer ce panier
               <% end %>
