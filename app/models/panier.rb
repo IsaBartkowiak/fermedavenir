@@ -16,4 +16,11 @@ class Panier < ActiveRecord::Base
 	scope :par_semaines, -> {
 		order(semaine: :asc).all
 	}
+
+	def planted?
+		portions.each do |portion|
+			return false if !farm.plantations.exists?(generation: portion.generation)
+		end
+		true
+	end
 end
