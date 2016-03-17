@@ -73,12 +73,16 @@ img {
 }
 
 .mobile-img-absolute{
+	@media (max-width: $md-small){
 	padding-bottom: 125px;
+}
 	.mobile-absolute{
+		@media (max-width: $md-small){
 		position: absolute;
 		bottom: 0;
 		left: 50%;
 		@include transform(translateX(-50%));
+	}
 	}
 }
 
