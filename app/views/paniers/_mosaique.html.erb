@@ -1,0 +1,15 @@
+<ul class="col-xs-12 col-md-9">
+	<%= content_tag_for(:tr, @paniers) do |panier| %>
+	  <%= link_to farm_panier_portions_path(panier.farm, panier), class:"virgin", remote: true do %>
+		  <li class="case">
+		  	<%= panier.semaine %>
+		  </li>
+		<% end %>	  
+	<% end %>
+</ul>
+<aside class="sidebar col-xs-12 col-md-3">
+	<h2>Votre panier</h2>
+	<ul id="sidebar-portions">
+		
+	</ul>
+</aside>
