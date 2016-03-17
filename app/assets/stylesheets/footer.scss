@@ -39,14 +39,21 @@
 
 .footer {
 	padding: 2em 0;
+	width: 100%;
 	color: #fff;
 	background-color: $black;
-	text-align: center;
-	position: absolute;
-	//bottom: 0;
-	width: 100%;
-	left: 0px;
 	img {
 		width: 300px;
+	}
+}
+
+.footer-logo {
+	display: block;
+	text-align: center;
+
+	img {
+		display: inline-block;
+		width: 100%;
+		max-width: 20em;
 	}
 }

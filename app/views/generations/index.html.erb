@@ -30,30 +30,30 @@
               <% for i in 1..52 %>
                 <% if generation.semi_from == i %>
                   <% semi = true %>
-                  <td style="background-color:blue">SF</td>
+                  <td class="light-green"></td>
                 <% elsif generation.plantation == i %>
-                  <td style="background-color:yellow">PL</td>
+                  <td class="mint-green"></td>
                   <% 
                     semi = false 
                     plantation = true
                   %>
                 <% elsif generation.recolte == i %>
-                  <td style="background-color:green">REC</td>
+                  <td class="dark-green"></td>
                   <% 
                     plantation = false
                     recolte = true unless generation.conservation_to == generation.recolte 
                   %>
                 <% elsif generation.conservation_to == i %>
-                  <td style="background-color:green">FIN</td>
+                  <td class="dark-green"></td>
                   <% 
                     recolte = false 
                   %>
                 <% elsif semi %>
-                  <td style="background-color:blue"></td>
+                  <td class="light-green"></td>
                 <% elsif plantation %>
-                  <td style="background-color:yellow"></td>
+                  <td class="mint-green"></td>
                 <% elsif recolte %>
-                  <td style="background-color:green"></td>
+                  <td class="dark-green"></td>
                 <% else %>
                   <td></td>
                 <% end %>
