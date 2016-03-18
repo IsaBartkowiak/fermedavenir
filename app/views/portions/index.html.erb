@@ -50,7 +50,7 @@
         <h2 class="panier-dispo--title">Légumes potentiellement disponibles</h2>
         <div class="row">
           <% @generations.each do |generation| %>
-          <div class="col-md-3 col-xs-12">
+          <div class="col-xs-12 col-sm-6 col-md-3">
             <div class="panier-dispo--box">
             <%= image_tag("image-"+generation.legume.titre.parameterize + ".png"); %>
               <%= form_for([@panier.farm, @panier, @portion], remote: true, html: { class: "form-horizontal", role: "form" }) do |f| %>
