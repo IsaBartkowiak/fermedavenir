@@ -80,6 +80,15 @@ body {
 	font-family: $roboto;
 }
 
+.new-farm {
+	margin : auto;
+	float: none;
+}
+.input-farm {
+	height : 44px;
+	border-radius: 0px;
+	border: none;
+}
 .container {
 	width: 100%;
 	max-width: 1180px;

@@ -6,11 +6,12 @@
     <p>Faites germer l'avenir !</p>
     <div class="btn-container">   
         <% if current_user %>
-          <%= link_to 'Créer ma ferme', new_farm_path, class:"btn btn_white" if current_user.farm.nil? %>
+          <div class="col-xs-12 col-sm-3 new-farm">
+            <%= render partial: 'farms/form', class:"hidden" %>
+          </div>
         <% else %>
           <%= link_to 'Créer ma ferme', new_user_registration_path, class:"btn btn_white" %>
         <% end %>
-        <%= link_to 'Créer mon panier', new_user_registration_path, class:"btn btn_white" %>      
     </div>
   </div>
 </div>
@@ -29,13 +30,6 @@
           <%= image_tag('home1.png') %>
         </div>
       </div>
-      <% if current_user %>
-        <div class="row table tablehome">
-          <div class="col-xs-12">
-          <%= render partial: 'farms/form', class:"hidden" %>
-          </div>
-        </div>
-      <% end %>
       <div class="row">
       <div class="col-xs-12 col-sm-6">
       </div>
