@@ -261,7 +261,7 @@ a{
 }
 
 .btn_white {
-	color: $grey;
+	color: darken($grey, 10%);
 	background-color: #fff;
 
 	&:before {

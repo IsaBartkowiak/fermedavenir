@@ -2,7 +2,7 @@
 // Header
 .header {
 	position: relative;
-	padding: 1em 0;
+	padding: .5em 0;
 	text-align: center;
 	background-color: #fff;
 }
@@ -13,7 +13,8 @@
 	svg {
 		display: block;
 		width: auto;
-		height: 5em;
+		width: 6.5em;
+		height: 5em;		
 	}
 
 	@media (max-width: $md-small) {
