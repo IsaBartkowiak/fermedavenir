@@ -85,10 +85,13 @@ body {
 	float: none;
 }
 .input-farm {
-	height : 44px;
-	border-radius: 0px;
+	height: 3em;
+	padding-right: 12em;
+	line-height: 3em;
+	border-radius: 0;
 	border: none;
 }
+
 .container {
 	width: 100%;
 	max-width: 1180px;
@@ -234,11 +237,14 @@ a{
 }
 
 .btn_farm {
-	//margin-top: 1em;
-	margin-bottom: 3em;
-	@media (max-width: $md-small) {
-		margin-top: 1em;
-	}
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 3em;
+  line-height: 3em;
+  font-size: 14px;
+  padding-top: 0;
+  padding-bottom: 0;
 }
 
 .btn_green {
