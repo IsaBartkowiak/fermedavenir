@@ -47,7 +47,7 @@ class Farm < ActiveRecord::Base
 		generations = []
 		legumes.each do |legume|
 			legume.generations.each do |gen|
-      	generations << gen
+      	generations << gen unless generations.include?(gen)
       end
     end
     generations
