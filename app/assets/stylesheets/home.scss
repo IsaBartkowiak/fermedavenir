@@ -7,8 +7,16 @@
 		}
 	}
 	h3 {
-		font-weight : bold;
+		font-weight : 700;
 		@include letter-spacing(60, 14);
+		text-transform: uppercase;
+		font-size: 1em;
+		margin: 25px 0px;
+	}
+	h2{
+		text-transform: uppercase;
+		font-size: 1.7em;
+		font-weight: 600;
 	}
 
 	.img_petit {
@@ -23,6 +31,9 @@
 		p {
 			margin: .5em 0;
 			@include letter-spacing(60, 14);
+			@media (max-width: $md-small) {
+			margin: 0 auto;
+			}
 		}
 	}
 

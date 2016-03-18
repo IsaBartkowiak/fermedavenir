@@ -12,14 +12,14 @@
 #
 
 class LegumesController < ApplicationController
-  before_action :set_legume, only: [:show, :edit, :update, :destroy]
+  before_action :set_farm
   before_action :check_user
-  before_action :bump, except: [:show, :index]
+  before_action :set_legume, only: [:show, :edit, :update, :destroy]
 
   # GET /legumes
   # GET /legumes.json
   def index
-    @legumes = Legume.all
+    @legumes = @farm.legumes.all
   end
 
   # GET /legumes/1
@@ -39,7 +39,7 @@ class LegumesController < ApplicationController
   # POST /legumes
   # POST /legumes.json
   def create
-    @legume = Legume.new(legume_params)
+    @legume = @farm.legumes.new(legume_params)
 
     respond_to do |format|
       if @legume.save
@@ -81,12 +81,12 @@ class LegumesController < ApplicationController
       redirect_to root_path, notice: 'Vous devez être connecté' if current_user.nil?
     end
 
-    def bump
-      redirect_to root_path, notice: 'Vous devez être administrateur' unless current_user.statut == 'admin'
+    def set_farm
+      @farm = current_user.farm
     end
 
     def set_legume
-      @legume = Legume.find(params[:id])
+      @legume = @farm.legumes.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

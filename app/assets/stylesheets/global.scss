@@ -15,7 +15,20 @@
 	background: $selection-bg;
 }
 
+.tablehome {
+	@media (min-width: $md-small) {
+	margin: 0;
+	display: table;
+}
+}
 
+.cellhome {
+	@media (min-width: $md-small) {
+	display: table-cell;
+	vertical-align: middle;
+	float: none;
+}
+}
 // Global settings
 *,
 *:after,
@@ -112,7 +125,7 @@ a{
 		background-color: #fff;
 
 		.section-title {
-			
+
 			&:after {
 				background-color: $main-color;
 			}
@@ -137,7 +150,7 @@ a{
 		text-align: center;
 
 		&:after {
-			left: calc(50% - .5em);				
+			left: calc(50% - .5em);
 		}
 	}
 
