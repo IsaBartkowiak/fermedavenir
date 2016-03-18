@@ -16,6 +16,7 @@
 class GenerationsController < ApplicationController
   before_action :set_generation, only: [:show, :edit, :update, :destroy]
   before_action :check_user
+  before_action :bump, except: [:show, :index]
 
   # GET /generations
   # GET /generations.json
@@ -80,6 +81,10 @@ class GenerationsController < ApplicationController
   private
     def check_user
       redirect_to root_path, notice: 'Vous devez être connecté' if current_user.nil?
+    end
+
+    def bump
+      redirect_to root_path, notice: 'Vous devez être administrateur' unless current_user.statut == 'admin'
     end
     # Use callbacks to share common setup or constraints between actions.
     def set_generation
