@@ -1,28 +1,25 @@
 <div class="section_grey panier-edit">
   <div class="container">
     <div class="page-header">
-      <%= link_to farm_paniers_path(@panier.farm.slug), class: 'btn btn-default' do %>
-      <span class="glyphicon glyphicon-list"></span>
+      <%= link_to farm_paniers_path(@panier.farm.slug), class: 'btn-return' do %>
+      <span class="glyphicon glyphicon-menu-left"></span>
       Retourner à la liste des paniers
       <% end %>
       <h1>Légumes du panier de la semaine <%= @panier.semaine %></h1>
 
     </div>
 
-
-
     <!-- Items du panier -->
-   
         <div class="row">
           <div class="col-md-4 col-xs-12">
             <p class="panier-item--legend">Légume</p>
           </div>
 
-          <div class="col-md-3 col-xs-12">
+          <div class="col-md-4 col-xs-12">
             <p class="panier-item--legend">Génération</p>
           </div>
 
-          <div class="col-md-3 col-xs-12">
+          <div class="col-md-2 col-xs-12">
             <p class="panier-item--legend">Quantité (kg)</p>
           </div>
 
@@ -33,6 +30,7 @@
           <div class="col-md-1 col-xs-12"></div>
         </div>
  
+ 
 
       <div id="portions-list">
         <% @portions.each do |portion| %>
@@ -42,8 +40,9 @@
 
 
       <span class="panier-item--total">
-      Total 
+        <span>    Total Panier : 
         <span id="total-price"><%= get_cart_total(@panier.portions) %> €</span>   
+        </span>
       </span>
 
       <!-- Légumes disponibles -->

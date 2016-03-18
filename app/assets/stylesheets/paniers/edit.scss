@@ -8,16 +8,20 @@
 			height: 60px;
 			line-height: 60px;
 			display:inline-block;
+			@media (max-width: 992px){
+				height:auto;
+				line-height:normal;
+			}
 			p, div{
 				line-height: normal;
 				vertical-align: middle;
 				display: inline-block;
+				color: darken($grey,30%);margin: 0;
 				
 			}
 		}
 		&--legend{
 			font-family: $roboto-b;
-			color: darken($grey,30%);
 			text-transform: uppercase;
 		}
 		&--img{
@@ -32,7 +36,6 @@
 			vertical-align: middle;
 		}
 		&--date{
-			color: darken($grey,30%);
 			margin: 0;
 		}
 		&--title{
@@ -42,7 +45,6 @@
 			font-family: $roboto-m;
 			width: 100%;
 			margin: 0;
-			color: darken($grey,30%);
 		}
 		&--variete{
 			display: inline-block;
@@ -50,30 +52,24 @@
 			color: darken($grey,30%);
 		}
 		&--quantity{
-			input{
-				border: 1px solid lighten($grey, 15%);
-				max-width: 80px;
-				padding: 10px;
-				color: darken($grey,30%);
+			color: darken($grey,30%);
 
-			}
 		}
 		&--price{
-			padding-top:15px;
 			color: darken($grey,30%);
 		}
 		&--total{
 			display: inline-block;
 			width: 100%;
 			text-align:right;
-			padding: 15px 0;
+			//border-bottom: 1px solid lighten($grey, 15%);
 			span{
 				display: inline-block;
-				padding: 10px;
+				padding: 5px 15px;
 				background-color: white;
 				font-family: $roboto-b;
 				color: $main-color;
-				border: 2px solid $main-color;
+				text-transform: uppercase;
 			}
 		}
 	}
@@ -97,6 +93,7 @@
 			text-transform: uppercase;
 			width:100%;
 			text-align:center;
+			min-height:42px;
 		}
 		&--quantity{
 			display:inline-block;
@@ -124,6 +121,7 @@
 		}
 		img{
 			max-height: 80px;
+			min-height:80px;
 			margin-bottom:20px;
 		}
 	}
@@ -131,7 +129,33 @@
 
 
 .btn{
-	&-primary{
-
+	&-return{
+		color: $grey;
+		border: 1px solid $grey;
+		padding: 5px 10px;
+		text-transform:uppercase;
+		font-family: $roboto-b;
+		font-size:11px;
+		position: relative;
+		overflow: hidden;
+		display: inline-block;
+		transition: all .3s ease;
+		span{
+			position: absolute;
+			left:-50px;
+			top:0;
+			bottom:0;
+			margin: auto;
+			height:10px;
+			transition: all .3s ease;
+		}
+		&:hover, &:focus{
+			color: $grey;
+			text-decoration: none;
+			padding-left: 20px;
+			span{
+				left:5px;
+			}
+		}
 	}
 }
