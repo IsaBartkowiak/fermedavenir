@@ -1,48 +1,38 @@
-     <div class="panier-item">
-       <div class="row">
-        <div class="col-md-4">
-          <div class="panier-item--img">
-            <%= image_tag("laitue.png"); %>
-          </div>
-          <div class="panier-item--description">
-            <h2 class="panier-item--title"><%= @portion.legume.titre %></h2>
-            <p class="panier-item--variete"><%= @portion.legume.variete %></p> 
-          </div>
-
-        </div>
-        <div class="col-md-3">
-          <p class="panier-item--date">Conservable jusqu'à la semaine <%= @portion.generation.conservation_to unless @portion.generation.nil? %></p> 
-        </div>
-        <div class="col-md-3">
-        <div class="panier-item--quantity">
-            <input type="number" value="<%= @portion.quantity %>">
-        </div>
-      
-        </div>
-        <div class="col-md-1">
-          <p class="panier-item--price" data-price="<%= @portion.price %>"><%= @portion.price %></p> 
-        </div>
-        <div class="col-md-1">
-          <%= link_to farm_panier_portion_path(@panier.farm, @panier,@portion), method: :delete, data: { confirm: 'Êtes vous sur ?' } do %>
-          <span class="glyphicon glyphicon-trash"></span>
-          <% end %>
-        </div>
+<% 
+portion = if defined?(element)
+  element
+else
+  @portion
+end
+%>
+ <div class="panier-item">
+   <div class="row">
+    <div class="col-md-4">
+      <div class="panier-item--img">
+        <%= image_tag(portion.legume.titre.parameterize + ".jpg"); %>
       </div>
+      <div class="panier-item--description">
+        <h2 class="panier-item--title"><%= portion.legume.titre %></h2>
+        <p class="panier-item--variete"><%= portion.legume.variete %></p> 
+      </div>
+
     </div>
-
-
-
-
-<!-- <tr>
-  <td><%= @portion.legume.titre %></td>
-  <td></td>
-  <td><%= @portion.quantity %></td>
-  <td class="price" data-price="<%= @portion.price %>"><%= @portion.price %> €</td>
-  <td><%= link_to 'Modifier', edit_farm_panier_portion_path(@panier.farm, @panier,@portion) %></td>
-  <td>
-  <%= link_to farm_panier_portion_path(@panier.farm, @panier,@portion), method: :delete, data: { confirm: 'Êtes vous sur ?' } do %>
-  <span class="glyphicon glyphicon-trash"></span>
-  Supprimer le légume du panier
-  <% end %>
-  </td>
-</tr> -->
+    <div class="col-md-3">
+      <p class="panier-item--date">Conservable jusqu'à la semaine <%= portion.generation.conservation_to unless portion.generation.nil? %></p> 
+    </div>
+    <div class="col-md-3">
+    <div class="panier-item--quantity">
+        <input type="number" value="<%= portion.quantity %>">
+    </div>
+  
+    </div>
+    <div class="col-md-1">
+      <p class="panier-item--price" data-price="<%= portion.price %>"><%= portion.price.round(2) %> €</p> 
+    </div>
+    <div class="col-md-1">
+      <%= link_to farm_panier_portion_path(@panier.farm, @panier,portion), method: :delete, data: { confirm: 'Êtes vous sur ?' } do %>
+      <span class="glyphicon glyphicon-trash"></span>
+      <% end %>
+    </div>
+  </div>
+</div>
