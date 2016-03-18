@@ -12,15 +12,16 @@
 #
 
 class PortionsController < ApplicationController
+  before_action :check_user
+  before_action :set_farm
   before_action :set_portion, only: [:show, :edit, :update, :destroy]
   before_action :set_panier
-  before_action :check_user
 
   # GET /portions
   # GET /portions.json
   def index
     @portions = @panier.portions.all
-    @generations = Generation.available_for(@panier.semaine).all
+    @generations = @farm.get_generations_for(@panier.semaine)
     @portion = Portion.new
   end
 
@@ -84,7 +85,11 @@ class PortionsController < ApplicationController
     def check_user
       redirect_to root_path, notice: 'Vous devez être connecté' if current_user.nil?
     end
-    
+
+    def set_farm
+      @farm = current_user.farm unless current_user.nil?
+    end
+
     def set_panier
       @panier = Panier.find(params[:panier_id]) if params[:panier_id]
     end

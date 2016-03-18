@@ -13,14 +13,11 @@
   <% end %>
 
   <div class="form-group">
-    <div class="col-sm-10">
-    <%= f.label :Nom_de_la_ferme, class: "login-label" %>
-  </div>
     <div class="col-xs-12 col-sm-6">
-      <%= f.text_field :name, class: "form-control" %>
+      <%= f.text_field :name, class: "form-control", placeholder: "Entrez un nom pour votre ferme", required: "required" %>
     </div>
     <div class="col-xs-12 col-sm-2">
-      <%= f.submit class: "btn btn_green btn_farm center" %>
+      <%= f.submit "Créer ma ferme", class: "btn btn_green btn_farm center" %>
     </div>
   </div>
 
