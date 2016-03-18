@@ -11,11 +11,15 @@
 
 class Farm < ActiveRecord::Base
 	validates :name, uniqueness: true
+
 	has_many :users
-	before_save :generate_paniers
-	before_save :create_slug
 	has_many :paniers
 	has_many :plantations
+	has_many :legumes
+	has_many :generations
+	
+	before_save :generate_paniers
+	before_save :create_slug
 
 	def get_generations_to_plant
 		generations = []

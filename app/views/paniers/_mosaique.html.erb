@@ -1,6 +1,6 @@
 <ul class="col-xs-12 col-md-9">
 	<% @paniers.each do |panier| %>
-	  <%= link_to farm_panier_portions_path(panier.farm.slug, panier), class:"virgin", remote: true do %>
+  		<%= link_to farm_panier_portions_path(panier.farm.slug, panier), class:"virgin", remote: true do %>
 		  <li class="case <% unless panier.planted? %>alert-plant<% end %>">
 		  	<%= panier.semaine %>
 		  </li>
