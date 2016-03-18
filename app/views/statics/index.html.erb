@@ -6,7 +6,7 @@
     <p>Faites germer l'avenir !</p>
     <div class="btn-container">   
         <% if current_user %>
-          <div class="col-xs-12 col-sm-6 new-farm">
+          <div class="new-farm">
             <%= render partial: 'farms/form', class:"hidden" %>
           </div>
         <% else %>
@@ -30,13 +30,6 @@
           <%= image_tag('home1.png') %>
         </div>
       </div>
-      <div class="row">
-      <div class="col-xs-12 col-sm-6">
-      </div>
-      <div class="col-xs-12 col-sm-6">
-        <%= link_to 'Créer ma ferme', new_user_registration_path, class:"btn btn_green btn_create-panier left" unless current_user %>
-      </div>
-    </div>
     </div>
   </section>
   <section class="section section_white">
