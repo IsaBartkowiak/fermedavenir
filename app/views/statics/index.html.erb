@@ -21,14 +21,11 @@
       </div>
       <div class="row">
       <div class="col-xs-12 col-sm-6">
-        <% if current_user %>
-          <%= link_to 'Créer ma ferme', new_farm_path, class:"btn btn_green btn_create-panier right" if current_user.farm.nil? %>
-        <% else %>
-          <%= link_to 'Créer ma ferme', new_user_registration_path, class:"btn btn_green btn_create-panier right" %>
-        <% end %>
       </div>
       <div class="col-xs-12 col-sm-6">
-        <%= link_to 'Créer mon panier', new_user_registration_path, class:"btn btn_green btn_create-panier left" %>
+      <% unless current_user %>
+        <%= link_to 'Créer ma ferme', new_user_registration_path, class:"btn btn_green btn_create-panier left" %>
+      <% end %>
       </div>
     </div>
     </div>
