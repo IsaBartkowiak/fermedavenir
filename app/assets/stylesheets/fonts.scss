@@ -1,4 +1,5 @@
-
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,300,500,400italic,500italic,700);
+/*
 @mixin fontface($font-name){
 	@font-face {
 		font-family: $font-name;
@@ -23,13 +24,19 @@ $roboto : roboto-regular-webfont, helevetica neue, helevetica, arial, sans-serif
 $roboto-bl : roboto-black-webfont, helevetica neue, helevetica, arial, sans-serif;
 $roboto-b : roboto-bold-webfont, helevetica neue, helevetica, arial, sans-serif;
 $roboto-m : roboto-medium-webfont, helevetica neue, helevetica, arial, sans-serif;
-$roboto-l : roboto-light-webfont, helevetica neue, helevetica, arial, sans-serif;
+$roboto-l : roboto-light-webfont, helevetica neue, helevetica, arial, sans-serif; */
+
+$roboto : 'Roboto', sans-serif;
+$roboto-bl : 'Roboto', sans-serif;
+$roboto-b : 'Roboto', sans-serif;
+$roboto-m : 'Roboto', sans-serif;
+$roboto-l : 'Roboto', sans-serif;
 
 //oswald
-@include fontface ("Oswald-Bold");
+/*@include fontface ("Oswald-Bold");
 @include fontface ("Oswald-Light");
 @include fontface ("Oswald-Regular");
 
 $oswald: Oswald-Regular, helevetica neue, helevetica, serif;
 $oswald-b: Oswald-Bold, helevetica neue, helevetica, serif;
-$oswald-r: Oswald-Regular, helevetica neue, helevetica, serif;
+$oswald-r: Oswald-Regular, helevetica neue, helevetica, serif; */

@@ -53,12 +53,16 @@
     <%= yield %>
   <footer class="footer">
     <div class="container">
-      <div class="row">
-        <div class="col-xs-12 col-sm-4"></div>
-        <div class="col-xs-12 col-sm-4">
+      <div class="row tablehome">
+        <div class="col-xs-12 col-sm-4 cellfooter">
+        <p>© Copyright 2016</p></div>
+        <div class="col-xs-12 col-sm-4 cellfooter">
+          <p>En partenariat avec :</p>
           <%= link_to image_tag('logo-fermesdavenir-white.png', height: 90), "http://www.fermesdavenir.org", class: "footer-logo" %>
         </div>
-        <div class="col-xs-12 col-sm-4"></div>
+        <div class="col-xs-12 col-sm-4 cellfooter">
+        <p>Retrouvez nous sur Facebook</p>
+      <%= link_to image_tag('facebook.png', class:"img_petit"), "https://www.facebook.com/letableaudebord" %></div>
       </div>
     </div>
   </footer>
