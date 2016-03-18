@@ -23,9 +23,7 @@
       <div class="col-xs-12 col-sm-6">
       </div>
       <div class="col-xs-12 col-sm-6">
-      <% unless current_user %>
-        <%= link_to 'Créer ma ferme', new_user_registration_path, class:"btn btn_green btn_create-panier left" %>
-      <% end %>
+        <%= link_to 'Créer ma ferme', new_user_registration_path, class:"btn btn_green btn_create-panier left" unless current_user %>
       </div>
     </div>
     </div>
