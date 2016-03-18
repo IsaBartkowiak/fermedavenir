@@ -18,6 +18,7 @@ class Farm < ActiveRecord::Base
 	has_many :legumes
 	
 	before_save :generate_paniers
+	before_save :generate_legumes
 	before_save :create_slug
 
 	def get_generations_to_plant
@@ -40,6 +41,16 @@ class Farm < ActiveRecord::Base
       end
     end
 		quantity    
+	end
+
+	def get_generations
+		generations = []
+		legumes.each do |legume|
+			legume.generations.each do |gen|
+      	generations << gen
+      end
+    end
+    generations
 	end
 
   def copy_leg(a_legume)
