@@ -1,12 +1,6 @@
   <div class="home">
   <section class="section section_grey">
     <div class="container">
-
-
-      <% if current_user %>
-          <%= render partial: 'farms/form', class:"hidden" %>
-      <% end %>
-
       <div class="row table tablehome">
         <div class="col-xs-12 col-sm-6 cellhome">
           <h2 class="section-title">Le tableau de bord, <br>qu'est-ce que c'est ?</h2>
@@ -19,6 +13,9 @@
           <%= image_tag('home1.png') %>
         </div>
       </div>
+      <% if current_user %>
+          <%= render partial: 'farms/form', class:"hidden" %>
+      <% end %>
       <div class="row">
       <div class="col-xs-12 col-sm-6">
       </div>

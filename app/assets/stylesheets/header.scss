@@ -27,6 +27,16 @@
 	right: 0;
 	bottom: 1em;
 	display: inline-block;
+
+	@media (max-width: $md-smaller) {
+		top: .5em;
+		bottom: auto;		
+
+		a {
+			display: block;
+			margin-top: .5em;
+		}
+	}
 }
 
 .header-nav {

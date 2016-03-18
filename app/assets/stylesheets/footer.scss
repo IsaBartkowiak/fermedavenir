@@ -59,7 +59,7 @@
 .cellfooter {
 	@media (min-width: $md-small) {
 	display: table-cell;
-	vertical-align: middle;
+	vertical-align: bottom;
 	float: none;
 	text-align: center;
 }
