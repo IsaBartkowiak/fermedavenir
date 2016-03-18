@@ -21,7 +21,7 @@
 			float: none;
 			vertical-align: middle;
 		}
-		h3 {
+		h1 {
 			font-weight : 700;
 			@include letter-spacing(60, 14);
 			text-transform: uppercase;
@@ -70,6 +70,13 @@
 		}
 	}
 
+	.section_grey {
+
+		.form-horizontal {
+			margin-top: 1em;
+		}
+	}
+
 	.section_white{
 		.text{
 			padding-top: 60px;
@@ -83,11 +90,6 @@
 			h2{
 				color: $main-color;
 			}
-		}
-	}
-	.section_grey{
-		img{
-			max-width: 120%;
 		}
 	}
 
