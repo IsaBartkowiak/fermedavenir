@@ -3,6 +3,7 @@
 		padding: 20px 0;
 		border-top: 1px solid lighten($grey, 15%);
 		border-bottom: 1px solid lighten($grey, 15%);
+
 		div[class^="col-md"]{
 			height: 60px;
 			line-height: 60px;
@@ -35,7 +36,7 @@
 			margin: 0;
 		}
 		&--title{
-			font-size:20px;
+			font-size:18px;
 			text-transform: uppercase;
 			display:inline-block;
 			font-family: $roboto-m;
@@ -61,5 +62,76 @@
 			padding-top:15px;
 			color: darken($grey,30%);
 		}
+		&--total{
+			display: inline-block;
+			width: 100%;
+			text-align:right;
+			padding: 15px 0;
+			span{
+				display: inline-block;
+				padding: 10px;
+				background-color: white;
+				font-family: $roboto-b;
+				color: $main-color;
+				border: 2px solid $main-color;
+			}
+		}
+	}
+	.panier-dispo{
+		margin: 60px 0;
+		&--title{
+			@extend .h1;
+			margin-bottom:25px;
+		}
+		&--box{
+			background-color:white;
+			text-align:center;
+			padding: 30px 20px;
+			border: 1px solid lighten($grey, 15%);
+			margin-bottom:10px;
+		}
+		&--label{
+			font-family: $roboto-b;
+			font-size:15px;
+			color: darken($grey,30%);
+			text-transform: uppercase;
+			width:100%;
+			text-align:center;
+		}
+		&--quantity{
+			display:inline-block;
+			width: 50%;
+			margin: 10px auto;
+			min-height:40px;
+			padding: 0 10px;
+			text-align:center;
+			border: 1px solid lighten($grey, 15%);
+		}
+		&--add{
+			display: inline-block;
+			font-size:18px;
+			height: 30px;
+			width: 30px;
+			line-height:27px;
+			border-radius: 50%;
+			background-color: $main-color;
+			color: white;
+			border:none;
+			transition: all .2s $in-cubic ;
+			&:hover{
+				background-color:  darken($main-color, 10%);
+			}
+		}
+		img{
+			max-height: 80px;
+			margin-bottom:20px;
+		}
+	}
+}
+
+
+.btn{
+	&-primary{
+
 	}
 }

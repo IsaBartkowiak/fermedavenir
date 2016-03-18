@@ -9,7 +9,7 @@ end
    <div class="row">
     <div class="col-md-4">
       <div class="panier-item--img">
-        <%= image_tag(portion.legume.titre.parameterize + ".jpg"); %>
+        <%= image_tag("image-"+portion.legume.titre.parameterize + ".png"); %>
       </div>
       <div class="panier-item--description">
         <h2 class="panier-item--title"><%= portion.legume.titre %></h2>
@@ -22,7 +22,7 @@ end
     </div>
     <div class="col-md-3">
     <div class="panier-item--quantity">
-        <input type="number" value="<%= portion.quantity %>">
+        <p><%= portion.quantity %></p> 
     </div>
   
     </div>
