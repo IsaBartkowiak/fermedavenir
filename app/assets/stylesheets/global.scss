@@ -192,6 +192,7 @@ a{
 	border-radius: 0;
 	cursor: pointer;
 	overflow: hidden;
+	transition: color .3s ease-in-out;
 
 	&:before {
 		content:"";
@@ -256,6 +257,34 @@ a{
 	}
 }
 
+.btn_white {
+	color: $grey;
+	background-color: #fff;
+
+	&:before {
+		background-color: $grey-light;
+	}
+
+	&.btn_stroke {
+		color: #fff;
+		border-color: #fff;
+	}
+
+	&:hover {
+		color: lighten($black, 10%);
+		background-color: #fff;
+
+		&:before {
+			transform: scaleX(1) skew(0deg);
+			transition: transform .4s ease-out;
+		}
+
+		&.btn_stroke {
+			color: $grey;
+		}
+	}
+}
+
 .btn_stroke {
 	background-color: #fff;
 	border-width: 1px;
@@ -265,12 +294,6 @@ a{
 	&:hover {
 		background-color: #fff;
 	}
-}
-
-.btn_create-panier {
-	display: block;
-	max-width: 14em;
-	margin: 2em auto;
 }
 
 .highlight{
