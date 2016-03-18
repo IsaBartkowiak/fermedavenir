@@ -81,8 +81,10 @@ body {
 }
 
 .new-farm {
-	margin : auto;
-	float: none;
+	max-width: 30em;
+	width: 100%;
+	margin : auto;	
+	padding: 0 1em;
 }
 .input-farm {
 	height: 3em;
