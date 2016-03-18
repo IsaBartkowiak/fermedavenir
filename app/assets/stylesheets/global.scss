@@ -17,9 +17,13 @@
 
 .tablehome {
 	@media (min-width: $md-small) {
-	margin: 0;
+	margin: auto;
 	display: table;
 }
+@media (max-width: $md-small) {
+		margin-left: 0;
+    margin-right: 0;
+	}
 }
 
 .cellhome {

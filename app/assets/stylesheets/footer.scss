@@ -3,7 +3,7 @@
 
 .btn_back-top {
 	display: block;
-	margin: 1em auto 2em;
+	margin: auto;
 	color: $black;
 	text-transform: none;
 
@@ -41,10 +41,31 @@
 	padding: 2em 0;
 	width: 100%;
 	color: #fff;
-	background-color: $black;
+	background-color: #81c69e;
 	img {
 		width: 300px;
+
+
 	}
+
+	.img_petit {
+		height: 40px;
+	width: auto;
+	max-height: 100%;
+	}
+
+}
+
+.cellfooter {
+	@media (min-width: $md-small) {
+	display: table-cell;
+	vertical-align: middle;
+	float: none;
+	text-align: center;
+}
+@media (max-width: $md-small){
+    text-align: center;
+}
 }
 
 .footer-logo {
