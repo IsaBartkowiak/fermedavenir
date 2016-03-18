@@ -14,6 +14,7 @@
 class LegumesController < ApplicationController
   before_action :set_legume, only: [:show, :edit, :update, :destroy]
   before_action :check_user
+  before_action :bump, except: [:show, :index]
 
   # GET /legumes
   # GET /legumes.json
@@ -79,7 +80,11 @@ class LegumesController < ApplicationController
     def check_user
       redirect_to root_path, notice: 'Vous devez être connecté' if current_user.nil?
     end
-    # Use callbacks to share common setup or constraints between actions.
+
+    def bump
+      redirect_to root_path, notice: 'Vous devez être administrateur' unless current_user.statut == 'admin'
+    end
+
     def set_legume
       @legume = Legume.find(params[:id])
     end

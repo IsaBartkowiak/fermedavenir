@@ -27,6 +27,18 @@ class Farm < ActiveRecord::Base
     generations.sort_by{|g| g[:plantation]}
 	end
 
+	def get_quantity_to_plant a_generation
+		quantity = 0
+		paniers.each do |panier|
+      panier.portions.each do |portion|
+        if portion.generation == a_generation
+        	quantity += (portion.quantity*panier.quantity)
+        end
+      end
+    end
+		quantity    
+	end
+
 	private
 
   def generate_paniers

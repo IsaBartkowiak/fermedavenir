@@ -1,98 +1,88 @@
-<div class="container">
-  <div class="page-header">
-    <%= link_to farm_paniers_path(@panier.farm.slug), class: 'btn btn-default' do %>
+<div class="section_grey panier-edit">
+  <div class="container">
+    <div class="page-header">
+      <%= link_to farm_paniers_path(@panier.farm.slug), class: 'btn btn-default' do %>
       <span class="glyphicon glyphicon-list"></span>
       Retourner à la liste des paniers
-    <% end %>
+      <% end %>
+      <h1 class="center">Légumes du panier de la semaine <%= @panier.semaine %></h1>
+
 
   <button class="pull-right btn btn-default" id="total-price">
     <%= get_cart_total(@panier.portions) %> €
   </button>
 
-  </div>
-
-  <div class="container">
-  <h1>Légumes du panier de la semaine <%= @panier.semaine %></h1>
-    <div class="row"></div>
-  </div>
-
-  
-
-
-  <div class="table-responsive">
-    <table class="table table-striped table-bordered table-hover">
-      <thead>
-        <tr>
-          <th>Légume</th>
-          <th>Génération</th>
-          <th>Quantité (kg)</th>
-          <th>Prix</th>
-          <th></th>
-          <th></th>
-        </tr>
-      </thead>
-
-      <tbody id="portions-list">
-        <% @portions.each do |portion| %>
-          <tr <% if !portion.panier.farm.plantations.exists?(generation: portion.generation) %>class="alert-plant"<% end %>>
-            <td><%= portion.legume.titre %></td>
-            <td>Conservable jusqu'à la semaine <%= portion.generation.conservation_to unless portion.generation.nil? %></td>
-            <td><%= portion.quantity %></td>
-            <td class="price" data-price="<%= portion.price %>"><%= portion.price %> €</td>
-            <td><%= link_to 'Modifier', edit_farm_panier_portion_path(@panier.farm.slug, @panier,portion) %></td>
-            <td>
-            <%= link_to farm_panier_portion_path(@panier.farm.slug, @panier,portion), method: :delete, data: { confirm: 'Êtes vous sur ?' } do %>
-              <span class="glyphicon glyphicon-trash"></span>
-                Supprimer le légume du panier
-            <% end %>
-            </td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-
-  </div>
 </div>
 
+
+
+<!-- Items du panier -->
+<div class="row">
+  <div class="col-md-4">
+    <p class="panier-item--legend">Légume</p>
+  </div>
+
+  <div class="col-md-3">
+    <p class="panier-item--legend">Génération</p>
+  </div>
+
+  <div class="col-md-3">
+    <p class="panier-item--legend">Quantité (kg)</p>
+  </div>
+
+  <div class="col-md-1">
+    <p class="panier-item--legend">Prix</p>
+  </div>
+
+  <div class="col-md-1"></div>
+</div>
+
+
+<div id="portions-list">
+  <% @portions.each do |portion| %>
+    <%= render 'list_element', :element => portion %>
+  <% end %>
+</div>
 
 <div class="container">
   <div class="col-xs-12">
     <% @generations.each do |generation| %>
     <div class="col-xs-3">
       <div class="well">
-      <%= form_for([@panier.farm, @panier, @portion], remote: true, html: { class: "form-horizontal", role: "form" }) do |f| %>
-      <% if @portion.errors.any? %>
+        <%= form_for([@panier.farm, @panier, @portion], remote: true, html: { class: "form-horizontal", role: "form" }) do |f| %>
+        <% if @portion.errors.any? %>
         <div class="alert alert-danger alert-dismissable" role="alert">
           <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
           <h4><%= pluralize(@portion.errors.count, "error") %> prohibited this portion from being saved:</h4>
 
           <ul>
-          <% @portion.errors.full_messages.each do |msg| %>
+            <% @portion.errors.full_messages.each do |msg| %>
             <li><%= msg %></li>
-          <% end %>
+            <% end %>
           </ul>
         </div>
-      <% end %>
+        <% end %>
 
-      <div class="form-group">
-        <%= f.label generation.legume.titre + ' - ' + generation.legume.variete, class: "col-sm-12" %>
-        <div class="col-sm-10">
-          <%= f.hidden_field :legume_id, value: generation.legume.id, class: "form-control" %>
+        <div class="form-group">
+          <%= f.label generation.legume.titre + ' - ' + generation.legume.variete, class: "col-sm-12" %>
+          <div class="col-sm-10">
+            <%= f.hidden_field :legume_id, value: generation.legume.id, class: "form-control" %>
+          </div>
         </div>
-      </div>
-      <div class="form-group">
-        <div class="col-sm-8">
-          <%= f.number_field :quantity, class: "form-control", placeholder: 'KG', :step => 'any' %>
+        <div class="form-group">
+          <div class="col-sm-8">
+            <%= f.number_field :quantity, class: "form-control", placeholder: 'KG', :step => 'any' %>
+          </div>
         </div>
-      </div>
-      <div class="form-group">
-        <div class="col-sm-12">
-          <%= f.submit "Ajouter au panier", class: "btn btn-primary" %>
+        <div class="form-group">
+          <div class="col-sm-12">
+            <%= f.submit "Ajouter au panier", class: "btn btn-primary" %>
+          </div>
         </div>
-      </div>
-    <% end %>
+        <% end %>
       </div>
     </div>
-  <% end %> 
+    <% end %> 
   </div>
+</div>
 </div>

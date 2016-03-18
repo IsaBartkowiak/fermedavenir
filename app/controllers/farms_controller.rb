@@ -42,7 +42,7 @@ class FarmsController < ApplicationController
 
     respond_to do |format|
       if @farm.save
-        format.html { redirect_to farm_path(@farm.slug), notice: 'Farm was successfully created.' }
+        format.html { redirect_to root_path, notice: 'Farm was successfully created.' }
         format.json { render :show, status: :created, location: @farm }
       else
         format.html { render :new }
