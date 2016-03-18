@@ -1,4 +1,22 @@
   <div class="home">
+  
+<div class="banner container-fluid">
+   <div class="row">
+    <h3>Le tableau de bord<br/><span>par Fermes d'Avenir</span></h3>
+    <p>Faites germer l'avenir !</p>
+    <div class="btn">
+        <% if current_user %>
+          <%= link_to 'Créer ma ferme', new_farm_path, class:"btn btn_create-panier right" if current_user.farm.nil? %>
+        <% else %>
+          <%= link_to 'Créer ma ferme', new_user_registration_path, class:"btn btn_create-panier right" %>
+        <% end %>
+      </div>
+      <div class="btn">
+        <%= link_to 'Créer mon panier', new_user_registration_path, class:"btn btn_create-panier left" %>
+      </div>
+   </div>
+</div>
+
   <section class="section section_grey">
     <div class="container">
 
@@ -19,18 +37,6 @@
           <%= image_tag('home1.png') %>
         </div>
       </div>
-      <div class="row">
-      <div class="col-xs-12 col-sm-6">
-        <% if current_user %>
-          <%= link_to 'Créer ma ferme', new_farm_path, class:"btn btn_green btn_create-panier right" if current_user.farm.nil? %>
-        <% else %>
-          <%= link_to 'Créer ma ferme', new_user_registration_path, class:"btn btn_green btn_create-panier right" %>
-        <% end %>
-      </div>
-      <div class="col-xs-12 col-sm-6">
-        <%= link_to 'Créer mon panier', new_user_registration_path, class:"btn btn_green btn_create-panier left" %>
-      </div>
-    </div>
     </div>
   </section>
   <section class="section section_white">

@@ -21,7 +21,7 @@ class PlantationsController < ApplicationController
     @plantations = @farm.plantations.all
     @generations = @farm.get_generations_to_plant
 
-    redirect_to farm_paniers_path(@farm), notice: "Vous avez été redirigé vers vos paniers car vous n'en avez pas encore rempli. Remplissez les afin de pouvoir planter les légumes choisis :-)." if @generations.count == 0
+    redirect_to farm_paniers_path(@farm), notice: "Vous n'avez pas encore constitué vos paniers, remplissez-les afin de pouvoir accéder à vos plantations ;-)" if @generations.count == 0
 
     @plantation = Plantation.new
   end
