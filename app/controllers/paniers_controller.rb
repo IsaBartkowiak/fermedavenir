@@ -44,7 +44,7 @@ class PaniersController < ApplicationController
 
     respond_to do |format|
       if @panier.save
-        format.html { redirect_to farm_panier_path(@farm.slug,@panier), notice: 'Panier was successfully created.' }
+        format.html { redirect_to farm_paniers_path(@farm.slug), notice: 'Vous avez bien créé un nouveau panier.' }
         format.json { render :show, status: :created, location: @farm.slug }
       else
         format.html { render :new }
@@ -58,7 +58,7 @@ class PaniersController < ApplicationController
   def update
     respond_to do |format|
       if @panier.update(panier_params)
-        format.html { redirect_to farm_panier_path(@farm.slug, @panier), notice: 'Panier was successfully updated.' }
+        format.html { redirect_to farm_panier_path(@farm.slug, @panier), notice: 'Panier mis à jour.' }
         format.json { render :show, status: :ok, location: @panier }
         format.js {}
       else
