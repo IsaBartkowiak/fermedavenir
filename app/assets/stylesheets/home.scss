@@ -31,6 +31,9 @@
 		p {
 			margin: .5em 0;
 			@include letter-spacing(60, 14);
+			@media (max-width: $md-small) {
+			margin: 0 auto;
+			}
 		}
 	}
 

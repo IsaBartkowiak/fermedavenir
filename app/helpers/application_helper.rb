@@ -4,6 +4,6 @@ module ApplicationHelper
 		portions.each do |p|
 		  price += p.price
 		end 
-		price
+		price.round(2)
 	end
 end
