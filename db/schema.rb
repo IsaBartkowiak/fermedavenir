@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160318081330) do
+ActiveRecord::Schema.define(version: 20160318092412) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,7 +32,10 @@ ActiveRecord::Schema.define(version: 20160318081330) do
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
     t.integer  "legume_id"
+    t.integer  "farm_id"
   end
+
+  add_index "generations", ["farm_id"], name: "index_generations_on_farm_id", using: :btree
 
   create_table "legumes", force: :cascade do |t|
     t.string   "titre"
@@ -41,7 +44,10 @@ ActiveRecord::Schema.define(version: 20160318081330) do
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.float    "price"
+    t.integer  "farm_id"
   end
+
+  add_index "legumes", ["farm_id"], name: "index_legumes_on_farm_id", using: :btree
 
   create_table "paniers", force: :cascade do |t|
     t.integer  "semaine"
@@ -100,6 +106,8 @@ ActiveRecord::Schema.define(version: 20160318081330) do
   add_index "users", ["farm_id"], name: "index_users_on_farm_id", using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "generations", "farms"
+  add_foreign_key "legumes", "farms"
   add_foreign_key "paniers", "farms"
   add_foreign_key "paniers", "users"
   add_foreign_key "plantations", "farms"

@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   get 'page/index'
   root 'statics#index'
+  
   resources :generations
   resources :legumes
 

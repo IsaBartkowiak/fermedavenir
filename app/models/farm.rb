@@ -11,11 +11,15 @@
 
 class Farm < ActiveRecord::Base
 	validates :name, uniqueness: true
+
 	has_many :users
-	before_save :generate_paniers
-	before_save :create_slug
 	has_many :paniers
 	has_many :plantations
+	has_many :legumes
+	
+	before_save :generate_paniers
+	before_save :generate_legumes
+	before_save :create_slug
 
 	def get_generations_to_plant
 		generations = []
@@ -39,6 +43,20 @@ class Farm < ActiveRecord::Base
 		quantity    
 	end
 
+	def get_generations
+		generations = []
+		legumes.each do |legume|
+			legume.generations.each do |gen|
+      	generations << gen
+      end
+    end
+    generations
+	end
+
+  def copy_leg(a_legume)
+  	legumes << a_legume.amoeba_dup
+  end
+
 	private
 
   def generate_paniers
@@ -46,6 +64,14 @@ class Farm < ActiveRecord::Base
 			paniers.build(semaine: i)
 	  end
   end
+
+  def generate_legumes
+  	all_legumes = Legume.where(farm_id: nil).all
+		all_legumes.each do |a_legume|
+			copy_leg(a_legume)
+		end
+  end
+
 
   def create_slug
   	self.slug = name.parameterize
