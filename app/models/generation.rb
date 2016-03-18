@@ -14,7 +14,6 @@
 #
 
 class Generation < ActiveRecord::Base
-	belongs_to :farm
 	belongs_to :legume
 
 	def self.available_for(a_week)

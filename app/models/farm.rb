@@ -16,7 +16,6 @@ class Farm < ActiveRecord::Base
 	has_many :paniers
 	has_many :plantations
 	has_many :legumes
-	has_many :generations
 	
 	before_save :generate_paniers
 	before_save :create_slug
@@ -43,6 +42,10 @@ class Farm < ActiveRecord::Base
 		quantity    
 	end
 
+  def copy_leg(a_legume)
+  	legumes << a_legume.amoeba_dup
+  end
+
 	private
 
   def generate_paniers
@@ -50,6 +53,14 @@ class Farm < ActiveRecord::Base
 			paniers.build(semaine: i)
 	  end
   end
+
+  def generate_legumes
+  	all_legumes = Legume.where(farm_id: nil).all
+		all_legumes.each do |a_legume|
+			copy_leg(a_legume)
+		end
+  end
+
 
   def create_slug
   	self.slug = name.parameterize
