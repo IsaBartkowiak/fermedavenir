@@ -50,7 +50,7 @@ class Farm < ActiveRecord::Base
       	generations << gen
       end
     end
-    generations
+    generations.sort_by{|g| g[:plantation]}
 	end
 
   def copy_leg(a_legume)
