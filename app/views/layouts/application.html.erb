@@ -26,9 +26,9 @@
       <% if current_user %>
         <nav class="header-nav">
           <ul>
-            <li class="nav-item"><%= link_to "Légumes", legumes_path, class: 'btn' %></li>
+            <li class="nav-item"><%= link_to "Légumes", legumes_path, class: 'btn' unless current_user.farm.nil? %></li>
             <li class="nav-item"><%= link_to "Paniers", farm_paniers_path(current_user.farm.slug), class: 'btn' unless current_user.farm.nil? %></li>
-            <li class="nav-item"><%= link_to "Générations", generations_path, class: 'btn' %></li>
+            <li class="nav-item"><%= link_to "Générations", generations_path, class: 'btn' unless current_user.farm.nil? %></li>
             <li class="nav-item"><%= link_to "Plantations", farm_plantations_path(current_user.farm.slug), class: 'btn' unless current_user.farm.nil? %></li>
           </ul>
         </nav>

@@ -1,7 +1,6 @@
 .list-paniers{
 	position: relative;
 	.change-view{
-		float: right;
 		.glyphicon-th{
 			display: block;
 		}
@@ -33,7 +32,7 @@
 
 	.overview-display{
 		position: relative;
-		ul{
+		> ul{
 			padding: 0;
 			margin: 0;
 			margin-left: -15px;
@@ -45,7 +44,7 @@
 				color: $light-grey;
 				width: 60px;
 				height: 60px;
-				line-height: 60px;
+				line-height: 55px;
 				font-weight: bold;
 				margin: 15px;
 				cursor: pointer;

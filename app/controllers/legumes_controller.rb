@@ -43,7 +43,7 @@ class LegumesController < ApplicationController
 
     respond_to do |format|
       if @legume.save
-        format.html { redirect_to @legume, notice: 'Legume was successfully created.' }
+        format.html { redirect_to legumes_path, notice: "Vous avez bien ajouté un(e) #{@legume.titre}" }
         format.json { render :show, status: :created, location: @legume }
       else
         format.html { render :new }
@@ -57,7 +57,7 @@ class LegumesController < ApplicationController
   def update
     respond_to do |format|
       if @legume.update(legume_params)
-        format.html { redirect_to @legume, notice: 'Legume was successfully updated.' }
+        format.html { redirect_to legumes_path, notice: 'Ce légume a été mis à jour' }
         format.json { render :show, status: :ok, location: @legume }
       else
         format.html { render :edit }
@@ -91,6 +91,6 @@ class LegumesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def legume_params
-      params.require(:legume).permit(:titre, :variete, :caracteristique, :price)
+      params.require(:legume).permit(:titre, :variete, :caracteristique, :price, :nb_per_kilo)
     end
 end
