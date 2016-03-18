@@ -13,4 +13,9 @@
 
 class Legume < ActiveRecord::Base
 	has_many :generations
+	belongs_to :farm
+
+	amoeba do
+    enable
+  end
 end
