@@ -16,7 +16,6 @@
           <% end %>  
           <th></th>
           <th></th>
-          <th></th>
         </tr>
       </thead>
 
@@ -58,9 +57,14 @@
                   <td></td>
                 <% end %>
               <% end %> 
-          <td><%= link_to 'Show', generation %></td>
-          <td><%= link_to 'Edit', edit_generation_path(generation) %></td>
-          <td><%= link_to 'Destroy', generation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= link_to edit_generation_path(generation) do %>
+                <span class="glyphicon glyphicon-pencil"></span>
+              <% end %>
+          </td>
+          <td><%= link_to generation, method: :delete, data: { confirm: 'Are you sure?' } do %>
+                <span class="glyphicon glyphicon-trash"></span>
+              <% end %>
+          </td>
         <% end %>
       </tbody>
     </table>
