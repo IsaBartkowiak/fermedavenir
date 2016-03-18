@@ -1,9 +1,27 @@
   <div class="home">
+  
+<div class="banner container-fluid">
+   <div class="row">
+    <h3>Le tableau de bord<br/><span>par Fermes d'Avenir</span></h3>
+    <p>Faites germer l'avenir !</p>
+    <div class="btn">
+        <% if current_user %>
+          <%= link_to 'Créer ma ferme', new_farm_path, class:"btn btn_create-panier right" if current_user.farm.nil? %>
+        <% else %>
+          <%= link_to 'Créer ma ferme', new_user_registration_path, class:"btn btn_create-panier right" %>
+        <% end %>
+      </div>
+      <div class="btn">
+        <%= link_to 'Créer mon panier', new_user_registration_path, class:"btn btn_create-panier left" %>
+      </div>
+   </div>
+</div>
+
   <section class="section section_grey">
     <div class="container">
       <div class="row table tablehome">
         <div class="col-xs-12 col-sm-6 cellhome">
-          <h2 class="section-title">Le tableau de bord, <br>qu'est-ce que c'est ?</h2>
+          <h2 class="section-title">Le tableau de bord, qu'est-ce que c'est ?</h2>
           <div class="section-text">
             <p><strong>Un outil qui vous accompagne dans la gestion de votre exploitation.</strong></p>
             <p>« Tableau de Bord » est un outil développé en collaboration avec l’association <a href="http://www.fermesdavenir.org/" target="_blank">Fermes d’Avenir</a>. Cette association vise à répandre une nouvelle méthode d’agriculture comme la permaculture, basé sur le développement de petites exploitations. Néophytes dans l’univers du maraichage ou agriculteurs aguerris, cet outil vous permettra de composer vos paniers personnalisés aves des produits de saison. Il vous guidera tout au long du processus de croissance de vos plantes  grâce au planning détaillé de semis, plantation et récolte.</p>
