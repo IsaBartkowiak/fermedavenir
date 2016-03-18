@@ -82,9 +82,10 @@
 		&--box{
 			background-color:white;
 			text-align:center;
-			padding: 30px 20px;
+			padding: 1.5em 1em;
 			border: 1px solid lighten($grey, 15%);
-			margin-bottom:10px;
+			margin-bottom: 1em;
+			min-height: 16em;
 		}
 		&--label{
 			font-family: $roboto-b;
