@@ -10,11 +10,11 @@
     <table class="table table-striped table-bordered table-hover">
       <thead>
         <tr>
-              <th>Titre</th>
-              <th>Variete</th>
-              <th>Type</th>
-              <th>Prix/kilo</th>
-              <th></th>
+          <th>Titre</th>
+          <th>Variete</th>
+          <th>Type</th>
+          <th>Prix/kilo</th>
+          <th>Nb graine/kilo</th>
           <th></th>
           <th></th>
         </tr>
@@ -26,7 +26,7 @@
               <td><%= legume.variete %></td>
               <td><%= legume.caracteristique %></td>
               <td><%= legume.price %></td>
-              <td><%= link_to 'Voir', legume %></td>
+              <td><%= legume.nb_per_kilo %></td>
           <td><%= link_to 'Modifier', edit_legume_path(legume) %></td>
           <td><%= link_to 'Supprimer', legume, method: :delete, data: { confirm: 'Êtes-vous sur ?' } %></td>
         <% end %>

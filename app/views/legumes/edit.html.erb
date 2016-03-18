@@ -1,12 +1,10 @@
-<div class="page-header">
-  <%= link_to legumes_path, class: 'btn btn-default' do %>
-    <span class="glyphicon glyphicon-list-alt"></span>
-    Retourner à la liste des légumes
-  <% end %>
-  <%= link_to @legume, class: 'btn btn-primary' do %>
-    <span class="glyphicon glyphicon-info-sign"></span>
-    Voir les légumes
-  <% end %>
-</div>
+<div class="container">
+	<div class="page-header">
+	  <%= link_to legumes_path, class: 'btn btn-default' do %>
+	    <span class="glyphicon glyphicon-list-alt"></span>
+	    Retourner à la liste des légumes
+	  <% end %>
+	</div>
 
-<%= render 'form' %>
+	<%= render 'form' %>
+</div>

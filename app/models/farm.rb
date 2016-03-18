@@ -25,7 +25,7 @@ class Farm < ActiveRecord::Base
 		generations = []
 		paniers.each do |panier|
       panier.portions.each do |portion|
-        generations << portion.generation
+        generations << portion.generation unless generations.include?(portion.generation)
       end
     end
     generations.sort_by{|g| g[:plantation]}
@@ -40,14 +40,14 @@ class Farm < ActiveRecord::Base
         end
       end
     end
-		quantity    
+		quantity*a_generation.legume.nb_per_kilo 
 	end
 
 	def get_generations
 		generations = []
 		legumes.each do |legume|
 			legume.generations.each do |gen|
-      	generations << gen unless generations.include?(gen)
+      	generations << gen
       end
     end
     generations
