@@ -16,6 +16,6 @@ class Legume < ActiveRecord::Base
 	belongs_to :farm
 
 	amoeba do
-    enable
-  end
+		enable
+	end
 end
