@@ -16,53 +16,23 @@ class Farm < ActiveRecord::Base
 	has_many :paniers
 	has_many :plantations
 	has_many :legumes
-	
+
+	has_many :generations, through: :legumes
+	has_many :portions, through: :paniers
+	has_many :generations_to_plant, through: :portions, source: :generation
+
 	before_save :generate_paniers
 	before_save :generate_legumes
 	before_save :create_slug
 
-	def get_generations_to_plant
-		generations = []
-		paniers.each do |panier|
-      panier.portions.each do |portion|
-        generations << portion.generation unless generations.include?(portion.generation)
-      end
-    end
-    generations.sort_by{|g| g[:plantation]}
-	end
-
 	def get_quantity_to_plant a_generation
 		quantity = 0
-		paniers.each do |panier|
-      panier.portions.each do |portion|
-        if portion.generation == a_generation
-        	quantity += (portion.quantity*panier.quantity)
-        end
+		portions.each do |portion|
+      if portion.generation == a_generation
+      	quantity += (portion.quantity*portion.panier.quantity)
       end
     end
 		quantity*a_generation.legume.nb_per_kilo 
-	end
-
-	def get_generations_for a_week
-		generations = []
-		legumes.each do |legume|
-			legume.generations.each do |gen|
-				if gen.recolte <= a_week && gen.conservation_to >= a_week
-      		generations << gen
-      	end
-      end
-    end
-    generations.sort_by{|g| g[:plantation]}
-	end
-
-	def get_generations
-		generations = []
-		legumes.each do |legume|
-			legume.generations.each do |gen|
-      	generations << gen
-      end
-    end
-    generations.sort_by{|g| g[:plantation]}
 	end
 
   def copy_leg(a_legume)

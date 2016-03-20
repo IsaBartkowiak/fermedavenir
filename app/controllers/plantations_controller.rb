@@ -19,7 +19,7 @@ class PlantationsController < ApplicationController
   # GET /plantations.json
   def index
     @plantations = @farm.plantations.all
-    @generations = @farm.get_generations_to_plant
+    @generations = @farm.generations_to_plant.per_plantation_date
 
     redirect_to farm_paniers_path(@farm), notice: "Vous n'avez pas encore constitué vos paniers, remplissez-les afin de pouvoir accéder à vos plantations ;-)" if @generations.count == 0
 

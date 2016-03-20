@@ -21,7 +21,7 @@ class GenerationsController < ApplicationController
   # GET /generations
   # GET /generations.json
   def index
-    @generations = @farm.get_generations
+    @generations = @farm.generations.order(plantation: :asc)
   end
 
   # GET /generations/1

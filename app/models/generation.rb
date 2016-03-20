@@ -16,7 +16,11 @@
 class Generation < ActiveRecord::Base
 	belongs_to :legume
 
+	scope :per_plantation_date, -> {
+		order(plantation: :asc)
+	}
+
 	def self.available_for(a_week)
-		where("recolte <= ?", a_week).where("conservation_to >= ?", a_week)
+		where("recolte <= ?", a_week).where("conservation_to >= ?", a_week).per_plantation_date
 	end
 end

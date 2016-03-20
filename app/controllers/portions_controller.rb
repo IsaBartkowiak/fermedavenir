@@ -21,7 +21,7 @@ class PortionsController < ApplicationController
   # GET /portions.json
   def index
     @portions = @panier.portions.all
-    @generations = @farm.get_generations_for(@panier.semaine)
+    @generations = @farm.generations.available_for(@panier.semaine)
     @portion = Portion.new
   end
 
