@@ -28,34 +28,34 @@ class Farm < ActiveRecord::Base
 	def get_quantity_to_plant a_generation
 		quantity = 0
 		portions.each do |portion|
-      if portion.generation == a_generation
-      	quantity += (portion.quantity*portion.panier.quantity)
-      end
-    end
+			if portion.generation == a_generation
+				quantity += (portion.quantity*portion.panier.quantity)
+			end
+		end
 		quantity*a_generation.legume.nb_per_kilo 
 	end
 
-  def copy_leg(a_legume)
-  	legumes << a_legume.amoeba_dup
-  end
+	def copy_leg(a_legume)
+		legumes << a_legume.amoeba_dup
+	end
 
 	private
 
-  def generate_paniers
-  	for i in 1..52
+	def generate_paniers
+		for i in 1..52
 			paniers.build(semaine: i)
-	  end
-  end
+		end
+	end
 
-  def generate_legumes
-  	all_legumes = Legume.where(farm_id: nil).all
+	def generate_legumes
+		all_legumes = Legume.where(farm_id: nil).all
 		all_legumes.each do |a_legume|
 			copy_leg(a_legume)
 		end
-  end
+	end
 
 
-  def create_slug
-  	self.slug = name.parameterize
-  end
+	def create_slug
+		self.slug = name.parameterize
+	end
 end
