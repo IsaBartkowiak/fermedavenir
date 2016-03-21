@@ -66,9 +66,9 @@
                 </ul>
               </div>
               <% end %>
+            
+                <label class="panier-dispo--label"><%= generation.legume.titre + ' - ' + generation.legume.variete + ' - ' + generation.legume.price.to_s %>€/KG </label>
 
-                <%= f.label generation.legume.titre + ' - ' + generation.legume.variete, class: "panier-dispo--label" %>
-               
                   <%= f.hidden_field :legume_id, value: generation.legume.id, class: "form-control" %>
      
              
