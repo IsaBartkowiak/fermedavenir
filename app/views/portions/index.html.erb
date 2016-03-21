@@ -72,7 +72,7 @@
                   <%= f.hidden_field :legume_id, value: generation.legume.id, class: "form-control" %>
      
              
-                  <%= f.number_field :quantity, class: "panier-dispo--quantity", placeholder: 'KG', :step => 'any', value: 1 %>
+                  <%= f.number_field :quantity, class: "panier-dispo--quantity", placeholder: 'KG', :step => 'any', value: 1, min: 0 %>
                 
                   <%= f.submit "+", class: "panier-dispo--add" %>
                 

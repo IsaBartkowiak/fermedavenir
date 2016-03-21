@@ -31,7 +31,7 @@
                plant.quantity 
             end
             %>
-           <%= f.number_field :quantity, class: "form-control", value: quantity, :step => 'any' %>
+           <%= f.number_field :quantity, class: "form-control", value: quantity, :step => 'any', min: 0 %>
          </td>
          <td style="min-width:100px">
           <%= f.number_field :year, class: "form-control", value: Time.now.year, :step => 'any' %>
