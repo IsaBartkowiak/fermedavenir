@@ -1,6 +1,6 @@
 <div class="container">
 <% todo = 0 %>
-<h1>Journal de la semaine</h1>
+<h1>Journal de la semaine <%= Date.today.cweek %></h1>
 
 <% if @farm.generations_to_plant.to_plant_this_week.any? %>
 	<!-- Générations à planter -->
@@ -8,7 +8,7 @@
 	<blockquote>
 	<p>Je dois planter : </p>
 	<ul class="list-group">
-		<% @farm.generations_to_plant.to_p_this_week.each do |generation| %>
+		<% @farm.generations_to_plant.to_plant_this_week.each do |generation| %>
 		<li class="list-group-item"><%= @farm.get_quantity_to_plant(generation).to_i %> graines de <%= generation.legume.titre.downcase.pluralize %></li>
 		<% end %>
 	</ul>
@@ -21,7 +21,7 @@
 	<blockquote>
 	<p>Je dois récolter : </p>
 	<ul class="list-group">
-		<% @farm.generations_to_plant.to_r_this_week.each do |generation| %>
+		<% @farm.generations_to_plant.to_recolt_this_week.each do |generation| %>
 		<li class="list-group-item">Les <%= generation.legume.titre.downcase.pluralize %> - <%= generation.legume.variete %></li>
 		<% end %>
 	</ul>
