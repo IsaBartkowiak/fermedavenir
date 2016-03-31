@@ -52,7 +52,7 @@
 	<h2><%= todo += 1 %>. Mes paniers</h2>
 	<blockquote>
 	<p>Il me reste <%= Panier.to_do(@farm) %> paniers à compléter</p>
-	<%= link_to 'Gérer mes paniers', farm_paniers_path(@farm) %>
+	<%= link_to 'Gérer mes paniers', farm_paniers_path(@farm.slug) %>
 	</blockquote>
 <% end %>
 </div>
