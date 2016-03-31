@@ -24,4 +24,12 @@ class Panier < ActiveRecord::Base
 		end
 		true
 	end
+
+	def self.to_do(farm)
+		total = 0
+		Panier.where(farm: farm).each do |panier|
+			total += 1 unless panier.portions.any?
+		end
+		total
+	end
 end

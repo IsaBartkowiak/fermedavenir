@@ -1,10 +1,7 @@
 Rails.application.routes.draw do
 
-  get 'statics/index'
+  get 'dashboard', to: 'dashboards#index'
 
-  get 'static/index'
-
-  get 'page/index'
   root 'statics#index'
   
   resources :generations

@@ -19,6 +19,12 @@ class Generation < ActiveRecord::Base
 	scope :per_plantation_date, -> {
 		order(plantation: :asc)
 	}
+  scope :to_plant_this_week, -> {
+    where("plantation = ?", Date.today.cweek).per_plantation_date
+  }
+  scope :to_recolt_this_week, -> {
+    where("recolte = ?", Date.today.cweek).per_plantation_date
+  }
 
 	def self.available_for(a_week)
 		where("recolte <= ?", a_week).where("conservation_to >= ?", a_week).per_plantation_date

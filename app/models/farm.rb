@@ -20,6 +20,7 @@ class Farm < ActiveRecord::Base
   has_many :generations, through: :legumes
   has_many :portions, through: :paniers
   has_many :generations_to_plant, -> { uniq }, through: :portions, source: :generation
+  has_many :planted_generations, -> { uniq }, through: :plantations, source: :generation
 
   before_save :generate_paniers
   before_save :generate_legumes

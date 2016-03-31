@@ -1,0 +1,42 @@
+<div class="container">
+<% todo = 0 %>
+<h1>Journal de la semaine</h1>
+
+<% if @farm.generations_to_plant.to_plant_this_week.any? %>
+	<!-- Générations à planter -->
+	<h2><%= todo += 1 %>. Mes plantations</h2>
+	<blockquote>
+	<p>Je dois planter : </p>
+	<ul class="list-group">
+		<% @farm.generations_to_plant.to_p_this_week.each do |generation| %>
+		<li class="list-group-item"><%= @farm.get_quantity_to_plant(generation).to_i %> graines de <%= generation.legume.titre.downcase.pluralize %></li>
+		<% end %>
+	</ul>
+	</blockquote>
+<% end %>
+
+<% if @farm.planted_generations.to_recolt_this_week.any? %>
+	<!-- Générations à récolter -->
+	<h2><%= todo += 1 %>. Mes récoltes</h2>
+	<blockquote>
+	<p>Je dois récolter : </p>
+	<ul class="list-group">
+		<% @farm.generations_to_plant.to_r_this_week.each do |generation| %>
+		<li class="list-group-item">Les <%= generation.legume.titre.downcase.pluralize %> - <%= generation.legume.variete %></li>
+		<% end %>
+	</ul>
+	</blockquote>
+<% end %>
+
+<% if Panier.to_do(@farm) > 0 %>
+	<!-- Paniers à compléter -->
+	<h2><%= todo += 1 %>. Mes paniers</h2>
+	<blockquote>
+	<p>Il me reste <%= Panier.to_do(@farm) %> paniers à compléter</p>
+	<%= link_to 'Gérer mes paniers', farm_paniers_path(@farm) %>
+	</blockquote>
+<% end %>
+</div>
+
+
+
