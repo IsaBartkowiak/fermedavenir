@@ -13,6 +13,8 @@
 		<% end %>
 	</ul>
 	</blockquote>
+<% else %>
+	<p class="text-success"><i class="glyphicon glyphicon-check"></i> Rien à planter cette semaine.</p>
 <% end %>
 
 <% if @farm.planted_generations.to_recolt_this_week.any? %>
@@ -26,6 +28,8 @@
 		<% end %>
 	</ul>
 	</blockquote>
+<% else %>
+	<p class="text-success"><i class="glyphicon glyphicon-check"></i> Rien à récolter cette semaine.</p>
 <% end %>
 
 <% if Panier.to_do(@farm) > 0 %>
