@@ -17,6 +17,21 @@
 	<p class="text-success"><i class="glyphicon glyphicon-check"></i> Rien à planter cette semaine.</p>
 <% end %>
 
+<% if @farm.generations_to_plant.to_sem_this_week.any? %>
+	<!-- Générations à semer -->
+	<h2><%= todo += 1 %>. Semis</h2>
+	<blockquote>
+	<p>Je dois semer : </p>
+	<ul class="list-group">
+		<% @farm.generations_to_plant.to_sem_this_week.each do |generation| %>
+		<li class="list-group-item"><%= @farm.get_quantity_to_plant(generation).to_i %> graines de <%= generation.legume.titre.downcase.pluralize %></li>
+		<% end %>
+	</ul>
+	</blockquote>
+<% else %>
+	<p class="text-success"><i class="glyphicon glyphicon-check"></i> Rien à semer cette semaine.</p>
+<% end %>
+
 <% if @farm.planted_generations.to_recolt_this_week.any? %>
 	<!-- Générations à récolter -->
 	<h2><%= todo += 1 %>. Mes récoltes</h2>

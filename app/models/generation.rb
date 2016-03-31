@@ -22,6 +22,9 @@ class Generation < ActiveRecord::Base
   scope :to_plant_this_week, -> {
     where("plantation = ?", Date.today.cweek).per_plantation_date
   }
+  scope :to_sem_this_week, -> {
+    where("semi_from <= ?", Date.today.cweek).where("semi_to >= ?", Date.today.cweek).per_plantation_date
+  }
   scope :to_recolt_this_week, -> {
     where("recolte = ?", Date.today.cweek).per_plantation_date
   }
