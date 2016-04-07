@@ -20,7 +20,6 @@ one:
   semi_to: 1
   plantation: 1
   recolte: 1
-  conservation_from: 1
   conservation_to: 1
 
 two:
@@ -28,5 +27,4 @@ two:
   semi_to: 1
   plantation: 1
   recolte: 1
-  conservation_from: 1
   conservation_to: 1

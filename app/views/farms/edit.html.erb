@@ -1,13 +1,9 @@
-<div class="page-header">
+<div class="container">
   <%= link_to farms_path, class: 'btn btn-default' do %>
     <span class="glyphicon glyphicon-list-alt"></span>
-    Back
+    Retourner à l'accueil
   <% end %>
-  <%= link_to @farm, class: 'btn btn-primary' do %>
-    <span class="glyphicon glyphicon-info-sign"></span>
-    Show
-  <% end %>
-  <h1>Editing farm</h1>
+  <h1>Modifier ma ferme</h1>
 </div>
 
-<%= render 'form' %>
+<%= render 'form_complete' %>

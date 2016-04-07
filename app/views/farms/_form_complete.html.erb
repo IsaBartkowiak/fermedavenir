@@ -1,0 +1,72 @@
+<div class="container">
+<%= form_for(@farm, html: { class: "form-horizontal", role: "form" }) do |f| %>
+  <% if @farm.errors.any? %>
+    <div class="alert alert-danger alert-dismissable" role="alert">
+      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+      <h4><%= pluralize(@farm.errors.count, "error") %> prohibited this farm from being saved:</h4>
+
+      <ul>
+      <% @farm.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+<div id="map" style="height: 600px"></div>
+<script>
+function initMap() {
+  var map = new google.maps.Map(document.getElementById('map'), {
+  center: {lat: 46.1274747, lng: -2.2885729},
+  zoom: 8
+});
+
+var drawingManager = new google.maps.drawing.DrawingManager({
+drawingControl: true,
+drawingControlOptions: {
+  position: google.maps.ControlPosition.TOP_CENTER,
+  drawingModes: [
+    google.maps.drawing.OverlayType.POLYGON,
+  ]
+},
+circleOptions: {
+  fillColor: '#ffff00',
+  fillOpacity: 1,
+  strokeWeight: 5,
+  clickable: false,
+  editable: true,
+  zIndex: 1
+}
+});
+var points = [];
+drawingManager.setMap(map);
+google.maps.event.addListener(drawingManager, 'overlaycomplete', function (event) {
+  var myPolygon = event.overlay;
+  var len = myPolygon.getPath().getLength();
+  var htmlStr = "";
+  for (var i = 0; i < len; i++) {
+    // Coordinates of drawn polygon
+    points.push({lat: myPolygon.getPath().getAt(i).lat(), lng: myPolygon.getPath().getAt(i).lng()});
+
+  }
+  $('#farm_location').val('');
+  for (var i=0; i < points.length; i++) {
+    $('#farm_location').val($('#farm_location').val() + "{lat:"+points[i].lat+", lng:"+points[i].lng+"},");
+  }
+});
+}
+
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?libraries=drawing&callback=initMap"
+     async defer></script>
+
+  <div class="" style="height: 200px">
+    <div class="col-xs-12">
+      <%= f.text_field :name, class: "form-control input-farm", placeholder: "Entrez un nom", required: "required" %>
+      <%= f.hidden_field :location, class: "form-control input-farm", placeholder: "Entrez une location", required: "required" %>
+    </div>
+    <%= f.submit "Mettre à jour ma ferme", class: "btn btn_green btn_farm" %>
+  </div>
+
+<% end %>
+</div>

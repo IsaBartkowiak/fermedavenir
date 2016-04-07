@@ -56,7 +56,7 @@ class FarmsController < ApplicationController
   def update
     respond_to do |format|
       if @farm.update(farm_params)
-        format.html { redirect_to @farm, notice: 'Farm was successfully updated.' }
+        format.html { redirect_to root_path, notice: 'Votre ferme a été mise à jour.' }
         format.json { render :show, status: :ok, location: @farm }
       else
         format.html { render :edit }
@@ -82,6 +82,7 @@ class FarmsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_farm
       @farm = Farm.find_by_slug(params[:slug])
+      @farm ||= Farm.find(params[:slug])
     end
 
     def bloc
@@ -90,6 +91,6 @@ class FarmsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def farm_params
-      params.require(:farm).permit(:name)
+      params.require(:farm).permit(:name, :location)
     end
 end

@@ -1,3 +1,4 @@
+
 # == Schema Information
 #
 # Table name: generations
@@ -33,7 +34,7 @@ class GenerationsControllerTest < ActionController::TestCase
 
   test "should create generation" do
     assert_difference('Generation.count') do
-      post :create, generation: { conservation_from: @generation.conservation_from, conservation_to: @generation.conservation_to, plantation: @generation.plantation, recolte: @generation.recolte, semi_from: @generation.semi_from, semi_to: @generation.semi_to }
+      post :create, generation: { conservation_to: @generation.conservation_to, plantation: @generation.plantation, recolte: @generation.recolte, semi_from: @generation.semi_from, semi_to: @generation.semi_to }
     end
 
     assert_redirected_to generation_path(assigns(:generation))
@@ -50,7 +51,7 @@ class GenerationsControllerTest < ActionController::TestCase
   end
 
   test "should update generation" do
-    patch :update, id: @generation, generation: { conservation_from: @generation.conservation_from, conservation_to: @generation.conservation_to, plantation: @generation.plantation, recolte: @generation.recolte, semi_from: @generation.semi_from, semi_to: @generation.semi_to }
+    patch :update, id: @generation, generation: { conservation_to: @generation.conservation_to, plantation: @generation.plantation, recolte: @generation.recolte, semi_from: @generation.semi_from, semi_to: @generation.semi_to }
     assert_redirected_to generation_path(assigns(:generation))
   end
 
