@@ -12,7 +12,8 @@
 #
 
 class Legume < ActiveRecord::Base
-	has_many :generations
+	has_many :generations, dependent: :destroy
+	has_many :portions, dependent: :destroy
 	belongs_to :farm
 
 	amoeba do

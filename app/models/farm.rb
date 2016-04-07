@@ -13,9 +13,9 @@ class Farm < ActiveRecord::Base
   validates :name, uniqueness: true
 
   has_many :users
-  has_many :paniers
-  has_many :plantations
-  has_many :legumes
+  has_many :paniers, dependent: :destroy
+  has_many :plantations, dependent: :destroy
+  has_many :legumes, dependent: :destroy
 
   has_many :generations, through: :legumes
   has_many :portions, through: :paniers
@@ -44,7 +44,7 @@ class Farm < ActiveRecord::Base
 
   def generate_paniers
     for i in 1..52
-    	paniers.build(semaine: i)
+      paniers.build(semaine: i)
     end
   end
 
