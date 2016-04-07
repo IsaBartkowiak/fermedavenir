@@ -55,37 +55,3 @@
 	<%= link_to 'Gérer mes paniers', farm_paniers_path(@farm.slug) %>
 	</blockquote>
 <% end %>
-
-
-
-<div id="map" style="height:400px"></div>
-<script>
-<% @farm.location ||= "{ lat: -33, lng: 151 }" %>
-function initMap() {
-	var bounds = new google.maps.LatLngBounds();
-	var i;
-
-	var location = [<%= @farm.location %>];
-
-	var map = new google.maps.Map(document.getElementById('map'), {
-		center: location[0],
-		mapTypeId: google.maps.MapTypeId.SATELLITE,
-		zoom: 17
-	});
-
-  var bermudaTriangle = new google.maps.Polygon({
-    paths: location,
-    strokeColor: '#FF0000',
-    strokeOpacity: 0.8,
-    strokeWeight: 2,
-    fillColor: '#FF0000',
-    fillOpacity: 0.35
-  });
-  bermudaTriangle.setMap(map);
-
-}
-
-</script>
-<script src="https://maps.googleapis.com/maps/api/js?libraries=drawing&callback=initMap"
-async defer></script>
-</div>

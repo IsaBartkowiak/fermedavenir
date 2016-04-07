@@ -43,6 +43,7 @@
             <%= link_to "Se connecter", new_user_session_path, class: 'btn btn_green btn_stroke' %>
             <%= link_to "S'enregistrer", new_user_registration_path, class: 'btn btn_green' %>
         <% else %>
+            <%= link_to "Ma ferme", farm_path(current_user.farm.slug), class: 'btn btn-default' unless current_user.farm.nil? %>
             <%= link_to "Déconnexion", destroy_user_session_path, method: :delete, class: 'btn btn_green' %>
         <% end %>
       </div>
