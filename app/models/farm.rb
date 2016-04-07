@@ -22,8 +22,8 @@ class Farm < ActiveRecord::Base
   has_many :generations_to_plant, -> { uniq }, through: :portions, source: :generation
   has_many :planted_generations, -> { uniq }, through: :plantations, source: :generation
 
-  before_save :generate_paniers
-  before_save :generate_legumes
+  before_create :generate_paniers
+  before_create :generate_legumes
   before_save :create_slug
 
   def get_quantity_to_plant a_generation
