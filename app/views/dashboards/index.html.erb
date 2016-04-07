@@ -9,7 +9,7 @@
 	<p>Je dois planter : </p>
 	<ul class="list-group">
 		<% @farm.generations_to_plant.to_plant_this_week.each do |generation| %>
-		<li class="list-group-item"><%= @farm.get_quantity_to_plant(generation).to_i %> graines de <%= generation.legume.titre.downcase.pluralize %></li>
+		<li class="list-group-item"><%= @farm.get_quantity_to_plant(generation).to_i %> graines de <%= generation.legume.titre.downcase.pluralize %> <%= image_tag("image-"+ generation.legume.titre.parameterize + ".png", width: "35px"); %></li>
 		<% end %>
 	</ul>
 	</blockquote>
@@ -24,7 +24,7 @@
 	<p>Je dois semer : </p>
 	<ul class="list-group">
 		<% @farm.generations_to_plant.to_sem_this_week.each do |generation| %>
-		<li class="list-group-item"><%= @farm.get_quantity_to_plant(generation).to_i %> graines de <%= generation.legume.titre.downcase.pluralize %></li>
+		<li class="list-group-item"><%= @farm.get_quantity_to_plant(generation).to_i %> graines de <%= generation.legume.titre.downcase.pluralize %> <%= image_tag("image-"+ generation.legume.titre.parameterize + ".png", width: "35px"); %></li>
 		<% end %>
 	</ul>
 	</blockquote>
@@ -39,7 +39,7 @@
 	<p>Je dois récolter : </p>
 	<ul class="list-group">
 		<% @farm.generations_to_plant.to_recolt_this_week.each do |generation| %>
-		<li class="list-group-item">Les <%= generation.legume.titre.downcase.pluralize %> - <%= generation.legume.variete %></li>
+		<li class="list-group-item">Les <%= generation.legume.titre.downcase.pluralize %> - <%= generation.legume.variete %> <%= image_tag("image-"+ generation.legume.titre.parameterize + ".png", width: "35px"); %></li>
 		<% end %>
 	</ul>
 	</blockquote>
