@@ -1,0 +1,2 @@
+module ParcellesHelper
+end

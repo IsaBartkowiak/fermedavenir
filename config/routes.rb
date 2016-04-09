@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
 
+  root 'statics#index'
+
   get 'dashboard', to: 'dashboards#index'
 
-  root 'statics#index'
   
+  resources :parcelles
   resources :generations
   resources :legumes
 
