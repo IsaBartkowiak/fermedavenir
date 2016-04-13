@@ -15,6 +15,7 @@ class ParcellesController < ApplicationController
 
   # GET /parcelles/new
   def new
+    @legumes = @farm.legumes.all
     @parcelle = Parcelle.new
   end
 
@@ -29,8 +30,8 @@ class ParcellesController < ApplicationController
 
     respond_to do |format|
       if @parcelle.save
-        format.html { redirect_to @parcelle, notice: 'Parcelle was successfully created.' }
-        format.json { render :show, status: :created, location: @parcelle }
+        format.html { redirect_to parcelles_path, notice: 'Parcelle was successfully created.' }
+        format.json { render :show, status: :created, location: parcelles_path }
       else
         format.html { render :new }
         format.json { render json: @parcelle.errors, status: :unprocessable_entity }
@@ -75,6 +76,6 @@ class ParcellesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def parcelle_params
-      params.require(:parcelle).permit(:location, :generation_id, :farm_id)
+      params.require(:parcelle).permit(:location, :generation_id, :farm_id, :title)
     end
 end
