@@ -26,7 +26,7 @@
     });
     ferme.setMap(map);
     var parcelles = [];
-
+    var date = <%= Date.today.cweek %>;
     <% @farm.parcelles.each do |parcelle| %>
       parcelles[<%= parcelle.id %>] = new google.maps.Polygon({
         paths: [<%= parcelle.location %>],
@@ -47,7 +47,12 @@
         $('#parcelle-surface').html(google.maps.geometry.spherical.computeArea(this.getPath()).toFixed() + " m2");
         $('#parcelle-legume').html(this.legume);
         $('#parcelle-plantation').html("Planté en semaine :" + this.plantation);
-        $('#parcelle-recolte').html("Récoltable à partir de la semaine :" + this.plantation);
+        $('#parcelle-recolte').html("Récoltable à partir de la semaine :" + this.recolte);
+        var pourcentage = (date-this.plantation)*100/(this.recolte-this.plantation);
+        if(!isFinite(pourcentage)) pourcentage = 100;
+
+        $('.progress-bar').attr('aria-valuenow', pourcentage).attr('style', "width:"+pourcentage+"%");
+        $('#parcelle-progress').fadeIn();
       });  
     <% end %>
   }
@@ -61,6 +66,14 @@
     <p id="parcelle-legume"></p>
     <p id="parcelle-plantation"></p>
     <p id="parcelle-recolte"></p>
+    <div id="parcelle-progress">
+      <p>Avancée de la pousse</p>
+      <div class="progress">
+        <div class="progress-bar" role="progressbar" aria-valuenow="70"
+        aria-valuemin="0" aria-valuemax="100" style="width:70%">
+        </div>
+      </div>
+    </div>
   </div>
   </div>
 </div>
