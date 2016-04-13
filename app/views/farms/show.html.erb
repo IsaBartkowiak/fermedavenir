@@ -18,10 +18,10 @@
 
     var ferme = new google.maps.Polygon({
       paths: location,
-      strokeColor: '#FF0000',
+      strokeColor: '#FFFFFF',
       strokeOpacity: 0.8,
-      strokeWeight: 2,
-      fillColor: '#FF0000',
+      strokeWeight: 0,
+      fillColor: '#FFFFFF',
       fillOpacity: 0.35
     });
     ferme.setMap(map);
@@ -30,20 +30,24 @@
     <% @farm.parcelles.each do |parcelle| %>
       parcelles[<%= parcelle.id %>] = new google.maps.Polygon({
         paths: [<%= parcelle.location %>],
-        strokeColor: '#FF0000',
+        strokeColor: '#7FC79D',
         strokeOpacity: 0.8,
-        strokeWeight: 2,
-        fillColor: '#FF0000',
-        fillOpacity: 0.35,
+        strokeWeight: 1,
+        fillColor: '#7FC79D',
+        fillOpacity: 0.75,
         indexID: <%= parcelle.id %>,
         title: "<%= parcelle.title %>",
-        legume: "<%= parcelle.generation.legume.titre %>"
+        legume: "<%= parcelle.generation.legume.titre %>",
+        plantation: <%= parcelle.generation.plantation %>,
+        recolte: <%= parcelle.generation.recolte %>,
       });
       parcelles[<%= parcelle.id %>].setMap(map);
       google.maps.event.addListener(parcelles[<%= parcelle.id %>], 'click', function (event) {
-        console.log(this.title);
-        // Surface
-        console.log(google.maps.geometry.spherical.computeArea(this.getPath()));
+        $('#parcelle-title').html(this.title);
+        $('#parcelle-surface').html(google.maps.geometry.spherical.computeArea(this.getPath()).toFixed() + " m2");
+        $('#parcelle-legume').html(this.legume);
+        $('#parcelle-plantation').html("Planté en semaine :" + this.plantation);
+        $('#parcelle-recolte').html("Récoltable à partir de la semaine :" + this.plantation);
       });  
     <% end %>
   }
@@ -53,6 +57,10 @@
   async defer></script>
   <div class="col-xs-12 col-sm-4">
     <h4 id="parcelle-title"></h4>
+    <p id="parcelle-surface"></p>
+    <p id="parcelle-legume"></p>
+    <p id="parcelle-plantation"></p>
+    <p id="parcelle-recolte"></p>
   </div>
   </div>
 </div>
