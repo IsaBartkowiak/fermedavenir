@@ -24,8 +24,7 @@
             </td>
           <td><%= get_cart_total(panier.portions) %> €</td>
           <td>
-          <%= link_to farm_panier_portions_path(@farm.slug, panier) do %>
-            <span class="glyphicon glyphicon-plus"></span>
+          <%= link_to farm_panier_portions_path(@farm.slug, panier) do %>            
             Voir le panier
           <% end %>
           </td>
