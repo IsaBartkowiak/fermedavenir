@@ -1,7 +1,7 @@
 <div class="container">
 <h1><%= @farm.name %></h1>
-  <%= link_to 'Modifier ma ferme', edit_farm_path(@farm.slug), class: 'btn btn-default' %>
-  <%= link_to 'Ajouter une parcelle', new_parcelle_path, class: 'btn btn-default' %>
+  <%= link_to 'Modifier ma ferme', edit_farm_path(@farm.slug), class: 'btn btn_green btn_stroke' %>
+  <%= link_to 'Ajouter une parcelle', new_parcelle_path, class: 'btn btn_green btn_stroke' %>
   
   <%= render 'farm_map' %>
   
