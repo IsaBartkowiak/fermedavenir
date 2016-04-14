@@ -1,11 +1,11 @@
 <div id="map" style="height:500px" class="col-xs-12 col-sm-8"></div>
   <script>
-  <% @farm.location ||= "{ lat: -33, lng: 151 }" %>
+  <% @farm.location ||= "{ lat: 44.8404400, lng: -0.5805000 }" %>
 
   function initMap() {
-      var location = [<%= @farm.location %>];
-    var lat = (location[0].lat + location[2].lat)/2;
-    var lng = (location[0].lng + location[2].lng)/2;
+    var location = [<%= @farm.location %>];
+    var lat = (location[0].lat);
+    var lng = (location[0].lng);
     var map = new google.maps.Map(document.getElementById('map'), {
       center: {lat: lat,lng: lng},
       mapTypeId: google.maps.MapTypeId.SATELLITE,
@@ -31,7 +31,10 @@
     for (var i = 0; i < latlng.length; i++) {
         latlngbounds.extend(latlng[i]);
     }
-    map.fitBounds(latlngbounds);
+    // si l'utilisateur a déjà enrefistré sa ferme
+    if(location.length > 1){
+      map.fitBounds(latlngbounds);  
+    }
 
     // parcelles 
     var parcelles = [];
@@ -67,7 +70,7 @@
         $('#parcelle-edit').attr('href', '/parcelles/'+this.id+'/edit');
         $('#parcelle-progress').fadeIn();
         $('#parcelle-controls').fadeIn();
-      });  
+      });
     <% end %>
   }
 

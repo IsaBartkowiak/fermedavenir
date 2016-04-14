@@ -39,12 +39,17 @@
 		.advice{
 			margin-top: 50px;
 			position: absolute;
-			text-align: center;
+			text-align: left;
 			font-style: italic;
 			z-index: 1;
 			width: 300px;
 			left: 50%;
 			margin-left: -140px;
+			em{
+				color: #A09D9D;
+				font-size: 12px;
+				line-height: normal;
+			}
 		}
 		.inner{
 			padding: 7px;
@@ -75,6 +80,7 @@
 			box-sizing: border-box;
 			word-break: break-word;
 			margin-bottom: 10px; 
+			min-height: 100px;
 			&:first-child, &:nth-child(2){
 				border-bottom: 1px solid $mint-green;
 			}
