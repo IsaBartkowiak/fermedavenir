@@ -72,9 +72,6 @@ FooterPosition =
       $('footer.footer').addClass('fixed-bottom')
     return
 
-
-
-
 $(document).ready ->
   Animation.init()
   ChangeView.init()

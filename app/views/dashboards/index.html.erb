@@ -3,11 +3,14 @@
 <%= link_to 'Activer/Désactiver les tutoriels', @farm.slug + '/tutorial', method: 'patch', remote: true %>
 <% todo = 0 %>
 <script>
-	$.getJSON("http://api.openweathermap.org/data/2.5/weather?lat=<%= @farm.lat %>&lon=<%= @farm.lng %>&appid=44a56d69f7c3e5607870fd49861e0075",function(json){
-            console.log(JSON.stringify(json));
-        });
+$.getJSON("http://api.openweathermap.org/data/2.5/weather?units=metric&cnt=7&lang=fr&lat=<%= @farm.lat %>&lon=<%= @farm.lng %>&appid=44a56d69f7c3e5607870fd49861e0075",function(json){
+		var datas = JSON.parse(JSON.stringify(json));
+    	$('#degres').html(datas.main.temp.toFixed());
+    	$('#ville').html(datas.name);
+    });
 </script>
-<h1>Journal de la semaine <%= Date.today.cweek %></h1>
+<h1>Journal de la semaine <%= Date.today.cweek %>.</h1>
+<small>Il fait <span id="degres"></span>°C à <span id="ville"></span></small>
 
 <% if @farm.generations_to_plant.to_plant_this_week.any? %>
 	<!-- Générations à planter -->
