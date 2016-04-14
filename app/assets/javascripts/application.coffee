@@ -61,6 +61,12 @@ Table =
     $('.fixed-table-wrapper').scrollLeft( $('.fixed-table-header').scrollLeft() )
     return
 
+FooterPosition = 
+  init: ->
+    if $('body').outerHeight() < window.innerHeight
+      $('body').css('height', window.innerHeight)
+      $('footer.footer').addClass('fixed-bottom')
+    return
 
 
 
@@ -70,4 +76,5 @@ $(document).ready ->
   ChangeView.init()
   Panier.init()
   Table.init()
+  FooterPosition.init()
   return

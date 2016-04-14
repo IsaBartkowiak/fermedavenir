@@ -44,10 +44,14 @@
 	width: 100%;
 	color: #fff;
 	background-color: #81c69e;
+	&.fixed-bottom{
+		position: absolute;
+		bottom: 0;
+		z-index: 1;
+		left: 0;
+	}
 	img {
 		width: 300px;
-
-
 	}
 
 	.img_petit {
