@@ -1,5 +1,3 @@
-<div class="container">
-
 <div class="table-responsive fixed-table-header">
   <div class="fixed-table-wrapper">
     <table class="table fixed table-striped table-bordered table-hover">
@@ -7,8 +5,8 @@
         <tr>
           <th style="min-width:120px">Qté à planter</th>
           <th style="min-width:100px">Année</th>
-          <th></th>
-          <th>Légume</th> 
+          <th style="min-width:120px"></th>
+          <th class="dynamic-width">Légume</th> 
           <th>Variété</th> 
           <% for i in 1..52 %>
             <th><%= i %></th>
@@ -23,7 +21,7 @@
         <th style="min-width:120px">Qté à planter</th>
         <th style="min-width:100px">Année</th>
         <th></th>
-        <th>Légume</th> 
+        <th class="dynamic-width">Légume</th> 
         <th>Variété</th> 
         <% for i in 1..52 %>
           <th><%= i %></th>

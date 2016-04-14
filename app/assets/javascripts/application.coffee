@@ -47,6 +47,7 @@ Table =
       $(document).scroll @checkTableHeaderScroll
       $('.fixed-table-header').scroll @checkFixedHeaderScrollLeft
       $('.fixed-table-wrapper table tr th:first-child').css('min-width', $('.main-table tr th:first-child').outerWidth())
+      $('.fixed-table-wrapper .dynamic-width').css('min-width', $('.main-table .dynamic-width').outerWidth())
     return
 
   checkTableHeaderScroll: ->
