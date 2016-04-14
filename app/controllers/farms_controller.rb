@@ -52,7 +52,7 @@ class FarmsController < ApplicationController
         format.html { redirect_to farm_path(@farm.slug), notice: 'Farm was successfully created.' }
         format.json { render :show, status: :created, location: @farm }
       else
-        format.html { render :new }
+        format.html { redirect_to root_path, notice: 'Ce nom est probablement déjà pris' }
         format.json { render json: @farm.errors, status: :unprocessable_entity }
       end
     end
@@ -88,9 +88,7 @@ class FarmsController < ApplicationController
     end
     # Use callbacks to share common setup or constraints between actions.
     def set_farm
-      slug = params[:slug] || params[:farm_slug]
-      @farm = Farm.find_by_slug(slug)
-      @farm ||= Farm.find(slug)
+      @farm = current_user.farm
     end
 
     def bloc
