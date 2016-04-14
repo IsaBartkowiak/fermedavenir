@@ -2,10 +2,16 @@
 <div class="container">
 <%= link_to 'Activer/Désactiver les tutoriels', @farm.slug + '/tutorial', method: 'patch', remote: true %>
 <% todo = 0 %>
+<script>
+$.getJSON("http://api.openweathermap.org/data/2.5/weather?units=metric&cnt=7&lang=fr&lat=<%= @farm.lat %>&lon=<%= @farm.lng %>&appid=44a56d69f7c3e5607870fd49861e0075",function(json){
+		var datas = JSON.parse(JSON.stringify(json));
+    	$('#degres').html(datas.main.temp.toFixed());
+    	$('#ville').html(datas.name);
+    });
+</script>
 <div id="backdash">
-<h1>Journal de la semaine <%= Date.today.cweek %></h1>
-
-
+<h1>Journal de la semaine <%= Date.today.cweek %>.</h1>
+<small>Il fait <span id="degres"></span>°C à <span id="ville"></span></small>
 <div class="row">
 	<div class="col-xs-12 col-sm-2"></div>
 	<div class="col-xs-12 col-sm-2">
@@ -88,11 +94,4 @@
 	</div>
 	<div class="col-xs-12 col-sm-2"></div>
 </div>
-
-
-
-
-
-
-
 </div>

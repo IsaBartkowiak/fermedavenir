@@ -7,6 +7,8 @@
 #  slug       :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  location   :string
+#  tutorial   :boolean          default(TRUE)
 #
 
 class FarmsController < ApplicationController
@@ -97,6 +99,6 @@ class FarmsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def farm_params
-      params.require(:farm).permit(:name, :location)
+      params.require(:farm).permit(:name, :location, :lat, :lng)
     end
 end
