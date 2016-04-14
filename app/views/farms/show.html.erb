@@ -1,32 +1,37 @@
-<div class="container">
+<div class="container farm">
 <h1><%= @farm.name %></h1>
   <%= link_to 'Modifier ma ferme', edit_farm_path(@farm.slug), class: 'btn btn_green btn_stroke' %>
   <%= link_to 'Ajouter une parcelle', new_parcelle_path, class: 'btn btn_green btn_stroke' %>
   
   <%= render 'farm_map' %>
   
-  <div class="col-xs-12 col-sm-4">
-    <h4 id="parcelle-title"></h4>
-    <p id="parcelle-surface"></p>
-    <p id="parcelle-legume"></p>
-    <p id="parcelle-plantation"></p>
-    <p id="parcelle-recolte"></p>
-    <div id="parcelle-progress">
-      <p>Avancée de la pousse</p>
-      <div class="progress">
-        <div class="progress-bar" role="progressbar" aria-valuenow="70"
-        aria-valuemin="0" aria-valuemax="100" style="width:70%">
+  <div class="col-xs-12 col-sm-4 side-infos">
+    <h3>Informations Parcelles</h3>
+    <p class="advice"><i>Cliquez sur une parcelle pour voir ses caractéristiques</i></p>
+    <div class="inner">
+      <h4 id="parcelle-title"></h4>
+      <ul>
+        <li class="half">Surface<span id="parcelle-surface"></span>
+        </li><li class="half">Plantation<span id="parcelle-legume"></span>
+        </li><li class="half">Planté<br/>en semaine<span id="parcelle-plantation"></span>
+        </li><li class="half">Récoltable à partir de la semaine<span id="parcelle-recolte"></span></li>
+      </ul>
+      <div id="parcelle-progress">
+        <p>Avancée de la pousse</p>
+        <div class="progress">
+          <div class="progress-bar" role="progressbar" aria-valuenow="70"
+          aria-valuemin="0" aria-valuemax="100" style="width:70%">
+          </div>
         </div>
       </div>
+      <div id="parcelle-controls">
+        <a id="parcelle-edit" href="/parcelles/3/edit">
+          <span class="glyphicon glyphicon-pencil"></span> Éditer
+        </a><br/><br/>
+        <a id="parcelle-delete" data-confirm="Voulez-vous vraiment supprimer cette parcelle ?" data-method="delete" href="/parcelles/3">
+          <span class="glyphicon glyphicon-trash"></span> Supprimer
+        </a>
+      </div>
     </div>
-    <div id="parcelle-controls">
-      <a id="parcelle-edit" href="/parcelles/3/edit">
-        <span class="glyphicon glyphicon-pencil"></span>
-      </a>
-      <a id="parcelle-delete" data-confirm="Voulez-vous vraiment supprimer cette parcelle ?" data-method="delete" href="/parcelles/3">
-        <span class="glyphicon glyphicon-trash"></span>
-      </a>
-    </div>
-  </div>
   </div>
 </div>
