@@ -11,6 +11,7 @@
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #  legume_id       :integer
+#  farm_id         :integer
 #
 
 require 'test_helper'

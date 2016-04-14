@@ -31,10 +31,10 @@
       <% if current_user %>
         <nav class="header-nav">
           <ul>
-            <li class="nav-item"><%= link_to "Légumes", legumes_path, class: 'btn' unless current_user.farm.nil? %></li>
-            <li class="nav-item"><%= link_to "Générations", generations_path, class: 'btn' unless current_user.farm.nil? %></li>
-            <li class="nav-item"><%= link_to "Plantations", farm_plantations_path(current_user.farm.slug), class: 'btn' unless current_user.farm.nil? %></li>
-            <li class="nav-item"><%= link_to "Paniers", farm_paniers_path(current_user.farm.slug), class: 'btn' unless current_user.farm.nil? %></li>
+            <li class="nav-item <%= "is_active" if is_active?("legumes") %>"><%= link_to "Légumes", legumes_path, class: 'btn' unless current_user.farm.nil? %></li>
+            <li class="nav-item <%= "is_active" if is_active?("generations") %>"><%= link_to "Générations", generations_path, class: 'btn' unless current_user.farm.nil? %></li>
+            <li class="nav-item <%= "is_active" if is_active?("plantations") %>"><%= link_to "Plantations", farm_plantations_path(current_user.farm.slug), class: 'btn' unless current_user.farm.nil? %></li>
+            <li class="nav-item <%= "is_active" if is_active?("paniers") %>"><%= link_to "Paniers", farm_paniers_path(current_user.farm.slug), class: 'btn' unless current_user.farm.nil? %></li>
           </ul>
         </nav>
       <% end %>
@@ -65,7 +65,7 @@
         </div>
         <div class="col-xs-12 col-sm-4 cellfooter">
           <p>En partenariat avec :</p>
-          <%= link_to image_tag('logo-fermesdavenir-white.png', height: 90), "http://www.fermesdavenir.org", class: "footer-logo" %>
+          <%= link_to image_tag('logo-fermesdavenir-white.png', height: 90), "http://www.fermesdavenir.org", class: "footer-logo", target: "_blank" %>
         </div>
         <div class="col-xs-12 col-sm-4 cellfooter">
           <p>© Copyright 2016</p>

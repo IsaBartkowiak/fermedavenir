@@ -6,4 +6,8 @@ module ApplicationHelper
 		end 
 		price.round(2)
 	end
+
+	def is_active? controller
+		controller == params[:controller]
+	end
 end
