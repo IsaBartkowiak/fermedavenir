@@ -26,6 +26,16 @@
 	</script>
 	<h1>Journal de la semaine <%= Date.today.cweek %>.</h1>
 	<div class="row cards-container">
+		
+		<% unless @farm.lat.nil? %>
+		<%= render 'card', title: 'À COMPLÉTER' %>
+			<p class="text-left">Afin de profiter de la gestion parcellaire, veuillez remplir vos données géographiques.</p>
+				<%= link_to "Dessiner ma ferme", edit_farm_path(@farm.slug), class: "btn btn_green" %>
+				<%= link_to "Ajouter des parcelles", new_parcelle_path(@farm.slug), class: "btn btn_green" %>
+			</div>
+		</div>
+		<% end %>
+
 		<%= render 'card', title: 'À SEMER' %>
 			<% if @farm.generations_to_plant.to_sem_this_week.any? %>
 				<!-- Générations à semer -->
