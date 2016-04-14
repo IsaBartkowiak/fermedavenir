@@ -21,6 +21,19 @@
       fillOpacity: 0.35
     });
     ferme.setMap(map);
+
+    // auto zoom on farm
+    var latlng = [];
+    for(i=0;i<location.length-1;i++){
+      latlng.push(new google.maps.LatLng(location[i].lat, location[i].lng));
+    }
+    var latlngbounds = new google.maps.LatLngBounds();
+    for (var i = 0; i < latlng.length; i++) {
+        latlngbounds.extend(latlng[i]);
+    }
+    map.fitBounds(latlngbounds);
+
+    // parcelles 
     var parcelles = [];
     var date = <%= Date.today.cweek %>;
     <% @farm.parcelles.each do |parcelle| %>
