@@ -22,6 +22,15 @@
     width: 100%;
     min-height: 300px;
     padding-bottom: 1em;
+
+    .btn_green {
+      margin-bottom: 20px;
+      min-width: 210px;
+    }
+    p {
+      padding: 15px 20px;
+      font-size: 90%;
+    }
   }
 
   .list-group {
@@ -68,7 +77,7 @@
     color: $mint-green;
     margin-right: 5px;
   }
-
+  
   img {
     margin-right: 20px;
   }
