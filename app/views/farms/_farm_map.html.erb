@@ -49,9 +49,11 @@
         fillOpacity: 0.75,
         indexID: <%= parcelle.id %>,
         title: "<%= parcelle.title %>",
+        <% unless parcelle.generation.nil? %>
         legume: "<%= parcelle.generation.legume.titre %>",
         plantation: <%= parcelle.generation.plantation %>,
         recolte: <%= parcelle.generation.recolte %>,
+        <% end %>
         id: <%= parcelle.id %>,
       });
       parcelles[<%= parcelle.id %>].setMap(map);
@@ -59,6 +61,7 @@
         $('.side-infos').addClass('show');
         $('#parcelle-title').html(this.title);
         $('#parcelle-surface').html(google.maps.geometry.spherical.computeArea(this.getPath()).toFixed() + " m2");
+        <% unless parcelle.generation.nil? %>
         $('#parcelle-legume').html(this.legume);
         $('#parcelle-plantation').html(this.plantation);
         $('#parcelle-recolte').html(this.recolte);
@@ -69,6 +72,7 @@
         $('#parcelle-delete').attr('href', '/parcelles/'+this.id);
         $('#parcelle-edit').attr('href', '/parcelles/'+this.id+'/edit');
         $('#parcelle-progress').fadeIn();
+        <% end %>
         $('#parcelle-controls').fadeIn();
       });
     <% end %>
