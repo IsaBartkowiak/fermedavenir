@@ -1,5 +1,17 @@
 <div class="container dashboard">
-	<%= link_to 'Activer/Désactiver les tutoriels', @farm.slug + '/tutorial', method: 'patch', remote: true %>
+	<div class="toggle-carrot <%= "disabled" unless @farm.tutorial %>">
+		<%= link_to @farm.slug + '/tutorial', method: 'patch', remote: true do %>
+			<figure>
+				<%= image_tag("carotte.png", class: "happy")%>
+				<%= image_tag("carotte-sad.png", class: "sad")%>
+			</figure>
+			<% if @farm.tutorial %>
+			<p>Aide activée<br/><i>Cliquez pour désactiver</i></p>
+			<% else %>
+			<p>Aide désactivée<br/><i>Cliquez pour activer</i></p>
+			<% end %>
+		<% end %>
+	</div>
 	<% todo = 0 %>
 	<script>
 	$.getJSON("http://api.openweathermap.org/data/2.5/weather?units=metric&cnt=7&lang=fr&lat=<%= @farm.lat %>&lon=<%= @farm.lng %>&appid=44a56d69f7c3e5607870fd49861e0075",function(json){
@@ -10,7 +22,6 @@
 	</script>
 	<h1>Journal de la semaine <%= Date.today.cweek %>.</h1>
 	<div class="row cards-container">
-
 		<%= render 'card', title: 'À SEMER' %>
 			<% if @farm.generations_to_plant.to_sem_this_week.any? %>
 				<!-- Générations à semer -->
@@ -67,8 +78,10 @@
 
 		<%= render 'card', title: 'MÉTEO' %>
 			<h3><span id="degres"></span>°C</h3>
-			<h4><span id="ville"></span></h4>
+			<h3><span id="ville"></span></h3>
 			</div>
 		</div>
 	</div>
 </div>
+
+<%= render 'helper/index', title:"Bienvenue dans votre Tableau de Bord !", text:"Découvrez dès maintenant ce que vous devez semer, planter et récolter cette semaine. Faîtes le point sur le nombre de paniers restant à gérer. Vous serez aux petits oignons !" %>
