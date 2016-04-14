@@ -6,9 +6,13 @@
 Animation = 
   init: ->
     $('.btn_back-top').click @scrollTop
+    $('.helper-close').click @hideHelper
     return
   scrollTop: ->
     $('html, body').animate { scrollTop: 0 }, 'slow'
+    return
+  hideHelper: ->
+    $('.helper').addClass('is-hidden')
     return
 
 ChangeView = 

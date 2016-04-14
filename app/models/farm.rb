@@ -41,6 +41,11 @@ class Farm < ActiveRecord::Base
     legumes << a_legume.amoeba_dup
   end
 
+  def toggle_tutorials
+    self.tutorial = !tutorial
+    save
+  end
+
   private
 
   def generate_paniers
