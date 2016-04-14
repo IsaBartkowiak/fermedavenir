@@ -16,7 +16,11 @@
 	<script>
 	$.getJSON("http://api.openweathermap.org/data/2.5/weather?units=metric&cnt=7&lang=fr&lat=<%= @farm.lat %>&lon=<%= @farm.lng %>&appid=44a56d69f7c3e5607870fd49861e0075",function(json){
 			var datas = JSON.parse(JSON.stringify(json));
+			console.log(datas);
 	    	$('#degres').html(datas.main.temp.toFixed());
+	    	$('#ciel').html(datas.weather[0].description);
+	    	/*$('#ciel').html('<img src="http://openweathermap.org/img/w/'+datas.weather[0].icon+'.png" alt="'+datas.weather[0].description+'">'); icons moches, dommage http://openweathermap.org/weather-conditions */
+	    	$('#humidity').html(datas.main.humidity.toFixed());
 	    	$('#ville').html(datas.name);
 	    });
 	</script>
@@ -77,8 +81,12 @@
 		</div>
 
 		<%= render 'card', title: 'MÉTEO' %>
-			<h3><span id="degres"></span>°C</h3>
-			<h3><span id="ville"></span></h3>
+			<div class="valign meteo">
+				<h3><span id="ville"></span></h3>
+				<h3><span id="degres"></span>°C</h3>
+				<h3><span id="ciel"></span></h3>
+				<h3 class="normal"><span id="humidity"></span>% d'humidité</h3>
+			</div>
 			</div>
 		</div>
 	</div>

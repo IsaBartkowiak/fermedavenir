@@ -72,10 +72,25 @@
   img {
     margin-right: 20px;
   }
-  .finished {
-    font-size: 70px
+  .finished{
+    font-size: 70px;
+  }
+  .finished, .valign {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    @include transform(translate(-50%, -50%));
   }
   .card-bloc {
     margin: 10px 0px;
+  }
+  .meteo{
+    h3{
+      font-size: 18px;
+      text-transform: capitalize;
+      &.normal{
+        text-transform: none;
+      }
+    }
   }
 }
