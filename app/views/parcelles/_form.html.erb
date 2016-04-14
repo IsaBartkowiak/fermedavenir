@@ -35,10 +35,10 @@
 
     var bermudaTriangle = new google.maps.Polygon({
       paths: location,
-      strokeColor: '#FF0000',
+      strokeColor: '#FFFFFF',
       strokeOpacity: 0.8,
-      strokeWeight: 2,
-      fillColor: '#FF0000',
+      strokeWeight: 1,
+      fillColor: '#FFFFFF',
       fillOpacity: 0.35
     });
     var drawingManager = new google.maps.drawing.DrawingManager({
@@ -50,7 +50,7 @@
         ]
       },
       circleOptions: {
-        fillColor: '#ffff00',
+        fillColor: '#FFFFFF',
         fillOpacity: 1,
         strokeWeight: 5,
         clickable: false,
@@ -84,10 +84,10 @@
     for(var i = 0; i < parcelles.length; i++) {
        var parcelle = new google.maps.Polygon({
         paths: parcelles[i],
-        strokeColor: '#FF0000',
+        strokeColor: '#7FC79D',
         strokeOpacity: 0.8,
-        strokeWeight: 2,
-        fillColor: '#FF0000',
+        strokeWeight: 1,
+        fillColor: '#7FC79D',
         fillOpacity: 0.35
       });
       parcelle.setMap(map);
@@ -101,10 +101,13 @@
   <%= f.hidden_field :location, class: "form-control" %>
 
   <div class="form-group">
-    <%= f.label :generation, class: "col-sm-2 control-label" %>
+    <%= f.label "Légume disponibles", class: "col-sm-2 control-label" %>
     <div class="col-sm-10">
       <select name="parcelle[generation_id]" class="form-control">
-        <% @farm.planted_generations.each do |generation| %>
+        <% if @farm.planted_generations.where("recolte >= ?", Date.today.cweek).count == 0 %>
+          <option value="" disabled selected>Vous n'avez pas de plantations disponibles en ce moment.</option>
+        <% end %>
+        <% @farm.planted_generations.where("recolte >= ?", Date.today.cweek).each do |generation| %>
           <option value="<%= generation.id %>">
             <%= generation.legume.titre.pluralize %> : À planter en semaine <%= generation.plantation %>, à récolter en semaine <%= generation.recolte %>
           </option>
