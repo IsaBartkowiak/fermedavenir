@@ -1,10 +1,19 @@
-<div id="map" style="height: 600px"></div>
+<div class="col-xs-6">
+	<input class="form-control" type="text" id="city" placeholder="Entrez une adresse ou une ville pour recentrer la carte">
+</div>
+<div class="col-xs-6">
+	<button class="btn btn_green" id="search">Recentrer la carte</button>
+</div>
+<div class="col-xs-12">
+	<p><%= image_tag 'tuto.png', style: 'width:100px' %> <span class="glyphicon glyphicon-arrow-left"></span> Utilisez cet outil pour dessiner et délimiter votre ferme</p>
+	<div id="map" style="height: 600px"></div>
+</div>
 <script>
 function initMap() {
   var map = new google.maps.Map(document.getElementById('map'), {
   center: {lat: 46.1274747, lng: -2.2885729},
   mapTypeId: google.maps.MapTypeId.SATELLITE,
-  zoom: 10
+  zoom: 7
 });
 
 var drawingManager = new google.maps.drawing.DrawingManager({
@@ -26,6 +35,19 @@ circleOptions: {
 });
 var points = [];
 drawingManager.setMap(map);
+
+$(document).on('click','#search', function(event){
+	event.preventDefault();
+	$.getJSON('http://maps.google.com/maps/api/geocode/json?address=' + $('#city').val(), function(json){
+		try {
+			map.setCenter(json.results[0].geometry.location);
+			map.setZoom(15);
+		} catch(err) {
+			console.log(err);
+		}
+	});
+});
+
 google.maps.event.addListener(drawingManager, 'overlaycomplete', function (event) {
   var myPolygon = event.overlay;
   var len = myPolygon.getPath().getLength();
