@@ -64,6 +64,19 @@
 		margin-left: .5em;
 	}
 
+	&.is-active {
+
+		a {
+			color: #fff;
+			background-color: $mid-grey;
+
+			&:before,
+			&:after {
+				display: none;
+			}
+		}
+	}
+
 	a {
 		padding-right: .5em;
 		padding-left: .5em;		
