@@ -10,7 +10,7 @@
 #
 
 class FarmsController < ApplicationController
-  before_action :set_farm, only: [:show, :edit, :update, :destroy]
+  before_action :set_farm, only: [:show, :edit, :update, :destroy, :tutorial]
   before_action :check_user, except: [:index, :show]
   before_action :bloc, only: [:edit, :update, :destroy]
 
@@ -32,6 +32,11 @@ class FarmsController < ApplicationController
 
   # GET /farms/1/edit
   def edit
+  end
+
+  # PATCH /:farm/tutorial
+  def tutorial
+    @farm.toggle_tutorials
   end
 
   # POST /farms
@@ -81,8 +86,9 @@ class FarmsController < ApplicationController
     end
     # Use callbacks to share common setup or constraints between actions.
     def set_farm
-      @farm = Farm.find_by_slug(params[:slug])
-      @farm ||= Farm.find(params[:slug])
+      slug = params[:slug] || params[:farm_slug]
+      @farm = Farm.find_by_slug(slug)
+      @farm ||= Farm.find(slug)
     end
 
     def bloc

@@ -1,4 +1,5 @@
 <div class="container">
+<%= link_to 'Activer/Désactiver les tutoriels', @farm.slug + '/tutorial', method: 'patch', remote: true %>
 <% todo = 0 %>
 <h1>Journal de la semaine <%= Date.today.cweek %></h1>
 
