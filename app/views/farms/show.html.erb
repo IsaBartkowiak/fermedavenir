@@ -2,68 +2,9 @@
 <h1><%= @farm.name %></h1>
   <%= link_to 'Modifier ma ferme', edit_farm_path(@farm.slug), class: 'btn btn-default' %>
   <%= link_to 'Ajouter une parcelle', new_parcelle_path, class: 'btn btn-default' %>
-  <div id="map" style="height:500px" class="col-xs-12 col-sm-8"></div>
-  <script>
-  <% @farm.location ||= "{ lat: -33, lng: 151 }" %>
-
-  function initMap() {
-      var location = [<%= @farm.location %>];
-    var lat = (location[0].lat + location[2].lat)/2;
-    var lng = (location[0].lng + location[2].lng)/2;
-    var map = new google.maps.Map(document.getElementById('map'), {
-      center: {lat: lat,lng: lng},
-      mapTypeId: google.maps.MapTypeId.SATELLITE,
-      zoom: 15
-    });
-
-    var ferme = new google.maps.Polygon({
-      paths: location,
-      strokeColor: '#FFFFFF',
-      strokeOpacity: 0.8,
-      strokeWeight: 0,
-      fillColor: '#FFFFFF',
-      fillOpacity: 0.35
-    });
-    ferme.setMap(map);
-    var parcelles = [];
-    var date = <%= Date.today.cweek %>;
-    <% @farm.parcelles.each do |parcelle| %>
-      parcelles[<%= parcelle.id %>] = new google.maps.Polygon({
-        paths: [<%= parcelle.location %>],
-        strokeColor: '#7FC79D',
-        strokeOpacity: 0.8,
-        strokeWeight: 1,
-        fillColor: '#7FC79D',
-        fillOpacity: 0.75,
-        indexID: <%= parcelle.id %>,
-        title: "<%= parcelle.title %>",
-        legume: "<%= parcelle.generation.legume.titre %>",
-        plantation: <%= parcelle.generation.plantation %>,
-        recolte: <%= parcelle.generation.recolte %>,
-        id: <%= parcelle.id %>,
-      });
-      parcelles[<%= parcelle.id %>].setMap(map);
-      google.maps.event.addListener(parcelles[<%= parcelle.id %>], 'click', function (event) {
-        $('#parcelle-title').html(this.title);
-        $('#parcelle-surface').html(google.maps.geometry.spherical.computeArea(this.getPath()).toFixed() + " m2");
-        $('#parcelle-legume').html(this.legume);
-        $('#parcelle-plantation').html("Planté en semaine :" + this.plantation);
-        $('#parcelle-recolte').html("Récoltable à partir de la semaine :" + this.recolte);
-        var pourcentage = (date-this.plantation)*100/(this.recolte-this.plantation);
-        if(!isFinite(pourcentage)) pourcentage = 100;
-
-        $('.progress-bar').attr('aria-valuenow', pourcentage).attr('style', "width:"+pourcentage+"%");
-        $('#parcelle-delete').attr('href', '/parcelles/'+this.id);
-        $('#parcelle-edit').attr('href', '/parcelles/'+this.id+'/edit');
-        $('#parcelle-progress').fadeIn();
-        $('#parcelle-controls').fadeIn();
-      });  
-    <% end %>
-  }
-
-  </script>
-  <script src="https://maps.googleapis.com/maps/api/js?libraries=drawing&callback=initMap"
-  async defer></script>
+  
+  <%= render 'farm_map' %>
+  
   <div class="col-xs-12 col-sm-4">
     <h4 id="parcelle-title"></h4>
     <p id="parcelle-surface"></p>

@@ -19,85 +19,8 @@
   </div>
 </div>
 
-<div id="map" style="height: 600px"></div>
- <script>
-  <% @farm.location ||= "{ lat: -33, lng: 151 }" %>
+<%= render 'parcelle_map' %>
 
-  function initMap() {
-    var location = [<%= @farm.location %>];
-    var lat = (location[0].lat + location[2].lat)/2;
-    var lng = (location[0].lng + location[2].lng)/2;
-    var map = new google.maps.Map(document.getElementById('map'), {
-      center: {lat: lat,lng: lng},
-      mapTypeId: google.maps.MapTypeId.SATELLITE,
-      zoom: 15
-    });
-
-    var bermudaTriangle = new google.maps.Polygon({
-      paths: location,
-      strokeColor: '#FFFFFF',
-      strokeOpacity: 0.8,
-      strokeWeight: 1,
-      fillColor: '#FFFFFF',
-      fillOpacity: 0.35
-    });
-    var drawingManager = new google.maps.drawing.DrawingManager({
-      drawingControl: true,
-      drawingControlOptions: {
-        position: google.maps.ControlPosition.TOP_CENTER,
-        drawingModes: [
-          google.maps.drawing.OverlayType.POLYGON,
-        ]
-      },
-      circleOptions: {
-        fillColor: '#FFFFFF',
-        fillOpacity: 1,
-        strokeWeight: 5,
-        clickable: false,
-        editable: true,
-        zIndex: 1
-      }
-      });
-      var points = [];
-      drawingManager.setMap(map);
-      google.maps.event.addListener(drawingManager, 'overlaycomplete', function (event) {
-        var myPolygon = event.overlay;
-        var len = myPolygon.getPath().getLength();
-        var htmlStr = "";
-        for (var i = 0; i < len; i++) {
-          // Coordinates of drawn polygon
-          points.push({lat: myPolygon.getPath().getAt(i).lat(), lng: myPolygon.getPath().getAt(i).lng()});
-
-        }
-        $('#parcelle_location').val('');
-        for (var i=0; i < points.length; i++) {
-          $('#parcelle_location').val($('#parcelle_location').val() + "{lat:"+points[i].lat+", lng:"+points[i].lng+"},");
-        }
-      });
-    bermudaTriangle.setMap(map);
-    var parcelles = [];
-
-    <% @farm.parcelles.each do |parcelle| %>
-      parcelles.push([<%= parcelle.location %>]);
-    <% end %>
-
-    for(var i = 0; i < parcelles.length; i++) {
-       var parcelle = new google.maps.Polygon({
-        paths: parcelles[i],
-        strokeColor: '#7FC79D',
-        strokeOpacity: 0.8,
-        strokeWeight: 1,
-        fillColor: '#7FC79D',
-        fillOpacity: 0.35
-      });
-      parcelle.setMap(map);
-    }
-
-  }
-
-  </script>
-  <script src="https://maps.googleapis.com/maps/api/js?libraries=drawing&callback=initMap"
-  async defer></script>
   <%= f.hidden_field :location, class: "form-control" %>
 
   <div class="form-group">
