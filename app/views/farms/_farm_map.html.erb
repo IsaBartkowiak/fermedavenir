@@ -40,11 +40,12 @@
       });
       parcelles[<%= parcelle.id %>].setMap(map);
       google.maps.event.addListener(parcelles[<%= parcelle.id %>], 'click', function (event) {
+        $('.side-infos').addClass('show');
         $('#parcelle-title').html(this.title);
         $('#parcelle-surface').html(google.maps.geometry.spherical.computeArea(this.getPath()).toFixed() + " m2");
         $('#parcelle-legume').html(this.legume);
-        $('#parcelle-plantation').html("Planté en semaine :" + this.plantation);
-        $('#parcelle-recolte').html("Récoltable à partir de la semaine :" + this.recolte);
+        $('#parcelle-plantation').html(this.plantation);
+        $('#parcelle-recolte').html(this.recolte);
         var pourcentage = (date-this.plantation)*100/(this.recolte-this.plantation);
         if(!isFinite(pourcentage)) pourcentage = 100;
 

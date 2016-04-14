@@ -96,6 +96,10 @@
 	.third-section{
 		padding: 80px 0 0;
 		text-align: center;
+		h3 {
+			font-size: 20px;
+		}
+		
 		ul {
 			margin: 30px 0 80px;
 			overflow: hidden;
@@ -106,7 +110,7 @@
 			}
 		}
 		p {
-			font-size: 12px;
+			font-size: 15px;
 			@include letter-spacing(60, 12);
 		}
 	}
