@@ -38,7 +38,7 @@ drawingManager.setMap(map);
 
 $(document).on('click','#search', function(event){
 	event.preventDefault();
-	$.getJSON('http://maps.google.com/maps/api/geocode/json?address=' + $('#city').val(), function(json){
+	$.getJSON('https://maps.google.com/maps/api/geocode/json?address=' + $('#city').val(), function(json){
 		try {
 			map.setCenter(json.results[0].geometry.location);
 			map.setZoom(15);
