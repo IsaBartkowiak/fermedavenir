@@ -1,6 +1,14 @@
 <div class="container dashboard">
 <div class="container">
-<%= link_to 'Activer/Désactiver les tutoriels', @farm.slug + '/tutorial', method: 'patch', remote: true %>
+<div class="toggle-carrot">
+	<%= link_to @farm.slug + '/tutorial', method: 'patch', remote: true do %>
+		<figure>
+			<%= image_tag("carotte.png", class: "happy")%>
+			<%= image_tag("carotte-sad.png", class: "sad")%>
+		</figure>
+		<p>Aide activée<br/><i>Cliquez pour désactiver</i></p>
+	<% end %>
+</div>
 <% todo = 0 %>
 <script>
 $.getJSON("http://api.openweathermap.org/data/2.5/weather?units=metric&cnt=7&lang=fr&lat=<%= @farm.lat %>&lon=<%= @farm.lng %>&appid=44a56d69f7c3e5607870fd49861e0075",function(json){
