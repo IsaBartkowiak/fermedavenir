@@ -1,12 +1,8 @@
 <div class="container">
 	<div class="page-header">
-	  <%= link_to parcelles_path, class: 'btn btn-default' do %>
+	  <%= link_to farm_path(@farm.slug), class: 'btn btn-default' do %>
 	    <span class="glyphicon glyphicon-list-alt"></span>
 	    Retour
-	  <% end %>
-	  <%= link_to @parcelle, class: 'btn btn-primary' do %>
-	    <span class="glyphicon glyphicon-info-sign"></span>
-	    Voir
 	  <% end %>
 	  <h1>Modifier la parcelle</h1>
 	</div>

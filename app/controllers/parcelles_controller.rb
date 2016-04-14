@@ -30,8 +30,8 @@ class ParcellesController < ApplicationController
 
     respond_to do |format|
       if @parcelle.save
-        format.html { redirect_to parcelles_path, notice: 'Parcelle was successfully created.' }
-        format.json { render :show, status: :created, location: parcelles_path }
+        format.html { redirect_to @farm, notice: 'Parcelle ajoutée.' }
+        format.json { render :show, status: :created, location: @farm }
       else
         format.html { render :new }
         format.json { render json: @parcelle.errors, status: :unprocessable_entity }
@@ -44,8 +44,8 @@ class ParcellesController < ApplicationController
   def update
     respond_to do |format|
       if @parcelle.update(parcelle_params)
-        format.html { redirect_to @parcelle, notice: 'Parcelle was successfully updated.' }
-        format.json { render :show, status: :ok, location: @parcelle }
+        format.html { redirect_to @farm, notice: 'Parcelle mise à jour.' }
+        format.json { render :show, status: :ok, location: @farm }
       else
         format.html { render :edit }
         format.json { render json: @parcelle.errors, status: :unprocessable_entity }
@@ -58,7 +58,7 @@ class ParcellesController < ApplicationController
   def destroy
     @parcelle.destroy
     respond_to do |format|
-      format.html { redirect_to parcelles_url, notice: 'Parcelle was successfully destroyed.' }
+      format.html { redirect_to @farm, notice: 'Parcelle supprimée.' }
       format.json { head :no_content }
     end
   end
