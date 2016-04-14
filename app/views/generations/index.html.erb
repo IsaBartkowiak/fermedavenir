@@ -4,10 +4,17 @@
       <span class="glyphicon glyphicon-plus"></span>
       Rajouter une génération
     <% end %>
+    <div class="right">
+      <ul>
+        <li><span class="legende-box light-green"></span>Semis en pépinière
+        </li><li><span class="legende-box mint-green"></span>Plantation et pousse
+        </li><li><span class="legende-box dark-green"></span>Récolte et conservation</li></ul>
+    </div>
   </div>
-    
-  <div class="table-responsive">
-    <table class="table table-striped table-bordered table-hover">
+</div>
+<div class="table-responsive fixed-table-header">
+  <div class="fixed-table-wrapper">
+    <table class="table fixed table-striped table-bordered table-hover">
       <thead>
         <tr>
           <th>Légume</th> 
@@ -18,55 +25,67 @@
           <th></th>
         </tr>
       </thead>
-
-      <tbody>
-        <%= content_tag_for(:tr, @generations) do |generation| %>
-        <td><%= generation.legume.titre unless generation.legume.nil? %></td>
-              <% semi = false 
-                 plantation = false
-                 recolte = false 
-                 %>
-              <% for i in 1..52 %>
-                <% if generation.semi_from == i %>
-                  <% semi = true %>
-                  <td class="light-green"></td>
-                <% elsif generation.plantation == i %>
-                  <td class="mint-green"></td>
-                  <% 
-                    semi = false 
-                    plantation = true
-                  %>
-                <% elsif generation.recolte == i %>
-                  <td class="dark-green"></td>
-                  <% 
-                    plantation = false
-                    recolte = true unless generation.conservation_to == generation.recolte 
-                  %>
-                <% elsif generation.conservation_to == i %>
-                  <td class="dark-green"></td>
-                  <% 
-                    recolte = false 
-                  %>
-                <% elsif semi %>
-                  <td class="light-green"></td>
-                <% elsif plantation %>
-                  <td class="mint-green"></td>
-                <% elsif recolte %>
-                  <td class="dark-green"></td>
-                <% else %>
-                  <td></td>
-                <% end %>
-              <% end %> 
-          <td><%= link_to edit_generation_path(generation) do %>
-                <span class="glyphicon glyphicon-pencil"></span>
-              <% end %>
-          </td>
-          <td><%= link_to generation, method: :delete, data: { confirm: 'Are you sure?' } do %>
-                <span class="glyphicon glyphicon-trash"></span>
-              <% end %>
-          </td>
-        <% end %>
-      </tbody>
     </table>
   </div>
+  <table class="table main-table table-striped table-bordered table-hover">
+    <thead>
+      <tr>
+        <th>Légume</th> 
+        <% for i in 1..52 %>
+          <th><%= i %></th>
+        <% end %>  
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <%= content_tag_for(:tr, @generations) do |generation| %>
+      <td><%= generation.legume.titre unless generation.legume.nil? %></td>
+            <% semi = false 
+               plantation = false
+               recolte = false 
+               %>
+            <% for i in 1..52 %>
+              <% if generation.semi_from == i %>
+                <% semi = true %>
+                <td class="light-green"></td>
+              <% elsif generation.plantation == i %>
+                <td class="mint-green"></td>
+                <% 
+                  semi = false 
+                  plantation = true
+                %>
+              <% elsif generation.recolte == i %>
+                <td class="dark-green"></td>
+                <% 
+                  plantation = false
+                  recolte = true unless generation.conservation_to == generation.recolte 
+                %>
+              <% elsif generation.conservation_to == i %>
+                <td class="dark-green"></td>
+                <% 
+                  recolte = false 
+                %>
+              <% elsif semi %>
+                <td class="light-green"></td>
+              <% elsif plantation %>
+                <td class="mint-green"></td>
+              <% elsif recolte %>
+                <td class="dark-green"></td>
+              <% else %>
+                <td></td>
+              <% end %>
+            <% end %> 
+        <td><%= link_to edit_generation_path(generation) do %>
+              <span class="glyphicon glyphicon-pencil"></span>
+            <% end %>
+        </td>
+        <td><%= link_to generation, method: :delete, data: { confirm: 'Are you sure?' } do %>
+              <span class="glyphicon glyphicon-trash"></span>
+            <% end %>
+        </td>
+      <% end %>
+    </tbody>
+  </table>
 </div>

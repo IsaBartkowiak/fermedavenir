@@ -41,8 +41,32 @@ Panier =
       dataType: 'script'
     return
 
+Table =
+  init: ->
+    if $('.fixed-table-header').length 
+      $(document).scroll @checkTableHeaderScroll
+      $('.fixed-table-header').scroll @checkFixedHeaderScrollLeft
+      $('.fixed-table-wrapper table tr th:first-child').css('min-width', $('.main-table tr th:first-child').outerWidth())
+    return
+
+  checkTableHeaderScroll: ->
+    if $(window).scrollTop() > $('.fixed-table-header').offset().top
+      $('.fixed-table-wrapper').fadeIn()
+    else
+      $('.fixed-table-wrapper').fadeOut()
+    return
+
+  checkFixedHeaderScrollLeft: ->
+    $('.fixed-table-wrapper').scrollLeft( $('.fixed-table-header').scrollLeft() )
+    return
+
+
+
+
+
 $(document).ready ->
   Animation.init()
   ChangeView.init()
   Panier.init()
+  Table.init()
   return

@@ -1,7 +1,8 @@
 <div class="container">
 
-<div class="table-responsive">
-    <table class="table table-striped table-bordered table-hover">
+<div class="table-responsive fixed-table-header">
+  <div class="fixed-table-wrapper">
+    <table class="table fixed table-striped table-bordered table-hover">
       <thead>
         <tr>
           <th style="min-width:120px">Qté à planter</th>
@@ -14,74 +15,88 @@
           <% end %>  
         </tr>
       </thead>
-
-      <tbody>
-        <% @generations.each do |generation| %>
-          <% plant = @plantations.where(generation: generation).first %>
-          <% qtetoplant = @farm.get_quantity_to_plant(generation) %>
-        <tr class="<% if !plant %>not-planted<% elsif qtetoplant > plant.quantity %>alert-plant<% end %>">
-         <%= form_for([@farm, @plantation]) do |f| %>
-         <td style="min-width:120px">
-           <%= f.hidden_field :id, value: plant.id if plant %>
-           <%= f.hidden_field :generation_id, value: generation.id %>
-           <% 
-            quantity = if plant.nil? 
-                qtetoplant 
-            else 
-               plant.quantity 
-            end
-            %>
-           <%= f.number_field :quantity, class: "form-control", value: quantity, :step => 'any', min: 0 %>
-         </td>
-         <td style="min-width:100px">
-          <%= f.number_field :year, class: "form-control", value: Time.now.year, :step => 'any' %>
-         </td>
-         <td>
-            <%= f.submit "Planter", class: "btn btn-primary" unless plant %>
-            <%= link_to "Retirer", farm_plantation_path(@farm, plant), method: :delete, class: "btn btn-primary" if plant %>
-          </td>
-        <% end %>
-        <td><%= generation.legume.titre unless generation.legume.nil? %></td>
-        <td><%= generation.legume.variete unless generation.legume.variete %></td>
-              <% semi = false 
-                 plantation = false
-                 recolte = false 
-                 %>
-              <% for i in 1..52 %>
-                <% if generation.semi_from == i %>
-                  <% semi = true %>
-                  <td class="light-green"></td>
-                <% elsif generation.plantation == i %>
-                  <td class="mint-green"></td>
-                  <% 
-                    semi = false 
-                    plantation = true
-                  %>
-                <% elsif generation.recolte == i %>
-                  <td class="dark-green"></td>
-                  <% 
-                    plantation = false
-                    recolte = true unless generation.conservation_to == generation.recolte 
-                  %>
-                <% elsif generation.conservation_to == i %>
-                  <td class="dark-green"></td>
-                  <% 
-                    recolte = false 
-                  %>
-                <% elsif semi %>
-                  <td class="light-green"></td>
-                <% elsif plantation %>
-                  <td class="mint-green"></td>
-                <% elsif recolte %>
-                  <td class="dark-green"></td>
-                <% else %>
-                  <td></td>
-                <% end %>
-              <% end %> 
-
-          </tr>
-        <% end %>
-      </tbody>
     </table>
   </div>
+  <table class="table main-table table-striped table-bordered table-hover">
+    <thead>
+      <tr>
+        <th style="min-width:120px">Qté à planter</th>
+        <th style="min-width:100px">Année</th>
+        <th></th>
+        <th>Légume</th> 
+        <th>Variété</th> 
+        <% for i in 1..52 %>
+          <th><%= i %></th>
+        <% end %>  
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @generations.each do |generation| %>
+        <% plant = @plantations.where(generation: generation).first %>
+        <% qtetoplant = @farm.get_quantity_to_plant(generation) %>
+      <tr class="<% if !plant %>not-planted<% elsif qtetoplant > plant.quantity %>alert-plant<% end %>">
+       <%= form_for([@farm, @plantation]) do |f| %>
+       <td style="min-width:120px">
+         <%= f.hidden_field :id, value: plant.id if plant %>
+         <%= f.hidden_field :generation_id, value: generation.id %>
+         <% 
+          quantity = if plant.nil? 
+              qtetoplant 
+          else 
+             plant.quantity 
+          end
+          %>
+         <%= f.number_field :quantity, class: "form-control", value: quantity, :step => 'any', min: 0 %>
+       </td>
+       <td style="min-width:100px">
+        <%= f.number_field :year, class: "form-control", value: Time.now.year, :step => 'any' %>
+       </td>
+       <td>
+          <%= f.submit "Planter", class: "btn btn-primary" unless plant %>
+          <%= link_to "Retirer", farm_plantation_path(@farm, plant), method: :delete, class: "btn btn-primary" if plant %>
+        </td>
+      <% end %>
+      <td><%= generation.legume.titre unless generation.legume.nil? %></td>
+      <td><%= generation.legume.variete unless generation.legume.variete %></td>
+            <% semi = false 
+               plantation = false
+               recolte = false 
+               %>
+            <% for i in 1..52 %>
+              <% if generation.semi_from == i %>
+                <% semi = true %>
+                <td class="light-green"></td>
+              <% elsif generation.plantation == i %>
+                <td class="mint-green"></td>
+                <% 
+                  semi = false 
+                  plantation = true
+                %>
+              <% elsif generation.recolte == i %>
+                <td class="dark-green"></td>
+                <% 
+                  plantation = false
+                  recolte = true unless generation.conservation_to == generation.recolte 
+                %>
+              <% elsif generation.conservation_to == i %>
+                <td class="dark-green"></td>
+                <% 
+                  recolte = false 
+                %>
+              <% elsif semi %>
+                <td class="light-green"></td>
+              <% elsif plantation %>
+                <td class="mint-green"></td>
+              <% elsif recolte %>
+                <td class="dark-green"></td>
+              <% else %>
+                <td></td>
+              <% end %>
+            <% end %> 
+
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 </div>

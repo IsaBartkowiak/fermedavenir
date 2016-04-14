@@ -1,9 +1,43 @@
-.light-green {
-	background : $light-green;
+.right{
+	float: right;
+	width: 70%;
+	padding: 0.6em 0;
+	height: 45px;
+	ul {
+		li{
+			display: inline-block;
+			width: (100%/3);
+			line-height: 20px
+		}
+	}
+	.legende-box{
+		display: inline-block;
+		vertical-align: top;
+		width: 20%;
+		height: 20px;
+		margin-right: 20px;
+	}
 }
-.mint-green {
-	background : $mint-green;
+
+.light-green{
+	background-color : $light-green;
+}
+.mint-green{
+	background-color : $mint-green;
 }
 .dark-green {
-	background : $dark-green;
+	background-color : $dark-green;
+}
+
+.fixed-table-wrapper{
+	overflow: hidden;
+	position: fixed;
+	top: 0;
+	z-index: 2;
+	background-color: #fff;
+	display: none;
+	width: 100%;
+	table{
+		margin: 0;	
+	}
 }
