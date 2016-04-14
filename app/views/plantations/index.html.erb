@@ -62,8 +62,8 @@
         <%= f.number_field :year, class: "form-control", value: Time.now.year, :step => 'any' %>
        </td>
        <td>
-          <%= f.submit "Planter", class: "btn btn-primary" unless plant %>
-          <%= link_to "Retirer", farm_plantation_path(@farm, plant), method: :delete, class: "btn btn-primary" if plant %>
+          <%= f.submit "Planter", class: "btn btn_green" unless plant %>
+          <%= link_to "Retirer", farm_plantation_path(@farm, plant), method: :delete, class: "btn btn_green" if plant %>
         </td>
       <% end %>
       <td><%= generation.legume.titre unless generation.legume.nil? %></td>
