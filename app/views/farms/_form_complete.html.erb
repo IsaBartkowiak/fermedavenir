@@ -50,6 +50,8 @@ google.maps.event.addListener(drawingManager, 'overlaycomplete', function (event
 
   }
   $('#farm_location').val('');
+  $('#farm_lat').val(points[0].lat);
+  $('#farm_lng').val(points[0].lng);
   for (var i=0; i < points.length; i++) {
     $('#farm_location').val($('#farm_location').val() + "{lat:"+points[i].lat+", lng:"+points[i].lng+"},");
   }
@@ -63,7 +65,9 @@ google.maps.event.addListener(drawingManager, 'overlaycomplete', function (event
   <div class="" style="height: 200px">
     <div class="col-xs-12">
       <%= f.text_field :name, class: "form-control input-farm", placeholder: "Entrez un nom", required: "required" %>
-      <%= f.hidden_field :location, class: "form-control input-farm", placeholder: "Entrez une location", required: "required" %>
+      <%= f.hidden_field :location, required: "required" %>
+      <%= f.hidden_field :lat %>
+      <%= f.hidden_field :lng %>
     </div>
     <%= f.submit "Mettre à jour ma ferme", class: "btn btn_green btn_farm" %>
   </div>

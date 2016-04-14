@@ -9,6 +9,8 @@
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #  price           :float
+#  farm_id         :integer
+#  nb_per_kilo     :float            default(1000.0)
 #
 
 class Legume < ActiveRecord::Base

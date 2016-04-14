@@ -1,6 +1,12 @@
+
 <div class="container">
 <%= link_to 'Activer/Désactiver les tutoriels', @farm.slug + '/tutorial', method: 'patch', remote: true %>
 <% todo = 0 %>
+<script>
+	$.getJSON("http://api.openweathermap.org/data/2.5/weather?lat=<%= @farm.lat %>&lon=<%= @farm.lng %>&appid=44a56d69f7c3e5607870fd49861e0075",function(json){
+            console.log(JSON.stringify(json));
+        });
+</script>
 <h1>Journal de la semaine <%= Date.today.cweek %></h1>
 
 <% if @farm.generations_to_plant.to_plant_this_week.any? %>
