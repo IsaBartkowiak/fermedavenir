@@ -126,18 +126,17 @@ a{
 // Sections
 .section {
 	padding: 4em 0;
+	color: $black;
 
 	&-title{
-		font-weight: 300;
+		font-weight: 500;
 	}
 
 	&_grey {
-		color: $black;
 		background-color: $grey-light;
 	}
 
 	&_white {
-		color: $main-color;
 		background-color: #fff;
 
 		.section-title {
@@ -231,8 +230,15 @@ a{
 }
 
 .btn-primary {
-	color: #2e6da4;
-	border-color: #2e6da4;
+	color: $blue;
+	border-color: $blue;
+
+	&:hover,
+	&:focus,
+	&:active {
+		border-color: $blue;
+		background-color: $blue;
+	}
 }
 .hidden {
 	display:none;
