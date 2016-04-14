@@ -1,0 +1,17 @@
+.helper{
+	width: 40%;
+	border: 2px solid $mint-green;
+	padding: 20px;
+	position: relative;
+	img{
+		display: inline-block;
+		vertical-align: middle;
+		width: 39%;
+		max-height: 200px;
+	}
+	.content{
+		display: inline-block;
+		vertical-align: middle;
+		width: 60%;
+	}
+}
