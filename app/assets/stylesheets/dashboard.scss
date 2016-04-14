@@ -1,81 +1,81 @@
 .dashboard {
+  .cards-container {
+    margin: 10px 0px;
+  }
   .greenblock {
-  background-color: $mint-green;
-  padding-top: 0.7em;
-  padding-bottom: 0.7em;
-  width: 100%;
-  margin-bottom: 1em;
-}
-.whiteblock {
-  background-color: #FFFFFF;
-  text-align: center;
-  width: 100%;
-  padding-bottom: 1em;
-}
+    color: $mint-green;
+    background-color: #fff;
+    border-bottom: 3px solid $mint-green;
+    padding-top: 0.7em;
+    padding-bottom: 0.7em;
+    width: 100%;
+    margin-bottom: 1em;
+  }
+  .list-group {
+    margin-bottom: auto;
+    background-color: transparent;
+  }
+  .whiteblock {
+    background-color: #F6F6F6;
+    box-shadow: 1px 1px 10px #E6E6E6;
+    text-align: center;
+    width: 100%;
+    min-height: 300px;
+    padding-bottom: 1em;
+  }
 
-.list-group {
-  margin-bottom: auto;
-  background-color: transparent;
-}
+  .list-group {
+    margin-bottom: auto;
+  }
 
-h1 {
-  margin-left: 2em;
-  padding-top: 1em;
-}
+  h2 {
+    color: $mint-green;
+    text-align: center;
+    font-size: 1em;
+    margin: 0;
+  }
 
-h2 {
-  color: #FFFFFF;
-  text-align: center;
-  font-size: 1em;
-  margin: 0;
-}
-
-.btn_green {
-  padding: .7em .7em;
-}
+  .btn_green {
+    padding: .7em .7em;
+  }
 
 
-#big {
-  font-size: 2em;
-}
+  #big {
+    font-size: 2em;
+  }
 
-#backdash {
-  background-color: #F7F8F7;
-  padding-bottom: 2em;
-  margin-bottom: 2em;
-}
+  #backdash {
+    background-color: #F7F8F7;
+    padding-bottom: 2em;
+    margin-bottom: 2em;
+  }
 
-#img_panier {
-  width: 3em;
-  height: 3em;
-  margin: auto;
-}
+  #img_panier {
+    width: 3em;
+    height: 3em;
+    margin: auto;
+  }
 
-#panier {
-  margin-bottom: 1em;
-}
+  #panier {
+    margin-bottom: 1em;
+  }
 
-#panier::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  display: block;
-  width: 100%;
-  height: .2em;
-  background-color: $mint-green;
-}
+  li {
+    border: none;
+  }
 
-li {
-  border: none;
-}
+  i {
+    color: $mint-green;
+    margin-right: 5px;
+  }
 
-i {
-  color: $mint-green;
-  margin-right: 5px;
-}
-
-img {
-  margin-right: 20px;
-}
+  img {
+    margin-right: 20px;
+  }
+  .finished {
+    font-size: 70px
+  }
+  .card-bloc {
+    margin: 10px 0px;
+  }
 }
