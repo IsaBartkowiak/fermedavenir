@@ -1,59 +1,98 @@
+<div class="container dashboard">
 <div class="container">
 <%= link_to 'Activer/Désactiver les tutoriels', @farm.slug + '/tutorial', method: 'patch', remote: true %>
 <% todo = 0 %>
+<div id="backdash">
 <h1>Journal de la semaine <%= Date.today.cweek %></h1>
 
-<% if @farm.generations_to_plant.to_plant_this_week.any? %>
-	<!-- Générations à planter -->
-	<h2><%= todo += 1 %>. Mes plantations</h2>
-	<blockquote>
-	<p>Je dois planter : </p>
-	<ul class="list-group">
-		<% @farm.generations_to_plant.to_plant_this_week.each do |generation| %>
-		<li class="list-group-item"><%= @farm.get_quantity_to_plant(generation).to_i %> graines de <%= generation.legume.titre.downcase.pluralize %> <%= image_tag("image-"+ generation.legume.titre.parameterize + ".png", width: "35px"); %></li>
-		<% end %>
-	</ul>
-	</blockquote>
-<% else %>
-	<p class="text-success"><i class="glyphicon glyphicon-check"></i> Rien à planter cette semaine.</p>
-<% end %>
 
-<% if @farm.generations_to_plant.to_sem_this_week.any? %>
-	<!-- Générations à semer -->
-	<h2><%= todo += 1 %>. Semis</h2>
-	<blockquote>
-	<p>Je dois semer : </p>
-	<ul class="list-group">
-		<% @farm.generations_to_plant.to_sem_this_week.each do |generation| %>
-		<li class="list-group-item"><%= @farm.get_quantity_to_plant(generation).to_i %> graines de <%= generation.legume.titre.downcase.pluralize %> <%= image_tag("image-"+ generation.legume.titre.parameterize + ".png", width: "35px"); %></li>
-		<% end %>
-	</ul>
-	</blockquote>
-<% else %>
-	<p class="text-success"><i class="glyphicon glyphicon-check"></i> Rien à semer cette semaine.</p>
-<% end %>
+<div class="row">
+	<div class="col-xs-12 col-sm-2"></div>
+	<div class="col-xs-12 col-sm-2">
+			<div class="whiteblock">
+				<div class="greenblock">
 
-<% if @farm.planted_generations.to_recolt_this_week.any? %>
-	<!-- Générations à récolter -->
-	<h2><%= todo += 1 %>. Mes récoltes</h2>
-	<blockquote>
-	<p>Je dois récolter : </p>
-	<ul class="list-group">
-		<% @farm.generations_to_plant.to_recolt_this_week.each do |generation| %>
-		<li class="list-group-item">Les <%= generation.legume.titre.downcase.pluralize %> - <%= generation.legume.variete %> <%= image_tag("image-"+ generation.legume.titre.parameterize + ".png", width: "35px"); %></li>
-		<% end %>
-	</ul>
-	</blockquote>
-<% else %>
-	<p class="text-success"><i class="glyphicon glyphicon-check"></i> Rien à récolter cette semaine.</p>
-<% end %>
 
-<% if Panier.to_do(@farm) > 0 %>
-	<!-- Paniers à compléter -->
-	<h2><%= todo += 1 %>. Mes paniers</h2>
-	<blockquote>
-	<p>Il me reste <%= Panier.to_do(@farm) %> paniers à compléter</p>
-	<%= link_to 'Gérer mes paniers', farm_paniers_path(@farm.slug) %>
-	</blockquote>
-<% end %>
+					<h2>À SEMER</h2>
+				</div>
+				<% if @farm.generations_to_plant.to_sem_this_week.any? %>
+					<!-- Générations à semer -->
+					<ul class="list-group">
+						<% @farm.generations_to_plant.to_sem_this_week.each do |generation| %>
+						<li class="list-group-item"><%= image_tag("image-"+ generation.legume.titre.parameterize + ".png", width: "35px"); %></i> <%= generation.legume.titre.capitalize %></li>
+						<% end %>
+					</ul>
+				<% else %>
+					<p class="text-success"><i class="glyphicon glyphicon-check"></i> Rien à semer cette semaine.</p>
+				<% end %>
+
+			</div>
+		</div>
+	<div class="col-xs-12 col-sm-2">
+		<div class="whiteblock">
+			<div class="greenblock">
+
+
+				<h2>À PLANTER</h2>
+			</div>
+			<% if @farm.generations_to_plant.to_plant_this_week.any? %>
+				<!-- Générations à planter -->
+				<ul class="list-group">
+					<% @farm.generations_to_plant.to_plant_this_week.each do |generation| %>
+					<li class="list-group-item"><%= image_tag("image-"+ generation.legume.titre.parameterize + ".png", width: "35px"); %> <%= generation.legume.titre.capitalize %></li>
+					<% end %>
+				</ul>
+				</blockquote>
+			<% else %>
+				<p class="text-success"><i class="glyphicon glyphicon-check"></i> Rien à planter cette semaine.</p>
+			<% end %>
+		</div>
+	</div>
+
+<div class="col-xs-12 col-sm-2">
+		<div class="whiteblock">
+			<div class="greenblock">
+
+
+				<h2>À RECOLTER</h2>
+			</div>
+				<% if @farm.planted_generations.to_recolt_this_week.any? %>
+					<!-- Générations à récolter -->
+
+					<ul class="list-group">
+						<% @farm.generations_to_plant.to_recolt_this_week.each do |generation| %>
+						<li class="list-group-item"> <%= image_tag("image-"+ generation.legume.titre.parameterize + ".png", width: "35px"); %> <%= generation.legume.titre.capitalize %></li>
+						<% end %>
+					</ul>
+				<% else %>
+					<p class="text-success"><i class="glyphicon glyphicon-check"></i> Rien à récolter cette semaine.</p>
+				<% end %>
+		</div>
+</div>
+<div class="col-xs-12 col-sm-2">
+		<div class="whiteblock">
+			<div class="greenblock">
+
+
+				<h2>PANIERS</h2>
+			</div>
+				<% if Panier.to_do(@farm) > 0 %>
+					<!-- Paniers à compléter -->
+					<%= image_tag('basket.svg', id:"img_panier") %>
+					<p id="panier"><span id="big"><%= Panier.to_do(@farm) %></span> paniers</p>
+					<%= link_to 'Gérer mes paniers', farm_paniers_path(@farm.slug), class:"btn btn_green" %>
+
+				<% end %>
+			</div>
+		</div>
+	</div>
+	<div class="col-xs-12 col-sm-2"></div>
+</div>
+
+
+
+
+
+
+
 </div>
