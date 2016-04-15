@@ -31,6 +31,26 @@
 		}
 	}
 
+	.inline-list{
+		display: inline-block;
+		vertical-align: middle;
+		float: left;
+		padding: 10px;
+		margin: 0;
+		@include box-sizing(border-box);
+		li{
+			display: inline;
+			font-style: italic;
+			font-size: 13px;
+			&:after{
+				content: ' •';
+			}
+			&:last-child:after{
+				content: '';
+			}
+		}
+	}
+
 	.overview-display{
 		position: relative;
 		.sidebar{
