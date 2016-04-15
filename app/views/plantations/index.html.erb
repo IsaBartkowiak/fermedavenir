@@ -1,3 +1,4 @@
+<div class="section_grey">
 <div class="container">
   <div class="page-header">
     <div class="legende">
@@ -63,7 +64,7 @@
        </td>
        <td>
           <%= f.submit "Planter", class: "btn btn_green" unless plant %>
-          <%= link_to "Retirer", farm_plantation_path(@farm, plant), method: :delete, class: "btn btn_green" if plant %>
+          <%= link_to "Retirer", farm_plantation_path(@farm, plant), method: :delete, class: "btn btn_red" if plant %>
         </td>
       <% end %>
       <td><%= generation.legume.titre unless generation.legume.nil? %></td>
@@ -111,3 +112,4 @@
 </div>
 
 <%= render 'helper/index', title:"", text:"Gérez vos plantations et gardez le contrôle sur la gestion de votre ferme. " %>
+</div>

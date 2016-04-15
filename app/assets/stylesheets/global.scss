@@ -135,6 +135,7 @@ a{
 
 	&_grey {
 		background-color: $grey-light;
+		padding-bottom:50px;
 	}
 
 	&_white {
@@ -209,8 +210,10 @@ a{
 	border-radius: 0;
 	cursor: pointer;
 	overflow: hidden;
-	transition: color .3s ease-in-out;
-
+	transition: all .3s ease-in-out;
+	&:focus{
+		outline:none;
+	}
 	&:before {
 		content:"";
 		z-index: -1;
@@ -281,6 +284,15 @@ a{
 		&.btn_stroke {
 			color: #fff;
 		}
+	}
+}
+
+.btn_red{
+	background-color: $orange;
+	color:white;
+	&:hover{
+		background-color: darken($orange, 10%);
+		color:white;
 	}
 }
 
