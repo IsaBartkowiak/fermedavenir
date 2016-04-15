@@ -92,7 +92,7 @@
 		</div>
 		
 		<%= render 'card', title: 'MÉTEO' %>
-			<% unless @farm.is_drawn? %>
+			<% if @farm.is_drawn? %>
 			<div class="valign meteo">
 				<h3><span id="ville"></span></h3>
 				<h3><span id="degres"></span>°C</h3>
