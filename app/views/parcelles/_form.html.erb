@@ -20,7 +20,8 @@
 </div>
 
 <%= render 'parcelle_map' %>
-
+<div class="col-xs-12">
+  
   <%= f.hidden_field :location, class: "form-control" %>
 
   <div class="form-group">
@@ -44,4 +45,5 @@
       <%= f.submit 'Enregistrer la parcelle', class: "btn btn-primary" %>
     </div>
   </div>
+</div>
 <% end %>
