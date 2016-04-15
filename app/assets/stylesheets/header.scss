@@ -59,6 +59,14 @@
 .nav-item {
 	display: inline-block;
 	float: left;
+	&.is_active{
+		a{
+			color: $mint-green;
+			&:after{
+				background-color: $mint-green;
+			}
+		}
+	}
 
 	&:nth-child(n+2) {
 		margin-left: .5em;
