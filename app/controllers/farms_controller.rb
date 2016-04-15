@@ -14,7 +14,6 @@
 class FarmsController < ApplicationController
   before_action :set_farm, only: [:show, :edit, :update, :destroy, :tutorial]
   before_action :check_user, except: [:index, :show]
-  before_action :bloc, only: [:edit, :update, :destroy]
 
   # GET /farms
   # GET /farms.json
@@ -90,11 +89,6 @@ class FarmsController < ApplicationController
     def set_farm
       @farm = current_user.farm
     end
-
-    def bloc
-      redirect_to root_path, notice: "Vous ne pouvez pas modifier les fermes des autres voyons !" if current_user.farm != @farm
-    end
-
     # Never trust parameters from the scary internet, only allow the white list through.
     def farm_params
       params.require(:farm).permit(:name, :location, :lat, :lng)
