@@ -87,7 +87,7 @@ class PortionsController < ApplicationController
     end
 
     def set_farm
-      @farm = current_user.farm unless current_user.nil?
+      @farm = current_user.farm
     end
 
     def set_panier
