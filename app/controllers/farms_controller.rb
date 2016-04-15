@@ -24,6 +24,7 @@ class FarmsController < ApplicationController
   # GET /farms/1
   # GET /farms/1.json
   def show
+    redirect_to edit_farm_path(@farm.slug) unless @farm.is_drawn?
   end
 
   # GET /farms/new
