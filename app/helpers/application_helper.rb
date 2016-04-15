@@ -10,4 +10,8 @@ module ApplicationHelper
 	def is_active? controller
 		controller == params[:controller]
 	end
+
+	def is_current_week? a_week
+		Date.today.cweek == a_week
+	end
 end

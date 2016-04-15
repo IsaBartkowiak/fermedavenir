@@ -19,8 +19,8 @@
       <thead>
         <tr>
           <th>Légume</th>
-          <% for i in 1..52 %>
-            <th><%= i %></th>
+          <% for week in 1..52 %>
+            <th <% if is_current_week? week %>class="orange"<% end %>><%= week %></th>
           <% end %>
           <th style="min-width: 33px"></th>
           <th style="min-width: 33px"></th>
@@ -31,9 +31,9 @@
   <table class="table main-table table-striped table-bordered table-hover">
     <thead>
       <tr>
-        <th>Légume</th> 
-        <% for i in 1..52 %>
-          <th><%= i %></th>
+        <th style="min-width:110px">Légume</th> 
+        <% for week in 1..52 %>
+          <th <% if is_current_week? week %>class="orange"<% end %>><%= week %></th>
         <% end %>  
         <th></th>
         <th></th>
