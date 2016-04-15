@@ -13,17 +13,11 @@
     </div>
   <% end %>
   
-<%= render 'form_for_map' %>
+  <%= render 'form_for_map', f: f %>
 
-  <div class="col-xs-12">
-    <div class="col-xs-6">
-      <%= f.text_field :name, class: "form-control input-farm", placeholder: "Entrez un nom", required: "required" %>
-      <%= f.hidden_field :location, required: "required" %>
-      <%= f.hidden_field :lat %>
-      <%= f.hidden_field :lng %>
-    </div>
-    <div class="col-xs-6 text-left">
-        <%= f.submit "Mettre à jour ma ferme", class: "btn btn_green btn_farm" %>
+  <div class="col-xs-12 save">
+    <div class="text-right">
+        <%= f.submit "Mettre à jour ma ferme", class: "btn btn_green" %>
     </div>
   </div>
 
