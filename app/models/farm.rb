@@ -48,7 +48,7 @@ class Farm < ActiveRecord::Base
     save
   end
 
-  def drawn?
+  def is_drawn?
     !lat.nil?
   end
 
