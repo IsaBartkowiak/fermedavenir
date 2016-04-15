@@ -42,7 +42,14 @@ class PortionsController < ApplicationController
   # POST /portions
   # POST /portions.json
   def create
-    @portion = @panier.portions.new(portion_params)
+    identical_portions = @panier.portions.where(generation_id: portion_params[:generation_id])
+
+    if identical_portions.any?
+      @portion = identical_portions.first
+      @portion.refresh(portion_params)
+    else
+      @portion = @panier.portions.new(portion_params)
+    end
 
     respond_to do |format|
       if @portion.save
@@ -100,6 +107,6 @@ class PortionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def portion_params
-      params.require(:portion).permit(:panier_id, :legume_id, :quantity)
+      params.require(:portion).permit(:panier_id, :legume_id, :quantity, :generation_id)
     end
 end

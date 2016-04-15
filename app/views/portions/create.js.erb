@@ -1,2 +1,3 @@
+$('*[data-id="<%= @portion.generation.id %>"]').remove();
 $('#portions-list').append('<%= escape_javascript(render('list_element')) %>');
 $('#total-price').html(<%= get_cart_total(@panier.portions) %> + ' €')
