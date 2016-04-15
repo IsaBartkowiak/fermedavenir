@@ -33,6 +33,17 @@
 
 	.overview-display{
 		position: relative;
+		.valign{
+			width: 100%;
+			position: relative;
+			top: 0;
+			left: 0;
+			@include transform(translate(0,0));
+			.price{
+				font-style: italic;
+				font-size: 20px;
+			}
+		}
 		> ul{
 			padding: 0;
 			margin: 0;
@@ -41,8 +52,8 @@
 				display: inline-block;
 				vertical-align: top;
 				text-align: center;
-				border: 2px solid $light-grey;
-				color: $light-grey;
+				border: 3px solid $grey;
+				color: $grey;
 				width: 60px;
 				height: 60px;
 				line-height: 55px;
@@ -50,12 +61,12 @@
 				margin: 15px;
 				cursor: pointer;
 				&.full{
-					border: 4px solid $dark-grey;
-					color: $dark-grey;
+					border: 3px solid $main-color;
+					color: $main-color;
 				}
 				&:hover, &.active{
-					border: 2px solid $main-color;
-					color: $main-color;
+					border: 3px solid $dark-grey;
+					color: $dark-grey;
 				}
 			}
 		}

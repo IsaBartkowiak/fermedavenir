@@ -68,7 +68,6 @@
 		<%= render 'card', title: 'RÉCOLTES' %>
 			<% if @farm.planted_generations.to_recolt_this_week.any? %>
 				<!-- Générations à récolter -->
-
 				<ul class="list-group">
 					<% @farm.generations_to_plant.to_recolt_this_week.each do |generation| %>
 					<li class="list-group-item"> <%= image_tag("image-"+ generation.legume.titre.parameterize + ".png", width: "35px"); %> <%= generation.legume.titre.capitalize %></li>
@@ -83,9 +82,11 @@
 		<%= render 'card', title: 'PANIERS' %>
 			<% if Panier.to_do(@farm) > 0 %>
 				<!-- Paniers à compléter -->
-				<%= image_tag('basket.svg', id:"img_panier") %>
-				<p id="panier"><span id="big"><%= Panier.to_do(@farm) %></span> paniers</p>
-				<%= link_to 'Gérer mes paniers', farm_paniers_path(@farm.slug), class:"btn btn_green" %>
+				<div class="valign meteo">
+					<%= image_tag('basket.svg', id:"img_panier") %>
+					<p id="panier"><span id="big"><%= Panier.to_do(@farm) %></span> paniers</p>
+					<%= link_to 'Gérer mes paniers', farm_paniers_path(@farm.slug), class:"btn btn_green btn-end" %>
+				</div>
 			<% end %>
 			</div>
 		</div>
