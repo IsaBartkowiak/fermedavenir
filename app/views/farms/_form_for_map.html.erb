@@ -1,8 +1,11 @@
 <div class="col-xs-6">
 	<input class="form-control" type="text" id="city" placeholder="Entrez une adresse ou une ville pour recentrer la carte">
 </div>
-<div class="col-xs-6">
+<div class="col-xs-3">
 	<button class="btn btn_green" id="search">Recentrer la carte</button>
+</div>
+<div class="col-xs-3">
+  <button class="btn btn_green" id="reload">Recommencer le dessin</button>
 </div>
 <div class="col-xs-12">
 	<p><%= image_tag 'tuto.png', style: 'width:100px' %> <span class="glyphicon glyphicon-arrow-left"></span> Utilisez cet outil pour dessiner et délimiter votre ferme</p>
@@ -13,28 +16,34 @@ function initMap() {
   var map = new google.maps.Map(document.getElementById('map'), {
   center: {lat: 46.1274747, lng: -2.2885729},
   mapTypeId: google.maps.MapTypeId.SATELLITE,
-  zoom: 7
+  zoom: 7,
 });
 
-var drawingManager = new google.maps.drawing.DrawingManager({
-drawingControl: true,
-drawingControlOptions: {
-  position: google.maps.ControlPosition.TOP_CENTER,
-  drawingModes: [
-    google.maps.drawing.OverlayType.POLYGON,
-  ]
-},
-circleOptions: {
-  fillColor: '#ffff00',
-  fillOpacity: 1,
-  strokeWeight: 5,
-  clickable: false,
-  editable: true,
-  zIndex: 1
+var drawingManager = [];
+var mapInstance = 0;
+for(var i = 0; i < 90; i++) {
+  drawingManager.push(
+    new google.maps.drawing.DrawingManager({
+      drawingControl: true,
+      drawingControlOptions: {
+      position: google.maps.ControlPosition.TOP_CENTER,
+      drawingModes: [
+          google.maps.drawing.OverlayType.POLYGON,
+        ]
+      },
+      circleOptions: {
+      fillColor: '#ffff00',
+      fillOpacity: 1,
+      strokeWeight: 5,
+      clickable: false,
+      editable: true,
+      zIndex: 1
+    }
+    })
+  );
 }
-});
 var points = [];
-drawingManager.setMap(map);
+drawingManager[0].setMap(map);
 
 $(document).on('click','#search', function(event){
 	event.preventDefault();
@@ -48,7 +57,16 @@ $(document).on('click','#search', function(event){
 	});
 });
 
-google.maps.event.addListener(drawingManager, 'overlaycomplete', function (event) {
+$(document).on('click','#reload', function(event){
+  event.preventDefault();
+  drawingManager[mapInstance].setMap(null);
+  mapInstance += 1;
+  drawingManager[mapInstance].setMap(map);
+  $('#farm_location').val('');
+  points = [];
+});
+
+google.maps.event.addListener(drawingManager[mapInstance], 'overlaycomplete', function (event) {
   var myPolygon = event.overlay;
   var len = myPolygon.getPath().getLength();
   var htmlStr = "";
