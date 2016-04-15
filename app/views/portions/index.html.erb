@@ -70,7 +70,8 @@
                 <label class="panier-dispo--label"><%= generation.legume.titre + ' - ' + generation.legume.variete + ' - ' + generation.legume.price.to_s %>€/KG </label>
 
                   <%= f.hidden_field :legume_id, value: generation.legume.id, class: "form-control" %>
-     
+                  <%= f.hidden_field :generation_id, value: generation.id, class: "form-control" %>
+
              
                   <div class="quantity-wrapper">
                     <%= f.number_field :quantity, class: "panier-dispo--quantity", placeholder: 'KG', :step => 'any', value: 1, min: 0 %>
