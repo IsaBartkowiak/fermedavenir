@@ -22,6 +22,10 @@ class Portion < ActiveRecord::Base
     legume.price.to_f*quantity.to_f unless legume.price.nil?
   end
 
+  def refresh params
+    self.quantity += params[:quantity].to_f
+  end
+
   private 
 
   def assign_generation
