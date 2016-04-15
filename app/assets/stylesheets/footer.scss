@@ -59,7 +59,23 @@
 	width: auto;
 	max-height: 100%;
 	}
-
+	a {
+		color: #FFFFFF;
+		float: left;
+	}
+	p {
+		float: left;
+		margin-right: 3em;
+	}
+	.footer-logo {
+		display: block;
+		float: right;
+		img {
+			display: inline-block;
+			width: 100%;
+			max-width: 5em;
+		}
+	}
 }
 
 .cellfooter {
@@ -72,15 +88,4 @@
 @media (max-width: $md-small){
     text-align: center;
 }
-}
-
-.footer-logo {
-	display: block;
-	text-align: center;
-
-	img {
-		display: inline-block;
-		width: 100%;
-		max-width: 20em;
-	}
 }

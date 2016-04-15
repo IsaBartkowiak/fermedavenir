@@ -11,7 +11,7 @@
       mapTypeId: google.maps.MapTypeId.SATELLITE,
       zoom: 15
     });
-
+    var reload = false;
     var ferme = new google.maps.Polygon({
       paths: location,
       strokeColor: '#FFFFFF',
@@ -57,20 +57,24 @@
         id: <%= parcelle.id %>,
       });
       parcelles[<%= parcelle.id %>].setMap(map);
+
       google.maps.event.addListener(parcelles[<%= parcelle.id %>], 'click', function (event) {
+        
         $('.side-infos').addClass('show');
         $('#parcelle-title').html(this.title);
         $('#parcelle-surface').html(google.maps.geometry.spherical.computeArea(this.getPath()).toFixed() + " m2");
-        <% unless parcelle.generation.nil? %>
-        $('#parcelle-legume').html(this.legume);
-        $('#parcelle-plantation').html(this.plantation);
-        $('#parcelle-recolte').html(this.recolte);
-        var pourcentage = (date-this.plantation)*100/(this.recolte-this.plantation);
-        if(!isFinite(pourcentage)) pourcentage = 100;
 
-        $('.progress-bar').attr('aria-valuenow', pourcentage).attr('style', "width:"+pourcentage+"%");
-        $('#parcelle-progress').fadeIn();
+        <% unless parcelle.generation.nil? %>
+          $('#parcelle-legume').html(this.legume);
+          $('#parcelle-plantation').html(this.plantation);
+          $('#parcelle-recolte').html(this.recolte);
+          var pourcentage = (date-this.plantation)*100/(this.recolte-this.plantation);
+          if(!isFinite(pourcentage)) pourcentage = 100;
+
+          $('.progress-bar').attr('aria-valuenow', pourcentage).attr('style', "width:"+pourcentage+"%");
+          $('#parcelle-progress').fadeIn();
         <% end %>
+
         $('#parcelle-delete').attr('href', '/parcelles/'+this.id);
         $('#parcelle-edit').attr('href', '/parcelles/'+this.id+'/edit');
         $('#parcelle-controls').fadeIn();
