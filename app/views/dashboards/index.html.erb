@@ -19,7 +19,34 @@
 			console.log(datas);
 	    	$('#degres').html(datas.main.temp.toFixed());
 	    	$('#ciel').html(datas.weather[0].description);
-	    	/*$('#ciel').html('<img src="http://openweathermap.org/img/w/'+datas.weather[0].icon+'.png" alt="'+datas.weather[0].description+'">'); icons moches, dommage http://openweathermap.org/weather-conditions */
+	    	var w_class = "";
+	    	switch(datas.weather[0].main) {
+	    		case 'Rain':
+	    			w_class = 'day-sleet';
+	    		break;
+
+	    		case 'Clear':
+	    			w_class = 'day-sunny';
+	    		break;
+
+	    		case 'Clouds':
+	    			w_class = 'cloudy';
+	    		break;
+
+	    		case 'Fog':
+	    			w_class = 'fog';
+	    		break;
+
+	    		case 'Haze':
+	    			w_class = 'day-haze';
+	    		break;
+
+	    		default: 
+	    			w_class = 'day-cloudy';
+	    		break;
+
+	    	}
+	    	$('#meteo-icon').removeClass().addClass('wi wi-'+ w_class);
 	    	$('#humidity').html(datas.main.humidity.toFixed());
 	    	$('#ville').html(datas.name);
 	    });
@@ -93,11 +120,12 @@
 		
 		<%= render 'card', title: 'MÉTEO' %>
 			<% if @farm.is_drawn? %>
-			<div class="valign meteo">
-				<h3><span id="ville"></span></h3>
-				<h3><span id="degres"></span>°C</h3>
-				<h3><span id="ciel"></span></h3>
-				<h3 class="normal"><span id="humidity"></span>% d'humidité</h3>
+			<div class="meteo">
+				<i id="meteo-icon" class=""></i>
+				<p><span id="ville"></span></p>
+				<p><span id="degres"></span>°C</p>
+				<p><span id="ciel"></span></p>
+				<p class="normal"><span id="humidity"></span>% d'humidité</p>
 			</div>
 			<% else %>
 				<p class="text-left">Pour profiter de la méteo, veuillez dessiner votre ferme sur la carte.</p>

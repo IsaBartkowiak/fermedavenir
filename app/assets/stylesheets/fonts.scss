@@ -1,42 +1,6 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,300,500,400italic,500italic,700);
-/*@import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
-@mixin fontface($font-name){
-	@font-face {
-		font-family: $font-name;
-		src: url(font-path($font-name +'.eot'));
-		src: url(font-path($font-name +'.eot?#iefix')) format('embedded-opentype'),
-		url(font-path($font-name +'.woff')) format('woff'),
-		url(font-path($font-name +'.ttf')) format('truetype'),
-		url(font-path($font-name +'.svg#' + $font-name)) format('svg');
-		font-weight: normal;
-		font-style: normal;
-	}
-}
-
-//roboto
-@include fontface ("roboto-black-webfont");
-@include fontface ("roboto-bold-webfont");
-@include fontface ("roboto-light-webfont");
-@include fontface ("roboto-medium-webfont");
-@include fontface ("roboto-redular-webfont");
-
-$roboto : roboto-regular-webfont, helevetica neue, helevetica, arial, sans-serif;
-$roboto-bl : roboto-black-webfont, helevetica neue, helevetica, arial, sans-serif;
-$roboto-b : roboto-bold-webfont, helevetica neue, helevetica, arial, sans-serif;
-$roboto-m : roboto-medium-webfont, helevetica neue, helevetica, arial, sans-serif;
-$roboto-l : roboto-light-webfont, helevetica neue, helevetica, arial, sans-serif; */
-
 $roboto : 'Roboto', sans-serif;
 $roboto-bl : 'Roboto', sans-serif;
 $roboto-b : 'Roboto', sans-serif;
 $roboto-m : 'Roboto', sans-serif;
 $roboto-l : 'Roboto', sans-serif;
-
-//oswald
-/*@include fontface ("Oswald-Bold");
-@include fontface ("Oswald-Light");
-@include fontface ("Oswald-Regular");
-
-$oswald: Oswald-Regular, helevetica neue, helevetica, serif;
-$oswald-b: Oswald-Bold, helevetica neue, helevetica, serif;
-$oswald-r: Oswald-Regular, helevetica neue, helevetica, serif; */
