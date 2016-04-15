@@ -1,0 +1,15 @@
+
+.container{
+	label{
+		color: darken($grey, 10%);
+	}
+	input[type="text"], input[type="number"], input[type="email"], select{
+		border-radius: 0;
+		transition: all .3s ease;
+		&:hover,&:focus{
+			border: 1px solid $main-color-lighter;
+			box-shadow:none;
+			background-color: lighten($main-color, 32%);
+		}
+	}
+}

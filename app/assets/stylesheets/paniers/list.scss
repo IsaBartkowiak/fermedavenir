@@ -1,4 +1,8 @@
+//vue mosaique
 .list-paniers{
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
 	position: relative;
 	.page-header{
 		border-bottom: none;
@@ -34,7 +38,7 @@
 		}
 
 		// hide table and show overview
-		.table{
+		.list{
 			display: none;
 		}
 		.overview-display{
@@ -101,6 +105,7 @@
 				&.full{
 					border: 3px solid $main-color;
 					color: $main-color;
+					background-color: transparent;
 				}
 				&:hover, &.active{
 					border: 3px solid $dark-grey;
@@ -111,7 +116,170 @@
 	}
 
 }
-.alert-plant {
-    border: 3px solid red !important;
-    color: red !important;
+
+
+//vue liste
+.list-paniers{
+	.row.no-margin{
+		height:50px;
+		@media (max-width:992px){
+			margin: 0;
+			height:auto;
+		}
+	}
+	.line{
+		min-height:50px;
+		line-height:50px;
+		border-top:1px solid lighten($grey,10%);
+		display:inline-block;
+		width:100%;
+		margin: 0 15px;
+		position:relative;
+		@media (max-width:992px){
+			line-height:normal;
+			background-color:white;
+			border: 0;
+			margin: 10px 0;
+			padding:20px 10px;
+			&.row{
+				margin: 0;
+			}
+		}
+		&-legend{
+			text-align:center;
+			@media(max-width:992px){
+				display:none;
+			}
+		}
+		& .control{
+			@media(max-width:992px){
+				margin-top:15px;
+				a{
+					border: 2px solid $main-color;
+					padding: 10px;
+					display: block;
+					text-align:center;
+					width:100%;
+					text-align:center;
+					transition: all .2s ease;
+					&:hover{
+						text-decoration: none;
+						background-color: $main-color;
+						color: white;
+					}			
+				}
+				&.del{
+					background-color: $orange;
+				}
+			}
+		}
+		&-label{
+			display:none;
+			@media (max-width:992px){
+				font-weight:600;
+				display:inline-block;
+				text-transform: uppercase;
+			}
+		}
+		&-item{
+			display: inline-block;
+			line-height:normal;
+			width:100%;
+			text-align:center;
+			@media (max-width:992px){
+				text-align:left;
+				margin: 10px 0;
+			}
+			&.quantity, &.products{
+				input, select{
+					margin-left:15px;
+					@media (max-width:992px){
+						display: inline-block;
+					}
+				}
+			}
+			&.week {
+				font-size:20px;
+			}		
+		}
+	}
+}
+
+//alerte il faut planter
+.list-paniers .alert-plant {
+	background-color: lighten($orange,10%);
+	position:relative;
+	transition: all .3s ease;
+	&:hover{
+		background-color: $orange;
+		@media(max-width:992px){
+			background-color: white;
+		}
+		.alert-plant--box{
+			opacity: 1;
+			transform: translate(0,0);
+		}
+	}
+	a{
+		color:white;
+		@media(max-width:992px){
+			color: $orange;
+		}
+		&, & span:before{
+			transition: all .2s ease;
+		}
+		&:hover, &:hover span:before{
+			color: darken($orange, 25%);
+			text-decoration:none;
+		}	
+	}
+	&--box{
+		pointer-events:none;
+		opacity: 0;
+		max-width:300px;
+		position:absolute;
+		padding:15px;
+		top: -100px;
+		left:0;
+		font-size:16px;
+		right:0;
+		text-align:center;
+		margin: auto;
+		background-color:$orange;
+		color: $orange;
+		line-height:normal;
+		transform: translate(0,-20px);
+		transition: all .3s ease;
+		p{
+			color:white;
+		}
+		&:after{
+			content:'';
+			position:absolute;
+			left:0;
+			right:0;
+			margin: auto;
+			bottom:-12px;
+			width: 0; 
+			height: 0; 
+			border-left: 12px solid transparent;
+			border-right: 12px solid transparent;		
+			border-top: 12px solid $orange;
+		}
+		@media(max-width:992px){
+			position:relative;
+			max-width:90%;
+			opacity:1;
+			top:0;
+			transform: translate(0,0);
+			background-color: transparent;
+			border: 2px solid $main-color;
+			p{
+				color:$main-color;
+			}
+			&:after{
+				content:none;
+			}
+		}
+	}
 }
