@@ -1,7 +1,18 @@
 .list-paniers{
 	position: relative;
-	.change-view{
+	.page-header{
+		border-bottom: none;
+	}
+	h1{
+		display: inline-block;
+		margin: 0;
+	}
+	.btn-float{
+		margin-right: 10px;
+	}
+	.change-view, .btn-float{
 		float: right;
+		min-height: 40px;
 		.glyphicon-th{
 			display: block;
 		}
