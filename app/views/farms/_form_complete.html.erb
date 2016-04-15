@@ -1,5 +1,5 @@
 <div class="container">
-<%= form_for(@farm, html: { class: "form-horizontal", role: "form" }) do |f| %>
+<%= form_for(@farm, html: { class: "form-horizontal row", role: "form" }) do |f| %>
   <% if @farm.errors.any? %>
     <div class="alert alert-danger alert-dismissable" role="alert">
       <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
@@ -13,16 +13,12 @@
     </div>
   <% end %>
   
-<%= render 'form_for_map' %>
+  <%= render 'form_for_map', f: f %>
 
-  <div class="" style="height: 200px">
-    <div class="col-xs-12">
-      <%= f.text_field :name, class: "form-control input-farm", placeholder: "Entrez un nom", required: "required" %>
-      <%= f.hidden_field :location, required: "required" %>
-      <%= f.hidden_field :lat %>
-      <%= f.hidden_field :lng %>
+  <div class="save">
+    <div class="col-xs-12 text-right">
+        <%= f.submit "Mettre à jour ma ferme", class: "btn btn_green" %>    
     </div>
-    <%= f.submit "Mettre à jour ma ferme", class: "btn btn_green btn_farm" %>
   </div>
 
 <% end %>

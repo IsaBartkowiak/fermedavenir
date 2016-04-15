@@ -1,54 +1,56 @@
 <div class="container dashboard">
-<div class="container">
-<div class="toggle-carrot">
-	<%= link_to @farm.slug + '/tutorial', method: 'patch', remote: true do %>
-		<figure>
-			<%= image_tag("carotte.png", class: "happy")%>
-			<%= image_tag("carotte-sad.png", class: "sad")%>
-		</figure>
-		<p>Aide activée<br/><i>Cliquez pour désactiver</i></p>
-	<% end %>
-</div>
-<% todo = 0 %>
-<script>
-$.getJSON("http://api.openweathermap.org/data/2.5/weather?units=metric&cnt=7&lang=fr&lat=<%= @farm.lat %>&lon=<%= @farm.lng %>&appid=44a56d69f7c3e5607870fd49861e0075",function(json){
-		var datas = JSON.parse(JSON.stringify(json));
-    	$('#degres').html(datas.main.temp.toFixed());
-    	$('#ville').html(datas.name);
-    });
-</script>
-<div id="backdash">
-<h1>Journal de la semaine <%= Date.today.cweek %>.</h1>
-<small>Il fait <span id="degres"></span>°C à <span id="ville"></span></small>
-<div class="row">
-	<div class="col-xs-12 col-sm-2"></div>
-	<div class="col-xs-12 col-sm-2">
-			<div class="whiteblock">
-				<div class="greenblock">
-
-
-					<h2>À SEMER</h2>
-				</div>
-				<% if @farm.generations_to_plant.to_sem_this_week.any? %>
-					<!-- Générations à semer -->
-					<ul class="list-group">
-						<% @farm.generations_to_plant.to_sem_this_week.each do |generation| %>
-						<li class="list-group-item"><%= image_tag("image-"+ generation.legume.titre.parameterize + ".png", width: "35px"); %></i> <%= generation.legume.titre.capitalize %></li>
-						<% end %>
-					</ul>
-				<% else %>
-					<p class="text-success"><i class="glyphicon glyphicon-check"></i> Rien à semer cette semaine.</p>
-				<% end %>
-
+	<div class="toggle-carrot <%= "disabled" unless @farm.tutorial %>">
+		<%= link_to @farm.slug + '/tutorial', method: 'patch', remote: true do %>
+			<figure>
+				<%= image_tag("carotte.png", class: "happy")%>
+				<%= image_tag("carotte-sad.png", class: "sad")%>
+			</figure>
+			<% if @farm.tutorial %>
+			<p>Aide activée<br/><i>Cliquez pour désactiver</i></p>
+			<% else %>
+			<p>Aide désactivée<br/><i>Cliquez pour activer</i></p>
+			<% end %>
+		<% end %>
+	</div>
+	<% todo = 0 %>
+	<script>
+	$.getJSON("http://api.openweathermap.org/data/2.5/weather?units=metric&cnt=7&lang=fr&lat=<%= @farm.lat %>&lon=<%= @farm.lng %>&appid=44a56d69f7c3e5607870fd49861e0075",function(json){
+			var datas = JSON.parse(JSON.stringify(json));
+			console.log(datas);
+	    	$('#degres').html(datas.main.temp.toFixed());
+	    	$('#ciel').html(datas.weather[0].description);
+	    	/*$('#ciel').html('<img src="http://openweathermap.org/img/w/'+datas.weather[0].icon+'.png" alt="'+datas.weather[0].description+'">'); icons moches, dommage http://openweathermap.org/weather-conditions */
+	    	$('#humidity').html(datas.main.humidity.toFixed());
+	    	$('#ville').html(datas.name);
+	    });
+	</script>
+	<h1>Journal de la semaine <%= Date.today.cweek %>.</h1>
+	<div class="row cards-container">
+		
+		<% unless @farm.is_drawn? %>
+		<%= render 'card', title: 'À COMPLÉTER' %>
+			<p class="text-left">Afin de profiter de la gestion parcellaire, veuillez remplir vos données géographiques.</p>
+				<%= link_to "Dessiner ma ferme", edit_farm_path(@farm.slug), class: "btn btn_green" %>
+				<%= link_to "Ajouter des parcelles", new_parcelle_path, class: "btn btn_green" %>
 			</div>
 		</div>
-	<div class="col-xs-12 col-sm-2">
-		<div class="whiteblock">
-			<div class="greenblock">
+		<% end %>
 
-
-				<h2>À PLANTER</h2>
+		<%= render 'card', title: 'À SEMER' %>
+			<% if @farm.generations_to_plant.to_sem_this_week.any? %>
+				<!-- Générations à semer -->
+				<ul class="list-group">
+					<% @farm.generations_to_plant.to_sem_this_week.each do |generation| %>
+					<li class="list-group-item"><%= image_tag("image-"+ generation.legume.titre.parameterize + ".png", width: "35px"); %></i> <%= generation.legume.titre.capitalize %></li>
+					<% end %>
+				</ul>
+			<% else %>
+				<span class="finished"><i class="glyphicon glyphicon-check"></i></span>
+			<% end %>
 			</div>
+		</div>
+
+		<%= render 'card', title: 'À PLANTER' %>
 			<% if @farm.generations_to_plant.to_plant_this_week.any? %>
 				<!-- Générations à planter -->
 				<ul class="list-group">
@@ -58,50 +60,53 @@ $.getJSON("http://api.openweathermap.org/data/2.5/weather?units=metric&cnt=7&lan
 				</ul>
 				</blockquote>
 			<% else %>
-				<p class="text-success"><i class="glyphicon glyphicon-check"></i> Rien à planter cette semaine.</p>
+				<span class="finished"><i class="glyphicon glyphicon-check"></i></span>
 			<% end %>
-		</div>
-	</div>
-
-<div class="col-xs-12 col-sm-2">
-		<div class="whiteblock">
-			<div class="greenblock">
-
-
-				<h2>À RECOLTER</h2>
 			</div>
-				<% if @farm.planted_generations.to_recolt_this_week.any? %>
-					<!-- Générations à récolter -->
-
-					<ul class="list-group">
-						<% @farm.generations_to_plant.to_recolt_this_week.each do |generation| %>
-						<li class="list-group-item"> <%= image_tag("image-"+ generation.legume.titre.parameterize + ".png", width: "35px"); %> <%= generation.legume.titre.capitalize %></li>
-						<% end %>
-					</ul>
-				<% else %>
-					<p class="text-success"><i class="glyphicon glyphicon-check"></i> Rien à récolter cette semaine.</p>
-				<% end %>
 		</div>
-</div>
-<div class="col-xs-12 col-sm-2">
-		<div class="whiteblock">
-			<div class="greenblock">
 
-
-				<h2>PANIERS</h2>
+		<%= render 'card', title: 'RÉCOLTES' %>
+			<% if @farm.planted_generations.to_recolt_this_week.any? %>
+				<!-- Générations à récolter -->
+				<ul class="list-group">
+					<% @farm.generations_to_plant.to_recolt_this_week.each do |generation| %>
+					<li class="list-group-item"> <%= image_tag("image-"+ generation.legume.titre.parameterize + ".png", width: "35px"); %> <%= generation.legume.titre.capitalize %></li>
+					<% end %>
+				</ul>
+			<% else %>
+				<span class="finished"><i class="glyphicon glyphicon-check"></i></span>
+			<% end %>
 			</div>
-				<% if Panier.to_do(@farm) > 0 %>
-					<!-- Paniers à compléter -->
+		</div>
+
+		<%= render 'card', title: 'PANIERS' %>
+			<% if Panier.to_do(@farm) > 0 %>
+				<!-- Paniers à compléter -->
+				<div class="valign meteo">
 					<%= image_tag('basket.svg', id:"img_panier") %>
 					<p id="panier"><span id="big"><%= Panier.to_do(@farm) %></span> paniers</p>
-					<%= link_to 'Gérer mes paniers', farm_paniers_path(@farm.slug), class:"btn btn_green" %>
-
-				<% end %>
+					<%= link_to 'Gérer mes paniers', farm_paniers_path(@farm.slug), class:"btn btn_green btn-end" %>
+				</div>
+			<% end %>
+			</div>
+		</div>
+		
+		<%= render 'card', title: 'MÉTEO' %>
+			<% if @farm.is_drawn? %>
+			<div class="valign meteo">
+				<h3><span id="ville"></span></h3>
+				<h3><span id="degres"></span>°C</h3>
+				<h3><span id="ciel"></span></h3>
+				<h3 class="normal"><span id="humidity"></span>% d'humidité</h3>
+			</div>
+			<% else %>
+				<p class="text-left">Pour profiter de la méteo, veuillez dessiner votre ferme sur la carte.</p>
+				<%= link_to "Dessiner ma ferme", edit_farm_path(@farm.slug), class: "btn btn_green" %>
+				<%= link_to "Ajouter des parcelles", new_parcelle_path, class: "btn btn_green" %>
+			<% end %>
 			</div>
 		</div>
 	</div>
-	<div class="col-xs-12 col-sm-2"></div>
-</div>
 </div>
 
 <%= render 'helper/index', title:"Bienvenue dans votre Tableau de Bord !", text:"Découvrez dès maintenant ce que vous devez semer, planter et récolter cette semaine. Faîtes le point sur le nombre de paniers restant à gérer. Vous serez aux petits oignons !" %>

@@ -7,6 +7,27 @@
 #parcelle-controls {
 	display: none;
 }
+.user-location{
+	margin-bottom: 30px;
+	input{
+		width: 66.66667%;
+		padding-right: 0;
+		height: 45px;
+	}
+}
+.user-form{
+	margin-bottom: 20px;
+	p{
+		margin: 0;
+		line-height: 44px;
+	}
+}
+.save{
+	margin-bottom: 40px;
+	.btn-right{
+		text-align: right;
+	}
+}
 
 .farm{
 	#map{
@@ -39,12 +60,17 @@
 		.advice{
 			margin-top: 50px;
 			position: absolute;
-			text-align: center;
+			text-align: left;
 			font-style: italic;
 			z-index: 1;
 			width: 300px;
 			left: 50%;
 			margin-left: -140px;
+			em{
+				color: #A09D9D;
+				font-size: 12px;
+				line-height: normal;
+			}
 		}
 		.inner{
 			padding: 7px;
@@ -54,7 +80,7 @@
 			border: 3px solid $mint-green;
 			* {
 				opacity: 0;
-				transition: 0.4s opacity ease;
+				transition: 0.4s all ease;
 			}
 		}
 	}
@@ -75,6 +101,7 @@
 			box-sizing: border-box;
 			word-break: break-word;
 			margin-bottom: 10px; 
+			min-height: 100px;
 			&:first-child, &:nth-child(2){
 				border-bottom: 1px solid $mint-green;
 			}

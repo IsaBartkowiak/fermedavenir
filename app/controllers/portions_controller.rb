@@ -42,7 +42,14 @@ class PortionsController < ApplicationController
   # POST /portions
   # POST /portions.json
   def create
-    @portion = @panier.portions.new(portion_params)
+    identical_portions = @panier.portions.where(generation_id: portion_params[:generation_id])
+
+    if identical_portions.any?
+      @portion = identical_portions.first
+      @portion.refresh(portion_params)
+    else
+      @portion = @panier.portions.new(portion_params)
+    end
 
     respond_to do |format|
       if @portion.save
@@ -75,8 +82,9 @@ class PortionsController < ApplicationController
   def destroy
     @portion.destroy
     respond_to do |format|
-      format.html { redirect_to farm_panier_portions_url(@panier.farm, @panier), notice: 'Portion was successfully destroyed.' }
+      format.html { redirect_to farm_panier_portions_url(@panier.farm, @panier), notice: 'Le légume a été retiré avec succès' }
       format.json { head :no_content }
+      format.js {}
     end
   end
 
@@ -87,7 +95,7 @@ class PortionsController < ApplicationController
     end
 
     def set_farm
-      @farm = current_user.farm unless current_user.nil?
+      @farm = current_user.farm
     end
 
     def set_panier
@@ -100,6 +108,6 @@ class PortionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def portion_params
-      params.require(:portion).permit(:panier_id, :legume_id, :quantity)
+      params.require(:portion).permit(:panier_id, :legume_id, :quantity, :generation_id)
     end
 end

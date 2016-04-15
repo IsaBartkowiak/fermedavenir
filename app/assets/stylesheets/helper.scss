@@ -1,5 +1,9 @@
 .toggle-carrot{
 	overflow: hidden;
+
+	a {
+		display: inline-block;
+	}
 	a:hover, a:active, a:focus{
 		text-decoration: none;
 		color: $orange;

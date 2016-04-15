@@ -1,6 +1,11 @@
-<div id="map" style="height: 600px"></div>
+<div class="col-xs-12">
+  <button class="btn btn_green" id="reload">Recommencer le dessin</button>
+</div>
+<div class="col-xs-12">
+  <div id="map" style="height: 600px"></div>
+</div>
  <script>
-  <% @farm.location ||= "{ lat: -33, lng: 151 }" %>
+  <% @farm.location ||= "{ lat: -13, lng: 151 }" %>
 
   function initMap() {
     var location = [<%= @farm.location %>];
@@ -12,6 +17,20 @@
       zoom: 15
     });
 
+    // auto zoom on farm
+    var latlng = [];
+    for(i=0;i<location.length-1;i++){
+      latlng.push(new google.maps.LatLng(location[i].lat, location[i].lng));
+    }
+    var latlngbounds = new google.maps.LatLngBounds();
+    for (var i = 0; i < latlng.length; i++) {
+        latlngbounds.extend(latlng[i]);
+    }
+    // si l'utilisateur a déjà enrefistré sa ferme
+    if(location.length > 1){
+      map.fitBounds(latlngbounds);  
+    }
+
     var bermudaTriangle = new google.maps.Polygon({
       paths: location,
       strokeColor: '#FFFFFF',
@@ -20,26 +39,45 @@
       fillColor: '#FFFFFF',
       fillOpacity: 0.35
     });
-    var drawingManager = new google.maps.drawing.DrawingManager({
-      drawingControl: true,
-      drawingControlOptions: {
-        position: google.maps.ControlPosition.TOP_CENTER,
-        drawingModes: [
-          google.maps.drawing.OverlayType.POLYGON,
-        ]
-      },
-      circleOptions: {
-        fillColor: '#FFFFFF',
-        fillOpacity: 1,
-        strokeWeight: 5,
-        clickable: false,
-        editable: true,
-        zIndex: 1
-      }
-      });
-      var points = [];
-      drawingManager.setMap(map);
-      google.maps.event.addListener(drawingManager, 'overlaycomplete', function (event) {
+      
+
+    var drawingManager = [];
+    var mapInstance = 0;
+    for(var i = 0; i < 90; i++) {
+      drawingManager.push(
+        new google.maps.drawing.DrawingManager({
+          drawingControl: true,
+          drawingControlOptions: {
+          position: google.maps.ControlPosition.TOP_CENTER,
+          drawingModes: [
+              google.maps.drawing.OverlayType.POLYGON,
+            ]
+          },
+          circleOptions: {
+          fillColor: '#ffff00',
+          fillOpacity: 1,
+          strokeWeight: 5,
+          clickable: false,
+          editable: true,
+          zIndex: 1
+        }
+        })
+      );
+    }
+    var points = [];
+    drawingManager[0].setMap(map);
+
+    $(document).on('click','#reload', function(event){
+      event.preventDefault();
+      drawingManager[mapInstance].setMap(null);
+      mapInstance += 1;
+      drawingManager[mapInstance].setMap(map);
+      $('#farm_location').val('');
+      points = [];
+    });
+
+    for(var i = 0; i < mapInstance.length; i++) {
+      google.maps.event.addListener(drawingManager[mapInstance], 'overlaycomplete', function (event) {
         var myPolygon = event.overlay;
         var len = myPolygon.getPath().getLength();
         var htmlStr = "";
@@ -53,6 +91,7 @@
           $('#parcelle_location').val($('#parcelle_location').val() + "{lat:"+points[i].lat+", lng:"+points[i].lng+"},");
         }
       });
+    }
     bermudaTriangle.setMap(map);
     var parcelles = [];
 

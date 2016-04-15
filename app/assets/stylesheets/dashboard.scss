@@ -1,80 +1,11 @@
 .dashboard {
-  .greenblock {
-  background-color: $mint-green;
-  padding-top: 0.7em;
-  padding-bottom: 0.7em;
-  width: 100%;
-  margin-bottom: 1em;
-}
-.whiteblock {
-  background-color: #FFFFFF;
-  text-align: center;
-  width: 100%;
-  padding-bottom: 1em;
-}
-
-.list-group {
-  margin-bottom: auto;
-}
-
-h1 {
-  margin-left: 2em;
-  padding-top: 1em;
-}
-
-h2 {
-  color: #FFFFFF;
-  text-align: center;
-  font-size: 1em;
-  margin: 0;
-}
-
-.btn_green {
-  padding: .7em .7em;
-}
-
-
-#big {
-  font-size: 2em;
-}
-
-#backdash {
-  background-color: #F7F8F7;
-  padding-bottom: 2em;
-  margin-bottom: 2em;
-}
-
-#img_panier {
-  width: 3em;
-  height: 3em;
-  margin: auto;
-}
-
-#panier {
-  margin-bottom: 1em;
-}
-
-#panier::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  display: block;
-  width: 100%;
-  height: .2em;
-  background-color: $mint-green;
-}
-
-li {
-  border: none;
-}
-
-i {
-  color: $mint-green;
-  margin-right: 5px;
-}
-
-img {
-  margin-right: 20px;
-}
+  .meteo{
+    h3{
+      font-size: 18px;
+      text-transform: capitalize;
+      &.normal{
+        text-transform: none;
+      }
+    }
+  }
 }

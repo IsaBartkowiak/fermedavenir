@@ -1,18 +1,23 @@
+<div class="section_grey">
 <div class="container list-paniers">  
   <div class="page-header">
-    <%= link_to new_farm_panier_path(@farm.slug), class: 'btn btn-primary' do %>
-      <span class="glyphicon glyphicon-plus"></span>
-      Nouveau panier
-    <% end %>
+
+
+    <h1>Mes paniers</h1>
 
     <a class="btn btn-default change-view">
       <span class="glyphicon glyphicon glyphicon-th"></span>
       <span class="glyphicon glyphicon glyphicon glyphicon-list"></span>
     </a>
+    
+    <%= link_to new_farm_panier_path(@farm.slug), class: 'btn btn_green btn-float' do %>
+      <span class="glyphicon glyphicon-plus"></span>
+      Nouveau panier
+    <% end %>
   </div>
-  <div class="table-responsive">
+ 
     <%= render "list" %>
-  </div>
+
 
   <div class="overview-display">
     <%= render "mosaique" %>
@@ -20,4 +25,6 @@
 
 </div>
 
+
 <%= render 'helper/index', title:"Vous verrez, c'est bête comme chou !", text:"Créez et gérez vos paniers de légumes pour chaque semaine et visualisez le contenu de chacun d’entre-eux. Un contour rouge apparaît ? Vous avez certainement oublié de semer ou de planter un légume !" %>
+</div>

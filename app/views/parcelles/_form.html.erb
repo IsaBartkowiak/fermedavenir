@@ -1,4 +1,4 @@
-<%= form_for(@parcelle, html: { class: "form-horizontal", role: "form" }) do |f| %>
+<%= form_for(@parcelle, html: { class: "form-horizontal parcelle", role: "form" }) do |f| %>
 
   <% if @parcelle.errors.any? %>
     <div class="alert alert-danger alert-dismissable" role="alert">
@@ -18,9 +18,11 @@
   <%= f.text_field :title, class: "form-control" %>
   </div>
 </div>
+<div class="row">
 
 <%= render 'parcelle_map' %>
-
+<div class="col-xs-12">
+  
   <%= f.hidden_field :location, class: "form-control" %>
 
   <div class="form-group">
@@ -44,4 +46,7 @@
       <%= f.submit 'Enregistrer la parcelle', class: "btn btn-primary" %>
     </div>
   </div>
+</div>
 <% end %>
+
+</div>

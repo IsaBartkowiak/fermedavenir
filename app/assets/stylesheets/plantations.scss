@@ -1,6 +1,6 @@
 .not-planted {
 	opacity: 0.5;
-
+	transition : all .3s ease;
 	&:hover {
 		opacity: 1;
 	}

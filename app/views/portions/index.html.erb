@@ -70,11 +70,15 @@
                 <label class="panier-dispo--label"><%= generation.legume.titre + ' - ' + generation.legume.variete + ' - ' + generation.legume.price.to_s %>€/KG </label>
 
                   <%= f.hidden_field :legume_id, value: generation.legume.id, class: "form-control" %>
-     
+                  <%= f.hidden_field :generation_id, value: generation.id, class: "form-control" %>
+
              
-                  <%= f.number_field :quantity, class: "panier-dispo--quantity", placeholder: 'KG', :step => 'any', value: 1, min: 0 %>
+                  <div class="quantity-wrapper">
+                    <%= f.number_field :quantity, class: "panier-dispo--quantity", placeholder: 'KG', :step => 'any', value: 1, min: 0 %>
+                    <span class="quantiy-unit">kg</span>
+                  </div>
                 
-                  <%= f.submit "+", class: "panier-dispo--add" %>
+                  <%= f.submit "Ajouter", class: "panier-dispo--add" %>
                 
               <% end %>
             </div>
