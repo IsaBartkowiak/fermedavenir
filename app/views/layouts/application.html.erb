@@ -25,7 +25,7 @@
 <body>
   <% unless current_user.nil? %>
   <div class="toggle-carrot <%= "disabled" unless @farm.tutorial %>">
-    <%= link_to @farm.slug + '/tutorial', method: 'patch', remote: true do %>
+    <%= link_to '/'+ @farm.slug + '/tutorial', method: 'patch', remote: true do %>
       <figure>
         <%= image_tag("carotte.png", class: "happy")%>
         <%= image_tag("carotte-sad.png", class: "sad")%>
