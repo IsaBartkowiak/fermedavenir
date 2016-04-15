@@ -75,8 +75,8 @@
       $('#farm_location').val('');
       points = [];
     });
-
-    for(var i = 0; i < mapInstance.length; i++) {
+    console.log(mapInstance);
+    for(var i = 0; i < mapInstance+1; i++) {
       google.maps.event.addListener(drawingManager[mapInstance], 'overlaycomplete', function (event) {
         var myPolygon = event.overlay;
         var len = myPolygon.getPath().getLength();
