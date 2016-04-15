@@ -1,6 +1,6 @@
 <div id="map" style="height: 600px"></div>
  <script>
-  <% @farm.location ||= "{ lat: -33, lng: 151 }" %>
+  <% @farm.location ||= "{ lat: -13, lng: 151 }" %>
 
   function initMap() {
     var location = [<%= @farm.location %>];
@@ -11,6 +11,21 @@
       mapTypeId: google.maps.MapTypeId.SATELLITE,
       zoom: 15
     });
+
+    // auto zoom on farm
+    var latlng = [];
+    for(i=0;i<location.length-1;i++){
+      latlng.push(new google.maps.LatLng(location[i].lat, location[i].lng));
+    }
+    var latlngbounds = new google.maps.LatLngBounds();
+    for (var i = 0; i < latlng.length; i++) {
+        latlngbounds.extend(latlng[i]);
+    }
+    // si l'utilisateur a déjà enrefistré sa ferme
+    if(location.length > 1){
+      map.fitBounds(latlngbounds);  
+    }
+
 
     var bermudaTriangle = new google.maps.Polygon({
       paths: location,

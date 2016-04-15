@@ -45,6 +45,19 @@ Panier =
       dataType: 'script'
     return
 
+Portion=  
+  init: ->
+    for item, i in $('.panier-item')
+      id = item.data('portion')
+      console.log id
+    
+    #$('.panier-dispo--add').click @groupPortion
+    return
+
+ groupPortion: ->
+    console.log 'test'
+    return
+
 Table =
   init: ->
     if $('.fixed-table-header').length 
@@ -77,5 +90,6 @@ $(document).ready ->
   ChangeView.init()
   Panier.init()
   Table.init()
+  Portion.init()
   FooterPosition.init()
   return

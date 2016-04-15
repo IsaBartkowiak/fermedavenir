@@ -37,6 +37,23 @@
 
 	.overview-display{
 		position: relative;
+		.sidebar{
+			ul li{
+				text-align: left;
+				padding-left: 30px;
+			}
+		}
+		.valign{
+			width: 100%;
+			position: relative;
+			top: 0;
+			left: 0;
+			@include transform(translate(0,0));
+			.price{
+				font-style: italic;
+				font-size: 20px;
+			}
+		}
 		> ul{
 			padding: 0;
 			margin: 0;
@@ -45,8 +62,8 @@
 				display: inline-block;
 				vertical-align: top;
 				text-align: center;
-				border: 2px solid $light-grey;
-				color: $light-grey;
+				border: 3px solid $grey;
+				color: $grey;
 				width: 60px;
 				height: 60px;
 				line-height: 55px;
@@ -54,12 +71,13 @@
 				margin: 15px;
 				cursor: pointer;
 				&.full{
-					border: 4px solid $dark-grey;
-					color: $dark-grey;
+					border: 3px solid $main-color;
+					color: $main-color;
+					background-color: transparent;
 				}
 				&:hover, &.active{
-					border: 2px solid $main-color;
-					color: $main-color;
+					border: 3px solid $dark-grey;
+					color: $dark-grey;
 				}
 			}
 		}
@@ -156,12 +174,12 @@
 }
 
 //alerte il faut planter
-.alert-plant {
-	background-color: lighten($orange,10%);
+.list-paniers .alert-plant {
+	background-color: lighten($main-color,10%);
 	position:relative;
 	transition: all .3s ease;
 	&:hover{
-		background-color: $orange;
+		background-color: $main-color;
 		@media(max-width:992px){
 			background-color: white;
 		}
@@ -179,12 +197,12 @@
 			transition: all .2s ease;
 		}
 		&:hover, &:hover span:before{
-			color: darken($orange, 25%);
+			color: darken($main-color, 25%);
 			text-decoration:none;
 		}	
 	}
-
 	&--box{
+		pointer-events:none;
 		opacity: 0;
 		max-width:300px;
 		position:absolute;
@@ -195,8 +213,8 @@
 		right:0;
 		text-align:center;
 		margin: auto;
-		background-color:$orange;
-		color: $orange;
+		background-color:$main-color;
+		color: $main-color;
 		line-height:normal;
 		transform: translate(0,-20px);
 		transition: all .3s ease;
@@ -214,7 +232,7 @@
 			height: 0; 
 			border-left: 12px solid transparent;
 			border-right: 12px solid transparent;		
-			border-top: 12px solid $orange;
+			border-top: 12px solid $main-color;
 		}
 		@media(max-width:992px){
 			position:relative;
@@ -223,9 +241,9 @@
 			top:0;
 			transform: translate(0,0);
 			background-color: transparent;
-			border: 2px solid $orange;
+			border: 2px solid $main-color;
 			p{
-				color:$orange;
+				color:$main-color;
 			}
 			&:after{
 				content:none;

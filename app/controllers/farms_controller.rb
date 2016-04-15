@@ -14,7 +14,6 @@
 class FarmsController < ApplicationController
   before_action :set_farm, only: [:show, :edit, :update, :destroy, :tutorial]
   before_action :check_user, except: [:index, :show]
-  before_action :bloc, only: [:edit, :update, :destroy]
 
   # GET /farms
   # GET /farms.json
@@ -25,6 +24,7 @@ class FarmsController < ApplicationController
   # GET /farms/1
   # GET /farms/1.json
   def show
+    redirect_to edit_farm_path(@farm.slug) unless @farm.is_drawn?
   end
 
   # GET /farms/new
@@ -52,7 +52,7 @@ class FarmsController < ApplicationController
         format.html { redirect_to farm_path(@farm.slug), notice: 'Farm was successfully created.' }
         format.json { render :show, status: :created, location: @farm }
       else
-        format.html { render :new }
+        format.html { redirect_to root_path, notice: 'Ce nom est probablement déjà pris' }
         format.json { render json: @farm.errors, status: :unprocessable_entity }
       end
     end
@@ -88,15 +88,8 @@ class FarmsController < ApplicationController
     end
     # Use callbacks to share common setup or constraints between actions.
     def set_farm
-      slug = params[:slug] || params[:farm_slug]
-      @farm = Farm.find_by_slug(slug)
-      @farm ||= Farm.find(slug)
+      @farm = current_user.farm
     end
-
-    def bloc
-      redirect_to root_path, notice: "Vous ne pouvez pas modifier les fermes des autres voyons !" if current_user.farm != @farm
-    end
-
     # Never trust parameters from the scary internet, only allow the white list through.
     def farm_params
       params.require(:farm).permit(:name, :location, :lat, :lng)

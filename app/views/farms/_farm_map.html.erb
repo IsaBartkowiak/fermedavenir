@@ -1,11 +1,11 @@
 <div id="map" style="height:500px" class="col-xs-12 col-sm-8"></div>
   <script>
-  <% @farm.location ||= "{ lat: -33, lng: 151 }" %>
+  <% @farm.location ||= "{ lat: 44.8404400, lng: -0.5805000 }" %>
 
   function initMap() {
-      var location = [<%= @farm.location %>];
-    var lat = (location[0].lat + location[2].lat)/2;
-    var lng = (location[0].lng + location[2].lng)/2;
+    var location = [<%= @farm.location %>];
+    var lat = (location[0].lat);
+    var lng = (location[0].lng);
     var map = new google.maps.Map(document.getElementById('map'), {
       center: {lat: lat,lng: lng},
       mapTypeId: google.maps.MapTypeId.SATELLITE,
@@ -21,6 +21,22 @@
       fillOpacity: 0.35
     });
     ferme.setMap(map);
+
+    // auto zoom on farm
+    var latlng = [];
+    for(i=0;i<location.length-1;i++){
+      latlng.push(new google.maps.LatLng(location[i].lat, location[i].lng));
+    }
+    var latlngbounds = new google.maps.LatLngBounds();
+    for (var i = 0; i < latlng.length; i++) {
+        latlngbounds.extend(latlng[i]);
+    }
+    // si l'utilisateur a déjà enrefistré sa ferme
+    if(location.length > 1){
+      map.fitBounds(latlngbounds);  
+    }
+
+    // parcelles 
     var parcelles = [];
     var date = <%= Date.today.cweek %>;
     <% @farm.parcelles.each do |parcelle| %>
@@ -33,9 +49,11 @@
         fillOpacity: 0.75,
         indexID: <%= parcelle.id %>,
         title: "<%= parcelle.title %>",
+        <% unless parcelle.generation.nil? %>
         legume: "<%= parcelle.generation.legume.titre %>",
         plantation: <%= parcelle.generation.plantation %>,
         recolte: <%= parcelle.generation.recolte %>,
+        <% end %>
         id: <%= parcelle.id %>,
       });
       parcelles[<%= parcelle.id %>].setMap(map);
@@ -43,6 +61,7 @@
         $('.side-infos').addClass('show');
         $('#parcelle-title').html(this.title);
         $('#parcelle-surface').html(google.maps.geometry.spherical.computeArea(this.getPath()).toFixed() + " m2");
+        <% unless parcelle.generation.nil? %>
         $('#parcelle-legume').html(this.legume);
         $('#parcelle-plantation').html(this.plantation);
         $('#parcelle-recolte').html(this.recolte);
@@ -50,11 +69,12 @@
         if(!isFinite(pourcentage)) pourcentage = 100;
 
         $('.progress-bar').attr('aria-valuenow', pourcentage).attr('style', "width:"+pourcentage+"%");
+        $('#parcelle-progress').fadeIn();
+        <% end %>
         $('#parcelle-delete').attr('href', '/parcelles/'+this.id);
         $('#parcelle-edit').attr('href', '/parcelles/'+this.id+'/edit');
-        $('#parcelle-progress').fadeIn();
         $('#parcelle-controls').fadeIn();
-      });  
+      });
     <% end %>
   }
 

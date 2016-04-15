@@ -1,5 +1,6 @@
 <% notice = @farm.tutorial ? "activés" : "désactivés" %>
 $('.toggle-carrot').toggleClass('disabled');
+$('.helper').toggleClass('is-hidden');
 if( $('.toggle-carrot').hasClass('disabled')){
 	$('.toggle-carrot p').html('Aide désactivée<br/><i>Cliquez pour l\'activer</i>');
 } else {

@@ -15,14 +15,16 @@
   
 <%= render 'form_for_map' %>
 
-  <div class="" style="height: 200px">
-    <div class="col-xs-12">
+  <div class="col-xs-12">
+    <div class="col-xs-6">
       <%= f.text_field :name, class: "form-control input-farm", placeholder: "Entrez un nom", required: "required" %>
       <%= f.hidden_field :location, required: "required" %>
       <%= f.hidden_field :lat %>
       <%= f.hidden_field :lng %>
     </div>
-    <%= f.submit "Mettre à jour ma ferme", class: "btn btn_green btn_farm" %>
+    <div class="col-xs-6 text-left">
+        <%= f.submit "Mettre à jour ma ferme", class: "btn btn_green btn_farm" %>
+    </div>
   </div>
 
 <% end %>
