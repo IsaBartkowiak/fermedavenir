@@ -31,6 +31,7 @@
       <% if current_user %>
         <nav class="header-nav">
           <ul>
+            <li class="nav-item"><a class="btn" href="/">Accueil</a></li>
             <li class="nav-item <%= "is_active" if is_active?("legumes") %>"><%= link_to "Légumes", legumes_path, class: 'btn' unless current_user.farm.nil? %></li>
             <li class="nav-item <%= "is_active" if is_active?("generations") %>"><%= link_to "Générations", generations_path, class: 'btn' unless current_user.farm.nil? %></li>
             <li class="nav-item <%= "is_active" if is_active?("plantations") %>"><%= link_to "Plantations", farm_plantations_path(current_user.farm.slug), class: 'btn' unless current_user.farm.nil? %></li>
