@@ -48,6 +48,10 @@ class Farm < ActiveRecord::Base
     save
   end
 
+  def drawn?
+    !lat.nil?
+  end
+
   private
 
   def generate_paniers
