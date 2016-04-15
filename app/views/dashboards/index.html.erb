@@ -27,7 +27,7 @@
 	<h1>Journal de la semaine <%= Date.today.cweek %>.</h1>
 	<div class="row cards-container">
 		
-		<% if @farm.lat.nil? %>
+		<% unless @farm.is_drawn? %>
 		<%= render 'card', title: 'À COMPLÉTER' %>
 			<p class="text-left">Afin de profiter de la gestion parcellaire, veuillez remplir vos données géographiques.</p>
 				<%= link_to "Dessiner ma ferme", edit_farm_path(@farm.slug), class: "btn btn_green" %>
@@ -92,12 +92,18 @@
 		</div>
 		
 		<%= render 'card', title: 'MÉTEO' %>
+			<% unless @farm.is_drawn? %>
 			<div class="valign meteo">
 				<h3><span id="ville"></span></h3>
 				<h3><span id="degres"></span>°C</h3>
 				<h3><span id="ciel"></span></h3>
 				<h3 class="normal"><span id="humidity"></span>% d'humidité</h3>
 			</div>
+			<% else %>
+				<p class="text-left">Pour profiter de la méteo, veuillez dessiner votre ferme sur la carte.</p>
+				<%= link_to "Dessiner ma ferme", edit_farm_path(@farm.slug), class: "btn btn_green" %>
+				<%= link_to "Ajouter des parcelles", new_parcelle_path, class: "btn btn_green" %>
+			<% end %>
 			</div>
 		</div>
 	</div>
