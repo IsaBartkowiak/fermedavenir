@@ -7,6 +7,26 @@
 #parcelle-controls {
 	display: none;
 }
+.user-location{
+	margin-bottom: 30px;
+	input{
+		width: 66.66667%;
+		padding-right: 0;
+	}
+}
+.user-form{
+	margin-bottom: 20px;
+	p{
+		margin: 0;
+		line-height: 44px;
+	}
+}
+.save{
+	margin-bottom: 40px;
+	.btn-right{
+		text-align: right;
+	}
+}
 
 .farm{
 	#map{
