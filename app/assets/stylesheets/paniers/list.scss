@@ -35,6 +35,26 @@
 		}
 	}
 
+	.inline-list{
+		display: inline-block;
+		vertical-align: middle;
+		float: left;
+		padding: 10px;
+		margin: 0;
+		@include box-sizing(border-box);
+		li{
+			display: inline;
+			font-style: italic;
+			font-size: 13px;
+			&:after{
+				content: ' •';
+			}
+			&:last-child:after{
+				content: '';
+			}
+		}
+	}
+
 	.overview-display{
 		position: relative;
 		.sidebar{
@@ -175,11 +195,11 @@
 
 //alerte il faut planter
 .list-paniers .alert-plant {
-	background-color: lighten($main-color,10%);
+	background-color: lighten($orange,10%);
 	position:relative;
 	transition: all .3s ease;
 	&:hover{
-		background-color: $main-color;
+		background-color: $orange;
 		@media(max-width:992px){
 			background-color: white;
 		}
@@ -191,13 +211,13 @@
 	a{
 		color:white;
 		@media(max-width:992px){
-			color: $main-color;
+			color: $orange;
 		}
 		&, & span:before{
 			transition: all .2s ease;
 		}
 		&:hover, &:hover span:before{
-			color: darken($main-color, 25%);
+			color: darken($orange, 25%);
 			text-decoration:none;
 		}	
 	}
@@ -213,8 +233,8 @@
 		right:0;
 		text-align:center;
 		margin: auto;
-		background-color:$main-color;
-		color: $main-color;
+		background-color:$orange;
+		color: $orange;
 		line-height:normal;
 		transform: translate(0,-20px);
 		transition: all .3s ease;
@@ -232,7 +252,7 @@
 			height: 0; 
 			border-left: 12px solid transparent;
 			border-right: 12px solid transparent;		
-			border-top: 12px solid $main-color;
+			border-top: 12px solid $orange;
 		}
 		@media(max-width:992px){
 			position:relative;

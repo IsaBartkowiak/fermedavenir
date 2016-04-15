@@ -21,7 +21,10 @@ function initMap() {
 
 var drawingManager = [];
 var mapInstance = 0;
-for(var i = 0; i < 90; i++) {
+var instances = 30;
+var drawn = false;
+
+for(var i = 0; i < instances; i++) {
   drawingManager.push(
     new google.maps.drawing.DrawingManager({
       drawingControl: true,
@@ -64,24 +67,30 @@ $(document).on('click','#reload', function(event){
   drawingManager[mapInstance].setMap(map);
   $('#farm_location').val('');
   points = [];
-});
-
-google.maps.event.addListener(drawingManager[mapInstance], 'overlaycomplete', function (event) {
-  var myPolygon = event.overlay;
-  var len = myPolygon.getPath().getLength();
-  var htmlStr = "";
-  for (var i = 0; i < len; i++) {
-    // Coordinates of drawn polygon
-    points.push({lat: myPolygon.getPath().getAt(i).lat(), lng: myPolygon.getPath().getAt(i).lng()});
-
-  }
-  $('#farm_location').val('');
-  $('#farm_lat').val(points[0].lat);
-  $('#farm_lng').val(points[0].lng);
-  for (var i=0; i < points.length; i++) {
-    $('#farm_location').val($('#farm_location').val() + "{lat:"+points[i].lat+", lng:"+points[i].lng+"},");
+  if(drawn) {
+    document.location.reload();
   }
 });
+
+for(var i = 0; i < instances; i++) {
+  google.maps.event.addListener(drawingManager[i], 'overlaycomplete', function (event) {
+    drawn = true;
+    var myPolygon = event.overlay;
+    var len = myPolygon.getPath().getLength();
+    var htmlStr = "";
+    for (var i = 0; i < len; i++) {
+      // Coordinates of drawn polygon
+      points.push({lat: myPolygon.getPath().getAt(i).lat(), lng: myPolygon.getPath().getAt(i).lng()});
+
+    }
+    $('#farm_location').val('');
+    $('#farm_lat').val(points[0].lat);
+    $('#farm_lng').val(points[0].lng);
+    for (var i=0; i < points.length; i++) {
+      $('#farm_location').val($('#farm_location').val() + "{lat:"+points[i].lat+", lng:"+points[i].lng+"},");
+    }
+  });
+}
 }
 
 </script>
