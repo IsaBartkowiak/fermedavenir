@@ -33,6 +33,12 @@
 
 	.overview-display{
 		position: relative;
+		.sidebar{
+			ul li{
+				text-align: left;
+				padding-left: 30px;
+			}
+		}
 		.valign{
 			width: 100%;
 			position: relative;
