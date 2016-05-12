@@ -1,6 +1,5 @@
 class CreateLegumes < ActiveRecord::Migration
   def change
-    drop_table :legumes
     create_table :legumes do |t|
       t.string :titre
       t.string :variete
