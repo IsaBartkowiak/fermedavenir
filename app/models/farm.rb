@@ -9,6 +9,8 @@
 #  updated_at :datetime         not null
 #  location   :string
 #  tutorial   :boolean          default(TRUE)
+#  lat        :float
+#  lng        :float
 #
 
 class Farm < ActiveRecord::Base
@@ -51,6 +53,10 @@ class Farm < ActiveRecord::Base
   def is_drawn?
     !lat.nil?
   end
+  
+  def to_s
+    "#{name}"
+  end
 
   private
 
@@ -66,7 +72,6 @@ class Farm < ActiveRecord::Base
       copy_leg(a_legume)
     end
   end
-
 
   def create_slug
     self.slug = name.parameterize

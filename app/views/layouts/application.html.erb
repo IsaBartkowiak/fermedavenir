@@ -23,27 +23,63 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <% unless current_user.nil? %>
-    <% unless @farm.slug.nil? %>
-    <div class="toggle-carrot <%= "disabled" unless @farm.tutorial %>">
-      <%= link_to farm_tutorial_path(@farm.slug), method: 'patch', remote: true do %>
-        <figure>
-          <%= image_tag("carotte.png", class: "happy")%>
-          <%= image_tag("carotte-sad.png", class: "sad")%>
-        </figure>
-        <% if @farm.tutorial %>
-        <p>Aide activée<br/><i>Cliquez pour désactiver</i></p>
-        <% else %>
-        <p>Aide désactivée<br/><i>Cliquez pour activer</i></p>
+  <nav class="navbar navbar-default navbar-static-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <%= link_to root_path, class: 'navbar-brand' do %>
+          <%= render 'logo' %>
         <% end %>
-      <% end %>
+      </div>
+      <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+          <li><%= link_to 'Accueil', root_path %></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <% if current_user %>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= current_user.farm %> <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <% if current_user.farm %>
+                <li><%= link_to 'Tableau de bord', farm_path(current_user.farm.slug) %></li>
+                <li role="separator" class="divider"></li>
+                <li><%= link_to 'Légumes', legumes_path %></li>
+                <li><%= link_to 'Générations', generations_path %></li>
+                <li><%= link_to 'Plantations', farm_plantations_path(current_user.farm.slug) %></li>
+                <li><%= link_to 'Paniers', farm_paniers_path(current_user.farm.slug) %></li>
+                <li role="separator" class="divider"></li>
+                <li>
+                  <%= link_to farm_tutorial_path(@farm.slug), method: 'patch' do %>
+                    <p><i class="fa fa-check"></i><%= @farm.tutorial ? 'Aide activée' : 'Aide désactivée' %></p>
+                  <% end %>
+                </li>
+                <li role="separator" class="divider"></li>
+                <li><%= link_to 'Déconnexion', destroy_user_session_path, method: :delete %></li>
+                <% else %>
+                  TODO création farm
+                <% end %>
+              </ul>
+            </li>
+            
+          <% else %>
+            <li><%= link_to "Se connecter", new_user_session_path, class: 'btn btn_green btn_stroke' %></li>
+            <li><%= link_to "S'enregistrer", new_user_registration_path, class: 'btn btn_green' %></li>
+          <% end %>
+        </ul>
+      </div><!--/.nav-collapse -->
     </div>
-    <% end %>
-  <% end %>
+  </nav>
+
+<!--
   <div class="container">
     <header class="header">
       <a href="/" class="header-logo">
-        <%= render('layouts/logo') %>
+        <%= render('logo') %>
       </a>
       <% if current_user %>
         <nav class="header-nav">
@@ -67,6 +103,7 @@
       </div>
     </header>
   </div>
+-->
     <% flash.each do |name, msg| %>
       <%= content_tag :div, class: "alert alert-#{ name == :error ? "danger" : "success" } alert-dismissable", role: "alert" do %>
         <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
@@ -77,30 +114,18 @@
     <%= yield %>
   <footer class="footer">
     <div class="container">
-      <div class="row tablehome">
-        <div class="col-xs-12 col-sm-1 cellfooter">
-
-        </div>
-        <div class="col-xs-12 col-sm-6 cellfooter">
-          <p>
-            © 2016, Tableau de Bord
-          </p>
-          <!-- <a href="#">Mentions légales</a> -->
-          <!-- <a href="#">Conditions générales</a> -->
+      <div class="row">
+        <div class="col-sm-6">
+          <p><small>© 2016, Tableau de Bord</small></p>
           <a href="http://www.fb.me/msg/letableaudebord" title="Envoyer un message" target="_blank">Contact</a>
           <a href="https://www.facebook.com/letableaudebord" title="Voir la page Facebook" target="_blank">Facebook</a>
-
         </div>
-          <div class="col-xs-12 col-sm-6 cellfooter">
-
-            <%= link_to image_tag('footer-branding.png', height: 50), "http://www.fermesdavenir.org", class: "footer-logo", target: "_blank" %>
-            <p id="right">
-              En partenariat avec
-            </p>
-
-        </div>
-        <div class="col-xs-12 col-sm-1 cellfooter">
-        </div>
+        <div class="col-sm-6 text-right">
+          <%= link_to image_tag('footer-branding.png', height: 50), "http://www.fermesdavenir.org", class: "footer-logo", target: "_blank" %>
+          <p id="right">
+            En partenariat avec
+          </p>
+      </div>
       </div>
     </div>
   </footer>

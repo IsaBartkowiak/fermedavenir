@@ -24,7 +24,7 @@ class FarmsController < ApplicationController
   # GET /farms/1
   # GET /farms/1.json
   def show
-    redirect_to edit_farm_path(@farm.slug) unless @farm.is_drawn?
+    # redirect_to edit_farm_path(@farm.slug) unless @farm.is_drawn?
   end
 
   # GET /farms/new
@@ -39,6 +39,7 @@ class FarmsController < ApplicationController
   # PATCH /:farm/tutorial
   def tutorial
     @farm.toggle_tutorials
+    redirect_to :back
   end
 
   # POST /farms

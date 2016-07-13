@@ -1,13 +1,15 @@
-@import 'reset';
+//@import 'reset';
 @import 'fonts';
 @import 'vars';
 @import 'mixins';
 
+@import 'bootstrap-sprockets';
+@import 'bootstrap';
 
 @import 'bootstrap-generators';
 @import 'global';
 @import 'form';
-@import 'header';
+//@import 'header';
 @import 'footer';
 @import 'home';
 @import 'ferme';
@@ -23,3 +25,5 @@
 @import 'plantations';
 
 @import 'weather-icons';
+
+@import 'simple';

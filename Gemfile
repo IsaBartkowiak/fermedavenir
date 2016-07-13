@@ -1,48 +1,27 @@
 source 'https://rubygems.org'
+ruby '2.2.4'
 
-
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.5.1'
+gem 'rails', '4.2.6'                          # App                                   https://github.com/rails/rails
+gem 'pg'                                      # Database                              https://bitbucket.org/ged/ruby-pg/src
 gem 'rails_12factor'
-gem 'pg'
-gem 'bootstrap-generators', '~> 3.3.4'
-gem 'amoeba'
-# Use SCSS for stylesheets
-gem 'sass-rails', '~> 5.0'
-# Use Uglifier as compressor for JavaScript assets
-gem 'uglifier', '>= 1.3.0'
-# Use CoffeeScript for .coffee assets and views
-gem 'coffee-rails', '~> 4.1.0'
-gem 'devise'
-# See https://github.com/rails/execjs#readme for more supported runtimes
-# gem 'therubyracer', platforms: :ruby
-
-# Use jquery as the JavaScript library
-gem 'jquery-rails'
-# Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder', '~> 2.0'
-# bundle exec rake doc:rails generates the API under doc/api.
-gem 'sdoc', '~> 0.4.0', group: :doc
-
-# Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
-
-# Use Unicorn as the app server
-# gem 'unicorn'
-
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
+gem 'bootstrap-generators'
+gem 'amoeba'                                  # Cloning                               https://github.com/amoeba-rb/amoeba
+gem 'sass-rails'                              # Sass for rails                        https://github.com/rails/sass-rails
+gem 'bootstrap-sass'                          # Bootstrap                             https://github.com/twbs/bootstrap-sass
+gem 'uglifier'                                # JS compilation                        https://github.com/lautis/uglifier
+gem 'devise'                                  # Authentication                        https://github.com/plataformatec/devise
+gem 'coffee-rails'                            # Coffee script 
+gem 'jquery-rails'                            # jQuery                                https://github.com/rails/jquery-rails
+gem 'jbuilder'                                # Json
 
 group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug'
+  gem 'byebug'                                # Debug                                 https://github.com/deivid-rodriguez/byebug
 end
 
 group :development do
-  # Access an IRB console on exception pages or by using <%= console %> in views
-  gem 'web-console', '~> 2.0'
-
-  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'spring'
+  gem 'web-console'
+  gem 'http_logger'                           # HTTP Logger                           https://github.com/railsware/http_logger
+  gem 'annotate'                              # Annotate                              https://github.com/ctran/annotate_models
+  gem 'meta_request'                          # Rails panel                           https://github.com/dejan/rails_panel
 end
 

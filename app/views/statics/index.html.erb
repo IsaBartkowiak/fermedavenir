@@ -1,32 +1,30 @@
-  <div class="home">
-  
-<div class="banner container-fluid">
-   <div class="row">
-    <h1>Le tableau de bord<br/><span>par Fermes d'Avenir</span></h1>
-    <p>Faites germer l'avenir !</p>
-    <div class="btn-container">   
-        <% if current_user %>
-          <div class="new-farm">
-            <%= render partial: 'farms/form', class:"hidden" %>
-          </div>
-        <% else %>
-          <%= link_to 'Créer ma ferme', new_user_registration_path, class:"btn btn_white" %>
-        <% end %>
+<div class="home">  
+  <div class="banner container-fluid">
+     <div class="row">
+      <h1>Le tableau de bord<br/><span>par Fermes d'Avenir</span></h1>
+      <p>Faites germer l'avenir !</p>
+      <div class="btn-container">   
+          <% if current_user %>
+            <div class="new-farm">
+              <%= render partial: 'farms/form', class:"hidden" %>
+            </div>
+          <% else %>
+            <%= link_to 'Créer ma ferme', new_user_registration_path, class:"btn btn_white" %>
+          <% end %>
+      </div>
     </div>
   </div>
-</div>
-
   <section class="section section_grey">
     <div class="container">
       <div class="row table tablehome">
-        <div class="col-xs-12 col-sm-6 cellhome">
+        <div class="col-sm-6 cellhome">
           <h2 class="section-title">Le tableau de bord,<br> qu'est-ce que c'est ?</h2>
           <div class="section-text">
             <p><strong>Un outil qui vous accompagne dans la gestion de votre exploitation.</strong></p>
             <p>« Tableau de Bord » est un outil développé en collaboration avec l’association <a href="http://www.fermesdavenir.org/" target="_blank">Fermes d’Avenir</a>. Cette association vise à répandre une nouvelle méthode d’agriculture comme la permaculture, basée sur le développement de petites exploitations. Néophytes dans l’univers du mara&icirc;chage ou agriculteurs aguerris, cet outil vous permettra de composer vos paniers personnalisés avec des produits de saison. Il vous guidera tout au long du processus de croissance de vos plantes grâce au planning détaillé de semis, plantation et récolte.</p>
           </div>
         </div>
-        <div class="col-xs-12 col-sm-6 cellhome">
+        <div class="col-sm-6 cellhome">
           <%= image_tag('home1.png') %>
         </div>
       </div>
@@ -45,26 +43,25 @@
       </div>
     </div>
   </section>
-
   <section class="section section_grey third-section">
     <div class="container">
       <h2 class="section-title center">Comment ça marche ?</h2>
       <div class="row">
         <ul class="triple">
-          <li class="col-xs-12 col-sm-4">
+          <li class="col-sm-4">
             <%= image_tag('reglages.png', class: "img_petit") %>
             <h3>Gestion des paniers</h3>
             <div class="section-text">
               <p>Composez un panier de fruits et légumes personnalisé pour chaque semaine de l’année en fonction des recommandations de notre outil (compatibilité variété/période)</p>
             </div>
           </li>
-          <li class="col-xs-12 col-sm-4">
+          <li class="col-sm-4">
             <%= image_tag('calendar.png', class: "img_petit") %>
             <h3>Organisation simplifiée</h3>
             <div class="section-text">
               <p>Un planning détaillé des semis, plantations et récoltes est proposé pour chaque légume en fonction des quantités désirées.</p>
             </div>
-          <li class="col-xs-12 col-sm-4">
+          <li class="col-sm-4">
             <%= image_tag('plante.png', class: "img_petit") %>
             <h3>Optimisation des récoltes</h3>
             <div class="section-text">

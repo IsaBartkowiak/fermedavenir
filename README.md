@@ -2,6 +2,8 @@
 
 Application web de gestion de cultures.
 
+[![Code Climate](https://codeclimate.com/github/IsaBartkowiak/fermedavenir/badges/gpa.svg)](https://codeclimate.com/github/IsaBartkowiak/fermedavenir)
+
 Ergonomie et todo : 
 
 #3 phases dans le workflow de l'utilisateur
