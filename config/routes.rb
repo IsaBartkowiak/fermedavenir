@@ -4,7 +4,6 @@ Rails.application.routes.draw do
 
   get 'dashboard', to: 'dashboards#index'
 
-  
   resources :parcelles
   resources :generations
   resources :legumes

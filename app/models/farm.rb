@@ -9,6 +9,8 @@
 #  updated_at :datetime         not null
 #  location   :string
 #  tutorial   :boolean          default(TRUE)
+#  lat        :float
+#  lng        :float
 #
 
 class Farm < ActiveRecord::Base
