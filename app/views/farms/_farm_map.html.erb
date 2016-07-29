@@ -58,6 +58,8 @@
       });
       parcelles[<%= plot.id %>].setMap(map);
 
+      console.debug (parcelles);
+
       google.maps.event.addListener(parcelles[<%= plot.id %>], 'click', function (event) {
         
         $('.side-infos').addClass('show');

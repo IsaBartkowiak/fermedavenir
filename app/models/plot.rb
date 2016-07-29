@@ -13,4 +13,7 @@
 
 class Plot < ActiveRecord::Base
   belongs_to :generation
+  belongs_to :farm
+
+  validates :farm, presence: true
 end

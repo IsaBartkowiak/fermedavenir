@@ -41,8 +41,6 @@ class PlotsController < ApplicationController
   def create
     @plot = @farm.plots.new(plot_params)
 
-    debugger
-
     respond_to do |format|
       if @plot.save
         format.html { redirect_to @farm, notice: 'Plot ajoutée.' }
