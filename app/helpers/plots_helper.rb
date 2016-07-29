@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: parcelles
+# Table name: plots
 #
 #  id            :integer          not null, primary key
 #  location      :string
@@ -11,6 +11,5 @@
 #  title         :string
 #
 
-class Parcelle < ActiveRecord::Base
-  belongs_to :generation
+module PlotsHelper
 end

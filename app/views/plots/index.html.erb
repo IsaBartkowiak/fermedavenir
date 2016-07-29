@@ -1,6 +1,6 @@
 <div class="container">
   <div class="page-header">
-    <%= link_to new_parcelle_path, class: 'btn btn-primary' do %>
+    <%= link_to new_plot_path, class: 'btn btn-primary' do %>
       <span class="glyphicon glyphicon-plus"></span>
       Nouvelle Parcelle
     <% end %>
@@ -20,11 +20,11 @@
       </thead>
 
       <tbody>
-        <%= content_tag_for(:tr, @parcelles) do |parcelle| %>
-          <td><%= parcelle.title unless parcelle.title.nil? %></td>  
-          <td><%= parcelle.generation.legume.titre unless parcelle.generation.nil? %></td>
-          <td><%= link_to 'Modifier', edit_parcelle_path(parcelle) %></td>
-          <td><%= link_to 'Supprimer', parcelle, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <%= content_tag_for(:tr, @plots) do |plot| %>
+          <td><%= plot.name unless plot.name.nil? %></td>  
+          <td><%= plot.generation.legume.titre unless plot.generation.nil? %></td>
+          <td><%= link_to 'Modifier', edit_plot_path(plot) %></td>
+          <td><%= link_to 'Supprimer', plot, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <% end %>
       </tbody>
     </table>

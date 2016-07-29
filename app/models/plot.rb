@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: parcelles
+# Table name: plots
 #
 #  id            :integer          not null, primary key
 #  location      :string
@@ -8,13 +8,9 @@
 #  farm_id       :integer
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
-#  title         :string
+#  name          :string
 #
 
-require 'test_helper'
-
-class ParcelleTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+class Plot < ActiveRecord::Base
+  belongs_to :generation
 end
