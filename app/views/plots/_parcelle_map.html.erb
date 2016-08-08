@@ -95,8 +95,8 @@
     bermudaTriangle.setMap(map);
     var parcelles = [];
 
-    <% @farm.parcelles.each do |parcelle| %>
-      parcelles.push([<%= parcelle.location %>]);
+    <% @farm.plots.each do |plot| %>
+      parcelles.push([<%= plot.location %>]);
     <% end %>
 
     for(var i = 0; i < parcelles.length; i++) {

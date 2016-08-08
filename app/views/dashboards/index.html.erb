@@ -45,7 +45,7 @@
 		<%= render 'card', title: 'À COMPLÉTER' %>
 			<p class="text-left">Afin de profiter de la gestion parcellaire, veuillez remplir vos données géographiques.</p>
 				<%= link_to "Dessiner ma ferme", edit_farm_path(@farm.slug), class: "btn btn_green" %>
-				<%= link_to "Ajouter des parcelles", new_parcelle_path, class: "btn btn_green" %>
+				<%= link_to "Ajouter des parcelles", new_plot_path, class: "btn btn_green" %>
 			</div>
 		</div>
 		<% end %>
@@ -117,7 +117,7 @@
 			<% else %>
 				<p class="text-left">Pour profiter de la méteo, veuillez dessiner votre ferme sur la carte.</p>
 				<%= link_to "Dessiner ma ferme", edit_farm_path(@farm.slug), class: "btn btn_green" %>
-				<%= link_to "Ajouter des parcelles", new_parcelle_path, class: "btn btn_green" %>
+				<%= link_to "Ajouter des parcelles", new_plot_path, class: "btn btn_green" %>
 			<% end %>
 			</div>
 		</div>
