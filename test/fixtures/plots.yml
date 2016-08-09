@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: parcelles
+# Table name: plots
 #
 #  id            :integer          not null, primary key
 #  location      :string
@@ -8,7 +8,7 @@
 #  farm_id       :integer
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
-#  title         :string
+#  name          :string
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html

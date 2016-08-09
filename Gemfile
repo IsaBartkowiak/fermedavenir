@@ -1,9 +1,8 @@
 source 'https://rubygems.org'
-ruby '2.2.4'
+ruby '2.3.1'
 
 gem 'rails', '4.2.6'                          # App                                   https://github.com/rails/rails
 gem 'pg'                                      # Database                              https://bitbucket.org/ged/ruby-pg/src
-gem 'rails_12factor'
 gem 'bootstrap-generators'
 gem 'amoeba'                                  # Cloning                               https://github.com/amoeba-rb/amoeba
 gem 'sass-rails'                              # Sass for rails                        https://github.com/rails/sass-rails
@@ -23,5 +22,9 @@ group :development do
   gem 'http_logger'                           # HTTP Logger                           https://github.com/railsware/http_logger
   gem 'annotate'                              # Annotate                              https://github.com/ctran/annotate_models
   gem 'meta_request'                          # Rails panel                           https://github.com/dejan/rails_panel
+end
+
+group :production do
+  gem 'rails_12factor'
 end
 

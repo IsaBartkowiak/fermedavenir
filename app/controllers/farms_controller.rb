@@ -85,11 +85,11 @@ class FarmsController < ApplicationController
 
   private
     def check_user
-      redirect_to root_path unless current_user
+      redirect_to root_path if current_user.nil?
     end
     # Use callbacks to share common setup or constraints between actions.
     def set_farm
-      @farm = current_user.farm
+      @farm = Farm.find_by(slug: params[:slug])
     end
     # Never trust parameters from the scary internet, only allow the white list through.
     def farm_params

@@ -39,32 +39,34 @@
     // parcelles 
     var parcelles = [];
     var date = <%= Date.today.cweek %>;
-    <% @farm.parcelles.each do |parcelle| %>
-      parcelles[<%= parcelle.id %>] = new google.maps.Polygon({
-        paths: [<%= parcelle.location %>],
+    <% @farm.plots.each do |plot| %>
+      parcelles[<%= plot.id %>] = new google.maps.Polygon({
+        paths: [<%= plot.location %>],
         strokeColor: '#7FC79D',
         strokeOpacity: 0.8,
         strokeWeight: 1,
         fillColor: '#7FC79D',
         fillOpacity: 0.75,
-        indexID: <%= parcelle.id %>,
-        title: "<%= parcelle.title %>",
-        <% unless parcelle.generation.nil? %>
-        legume: "<%= parcelle.generation.legume.titre %>",
-        plantation: <%= parcelle.generation.plantation %>,
-        recolte: <%= parcelle.generation.recolte %>,
+        indexID: <%= plot.id %>,
+        title: "<%= plot.name %>",
+        <% unless plot.generation.nil? %>
+        legume: "<%= plot.generation.legume.titre %>",
+        plantation: <%= plot.generation.plantation %>,
+        recolte: <%= plot.generation.recolte %>,
         <% end %>
-        id: <%= parcelle.id %>,
+        id: <%= plot.id %>,
       });
-      parcelles[<%= parcelle.id %>].setMap(map);
+      parcelles[<%= plot.id %>].setMap(map);
 
-      google.maps.event.addListener(parcelles[<%= parcelle.id %>], 'click', function (event) {
+      console.debug (parcelles);
+
+      google.maps.event.addListener(parcelles[<%= plot.id %>], 'click', function (event) {
         
         $('.side-infos').addClass('show');
         $('#parcelle-title').html(this.title);
         $('#parcelle-surface').html(google.maps.geometry.spherical.computeArea(this.getPath()).toFixed() + " m2");
 
-        <% unless parcelle.generation.nil? %>
+        <% unless plot.generation.nil? %>
           $('#parcelle-legume').html(this.legume);
           $('#parcelle-plantation').html(this.plantation);
           $('#parcelle-recolte').html(this.recolte);
@@ -75,8 +77,8 @@
           $('#parcelle-progress').fadeIn();
         <% end %>
 
-        $('#parcelle-delete').attr('href', '/parcelles/'+this.id);
-        $('#parcelle-edit').attr('href', '/parcelles/'+this.id+'/edit');
+        $('#parcelle-delete').attr('href', '/plots/'+this.id);
+        $('#parcelle-edit').attr('href', '/plots/'+this.id+'/edit');
         $('#parcelle-controls').fadeIn();
       });
     <% end %>

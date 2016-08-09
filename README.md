@@ -50,3 +50,7 @@ Profiter du workshop de l'année prochaine, le relais des 1A actuels<br/>
 Regarder seed 'n share
 https://seed-n-share.appspot.com/
 
+
+## DB
+
+	pg_restore --verbose --clean --no-acl --no-owner -h localhost -U postgres -d fermedavenir_development latest.dump

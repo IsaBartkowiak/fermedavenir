@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root 'statics#index'
   get 'dashboard', to: 'dashboards#index'
   devise_for :users
-  resources :parcelles
+  resources :plots
   resources :generations
   resources :legumes
   resources :farms, param: :slug do 

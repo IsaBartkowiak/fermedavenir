@@ -17,7 +17,7 @@ class Farm < ActiveRecord::Base
   validates :name, uniqueness: true
 
   has_many :users
-  has_many :parcelles
+  has_many :plots
   has_many :paniers, dependent: :destroy
   has_many :plantations, dependent: :destroy
   has_many :legumes, dependent: :destroy
