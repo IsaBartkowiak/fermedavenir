@@ -12,22 +12,19 @@
 #
 
 class Hamper < ActiveRecord::Base
-	has_many   :portions
-	belongs_to :farm
-	scope      :per_weeks, -> { order(week: :asc).all }
+  has_many   :portions
+  belongs_to :farm
+  scope      :per_weeks, -> { order(week: :asc).all }
 
-	def planted?
-		portions.each do |portion|
-			return false if !farm.plantations.exists?(generation: portion.generation)
-		end
-		true
-	end
+  def self.to_do(farm)
+    total = 0
+    Hamper.where(farm: farm).each do |hamper|
+      total += 1 unless hamper.portions.any?
+    end
+    total
+  end
 
-	def self.to_do(farm)
-		total = 0
-		Hamper.where(farm: farm).each do |hamper|
-			total += 1 unless hamper.portions.any?
-		end
-		total
-	end
+  def planted?
+    (farm.plantations.pluck(:generation_id) & portions.pluck(:generation_id)).any?
+  end
 end

@@ -18,7 +18,7 @@ class Plant < ActiveRecord::Base
   has_many   :portions, dependent: :destroy
   belongs_to :farm
 
-	amoeba do
-		enable
-	end
+  amoeba do
+    enable
+  end
 end

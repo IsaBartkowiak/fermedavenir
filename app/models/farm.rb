@@ -14,7 +14,7 @@
 #
 
 class Farm < ActiveRecord::Base
-  validates :name, uniqueness: true
+  include Slugify
 
   has_many :users
   has_many :plots
@@ -29,7 +29,9 @@ class Farm < ActiveRecord::Base
 
   before_create :generate_hampers
   before_create :generate_plants
-  before_save :create_slug
+
+  # XXX FIXME Deux fermes devraient pouvoir avoir le même nom
+  validates :name, uniqueness: true
 
   def get_quantity_to_plant a_generation
     quantity = 0
@@ -51,7 +53,7 @@ class Farm < ActiveRecord::Base
   end
 
   def is_drawn?
-    !lat.nil?
+    !latitude.nil?
   end
   
   def to_s
@@ -71,9 +73,5 @@ class Farm < ActiveRecord::Base
     all_plants.each do |a_plant|
       copy_leg(a_plant)
     end
-  end
-
-  def create_slug
-    self.slug = name.parameterize
   end
 end

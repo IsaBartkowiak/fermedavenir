@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160812211404) do
+ActiveRecord::Schema.define(version: 20160812214656) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,8 +54,8 @@ ActiveRecord::Schema.define(version: 20160812211404) do
   add_index "hampers", ["user_id"], name: "index_hampers_on_user_id", using: :btree
 
   create_table "plantations", force: :cascade do |t|
-    t.integer  "farm_id"
-    t.integer  "generation_id"
+    t.integer  "farm_id",       null: false
+    t.integer  "generation_id", null: false
     t.float    "quantity"
     t.integer  "year"
     t.datetime "created_at",    null: false
@@ -81,7 +81,7 @@ ActiveRecord::Schema.define(version: 20160812211404) do
   create_table "plots", force: :cascade do |t|
     t.string   "location"
     t.integer  "generation_id"
-    t.integer  "farm_id"
+    t.integer  "farm_id",       null: false
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
     t.string   "name"
