@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   devise_for :users
   resources :plots
   resources :generations
-  resources :legumes
+  resources :plants
   resources :farms, param: :slug do 
     patch 'tutorial'
     resources :plantations

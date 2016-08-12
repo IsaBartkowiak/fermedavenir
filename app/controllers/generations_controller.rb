@@ -1,19 +1,3 @@
-# == Schema Information
-#
-# Table name: generations
-#
-#  id              :integer          not null, primary key
-#  semi_from       :integer          default(0)
-#  semi_to         :integer          default(0)
-#  plantation      :integer
-#  recolte         :integer
-#  conservation_to :integer
-#  created_at      :datetime         not null
-#  updated_at      :datetime         not null
-#  legume_id       :integer
-#  farm_id         :integer
-#
-
 class GenerationsController < ApplicationController
   before_action :set_generation, only: [:show, :edit, :update, :destroy]
   before_action :check_user
@@ -95,6 +79,6 @@ class GenerationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def generation_params
-      params.require(:generation).permit(:semi_from, :semi_to, :plantation, :recolte, :conservation_from, :conservation_to, :legume_id)
+      params.require(:generation).permit(:semi_from, :semi_to, :plantation, :recolte, :conservation_from, :conservation_to, :plant_id)
     end
 end

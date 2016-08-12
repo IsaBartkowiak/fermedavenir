@@ -1,7 +1,7 @@
 <div class="section_grey">
 <div class="container">
   <div class="page-header">
-    <%= link_to new_legume_path, class: 'btn btn_green' do %>
+    <%= link_to new_plant_path, class: 'btn btn_green' do %>
       <span class="glyphicon glyphicon-plus"></span>
       Nouveau légume
     <% end %>
@@ -23,18 +23,18 @@
       </thead>
 
       <tbody>
-        <%= content_tag_for(:tr, @legumes) do |legume| %>
-              <td class="text-center"><%= image_tag("image-"+ legume.titre.parameterize + ".png", width: "35px"); %></td>
-              <td><%= legume.titre %></td>
-              <td><%= legume.variete %></td>
-              <td><%= legume.caracteristique %></td>
-              <td><%= legume.price %></td>
-              <td><%= legume.nb_per_kilo %></td>
-          <td class="text-center"><%= link_to edit_legume_path(legume) do %>
+        <%= content_tag_for(:tr, @plants) do |plant| %>
+              <td class="text-center"><%= image_tag("image-"+ plant.titre.parameterize + ".png", width: "35px"); %></td>
+              <td><%= plant.titre %></td>
+              <td><%= plant.variete %></td>
+              <td><%= plant.caracteristique %></td>
+              <td><%= plant.price %></td>
+              <td><%= plant.nb_per_kilo %></td>
+          <td class="text-center"><%= link_to edit_plant_path(plant) do %>
               <span class="glyphicon glyphicon-pencil"></span>
             <% end %>
         </td>
-          <td class="text-center"><%= link_to legume, method: :delete, data: { confirm: 'Êtes-vous sur ?' } do %>
+          <td class="text-center"><%= link_to plant, method: :delete, data: { confirm: 'Êtes-vous sur ?' } do %>
               <span class="glyphicon glyphicon-remove"></span>
             <% end %>
           </td>

@@ -4,7 +4,7 @@
 #
 #  id            :integer          not null, primary key
 #  panier_id     :integer
-#  legume_id     :integer
+#  plant_id     :integer
 #  generation_id :integer
 #  quantity      :float
 #  created_at    :datetime         not null
@@ -31,7 +31,7 @@ class PortionsControllerTest < ActionController::TestCase
 
   test "should create portion" do
     assert_difference('Portion.count') do
-      post :create, portion: { generation_id: @portion.generation_id, legume_id: @portion.legume_id, panier_id: @portion.panier_id, quantity: @portion.quantity }
+      post :create, portion: { generation_id: @portion.generation_id, plant_id: @portion.plant_id, panier_id: @portion.panier_id, quantity: @portion.quantity }
     end
 
     assert_redirected_to portion_path(assigns(:portion))
@@ -48,7 +48,7 @@ class PortionsControllerTest < ActionController::TestCase
   end
 
   test "should update portion" do
-    patch :update, id: @portion, portion: { generation_id: @portion.generation_id, legume_id: @portion.legume_id, panier_id: @portion.panier_id, quantity: @portion.quantity }
+    patch :update, id: @portion, portion: { generation_id: @portion.generation_id, plant_id: @portion.plant_id, panier_id: @portion.panier_id, quantity: @portion.quantity }
     assert_redirected_to portion_path(assigns(:portion))
   end
 

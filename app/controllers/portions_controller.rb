@@ -1,16 +1,3 @@
-# == Schema Information
-#
-# Table name: portions
-#
-#  id            :integer          not null, primary key
-#  hamper_id     :integer
-#  legume_id     :integer
-#  generation_id :integer
-#  quantity      :float
-#  created_at    :datetime         not null
-#  updated_at    :datetime         not null
-#
-
 class PortionsController < ApplicationController
   before_action :check_user
   before_action :set_farm
@@ -53,11 +40,11 @@ class PortionsController < ApplicationController
 
     respond_to do |format|
       if @portion.save
-        format.html { redirect_to hamper_portions_url(@hamper), notice: "#{@portion.quantity} #{@portion.legume.titre} ajoutés au hamper" }
+        format.html { redirect_to hamper_portions_url(@hamper), notice: "#{@portion.quantity} #{@portion.plant.titre} ajoutés au hamper" }
         format.json { render :show, status: :created, location: @hamper }
         format.js {}
       else
-        format.html { redirect_to new_hamper_portion_path(@hamper), notice: "Pas de portions de #{@portion.legume.titre} disponible à cette date." }
+        format.html { redirect_to new_hamper_portion_path(@hamper), notice: "Pas de portions de #{@portion.plant.titre} disponible à cette date." }
         format.json { render json: @portion.errors, status: :unprocessable_entity }
       end
     end
@@ -71,7 +58,7 @@ class PortionsController < ApplicationController
         format.html { redirect_to hamper_portions_url(@hamper), notice: 'Cette portion a été mise à jour.' }
         format.json { render :show, status: :ok, location: @portion }
       else
-        format.html { redirect_to edit_hamper_portion_path(@hamper), notice: "Pas de portions de #{@portion.legume.titre} disponible à cette date." }
+        format.html { redirect_to edit_hamper_portion_path(@hamper), notice: "Pas de portions de #{@portion.plant.titre} disponible à cette date." }
         format.json { render json: @portion.errors, status: :unprocessable_entity }
       end
     end
@@ -108,6 +95,6 @@ class PortionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def portion_params
-      params.require(:portion).permit(:hamper_id, :legume_id, :quantity, :generation_id)
+      params.require(:portion).permit(:hamper_id, :plant_id, :quantity, :generation_id)
     end
 end

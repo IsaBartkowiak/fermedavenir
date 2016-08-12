@@ -28,7 +28,7 @@ class PlotsController < ApplicationController
 
   # GET /plots/new
   def new
-    @legumes = @farm.legumes.all
+    @plants = @farm.plants.all
     @plot = Plot.new
   end
 

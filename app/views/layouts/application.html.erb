@@ -48,7 +48,7 @@
                 <% if current_user.farm %>
                 <li><%= link_to 'Tableau de bord', farm_path(current_user.farm.slug) %></li>
                 <li role="separator" class="divider"></li>
-                <li><%= link_to 'Légumes', legumes_path %></li>
+                <li><%= link_to 'Légumes', plants_path %></li>
                 <li><%= link_to 'Générations', generations_path %></li>
                 <li><%= link_to 'Plantations', farm_plantations_path(current_user.farm.slug) %></li>
                 <li><%= link_to 'Paniers', farm_hampers_path(current_user.farm.slug) %></li>
@@ -85,7 +85,7 @@
         <nav class="header-nav">
           <ul>
             <li class="nav-item <%= "is_active" if is_active?("dashboards") %>"><a class="btn" href="/">Accueil</a></li>
-            <li class="nav-item <%= "is-active" if is_active?("legumes") %>"><%= link_to "Légumes", legumes_path, class: 'btn' unless current_user.farm.nil? %></li>
+            <li class="nav-item <%= "is-active" if is_active?("plants") %>"><%= link_to "Légumes", plants_path, class: 'btn' unless current_user.farm.nil? %></li>
             <li class="nav-item <%= "is-active" if is_active?("generations") %>"><%= link_to "Générations", generations_path, class: 'btn' unless current_user.farm.nil? %></li>
             <li class="nav-item <%= "is-active" if is_active?("plantations") %>"><%= link_to "Plantations", farm_plantations_path(current_user.farm.slug), class: 'btn' unless current_user.farm.nil? %></li>
             <li class="nav-item <%= "is-active" if is_active?("hampers") %>"><%= link_to "Paniers", farm_hampers_path(current_user.farm.slug), class: 'btn' unless current_user.farm.nil? %></li>

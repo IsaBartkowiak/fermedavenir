@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: legumes
+# Table name: plants
 #
 #  id              :integer          not null, primary key
 #  titre           :string
@@ -13,12 +13,10 @@
 #  nb_per_kilo     :float            default(1000.0)
 #
 
-class Legume < ActiveRecord::Base
-	has_many :generations, dependent: :destroy
-	has_many :portions, dependent: :destroy
-	belongs_to :farm
+require 'test_helper'
 
-	amoeba do
-		enable
-	end
+class PlantTest < ActiveSupport::TestCase
+  # test "the truth" do
+  #   assert true
+  # end
 end

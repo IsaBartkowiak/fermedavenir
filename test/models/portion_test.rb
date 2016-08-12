@@ -4,7 +4,7 @@
 #
 #  id            :integer          not null, primary key
 #  hamper_id     :integer
-#  legume_id     :integer
+#  plant_id      :integer
 #  generation_id :integer
 #  quantity      :float
 #  created_at    :datetime         not null

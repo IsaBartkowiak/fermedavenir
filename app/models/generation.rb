@@ -10,12 +10,12 @@
 #  conservation_to :integer
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
-#  legume_id       :integer
+#  plant_id        :integer
 #  farm_id         :integer
 #
 
 class Generation < ActiveRecord::Base
-	belongs_to :legume
+	belongs_to :plant
 
 	scope :per_plantation_date, -> {
 		order(plantation: :asc)

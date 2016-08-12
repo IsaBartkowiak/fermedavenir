@@ -22,7 +22,7 @@
       <tbody>
         <%= content_tag_for(:tr, @plots) do |plot| %>
           <td><%= plot.name unless plot.name.nil? %></td>  
-          <td><%= plot.generation.legume.titre unless plot.generation.nil? %></td>
+          <td><%= plot.generation.plant.titre unless plot.generation.nil? %></td>
           <td><%= link_to 'Modifier', edit_plot_path(plot) %></td>
           <td><%= link_to 'Supprimer', plot, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <% end %>

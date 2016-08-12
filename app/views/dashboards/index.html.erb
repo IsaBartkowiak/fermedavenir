@@ -55,7 +55,7 @@
 				<!-- Générations à semer -->
 				<ul class="list-group">
 					<% @farm.generations_to_plant.to_sem_this_week.each do |generation| %>
-					<li class="list-group-item"><%= image_tag("image-"+ generation.legume.titre.parameterize + ".png", width: "35px"); %></i> <%= generation.legume.titre.capitalize %></li>
+					<li class="list-group-item"><%= image_tag("image-"+ generation.plant.titre.parameterize + ".png", width: "35px"); %></i> <%= generation.plant.titre.capitalize %></li>
 					<% end %>
 				</ul>
 			<% else %>
@@ -69,7 +69,7 @@
 				<!-- Générations à planter -->
 				<ul class="list-group">
 					<% @farm.generations_to_plant.to_plant_this_week.each do |generation| %>
-					<li class="list-group-item"><%= image_tag("image-"+ generation.legume.titre.parameterize + ".png", width: "35px"); %> <%= generation.legume.titre.capitalize %></li>
+					<li class="list-group-item"><%= image_tag("image-"+ generation.plant.titre.parameterize + ".png", width: "35px"); %> <%= generation.plant.titre.capitalize %></li>
 					<% end %>
 				</ul>
 				</blockquote>
@@ -84,7 +84,7 @@
 				<!-- Générations à récolter -->
 				<ul class="list-group">
 					<% @farm.generations_to_plant.to_recolt_this_week.each do |generation| %>
-					<li class="list-group-item"> <%= image_tag("image-"+ generation.legume.titre.parameterize + ".png", width: "35px"); %> <%= generation.legume.titre.capitalize %></li>
+					<li class="list-group-item"> <%= image_tag("image-"+ generation.plant.titre.parameterize + ".png", width: "35px"); %> <%= generation.plant.titre.capitalize %></li>
 					<% end %>
 				</ul>
 			<% else %>

@@ -20,15 +20,15 @@ class Farm < ActiveRecord::Base
   has_many :plots
   has_many :hampers, dependent: :destroy
   has_many :plantations, dependent: :destroy
-  has_many :legumes, dependent: :destroy
+  has_many :plants, dependent: :destroy
 
-  has_many :generations, through: :legumes
+  has_many :generations, through: :plants
   has_many :portions, through: :hampers
   has_many :generations_to_plant, -> { uniq }, through: :portions, source: :generation
   has_many :planted_generations, -> { uniq }, through: :plantations, source: :generation
 
   before_create :generate_hampers
-  before_create :generate_legumes
+  before_create :generate_plants
   before_save :create_slug
 
   def get_quantity_to_plant a_generation
@@ -38,11 +38,11 @@ class Farm < ActiveRecord::Base
         quantity += (portion.quantity*portion.hamper.quantity)
     	end
     end
-    quantity*a_generation.legume.nb_per_kilo 
+    quantity*a_generation.plant.nb_per_kilo 
   end
 
-  def copy_leg(a_legume)
-    legumes << a_legume.amoeba_dup
+  def copy_leg(a_plant)
+    plants << a_plant.amoeba_dup
   end
 
   def toggle_tutorials
@@ -66,10 +66,10 @@ class Farm < ActiveRecord::Base
     end
   end
 
-  def generate_legumes
-    all_legumes = Legume.where(farm_id: nil).all
-    all_legumes.each do |a_legume|
-      copy_leg(a_legume)
+  def generate_plants
+    all_plants = Plant.where(farm_id: nil).all
+    all_plants.each do |a_plant|
+      copy_leg(a_plant)
     end
   end
 

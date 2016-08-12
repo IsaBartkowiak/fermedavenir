@@ -52,7 +52,7 @@
           <% @generations.each do |generation| %>
           <div class="col-xs-12 col-sm-6 col-md-3">
             <div class="panier-dispo--box">
-            <%= image_tag("image-"+generation.legume.titre.parameterize + ".png"); %>
+            <%= image_tag("image-"+generation.plant.titre.parameterize + ".png"); %>
               <%= form_for([@hamper.farm, @hamper, @portion], remote: true, html: { class: "form-horizontal", role: "form" }) do |f| %>
               <% if @portion.errors.any? %>
               <div class="alert alert-danger alert-dismissable" role="alert">
@@ -67,9 +67,9 @@
               </div>
               <% end %>
             
-                <label class="panier-dispo--label"><%= generation.legume.titre + ' - ' + generation.legume.variete + ' - ' + generation.legume.price.to_s %>€/KG </label>
+                <label class="panier-dispo--label"><%= generation.plant.titre + ' - ' + generation.plant.variete + ' - ' + generation.plant.price.to_s %>€/KG </label>
 
-                  <%= f.hidden_field :legume_id, value: generation.legume.id, class: "form-control" %>
+                  <%= f.hidden_field :plant_id, value: generation.plant.id, class: "form-control" %>
                   <%= f.hidden_field :generation_id, value: generation.id, class: "form-control" %>
 
              

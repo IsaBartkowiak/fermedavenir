@@ -4,7 +4,7 @@
 #
 #  id            :integer          not null, primary key
 #  hamper_id     :integer
-#  legume_id     :integer
+#  plant_id      :integer
 #  generation_id :integer
 #  quantity      :float
 #  created_at    :datetime         not null
@@ -14,13 +14,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  panier_id: 1
-  legume_id: 
+  hamper_id: 1
+  plant_id: 
   generation_id: 
   quantity: 1.5
 
 two:
-  panier_id: 1
-  legume_id: 
+  hamper_id: 1
+  plant_id: 
   generation_id: 
   quantity: 1.5

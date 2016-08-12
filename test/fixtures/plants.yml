@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: legumes
+# Table name: plants
 #
 #  id              :integer          not null, primary key
 #  titre           :string

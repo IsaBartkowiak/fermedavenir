@@ -67,8 +67,8 @@
           <%= link_to "Retirer", farm_plantation_path(@farm, plant), method: :delete, class: "btn btn_red" if plant %>
         </td>
       <% end %>
-      <td><%= generation.legume.titre unless generation.legume.nil? %></td>
-      <td><%= generation.legume.variete unless generation.legume.variete %></td>
+      <td><%= generation.plant.titre unless generation.plant.nil? %></td>
+      <td><%= generation.plant.variete unless generation.plant.variete %></td>
             <% semi = false 
                plantation = false
                recolte = false 

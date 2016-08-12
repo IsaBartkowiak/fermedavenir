@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: paniers
+# Table name: hampers
 #
 #  id         :integer          not null, primary key
 #  semaine    :integer
@@ -13,15 +13,15 @@
 
 require 'test_helper'
 
-class PaniersControllerTest < ActionController::TestCase
+class HampersControllerTest < ActionController::TestCase
   setup do
-    @panier = paniers(:one)
+    @hamper = hampers(:one)
   end
 
   test "should get index" do
     get :index
     assert_response :success
-    assert_not_nil assigns(:paniers)
+    assert_not_nil assigns(:hampers)
   end
 
   test "should get new" do
@@ -29,34 +29,34 @@ class PaniersControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should create panier" do
-    assert_difference('Panier.count') do
-      post :create, panier: { semaine: @panier.semaine }
+  test "should create hamper" do
+    assert_difference('Hamper.count') do
+      post :create, hamper: { semaine: @hamper.semaine }
     end
 
-    assert_redirected_to panier_path(assigns(:panier))
+    assert_redirected_to hamper_path(assigns(:hamper))
   end
 
-  test "should show panier" do
-    get :show, id: @panier
+  test "should show hamper" do
+    get :show, id: @hamper
     assert_response :success
   end
 
   test "should get edit" do
-    get :edit, id: @panier
+    get :edit, id: @hamper
     assert_response :success
   end
 
-  test "should update panier" do
-    patch :update, id: @panier, panier: { semaine: @panier.semaine }
-    assert_redirected_to panier_path(assigns(:panier))
+  test "should update hamper" do
+    patch :update, id: @hamper, hamper: { semaine: @hamper.semaine }
+    assert_redirected_to hamper_path(assigns(:hamper))
   end
 
-  test "should destroy panier" do
-    assert_difference('Panier.count', -1) do
-      delete :destroy, id: @panier
+  test "should destroy hamper" do
+    assert_difference('Hamper.count', -1) do
+      delete :destroy, id: @hamper
     end
 
-    assert_redirected_to paniers_path
+    assert_redirected_to hampers_path
   end
 end

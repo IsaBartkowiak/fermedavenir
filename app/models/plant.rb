@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: legumes
+# Table name: plants
 #
 #  id              :integer          not null, primary key
 #  titre           :string
@@ -13,5 +13,12 @@
 #  nb_per_kilo     :float            default(1000.0)
 #
 
-module LegumesHelper
+class Plant < ActiveRecord::Base
+  has_many   :generations, dependent: :destroy
+  has_many   :portions, dependent: :destroy
+  belongs_to :farm
+
+	amoeba do
+		enable
+	end
 end

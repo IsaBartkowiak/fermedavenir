@@ -4,7 +4,7 @@
 #
 #  id            :integer          not null, primary key
 #  hamper_id     :integer
-#  legume_id     :integer
+#  plant_id      :integer
 #  generation_id :integer
 #  quantity      :float
 #  created_at    :datetime         not null
@@ -12,14 +12,14 @@
 #
 
 class Portion < ActiveRecord::Base
-  belongs_to :legume
+  belongs_to :plant
   belongs_to :generation
   belongs_to :hamper
 
   before_save :assign_generation
 
   def price
-    legume.price.to_f*quantity.to_f unless legume.price.nil?
+    plant.price.to_f*quantity.to_f unless plant.price.nil?
   end
 
   def refresh params
@@ -29,7 +29,7 @@ class Portion < ActiveRecord::Base
   private 
 
   def assign_generation
-    self.generation = Generation.where(legume: legume).available_for(hamper.semaine).first
+    self.generation = Generation.where(plant: plant).available_for(hamper.semaine).first
     return false if generation.nil?
   end
 

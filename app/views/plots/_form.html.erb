@@ -34,7 +34,7 @@
         <% end %>
         <% @farm.planted_generations.where("recolte >= ?", Date.today.cweek).each do |generation| %>
           <option value="<%= generation.id %>">
-            <%= generation.legume.titre.pluralize %> : À planter en semaine <%= generation.plantation %>, à récolter en semaine <%= generation.recolte %>
+            <%= generation.plant.titre.pluralize %> : À planter en semaine <%= generation.plantation %>, à récolter en semaine <%= generation.recolte %>
           </option>
         <% end %>
       </select>

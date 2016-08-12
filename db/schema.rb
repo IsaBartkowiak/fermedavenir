@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160812180846) do
+ActiveRecord::Schema.define(version: 20160812200345) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 20160812180846) do
     t.integer  "conservation_to"
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
-    t.integer  "legume_id"
+    t.integer  "plant_id"
     t.integer  "farm_id"
   end
 
@@ -53,19 +53,6 @@ ActiveRecord::Schema.define(version: 20160812180846) do
   add_index "hampers", ["farm_id"], name: "index_hampers_on_farm_id", using: :btree
   add_index "hampers", ["user_id"], name: "index_hampers_on_user_id", using: :btree
 
-  create_table "legumes", force: :cascade do |t|
-    t.string   "titre"
-    t.string   "variete"
-    t.string   "caracteristique"
-    t.datetime "created_at",                       null: false
-    t.datetime "updated_at",                       null: false
-    t.float    "price"
-    t.integer  "farm_id"
-    t.float    "nb_per_kilo",     default: 1000.0
-  end
-
-  add_index "legumes", ["farm_id"], name: "index_legumes_on_farm_id", using: :btree
-
   create_table "plantations", force: :cascade do |t|
     t.integer  "farm_id"
     t.integer  "generation_id"
@@ -77,6 +64,19 @@ ActiveRecord::Schema.define(version: 20160812180846) do
 
   add_index "plantations", ["farm_id"], name: "index_plantations_on_farm_id", using: :btree
   add_index "plantations", ["generation_id"], name: "index_plantations_on_generation_id", using: :btree
+
+  create_table "plants", force: :cascade do |t|
+    t.string   "titre"
+    t.string   "variete"
+    t.string   "caracteristique"
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+    t.float    "price"
+    t.integer  "farm_id"
+    t.float    "nb_per_kilo",     default: 1000.0
+  end
+
+  add_index "plants", ["farm_id"], name: "index_plants_on_farm_id", using: :btree
 
   create_table "plots", force: :cascade do |t|
     t.string   "location"
@@ -92,7 +92,7 @@ ActiveRecord::Schema.define(version: 20160812180846) do
 
   create_table "portions", force: :cascade do |t|
     t.integer  "hamper_id"
-    t.integer  "legume_id"
+    t.integer  "plant_id"
     t.integer  "generation_id"
     t.float    "quantity"
     t.datetime "created_at",    null: false
@@ -100,7 +100,7 @@ ActiveRecord::Schema.define(version: 20160812180846) do
   end
 
   add_index "portions", ["generation_id"], name: "index_portions_on_generation_id", using: :btree
-  add_index "portions", ["legume_id"], name: "index_portions_on_legume_id", using: :btree
+  add_index "portions", ["plant_id"], name: "index_portions_on_plant_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "",       null: false
@@ -126,12 +126,12 @@ ActiveRecord::Schema.define(version: 20160812180846) do
   add_foreign_key "generations", "farms"
   add_foreign_key "hampers", "farms"
   add_foreign_key "hampers", "users"
-  add_foreign_key "legumes", "farms"
   add_foreign_key "plantations", "farms"
   add_foreign_key "plantations", "generations"
+  add_foreign_key "plants", "farms"
   add_foreign_key "plots", "farms"
   add_foreign_key "plots", "generations"
   add_foreign_key "portions", "generations"
-  add_foreign_key "portions", "legumes"
+  add_foreign_key "portions", "plants"
   add_foreign_key "users", "farms"
 end
