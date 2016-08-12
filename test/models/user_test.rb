@@ -16,7 +16,7 @@
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #  farm_id                :integer
-#  statut                 :string           default("farmer")
+#  status                 :string           default("farmer")
 #
 
 require 'test_helper'

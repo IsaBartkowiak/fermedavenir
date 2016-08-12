@@ -16,14 +16,14 @@
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #  farm_id                :integer
-#  statut                 :string           default("farmer")
+#  status                 :string           default("farmer")
 #
 
 class User < ActiveRecord::Base
-	belongs_to :farm
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+	belongs_to :farm
 end
