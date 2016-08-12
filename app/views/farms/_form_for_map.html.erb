@@ -2,8 +2,8 @@
   <label for="farm-name" class="label-farm">Modifier le nom de ma ferme</label>
   <%= f.text_field :name, id: "farm-name", class: "form-control input-farm", placeholder: "Entrez un nom", required: "required" %>
   <%= f.hidden_field :location, required: "required" %>
-  <%= f.hidden_field :lat %>
-  <%= f.hidden_field :lng %>
+  <%= f.hidden_field :latitude %>
+  <%= f.hidden_field :longitude %>
 </div>
 
 <div class="col-xs-6 user-location">  

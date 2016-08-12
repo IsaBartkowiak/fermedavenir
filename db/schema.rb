@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160729135901) do
+ActiveRecord::Schema.define(version: 20160812175937) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,8 +23,8 @@ ActiveRecord::Schema.define(version: 20160729135901) do
     t.datetime "updated_at",                null: false
     t.string   "location"
     t.boolean  "tutorial",   default: true
-    t.float    "lat"
-    t.float    "lng"
+    t.float    "latitude"
+    t.float    "longitude"
   end
 
   create_table "generations", force: :cascade do |t|
