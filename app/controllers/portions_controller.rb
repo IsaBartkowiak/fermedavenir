@@ -8,7 +8,7 @@ class PortionsController < ApplicationController
   # GET /portions.json
   def index
     @portions = @hamper.portions.all
-    @generations = @farm.generations.available_for(@hamper.semaine)
+    @generations = @farm.generations.available_for(@hamper.week)
     @portion = Portion.new
   end
 

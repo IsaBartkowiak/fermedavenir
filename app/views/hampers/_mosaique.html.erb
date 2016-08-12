@@ -2,7 +2,7 @@
 	<% @hampers.each do |hamper| %>
   		<%= link_to farm_hamper_portions_path(hamper.farm.slug, hamper), class:"virgin", remote: true do %>
 		  <li class="case <% unless hamper.planted? %>alert-plant<% end %> <% if hamper.portions.any? %>full<% end %>">
-		  	<%= hamper.semaine %>
+		  	<%= hamper.week %>
 		  </li>
 		<% end %>	  
 	<% end %>

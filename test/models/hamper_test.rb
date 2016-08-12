@@ -3,7 +3,7 @@
 # Table name: hampers
 #
 #  id         :integer          not null, primary key
-#  semaine    :integer
+#  week       :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  user_id    :integer

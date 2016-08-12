@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160812205553) do
+ActiveRecord::Schema.define(version: 20160812211404) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,7 +42,7 @@ ActiveRecord::Schema.define(version: 20160812205553) do
   add_index "generations", ["farm_id"], name: "index_generations_on_farm_id", using: :btree
 
   create_table "hampers", force: :cascade do |t|
-    t.integer  "semaine"
+    t.integer  "week"
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
     t.integer  "user_id"

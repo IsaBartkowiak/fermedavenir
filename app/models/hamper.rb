@@ -3,7 +3,7 @@
 # Table name: hampers
 #
 #  id         :integer          not null, primary key
-#  semaine    :integer
+#  week       :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  user_id    :integer
@@ -12,11 +12,9 @@
 #
 
 class Hamper < ActiveRecord::Base
-	has_many :portions
+	has_many   :portions
 	belongs_to :farm
-	scope :par_semaines, -> {
-		order(semaine: :asc).all
-	}
+	scope      :per_weeks, -> { order(week: :asc).all }
 
 	def planted?
 		portions.each do |portion|

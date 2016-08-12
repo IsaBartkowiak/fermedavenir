@@ -62,7 +62,7 @@ class Farm < ActiveRecord::Base
 
   def generate_hampers
     for i in 1..52
-      hampers.build(semaine: i)
+      hampers.build(week: i)
     end
   end
 

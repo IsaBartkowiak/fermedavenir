@@ -1,16 +1,3 @@
-# == Schema Information
-#
-# Table name: hampers
-#
-#  id         :integer          not null, primary key
-#  semaine    :integer
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#  user_id    :integer
-#  farm_id    :integer
-#  quantity   :integer          default(20)
-#
-
 class HampersController < ApplicationController
   before_action :check_user
   before_action :set_farm
@@ -20,7 +7,7 @@ class HampersController < ApplicationController
   # GET /hampers
   # GET /hampers.json
   def index
-    @hampers = @farm.hampers.par_semaines
+    @hampers = @farm.hampers.per_weeks
   end
 
   # GET /hampers/1
@@ -97,6 +84,6 @@ class HampersController < ApplicationController
     end
     # Never trust parameters from the scary internet, only allow the white list through.
     def hamper_params
-      params.require(:hamper).permit(:semaine, :quantity)
+      params.require(:hamper).permit(:week, :quantity)
     end
 end

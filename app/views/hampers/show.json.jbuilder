@@ -1,1 +1,1 @@
-json.extract! @hamper, :id, :semaine, :created_at, :updated_at
+json.extract! @hamper, :id, :week, :created_at, :updated_at
