@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160812200345) do
+ActiveRecord::Schema.define(version: 20160812203519) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,13 +28,13 @@ ActiveRecord::Schema.define(version: 20160812200345) do
   end
 
   create_table "generations", force: :cascade do |t|
-    t.integer  "semi_from",       default: 0
-    t.integer  "semi_to",         default: 0
+    t.integer  "seedling_from", default: 0
+    t.integer  "seedling_to",   default: 0
     t.integer  "plantation"
-    t.integer  "recolte"
-    t.integer  "conservation_to"
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
+    t.integer  "harvest"
+    t.integer  "available_for"
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
     t.integer  "plant_id"
     t.integer  "farm_id"
   end

@@ -2,16 +2,16 @@
 #
 # Table name: generations
 #
-#  id              :integer          not null, primary key
-#  semi_from       :integer          default(0)
-#  semi_to         :integer          default(0)
-#  plantation      :integer
-#  recolte         :integer
-#  conservation_to :integer
-#  created_at      :datetime         not null
-#  updated_at      :datetime         not null
-#  plant_id        :integer
-#  farm_id         :integer
+#  id            :integer          not null, primary key
+#  seedling_from :integer          default(0)
+#  seedling_to   :integer          default(0)
+#  plantation    :integer
+#  harvest       :integer
+#  available_for :integer
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#  plant_id      :integer
+#  farm_id       :integer
 #
 
 require 'test_helper'

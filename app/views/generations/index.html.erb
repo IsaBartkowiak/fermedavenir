@@ -43,36 +43,36 @@
     <tbody>
       <%= content_tag_for(:tr, @generations) do |generation| %>
       <td><%= generation.plant.titre unless generation.plant.nil? %></td>
-            <% semi = false 
+            <% seedling = false 
                plantation = false
-               recolte = false 
+               harvest = false 
                %>
             <% for i in 1..52 %>
-              <% if generation.semi_from == i %>
-                <% semi = true %>
+              <% if generation.seedling_from == i %>
+                <% seedling = true %>
                 <td class="light-green"></td>
               <% elsif generation.plantation == i %>
                 <td class="mint-green"></td>
                 <% 
-                  semi = false 
+                  seedling = false 
                   plantation = true
                 %>
-              <% elsif generation.recolte == i %>
+              <% elsif generation.harvest == i %>
                 <td class="dark-green"></td>
                 <% 
                   plantation = false
-                  recolte = true unless generation.conservation_to == generation.recolte 
+                  harvest = true unless generation.available_for == generation.harvest
                 %>
-              <% elsif generation.conservation_to == i %>
+              <% elsif generation.available_for == i %>
                 <td class="dark-green"></td>
                 <% 
-                  recolte = false 
+                  harvest = false 
                 %>
-              <% elsif semi %>
+              <% elsif seedling %>
                 <td class="light-green"></td>
               <% elsif plantation %>
                 <td class="mint-green"></td>
-              <% elsif recolte %>
+              <% elsif harvest %>
                 <td class="dark-green"></td>
               <% else %>
                 <td></td>

@@ -1,1 +1,1 @@
-json.extract! @generation, :id, :semi_from, :semi_to, :plantation, :recolte, :conservation_from, :conservation_to, :created_at, :updated_at
+json.extract! @generation, :id, :seedling_from, :seedling_to, :plantation, :harvest, :conservation_from, :available_for, :created_at, :updated_at

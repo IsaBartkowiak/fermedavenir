@@ -29,12 +29,12 @@
     <%= f.label "Légume disponibles", class: "col-sm-2 control-label" %>
     <div class="col-sm-10">
       <select name="plot[generation_id]" class="form-control">
-        <% if @farm.planted_generations.where("recolte >= ?", Date.today.cweek).count == 0 %>
+        <% if @farm.planted_generations.where("harvest >= ?", Date.today.cweek).count == 0 %>
           <option value="" disabled selected>Vous n'avez pas de plantations disponibles en ce moment.</option>
         <% end %>
-        <% @farm.planted_generations.where("recolte >= ?", Date.today.cweek).each do |generation| %>
+        <% @farm.planted_generations.where("harvest >= ?", Date.today.cweek).each do |generation| %>
           <option value="<%= generation.id %>">
-            <%= generation.plant.titre.pluralize %> : À planter en semaine <%= generation.plantation %>, à récolter en semaine <%= generation.recolte %>
+            <%= generation.plant.titre.pluralize %> : À planter en semaine <%= generation.plantation %>, à récolter en semaine <%= generation.harvest %>
           </option>
         <% end %>
       </select>

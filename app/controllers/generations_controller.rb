@@ -79,6 +79,6 @@ class GenerationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def generation_params
-      params.require(:generation).permit(:semi_from, :semi_to, :plantation, :recolte, :conservation_from, :conservation_to, :plant_id)
+      params.require(:generation).permit(:seedling_from, :seedling_to, :plantation, :harvest, :conservation_from, :available_for, :plant_id)
     end
 end
