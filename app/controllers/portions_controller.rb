@@ -40,11 +40,11 @@ class PortionsController < ApplicationController
 
     respond_to do |format|
       if @portion.save
-        format.html { redirect_to hamper_portions_url(@hamper), notice: "#{@portion.quantity} #{@portion.plant.titre} ajoutés au hamper" }
+        format.html { redirect_to hamper_portions_url(@hamper), notice: "#{@portion.quantity} #{@portion.plant.name} ajoutés au hamper" }
         format.json { render :show, status: :created, location: @hamper }
         format.js {}
       else
-        format.html { redirect_to new_hamper_portion_path(@hamper), notice: "Pas de portions de #{@portion.plant.titre} disponible à cette date." }
+        format.html { redirect_to new_hamper_portion_path(@hamper), notice: "Pas de portions de #{@portion.plant.name} disponible à cette date." }
         format.json { render json: @portion.errors, status: :unprocessable_entity }
       end
     end
@@ -58,7 +58,7 @@ class PortionsController < ApplicationController
         format.html { redirect_to hamper_portions_url(@hamper), notice: 'Cette portion a été mise à jour.' }
         format.json { render :show, status: :ok, location: @portion }
       else
-        format.html { redirect_to edit_hamper_portion_path(@hamper), notice: "Pas de portions de #{@portion.plant.titre} disponible à cette date." }
+        format.html { redirect_to edit_hamper_portion_path(@hamper), notice: "Pas de portions de #{@portion.plant.name} disponible à cette date." }
         format.json { render json: @portion.errors, status: :unprocessable_entity }
       end
     end

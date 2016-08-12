@@ -41,7 +41,7 @@
         <p class="line-label">Produits</p> 
           <select class="form-control">
             <% hamper.portions.each do |portion| %> 
-            <option><%= portion.quantity %>KG de <%= portion.plant.titre %></option>
+            <option><%= portion.quantity %>KG de <%= portion.plant.name %></option>
             <% end %>
           </select>
         </div>

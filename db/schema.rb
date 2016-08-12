@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160812205033) do
+ActiveRecord::Schema.define(version: 20160812205553) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -66,14 +66,14 @@ ActiveRecord::Schema.define(version: 20160812205033) do
   add_index "plantations", ["generation_id"], name: "index_plantations_on_generation_id", using: :btree
 
   create_table "plants", force: :cascade do |t|
-    t.string   "titre"
-    t.string   "variete"
-    t.string   "caracteristique"
-    t.datetime "created_at",                       null: false
-    t.datetime "updated_at",                       null: false
+    t.string   "name"
+    t.string   "type"
+    t.string   "feature"
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
     t.float    "price"
     t.integer  "farm_id"
-    t.float    "nb_per_kilo",     default: 1000.0
+    t.float    "nb_per_kilo", default: 1000.0
   end
 
   add_index "plants", ["farm_id"], name: "index_plants_on_farm_id", using: :btree

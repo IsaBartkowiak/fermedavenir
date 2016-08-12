@@ -2,7 +2,7 @@
   <% if @hamper.errors.any? %>
     <div class="alert alert-danger alert-dismissable" role="alert">
       <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-      <h4><%= pluralize(@hamper.errors.count, "error") %> prohibited this panier from being saved:</h4>
+      <h4><%= pluralize(@hamper.errors.count, "error") %> prohibited this hamper from being saved:</h4>
 
       <ul>
       <% @hamper.errors.full_messages.each do |msg| %>
@@ -26,6 +26,6 @@
 <% end %>
 <ul class="list-unstyled">
   <% @hamper.portions.each do |portion| %>
-  <li><%= portion.plants.titre %></li>
+  <li><%= portion.plants.name %></li>
   <% end %>
 </ul>

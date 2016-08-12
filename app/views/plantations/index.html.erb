@@ -67,11 +67,11 @@
           <%= link_to "Retirer", farm_plantation_path(@farm, plant), method: :delete, class: "btn btn_red" if plant %>
         </td>
       <% end %>
-      <td><%= generation.plant.titre unless generation.plant.nil? %></td>
-      <td><%= generation.plant.variete unless generation.plant.variete %></td>
-            <% seedling = false 
+      <td><%= generation.plant.name unless generation.plant.nil? %></td>
+      <td><%= generation.plant.type unless generation.plant.type %></td>
+            <% seedling   = false
                plantation = false
-               harvest = false 
+               harvest    = false 
                %>
             <% for i in 1..52 %>
               <% if generation.seedling_from == i %>

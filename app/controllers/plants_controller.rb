@@ -1,18 +1,3 @@
-# == Schema Information
-#
-# Table name: plants
-#
-#  id              :integer          not null, primary key
-#  titre           :string
-#  variete         :string
-#  caracteristique :string
-#  created_at      :datetime         not null
-#  updated_at      :datetime         not null
-#  price           :float
-#  farm_id         :integer
-#  nb_per_kilo     :float            default(1000.0)
-#
-
 class PlantsController < ApplicationController
   before_action :set_farm
   before_action :check_user
@@ -45,7 +30,7 @@ class PlantsController < ApplicationController
 
     respond_to do |format|
       if @plant.save
-        format.html { redirect_to plants_path, notice: "Vous avez bien ajouté un(e) #{@plant.titre}" }
+        format.html { redirect_to plants_path, notice: "Vous avez bien ajouté un(e) #{@plant.name}" }
         format.json { render :show, status: :created, location: @plant }
       else
         format.html { render :new }
@@ -93,6 +78,6 @@ class PlantsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def plant_params
-      params.require(:plant).permit(:titre, :variete, :caracteristique, :price, :nb_per_kilo)
+      params.require(:plant).permit(:name, :type, :feature, :price, :nb_per_kilo)
     end
 end

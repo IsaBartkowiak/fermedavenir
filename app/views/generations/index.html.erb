@@ -42,7 +42,7 @@
 
     <tbody>
       <%= content_tag_for(:tr, @generations) do |generation| %>
-      <td><%= generation.plant.titre unless generation.plant.nil? %></td>
+      <td><%= generation.plant.name unless generation.plant.nil? %></td>
             <% seedling = false 
                plantation = false
                harvest = false 

@@ -50,7 +50,7 @@
         indexID: <%= plot.id %>,
         title: "<%= plot.name %>",
         <% unless plot.generation.nil? %>
-        legume: "<%= plot.generation.plant.titre %>",
+        legume: "<%= plot.generation.plant.name %>",
         plantation: <%= plot.generation.plantation %>,
         recolte: <%= plot.generation.harvest %>,
         <% end %>
