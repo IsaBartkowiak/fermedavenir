@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160812175937) do
+ActiveRecord::Schema.define(version: 20160812180846) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,6 +41,18 @@ ActiveRecord::Schema.define(version: 20160812175937) do
 
   add_index "generations", ["farm_id"], name: "index_generations_on_farm_id", using: :btree
 
+  create_table "hampers", force: :cascade do |t|
+    t.integer  "semaine"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.integer  "user_id"
+    t.integer  "farm_id"
+    t.integer  "quantity",   default: 20
+  end
+
+  add_index "hampers", ["farm_id"], name: "index_hampers_on_farm_id", using: :btree
+  add_index "hampers", ["user_id"], name: "index_hampers_on_user_id", using: :btree
+
   create_table "legumes", force: :cascade do |t|
     t.string   "titre"
     t.string   "variete"
@@ -53,18 +65,6 @@ ActiveRecord::Schema.define(version: 20160812175937) do
   end
 
   add_index "legumes", ["farm_id"], name: "index_legumes_on_farm_id", using: :btree
-
-  create_table "paniers", force: :cascade do |t|
-    t.integer  "semaine"
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
-    t.integer  "user_id"
-    t.integer  "farm_id"
-    t.integer  "quantity",   default: 20
-  end
-
-  add_index "paniers", ["farm_id"], name: "index_paniers_on_farm_id", using: :btree
-  add_index "paniers", ["user_id"], name: "index_paniers_on_user_id", using: :btree
 
   create_table "plantations", force: :cascade do |t|
     t.integer  "farm_id"
@@ -91,7 +91,7 @@ ActiveRecord::Schema.define(version: 20160812175937) do
   add_index "plots", ["generation_id"], name: "index_plots_on_generation_id", using: :btree
 
   create_table "portions", force: :cascade do |t|
-    t.integer  "panier_id"
+    t.integer  "hamper_id"
     t.integer  "legume_id"
     t.integer  "generation_id"
     t.float    "quantity"
@@ -124,9 +124,9 @@ ActiveRecord::Schema.define(version: 20160812175937) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   add_foreign_key "generations", "farms"
+  add_foreign_key "hampers", "farms"
+  add_foreign_key "hampers", "users"
   add_foreign_key "legumes", "farms"
-  add_foreign_key "paniers", "farms"
-  add_foreign_key "paniers", "users"
   add_foreign_key "plantations", "farms"
   add_foreign_key "plantations", "generations"
   add_foreign_key "plots", "farms"

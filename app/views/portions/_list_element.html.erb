@@ -30,7 +30,7 @@ end
       <p class="panier-item--price" data-price="<%= portion.price %>"><%= portion.price.round(2) %> €</p> 
     </div>
     <div class="col-md-1">
-      <%= link_to farm_panier_portion_path(@panier.farm, @panier,portion), method: :delete, data: { confirm: 'Êtes vous sur ?' }, remote: true do %>
+      <%= link_to farm_hamper_portion_path(@hamper.farm, @hamper,portion), method: :delete, data: { confirm: 'Êtes vous sur ?' }, remote: true do %>
       <span class="glyphicon glyphicon-trash"></span>
       <% end %>
     </div>

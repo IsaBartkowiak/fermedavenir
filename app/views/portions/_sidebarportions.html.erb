@@ -1,7 +1,7 @@
-<% @panier.portions.each do |portion| %> 
+<% @hamper.portions.each do |portion| %> 
 	<li class="list-group-item"><%= image_tag("image-"+ portion.legume.titre.parameterize + ".png", width: "35px"); %></i> <%= portion.quantity %>KG de <%= portion.legume.titre %></li>
 <% end %>
 
-<p class="price"><%= get_cart_total(@panier.portions) %> €</p>
+<p class="price"><%= get_cart_total(@hamper.portions) %> €</p>
 
-<%= link_to 'Voir le panier', farm_panier_portions_path(@panier.farm.slug, @panier), class:"btn btn_green btn-end" %>
+<%= link_to 'Voir le panier', farm_hamper_portions_path(@hamper.farm.slug, @hamper), class:"btn btn_green btn-end" %>

@@ -1,11 +1,11 @@
-<%= form_for([@farm, @panier], html: { class: "form-horizontal", role: "form" }) do |f| %>
-  <% if @panier.errors.any? %>
+<%= form_for([@farm, @hamper], html: { class: "form-horizontal", role: "form" }) do |f| %>
+  <% if @hamper.errors.any? %>
     <div class="alert alert-danger alert-dismissable" role="alert">
       <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-      <h4><%= pluralize(@panier.errors.count, "error") %> prohibited this panier from being saved:</h4>
+      <h4><%= pluralize(@hamper.errors.count, "error") %> prohibited this panier from being saved:</h4>
 
       <ul>
-      <% @panier.errors.full_messages.each do |msg| %>
+      <% @hamper.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
       </ul>
@@ -25,7 +25,7 @@
     </div>
 <% end %>
 <ul class="list-unstyled">
-  <% @panier.portions.each do |portion| %>
+  <% @hamper.portions.each do |portion| %>
   <li><%= portion.legume.titre %></li>
   <% end %>
 </ul>

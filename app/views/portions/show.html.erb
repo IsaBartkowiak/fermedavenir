@@ -1,9 +1,9 @@
 <div class="page-header">
-  <%= link_to panier_portions_path(@panier), class: 'btn btn-default' do %>
+  <%= link_to hamper_portions_path(@hamper), class: 'btn btn-default' do %>
     <span class="glyphicon glyphicon-list-alt"></span>
     Back
   <% end %>
-  <%= link_to edit_panier_portion_path(@panier,@portion), class: 'btn btn-primary' do %>
+  <%= link_to edit_hamper_portion_path(@hamper, @portion), class: 'btn btn-primary' do %>
     <span class="glyphicon glyphicon-pencil"></span>
     Edit
   <% end %>

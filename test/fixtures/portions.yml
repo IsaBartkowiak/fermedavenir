@@ -3,7 +3,7 @@
 # Table name: portions
 #
 #  id            :integer          not null, primary key
-#  panier_id     :integer
+#  hamper_id     :integer
 #  legume_id     :integer
 #  generation_id :integer
 #  quantity      :float

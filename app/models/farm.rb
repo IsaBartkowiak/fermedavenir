@@ -18,16 +18,16 @@ class Farm < ActiveRecord::Base
 
   has_many :users
   has_many :plots
-  has_many :paniers, dependent: :destroy
+  has_many :hampers, dependent: :destroy
   has_many :plantations, dependent: :destroy
   has_many :legumes, dependent: :destroy
 
   has_many :generations, through: :legumes
-  has_many :portions, through: :paniers
+  has_many :portions, through: :hampers
   has_many :generations_to_plant, -> { uniq }, through: :portions, source: :generation
   has_many :planted_generations, -> { uniq }, through: :plantations, source: :generation
 
-  before_create :generate_paniers
+  before_create :generate_hampers
   before_create :generate_legumes
   before_save :create_slug
 
@@ -35,7 +35,7 @@ class Farm < ActiveRecord::Base
     quantity = 0
     portions.each do |portion|
       if portion.generation == a_generation
-        quantity += (portion.quantity*portion.panier.quantity)
+        quantity += (portion.quantity*portion.hamper.quantity)
     	end
     end
     quantity*a_generation.legume.nb_per_kilo 
@@ -60,9 +60,9 @@ class Farm < ActiveRecord::Base
 
   private
 
-  def generate_paniers
+  def generate_hampers
     for i in 1..52
-      paniers.build(semaine: i)
+      hampers.build(semaine: i)
     end
   end
 

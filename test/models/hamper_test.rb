@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: paniers
+# Table name: hampers
 #
 #  id         :integer          not null, primary key
 #  semaine    :integer
@@ -11,5 +11,10 @@
 #  quantity   :integer          default(20)
 #
 
-module PaniersHelper
+require 'test_helper'
+
+class PanierTest < ActiveSupport::TestCase
+  # test "the truth" do
+  #   assert true
+  # end
 end

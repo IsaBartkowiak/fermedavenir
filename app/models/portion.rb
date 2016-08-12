@@ -3,7 +3,7 @@
 # Table name: portions
 #
 #  id            :integer          not null, primary key
-#  panier_id     :integer
+#  hamper_id     :integer
 #  legume_id     :integer
 #  generation_id :integer
 #  quantity      :float
@@ -14,7 +14,7 @@
 class Portion < ActiveRecord::Base
   belongs_to :legume
   belongs_to :generation
-  belongs_to :panier
+  belongs_to :hamper
 
   before_save :assign_generation
 
@@ -29,7 +29,7 @@ class Portion < ActiveRecord::Base
   private 
 
   def assign_generation
-    self.generation = Generation.where(legume: legume).available_for(panier.semaine).first
+    self.generation = Generation.where(legume: legume).available_for(hamper.semaine).first
     return false if generation.nil?
   end
 

@@ -94,12 +94,12 @@
 		</div>
 
 		<%= render 'card', title: 'PANIERS' %>
-			<% if Panier.to_do(@farm) > 0 %>
+			<% if Hamper.to_do(@farm) > 0 %>
 				<!-- Paniers à compléter -->
 				<div class="valign meteo">
 					<%= image_tag('basket.svg', id:"img_panier") %>
-					<p id="panier"><span id="big"><%= Panier.to_do(@farm) %></span> paniers</p>
-					<%= link_to 'Gérer mes paniers', farm_paniers_path(@farm.slug), class:"btn btn_green btn-end" %>
+					<p id="panier"><span id="big"><%= Hamper.to_do(@farm) %></span> paniers</p>
+					<%= link_to 'Gérer mes paniers', farm_hampers_path(@farm.slug), class:"btn btn_green btn-end" %>
 				</div>
 			<% end %>
 			</div>

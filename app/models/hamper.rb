@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: paniers
+# Table name: hampers
 #
 #  id         :integer          not null, primary key
 #  semaine    :integer
@@ -11,7 +11,7 @@
 #  quantity   :integer          default(20)
 #
 
-class Panier < ActiveRecord::Base
+class Hamper < ActiveRecord::Base
 	has_many :portions
 	belongs_to :farm
 	scope :par_semaines, -> {
@@ -27,8 +27,8 @@ class Panier < ActiveRecord::Base
 
 	def self.to_do(farm)
 		total = 0
-		Panier.where(farm: farm).each do |panier|
-			total += 1 unless panier.portions.any?
+		Hamper.where(farm: farm).each do |hamper|
+			total += 1 unless hamper.portions.any?
 		end
 		total
 	end

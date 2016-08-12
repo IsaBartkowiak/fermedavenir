@@ -1,0 +1,2 @@
+module HampersHelper
+end

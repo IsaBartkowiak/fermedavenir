@@ -21,7 +21,7 @@ class PlantationsController < ApplicationController
     @plantations = @farm.plantations.all
     @generations = @farm.generations_to_plant.per_plantation_date
 
-    redirect_to farm_paniers_path(@farm), notice: "Vous n'avez pas encore constitué vos paniers, remplissez-les afin de pouvoir accéder à vos plantations ;-)" if @generations.count == 0
+    redirect_to farm_hampers_path(@farm), notice: "Vous n'avez pas encore constitué vos paniers, remplissez-les afin de pouvoir accéder à vos plantations ;-)" if @generations.count == 0
 
     @plantation = Plantation.new
   end

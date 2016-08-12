@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: paniers
+# Table name: hampers
 #
 #  id         :integer          not null, primary key
 #  semaine    :integer
@@ -11,69 +11,69 @@
 #  quantity   :integer          default(20)
 #
 
-class PaniersController < ApplicationController
+class HampersController < ApplicationController
   before_action :check_user
   before_action :set_farm
-  before_action :set_panier, only: [:show, :edit, :update, :destroy]
+  before_action :set_hamper, only: [:show, :edit, :update, :destroy]
   before_action :set_generations, only: [:edit, :update, :new]
 
-  # GET /paniers
-  # GET /paniers.json
+  # GET /hampers
+  # GET /hampers.json
   def index
-    @paniers = @farm.paniers.par_semaines
+    @hampers = @farm.hampers.par_semaines
   end
 
-  # GET /paniers/1
-  # GET /paniers/1.json
+  # GET /hampers/1
+  # GET /hampers/1.json
   def show
   end
 
-  # GET /paniers/new
+  # GET /hampers/new
   def new
-    @panier = Panier.new
+    @hamper = Hamper.new
   end
 
-  # GET /paniers/1/edit
+  # GET /hampers/1/edit
   def edit
   end
 
-  # POST /paniers
-  # POST /paniers.json
+  # POST /hampers
+  # POST /hampers.json
   def create
-    @panier = @farm.paniers.new(panier_params)
+    @hamper = @farm.hampers.new(hamper_params)
 
     respond_to do |format|
-      if @panier.save
-        format.html { redirect_to farm_paniers_path(@farm.slug), notice: 'Vous avez bien créé un nouveau panier.' }
+      if @hamper.save
+        format.html { redirect_to farm_hampers_path(@farm.slug), notice: 'Vous avez bien créé un nouveau hamper.' }
         format.json { render :show, status: :created, location: @farm.slug }
       else
         format.html { render :new }
-        format.json { render json: @panier.errors, status: :unprocessable_entity }
+        format.json { render json: @hamper.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # PATCH/PUT /paniers/1
-  # PATCH/PUT /paniers/1.json
+  # PATCH/PUT /hampers/1
+  # PATCH/PUT /hampers/1.json
   def update
     respond_to do |format|
-      if @panier.update(panier_params)
-        format.html { redirect_to farm_panier_path(@farm.slug, @panier), notice: 'Panier mis à jour.' }
-        format.json { render :show, status: :ok, location: @panier }
+      if @hamper.update(hamper_params)
+        format.html { redirect_to farm_hamper_path(@farm.slug, @hamper), notice: 'Hamper mis à jour.' }
+        format.json { render :show, status: :ok, location: @hamper }
         format.js {}
       else
         format.html { render :edit }
-        format.json { render json: @panier.errors, status: :unprocessable_entity }
+        format.json { render json: @hamper.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # DELETE /paniers/1
-  # DELETE /paniers/1.json
+  # DELETE /hampers/1
+  # DELETE /hampers/1.json
   def destroy
-    @panier.destroy
+    @hamper.destroy
     respond_to do |format|
-      format.html { redirect_to farm_paniers_url(@farm.slug), notice: 'Panier was successfully destroyed.' }
+      format.html { redirect_to farm_hampers_url(@farm.slug), notice: 'Hamper was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -87,16 +87,16 @@ class PaniersController < ApplicationController
       @farm = current_user.farm || Farm.find_by_slug(params[:farm_slug])
     end
     # Use callbacks to share common setup or constraints between actions.
-    def set_panier
-      @panier = @farm.paniers.find(params[:id])
-      @portions = @panier.portions.all
+    def set_hamper
+      @hamper = @farm.hampers.find(params[:id])
+      @portions = @hamper.portions.all
     end
 
     def set_generations
       @generations = Generation.all
     end
     # Never trust parameters from the scary internet, only allow the white list through.
-    def panier_params
-      params.require(:panier).permit(:semaine, :quantity)
+    def hamper_params
+      params.require(:hamper).permit(:semaine, :quantity)
     end
 end

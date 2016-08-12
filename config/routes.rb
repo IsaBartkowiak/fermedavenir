@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   resources :farms, param: :slug do 
     patch 'tutorial'
     resources :plantations
-    resources :paniers do 
+    resources :hampers do 
       resources :portions
     end
   end

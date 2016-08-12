@@ -12,10 +12,10 @@
   </div>
 
   <div class="col-xs-12">
-   <% @paniers.each do |panier| %>
+   <% @hampers.each do |hamper| %>
    <div class="row no-margin">
-   <div class="line <% unless panier.planted? %>alert-plant<% end %>">
-      <% unless panier.planted? %>
+   <div class="line <% unless hamper.planted? %>alert-plant<% end %>">
+      <% unless hamper.planted? %>
       <div class="alert-plant--box"><p>Des légumes doivent être plantés pour obtenir ce panier dans les temps</p></div>
       <% end %>
       
@@ -23,7 +23,7 @@
       <div class="col-sm-12 col-md-1">
         <div class="line-item week"> 
           <p class="line-label">Semaine</p>
-          <%= panier.semaine %>
+          <%= hamper.semaine %>
         </div>
       </div>
       
@@ -31,7 +31,7 @@
       <div class="col-sm-12 col-md-2">
         <div class="line-item quantity"> 
         <p class="line-label">Quantité</p> 
-          <%= number_field_tag "quantity", panier.quantity, class: "paniers-qty form-control", id: panier.id, :data => { url: farm_panier_path(@farm.slug, panier)}, min: 0 %>
+          <%= number_field_tag "quantity", hamper.quantity, class: "paniers-qty form-control", id: hamper.id, :data => { url: farm_hamper_path(@farm.slug, hamper)}, min: 0 %>
         </div>
       </div>
 
@@ -40,7 +40,7 @@
         <div class="line-item products">
         <p class="line-label">Produits</p> 
           <select class="form-control">
-            <% panier.portions.each do |portion| %> 
+            <% hamper.portions.each do |portion| %> 
             <option><%= portion.quantity %>KG de <%= portion.legume.titre %></option>
             <% end %>
           </select>
@@ -51,14 +51,14 @@
       <div class="col-md-2 col-sm-12">
         <div class="line-item">
         <p class="line-label">Prix</p>
-          <%= get_cart_total(panier.portions) %> €
+          <%= get_cart_total(hamper.portions) %> €
         </div>
       </div>
 
       <!-- edit -->
       <div class="col-md-2 col-xs-6">
         <div class="line-item control">
-          <%= link_to farm_panier_portions_path(@farm.slug, panier) do %>            
+          <%= link_to farm_hamper_portions_path(@farm.slug, hamper) do %>            
           Voir le panier
           <% end %>
         </div>
@@ -67,7 +67,7 @@
       <!-- delete -->
       <div class="col-md-3 col-xs-6 ">
         <div class="line-item control">  
-          <%= link_to farm_panier_path(@farm.slug, panier), method: :delete, data: { confirm: 'Êtes-vous sur de vouloir le supprimer ?' } do %>
+          <%= link_to farm_hamper_path(@farm.slug, hamper), method: :delete, data: { confirm: 'Êtes-vous sur de vouloir le supprimer ?' } do %>
           <span class="glyphicon glyphicon-trash"></span>
           Supprimer
           <% end %>

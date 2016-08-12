@@ -3,7 +3,7 @@
 # Table name: portions
 #
 #  id            :integer          not null, primary key
-#  panier_id     :integer
+#  hamper_id     :integer
 #  legume_id     :integer
 #  generation_id :integer
 #  quantity      :float
@@ -15,13 +15,13 @@ class PortionsController < ApplicationController
   before_action :check_user
   before_action :set_farm
   before_action :set_portion, only: [:show, :edit, :update, :destroy]
-  before_action :set_panier
+  before_action :set_hamper
 
   # GET /portions
   # GET /portions.json
   def index
-    @portions = @panier.portions.all
-    @generations = @farm.generations.available_for(@panier.semaine)
+    @portions = @hamper.portions.all
+    @generations = @farm.generations.available_for(@hamper.semaine)
     @portion = Portion.new
   end
 
@@ -42,22 +42,22 @@ class PortionsController < ApplicationController
   # POST /portions
   # POST /portions.json
   def create
-    identical_portions = @panier.portions.where(generation_id: portion_params[:generation_id])
+    identical_portions = @hamper.portions.where(generation_id: portion_params[:generation_id])
 
     if identical_portions.any?
       @portion = identical_portions.first
       @portion.refresh(portion_params)
     else
-      @portion = @panier.portions.new(portion_params)
+      @portion = @hamper.portions.new(portion_params)
     end
 
     respond_to do |format|
       if @portion.save
-        format.html { redirect_to panier_portions_url(@panier), notice: "#{@portion.quantity} #{@portion.legume.titre} ajoutés au panier" }
-        format.json { render :show, status: :created, location: @panier }
+        format.html { redirect_to hamper_portions_url(@hamper), notice: "#{@portion.quantity} #{@portion.legume.titre} ajoutés au hamper" }
+        format.json { render :show, status: :created, location: @hamper }
         format.js {}
       else
-        format.html { redirect_to new_panier_portion_path(@panier), notice: "Pas de portions de #{@portion.legume.titre} disponible à cette date." }
+        format.html { redirect_to new_hamper_portion_path(@hamper), notice: "Pas de portions de #{@portion.legume.titre} disponible à cette date." }
         format.json { render json: @portion.errors, status: :unprocessable_entity }
       end
     end
@@ -68,10 +68,10 @@ class PortionsController < ApplicationController
   def update
     respond_to do |format|
       if @portion.update(portion_params)
-        format.html { redirect_to panier_portions_url(@panier), notice: 'Cette portion a été mise à jour.' }
+        format.html { redirect_to hamper_portions_url(@hamper), notice: 'Cette portion a été mise à jour.' }
         format.json { render :show, status: :ok, location: @portion }
       else
-        format.html { redirect_to edit_panier_portion_path(@panier), notice: "Pas de portions de #{@portion.legume.titre} disponible à cette date." }
+        format.html { redirect_to edit_hamper_portion_path(@hamper), notice: "Pas de portions de #{@portion.legume.titre} disponible à cette date." }
         format.json { render json: @portion.errors, status: :unprocessable_entity }
       end
     end
@@ -82,7 +82,7 @@ class PortionsController < ApplicationController
   def destroy
     @portion.destroy
     respond_to do |format|
-      format.html { redirect_to farm_panier_portions_url(@panier.farm, @panier), notice: 'Le légume a été retiré avec succès' }
+      format.html { redirect_to farm_hamper_portions_url(@hamper.farm, @hamper), notice: 'Le légume a été retiré avec succès' }
       format.json { head :no_content }
       format.js {}
     end
@@ -98,8 +98,8 @@ class PortionsController < ApplicationController
       @farm = current_user.farm
     end
 
-    def set_panier
-      @panier = Panier.find(params[:panier_id]) if params[:panier_id]
+    def set_hamper
+      @hamper = Hamper.find(params[:hamper_id]) if params[:hamper_id]
     end
     # Use callbacks to share common setup or constraints between actions.
     def set_portion
@@ -108,6 +108,6 @@ class PortionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def portion_params
-      params.require(:portion).permit(:panier_id, :legume_id, :quantity, :generation_id)
+      params.require(:portion).permit(:hamper_id, :legume_id, :quantity, :generation_id)
     end
 end

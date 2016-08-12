@@ -51,7 +51,7 @@
                 <li><%= link_to 'Légumes', legumes_path %></li>
                 <li><%= link_to 'Générations', generations_path %></li>
                 <li><%= link_to 'Plantations', farm_plantations_path(current_user.farm.slug) %></li>
-                <li><%= link_to 'Paniers', farm_paniers_path(current_user.farm.slug) %></li>
+                <li><%= link_to 'Paniers', farm_hampers_path(current_user.farm.slug) %></li>
                 <li role="separator" class="divider"></li>
                 <li>
                   <%= link_to farm_tutorial_path(@farm.slug), method: 'patch' do %>
@@ -88,7 +88,7 @@
             <li class="nav-item <%= "is-active" if is_active?("legumes") %>"><%= link_to "Légumes", legumes_path, class: 'btn' unless current_user.farm.nil? %></li>
             <li class="nav-item <%= "is-active" if is_active?("generations") %>"><%= link_to "Générations", generations_path, class: 'btn' unless current_user.farm.nil? %></li>
             <li class="nav-item <%= "is-active" if is_active?("plantations") %>"><%= link_to "Plantations", farm_plantations_path(current_user.farm.slug), class: 'btn' unless current_user.farm.nil? %></li>
-            <li class="nav-item <%= "is-active" if is_active?("paniers") %>"><%= link_to "Paniers", farm_paniers_path(current_user.farm.slug), class: 'btn' unless current_user.farm.nil? %></li>
+            <li class="nav-item <%= "is-active" if is_active?("hampers") %>"><%= link_to "Paniers", farm_hampers_path(current_user.farm.slug), class: 'btn' unless current_user.farm.nil? %></li>
           </ul>
         </nav>
       <% end %>
