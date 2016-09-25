@@ -4,7 +4,7 @@
 #
 #  id          :integer          not null, primary key
 #  name        :string
-#  type        :string
+#  kind        :string
 #  feature     :string
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
@@ -18,7 +18,7 @@ class Plant < ActiveRecord::Base
   has_many   :portions, dependent: :destroy
   belongs_to :farm
 
-  amoeba do
-    enable
-  end
+  # FIXME
+  # remove kind, feature, price, farm_id
+  # add description, image
 end

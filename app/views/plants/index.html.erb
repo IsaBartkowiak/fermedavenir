@@ -1,48 +1,48 @@
 <div class="section_grey">
-<div class="container">
-  <div class="page-header">
-    <%= link_to new_plant_path, class: 'btn btn_green' do %>
-      <span class="glyphicon glyphicon-plus"></span>
-      Nouveau légume
-    <% end %>
-  </div>
+  <div class="container">
+    <div class="page-header">
+      <%= link_to new_plant_path, class: 'btn btn_green' do %>
+        <span class="glyphicon glyphicon-plus"></span>
+        Nouveau légume
+      <% end %>
+    </div>
 
-  <div class="table-responsive">
-    <table class="table table-striped table-bordered table-hover">
-      <thead>
-        <tr>
-          <th></th>
-          <th>Titre</th>
-          <th>Variete</th>
-          <th>Type</th>
-          <th>Prix/kilo</th>
-          <th>Nb graine/kilo</th>
-          <th></th>
-          <th></th>
-        </tr>
-      </thead>
-
-      <tbody>
-        <%= content_tag_for(:tr, @plants) do |plant| %>
-              <td class="text-center"><%= image_tag("image-"+ plant.name.parameterize + ".png", width: "35px"); %></td>
+    <div class="table-responsive">
+      <table class="table table-striped table-bordered table-hover">
+        <thead>
+          <tr>
+            <th>Image</th>
+            <th>Titre</th>
+            <th>Variete</th>
+            <th>Type</th>
+            <th>Prix/kilo</th>
+            <th>Nb graine/kilo</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @plants.each do |plant| %>
+            <tr>
+              <td class="text-center">
+                <%= image_tag("image-"+ plant.name.parameterize + ".png", width: "35px"); %>
+              </td>
               <td><%= plant.name %></td>
-              <td><%= plant.type %></td>
+              <td><%= plant.kind %></td>
               <td><%= plant.feature %></td>
               <td><%= plant.price %></td>
               <td><%= plant.nb_per_kilo %></td>
-          <td class="text-center"><%= link_to edit_plant_path(plant) do %>
-              <span class="glyphicon glyphicon-pencil"></span>
-            <% end %>
-        </td>
-          <td class="text-center"><%= link_to plant, method: :delete, data: { confirm: 'Êtes-vous sur ?' } do %>
-              <span class="glyphicon glyphicon-remove"></span>
-            <% end %>
-          </td>
-        <% end %>
-      </tbody>
-    </table>
+              <td class="text-center">
+                <%= link_to raw('<span class="glyphicon glyphicon-pencil"></span>'), edit_plant_path(plant) %>
+              </td>
+              <td class="text-center">
+                <%= link_to raw('<span class="glyphicon glyphicon-remove"></span>'), plant, method: :delete, data: { confirm: 'Êtes-vous sur ?' } %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
   </div>
-</div>
-
-<%= render 'helper/index', title:"Les légumes", text:"Ajoutez et modifiez la liste de légumes à votre convenance. Vous pourrez y indiquer la variété, le prix, le nombre de graines à semer." %>
+  <%#= render 'helper/index', title:"Les légumes", text:"Ajoutez et modifiez la liste de légumes à votre convenance. Vous pourrez y indiquer la variété, le prix, le nombre de graines à semer." %>
 </div>

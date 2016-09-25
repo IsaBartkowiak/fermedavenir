@@ -1,4 +1,5 @@
 module ApplicationHelper
+	# FIXME put that in model cart!!!
 	def get_cart_total(portions)
 		price = 0
 		portions.each do |p|
@@ -7,11 +8,15 @@ module ApplicationHelper
 		price.round(2)
 	end
 
-	def is_active? controller
+	def is_active?(controller)
 		controller == params[:controller]
 	end
 
-	def is_current_week? a_week
+	def is_current_week?(a_week)
 		Date.today.cweek == a_week
+	end
+
+	def help(title, text)
+		# TODO
 	end
 end

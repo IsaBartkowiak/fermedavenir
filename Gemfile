@@ -12,6 +12,8 @@ gem 'devise'                                  # Authentication                  
 gem 'coffee-rails'                            # Coffee script 
 gem 'jquery-rails'                            # jQuery                                https://github.com/rails/jquery-rails
 gem 'jbuilder'                                # Json
+gem 'wikipedia-client'						            # Wikipedia                             https://github.com/kenpratt/wikipedia-client
+gem 'simple_form'
 
 group :development, :test do
   gem 'byebug'                                # Debug                                 https://github.com/deivid-rodriguez/byebug

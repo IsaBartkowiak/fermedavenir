@@ -1,12 +1,10 @@
 class PlantsController < ApplicationController
-  before_action :set_farm
-  before_action :check_user
   before_action :set_plant, only: [:show, :edit, :update, :destroy]
 
   # GET /plants
   # GET /plants.json
   def index
-    @plants = @farm.plants.all
+    @plants = Plant.all
   end
 
   # GET /plants/1
@@ -26,7 +24,7 @@ class PlantsController < ApplicationController
   # POST /plants
   # POST /plants.json
   def create
-    @plant = @farm.plants.new(plant_params)
+    @plant = Plant.new(plant_params)
 
     respond_to do |format|
       if @plant.save
@@ -73,7 +71,7 @@ class PlantsController < ApplicationController
     end
 
     def set_plant
-      @plant = @farm.plants.find(params[:id])
+      @plant = Plant.find params[:id]
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

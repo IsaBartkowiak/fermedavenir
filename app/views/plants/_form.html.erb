@@ -1,45 +1,8 @@
-<%= form_for(@plant, html: { class: "form-horizontal", role: "form" }) do |f| %>
-<% if @plant.errors.any? %>
-<div class="alert alert-danger alert-dismissable" role="alert">
-  <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-  <h4><%= pluralize(@plant.errors.count, "error") %> prohibited this plant from being saved:</h4>
-
-  <ul>
-    <% @plant.errors.full_messages.each do |msg| %>
-    <li><%= msg %></li>
-    <% end %>
-  </ul>
-</div>
-<% end %>
-<div class="form-group">
-  <div class="col-xs-12 col-sm-6">
-    <%= f.label :name, class: "control-label" %>
-    <%= f.text_field :name, class: "form-control" %>
-  </div>
-  <div class="col-xs-12 col-sm-6">
-    <%= f.label :type, class: "control-label" %>
-    <%= f.text_field :type, class: "form-control" %>
-  </div>
-</div>
-
-<div class="form-group">
-<div class="col-xs-12 col-sm-12">
-    <%= f.label :feature, class: "control-label" %>
-    <%= f.text_field :feature, class: "form-control" %>
-  </div>
-</div>
-
-<div class="form-group">
-  <div class="col-xs-12 col-sm-6">
-    <%= f.label "Prix", class: "control-label" %>
-    <%= f.number_field :price, class: "form-control", placeholder: 'Prix au kilos', :step => 'any', min: 0 %>
-  </div>
-  <div class="col-xs-12 col-sm-6">
-    <%= f.label "Graines/kilo", class: "control-label" %>
-    <%= f.number_field :nb_per_kilo, class: "form-control", placeholder: 'Nombre de graines à planter par kilo (ou par bottes)', :step => 'any' %>
-  </div>
-</div>
-
-    <%= f.submit "Enregistrer ce légume", class: "btn btn_green" %>
-</div>
+<%= simple_form_for @plant do |f| %>
+  <%= f.input :name %>
+  <%= f.input :kind %>
+  <%= f.input :feature %>
+  <%= f.input :price %>
+  <%= f.input :nb_per_kilo %>
+  <%= f.button :submit, 'Enregistrer' %>
 <% end %>
